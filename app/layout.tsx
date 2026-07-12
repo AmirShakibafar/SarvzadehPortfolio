@@ -3,7 +3,7 @@ import { Vazirmatn } from "next/font/google";
 import "./globals.css";
 
 const vazir = Vazirmatn({
-  subsets: ["fa-ir", "arabic"],
+  subsets: ["arabic"],
   variable: "--font-vazir",
 });
 
