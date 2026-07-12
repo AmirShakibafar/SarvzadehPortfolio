@@ -61,6 +61,7 @@ const buttonVariants = cva(
         lg: "h-10 rounded-md px-8",
         icon: "size-9 rounded-md",
         pill: "h-12 rounded-full px-6 text-base font-semibold",
+        pillSm: "h-9 rounded-full px-5 text-sm font-medium",
       },
     },
 
