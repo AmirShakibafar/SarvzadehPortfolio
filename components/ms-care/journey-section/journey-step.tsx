@@ -2,7 +2,6 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { ElementType } from "react";
-import { GlassCard } from "@/components/ui/glass-card";
 import { cn } from "@/lib/utils";
 
 interface JourneyStepProps {
@@ -21,69 +20,91 @@ export function JourneyStep({
   isActive,
 }: JourneyStepProps) {
   const prefersReducedMotion = useReducedMotion();
-
-  // Convert the numeric index to a Persian string (۱, ۲, ۳, etc.)
   const persianStepNumber = (index + 1).toLocaleString("fa-IR");
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30, scale: 0.97 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-150px" }}
-      transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
-      animate={{
-        opacity: isActive ? 1 : 0.7,
-        scale: isActive ? 1.02 : 1,
+      initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{
+        duration: 0.8,
+        delay: index * 0.1,
+        ease: [0.16, 1, 0.3, 1],
       }}
-      className="flex items-start gap-8 transition-opacity duration-500"
+      className={cn(
+        "group flex items-start gap-6 md:gap-10 transition-all duration-700 ease-out",
+        isActive ? "opacity-100" : "opacity-40 hover:opacity-60",
+      )}
     >
+      {/* Integrated Timeline Node */}
       <div className="relative shrink-0">
         <motion.div
-          animate={
-            isActive && !prefersReducedMotion
-              ? { scale: [1, 1.08, 1] }
-              : { scale: 1 }
-          }
-          transition={
-            isActive && !prefersReducedMotion
-              ? { duration: 2, repeat: Infinity, ease: "easeInOut" }
-              : { duration: 0.3 }
-          }
+          animate={{
+            scale: isActive && !prefersReducedMotion ? 1.05 : 1,
+          }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className={cn(
-            "w-20 h-20 rounded-[24px] flex items-center justify-center border transition-all duration-500",
+            "relative z-10 flex w-14 h-14 items-center justify-center rounded-full border transition-all duration-700",
             isActive
-              ? "bg-white/90 border-primary/40 shadow-[0_8px_30px_color-mix(in_oklab,var(--color-primary)_25%,transparent)]"
-              : "bg-white/80 border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.06)]",
+              ? "bg-background border-primary/40 text-primary shadow-[0_0_24px_-4px_rgba(34,211,238,0.4)]"
+              : "bg-muted/50 border-border text-muted-foreground/60",
           )}
         >
-          <Icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
+          <Icon className="w-6 h-6" strokeWidth={isActive ? 2 : 1.5} />
         </motion.div>
       </div>
 
-      <GlassCard
-        intensity="heavy"
+      {/* Clean, Non-Glass Content Card */}
+      <motion.div
+        animate={{
+          y: isActive && !prefersReducedMotion ? 0 : 4,
+          scale: isActive && !prefersReducedMotion ? 1 : 0.98,
+        }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className={cn(
-          "flex-1 p-8 rounded-[32px] transition-all duration-500 relative overflow-hidden",
-          "bg-white/80 border-white/60",
-          "shadow-[0_8px_32px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.7)]",
-          isActive &&
-            "border-primary/40 shadow-[0_12px_40px_color-mix(in_oklab,var(--color-primary)_20%,transparent),inset_0_1px_1px_rgba(255,255,255,0.7)]",
-          !isActive && "hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)]",
+          "flex-1 relative rounded-[28px] p-8 md:p-10 transition-all duration-700",
+          isActive
+            ? "bg-card border border-primary/20 shadow-[0_20px_60px_-15px_rgba(34,211,238,0.15)]"
+            : "bg-transparent border border-transparent",
         )}
       >
-        {/* Big Background Number */}
-        <div className="absolute top-4 left-6 text-8xl font-black text-primary/5 select-none pointer-events-none">
-          {persianStepNumber}
+        {/* Step Indicator Rhythm */}
+        <div className="flex items-center gap-4 mb-5">
+          <div
+            className={cn(
+              "h-px transition-all duration-700 ease-out",
+              isActive ? "w-12 bg-primary/40" : "w-6 bg-border/80",
+            )}
+          />
+          <span
+            className={cn(
+              "text-sm font-semibold tracking-widest transition-colors duration-700",
+              isActive ? "text-primary" : "text-muted-foreground/60",
+            )}
+          >
+            مرحله {persianStepNumber}
+          </span>
         </div>
 
-        <div className="relative z-10">
-          <span className="inline-block text-sm font-bold text-primary mb-2">
-            قدم {persianStepNumber}
-          </span>
-          <h3 className="text-xl font-bold text-foreground mb-3">{title}</h3>
-          <p className="text-muted-foreground leading-relaxed">{text}</p>
-        </div>
-      </GlassCard>
+        <h3
+          className={cn(
+            "text-2xl md:text-3xl font-semibold tracking-tight mb-4 transition-colors duration-700 leading-snug",
+            isActive ? "text-foreground" : "text-foreground/70",
+          )}
+        >
+          {title}
+        </h3>
+
+        <p
+          className={cn(
+            "text-base md:text-lg leading-relaxed transition-colors duration-700 font-light",
+            isActive ? "text-muted-foreground" : "text-muted-foreground/60",
+          )}
+        >
+          {text}
+        </p>
+      </motion.div>
     </motion.div>
   );
 }
