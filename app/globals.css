@@ -44,45 +44,81 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-  --color-primary: oklch(0.63 0.16 181);
-  --color-secondary: oklch(0.96 0.02 181);
-  --color-primary-foreground: white;
-  --color-secondary-foreground: oklch(0.35 0.08 181);
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
+  /* Brand primary color */
+  --primary: #0ddcd5;
+  /* Text color on top of primary background */
+  --primary-foreground: #ffffff;
+
+  /* Secondary interactive elements and backgrounds */
+  --secondary: #ebf5f5;
+  /* Text color on top of secondary background */
+  --secondary-foreground: #2a5a5c;
+
+  /* Main application body background */
+  --background: #ffffff;
+  /* Main application text color */
+  --foreground: #242424;
+
+  /* Background color for card components */
+  --card: #ffffff;
+  /* Text color inside card components */
+  --card-foreground: #242424;
+
+  /* Background color for dropdowns, tooltips, and popovers */
+  --popover: #ffffff;
+  /* Text color inside popovers */
+  --popover-foreground: #242424;
+
+  /* Background for muted elements (e.g., disabled states or subtle backgrounds) */
+  --muted: #f7f7f7;
+  /* Text color for secondary/faded text */
+  --muted-foreground: #848484;
+
+  /* Background color for hover states and subtle highlights */
+  --accent: #f7f7f7;
+  /* Text color on top of accent backgrounds */
+  --accent-foreground: #343434;
+
+  /* Background color for errors, deletions, or destructive actions */
+  --destructive: #e23624;
+
+  /* Default border color for standard elements */
+  --border: #eaeaea;
+  /* Border color specific to form inputs */
+  --input: #eaeaea;
+  /* Color of the focus ring around active elements (accessibility) */
+  --ring: #b0b0b0;
+
+  /* Sequential colors for data visualization and charts */
+  --chart-1: #dedede;
+  --chart-2: #848484;
+  --chart-3: #666666;
+  --chart-4: #545454;
+  --chart-5: #3c3c3c;
+
+  /* Global border radius base value */
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+
+  /* Sidebar specific variables */
+  /* Main sidebar background */
+  --sidebar: #fafafa;
+  /* Main sidebar text color */
+  --sidebar-foreground: #242424;
+  /* Sidebar primary accent background */
+  --sidebar-primary: #343434;
+  /* Text color on sidebar primary accent */
+  --sidebar-primary-foreground: #fafafa;
+  /* Hover/active state background in sidebar */
+  --sidebar-accent: #f7f7f7;
+  /* Hover/active state text color in sidebar */
+  --sidebar-accent-foreground: #343434;
+  /* Border separating sidebar from content */
+  --sidebar-border: #eaeaea;
+  /* Focus ring color for sidebar interactive elements */
+  --sidebar-ring: #b0b0b0;
 }
 
 @layer base {
