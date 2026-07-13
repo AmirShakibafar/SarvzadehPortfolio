@@ -22,6 +22,8 @@ export function JourneySection() {
 
   const { scrollYProgress } = useScroll({
     target: stepsContainerRef,
+    // Triggers when the top of the container hits the center of the viewport,
+    // and ends when the bottom of the container hits the center.
     offset: ["start center", "end center"],
   });
 
@@ -34,11 +36,24 @@ export function JourneySection() {
   const pathLength = useTransform(smoothProgress, [0, 1], [0, 1]);
 
   useMotionValueEvent(smoothProgress, "change", (latest) => {
-    const idx = Math.min(
-      JOURNEY_STEPS.length - 1,
-      Math.floor(latest * JOURNEY_STEPS.length),
-    );
-    setActiveIndex(idx);
+    const stepCount = JOURNEY_STEPS.length;
+    if (stepCount === 0) return;
+
+    let newIndex = 0;
+    for (let i = 0; i < stepCount; i++) {
+      // Calculate the exact percentage threshold where each node sits
+      const threshold = stepCount > 1 ? i / (stepCount - 1) : 0.5;
+
+      // Activate the step when the line tip (latest) reaches its threshold.
+      // A small buffer (-0.02) prevents rounding errors from missing the final step.
+      if (latest >= threshold - 0.02) {
+        newIndex = i;
+      }
+    }
+
+    if (newIndex !== activeIndex) {
+      setActiveIndex(newIndex);
+    }
   });
 
   return (

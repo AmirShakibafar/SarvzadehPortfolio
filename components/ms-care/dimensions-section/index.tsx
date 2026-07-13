@@ -95,29 +95,52 @@ export function DimensionsSection() {
       </div>
 
       {/* Desktop orbit hub */}
-      <div className="hidden lg:block relative w-full max-w-4xl aspect-square">
-        <NeuralIllustration
-          dimensions={CARE_DIMENSIONS}
-          activeId={activeId}
-          radius={ORBIT_RADIUS}
-        />
-
-        <div className="relative w-full h-full">
-          {CARE_DIMENSIONS.map((item, index) => (
-            <FloatingCard
-              key={item.id}
-              title={item.title}
-              icon={item.icon}
-              angle={item.angle}
-              radius={ORBIT_RADIUS}
-              delay={item.delay}
-              index={index}
-              isActive={activeId === item.id}
-              onSelect={() => setActiveId(item.id)}
-            />
-          ))}
+      <div className="hidden lg:flex relative w-full max-w-[800px] aspect-square items-center justify-center">
+        {/* SVG Diagram scaling responsive container */}
+        <div className="absolute inset-0">
+          <NeuralIllustration
+            dimensions={CARE_DIMENSIONS}
+            activeId={activeId}
+            radius={ORBIT_RADIUS}
+          />
         </div>
 
+        {/* Absolute Percentage-Mapped Card Layer */}
+        <div className="absolute inset-0 z-20 pointer-events-none">
+          {CARE_DIMENSIONS.map((item, index) => {
+            // Replicates the SVG polar math using CSS percentages.
+            // SVG line draws to radius 180 within a 500x500 box (180/500 = 36%).
+            const rad = (item.angle * Math.PI) / 180;
+            const left = `calc(50% + ${36 * Math.sin(rad)}%)`;
+            const top = `calc(50% - ${36 * Math.cos(rad)}%)`;
+
+            return (
+              <div
+                key={item.id}
+                className="absolute pointer-events-auto"
+                style={{
+                  left,
+                  top,
+                  transform: "translate(-50%, -50%)",
+                }}
+              >
+                <FloatingCard
+                  title={item.title}
+                  icon={item.icon}
+                  angle={item.angle}
+                  // Enforce a radius of 0 to disable internal translation in FloatingCard
+                  radius={0}
+                  delay={item.delay}
+                  index={index}
+                  isActive={activeId === item.id}
+                  onSelect={() => setActiveId(item.id)}
+                />
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Center Details */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
           <AnimatePresence mode="wait">
             <motion.div

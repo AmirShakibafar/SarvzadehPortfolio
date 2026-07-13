@@ -22,6 +22,9 @@ export function JourneyStep({
 }: JourneyStepProps) {
   const prefersReducedMotion = useReducedMotion();
 
+  // Convert the numeric index to a Persian string (۱, ۲, ۳, etc.)
+  const persianStepNumber = (index + 1).toLocaleString("fa-IR");
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30, scale: 0.97 }}
@@ -56,10 +59,11 @@ export function JourneyStep({
           <Icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
         </motion.div>
       </div>
+
       <GlassCard
         intensity="heavy"
         className={cn(
-          "flex-1 p-8 rounded-[32px] transition-all duration-500",
+          "flex-1 p-8 rounded-[32px] transition-all duration-500 relative overflow-hidden",
           "bg-white/80 border-white/60",
           "shadow-[0_8px_32px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.7)]",
           isActive &&
@@ -67,8 +71,18 @@ export function JourneyStep({
           !isActive && "hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)]",
         )}
       >
-        <h3 className="text-xl font-bold text-foreground mb-3">{title}</h3>
-        <p className="text-muted-foreground leading-relaxed">{text}</p>
+        {/* Big Background Number */}
+        <div className="absolute top-4 left-6 text-8xl font-black text-primary/5 select-none pointer-events-none">
+          {persianStepNumber}
+        </div>
+
+        <div className="relative z-10">
+          <span className="inline-block text-sm font-bold text-primary mb-2">
+            قدم {persianStepNumber}
+          </span>
+          <h3 className="text-xl font-bold text-foreground mb-3">{title}</h3>
+          <p className="text-muted-foreground leading-relaxed">{text}</p>
+        </div>
       </GlassCard>
     </motion.div>
   );
