@@ -12,7 +12,7 @@ export function HeroSection() {
         items-center justify-center lg:justify-between 
         w-full gap-8 md:gap-12 lg:gap-8 
         min-h-[calc(100svh-80px)]
-        py-6 md:py-12 lg:py-0
+        py-6
       "
     >
       {/* Right Side: Text Content */}

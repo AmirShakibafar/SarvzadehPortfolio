@@ -3,12 +3,12 @@ import { GlassCard } from "@/components/ui/glass-card";
 
 export function FeaturesSection() {
   return (
-    <section className="w-full mt-12 relative z-20">
+    <section className="w-full relative z-20">
       <GlassCard
         intensity="heavy"
-        className="grid grid-cols-1 gap-6 p-6 md:grid-cols-4 bg-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.08)] border-white"
+        className="grid grid-cols-1 gap-6 p-6 md:grid-cols-4 bg-white/30 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.05),inset_0_1px_2px_rgba(255,255,255,0.6)]"
       >
-        <div className="flex flex-col items-center gap-3 p-4 text-center border-b md:border-b-0 md:border-l border-border/50 last:border-0">
+        <div className="flex flex-col items-center gap-3 p-4 text-center border-b md:border-b-0 md:border-l border-white/20 last:border-0">
           <CheckCircle className="h-7 w-7 text-primary" />
           <div>
             <h3 className="font-bold text-sm text-foreground">
@@ -20,7 +20,7 @@ export function FeaturesSection() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center gap-3 p-4 text-center border-b md:border-b-0 md:border-l border-border/50 last:border-0">
+        <div className="flex flex-col items-center gap-3 p-4 text-center border-b md:border-b-0 md:border-l border-white/20 last:border-0">
           <User className="h-7 w-7 text-primary" />
           <div>
             <h3 className="font-bold text-sm text-foreground">
@@ -32,7 +32,7 @@ export function FeaturesSection() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center gap-3 p-4 text-center border-b md:border-b-0 md:border-l border-border/50 last:border-0">
+        <div className="flex flex-col items-center gap-3 p-4 text-center border-b md:border-b-0 md:border-l border-white/20 last:border-0">
           <Activity className="h-7 w-7 text-primary" />
           <div>
             <h3 className="font-bold text-sm text-foreground">
