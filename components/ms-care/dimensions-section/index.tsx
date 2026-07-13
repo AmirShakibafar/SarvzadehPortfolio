@@ -108,11 +108,14 @@ export function DimensionsSection() {
         {/* Absolute Percentage-Mapped Card Layer */}
         <div className="absolute inset-0 z-20 pointer-events-none">
           {CARE_DIMENSIONS.map((item, index) => {
-            // Replicates the SVG polar math using CSS percentages.
-            // SVG line draws to radius 180 within a 500x500 box (180/500 = 36%).
+            // Dynamically calculate the exact percentage based on the SVG viewBox logic.
+            const svgPadding = 60;
+            const svgSize = (ORBIT_RADIUS + svgPadding) * 2;
+            const radiusPercent = (ORBIT_RADIUS / svgSize) * 100;
+
             const rad = (item.angle * Math.PI) / 180;
-            const left = `calc(50% + ${36 * Math.sin(rad)}%)`;
-            const top = `calc(50% - ${36 * Math.cos(rad)}%)`;
+            const left = `calc(50% + ${radiusPercent * Math.sin(rad)}%)`;
+            const top = `calc(50% - ${radiusPercent * Math.cos(rad)}%)`;
 
             return (
               <div
@@ -121,14 +124,13 @@ export function DimensionsSection() {
                 style={{
                   left,
                   top,
-                  transform: "translate(-50%, -50%)",
+                  transform: "translate(-50%, -50%)", // Pure CSS translation isolates from Framer Motion scale
                 }}
               >
                 <FloatingCard
                   title={item.title}
                   icon={item.icon}
                   angle={item.angle}
-                  // Enforce a radius of 0 to disable internal translation in FloatingCard
                   radius={0}
                   delay={item.delay}
                   index={index}
@@ -139,7 +141,6 @@ export function DimensionsSection() {
             );
           })}
         </div>
-
         {/* Center Details */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
           <AnimatePresence mode="wait">

@@ -19,8 +19,6 @@ interface FloatingCardProps {
 export function FloatingCard({
   title,
   icon: Icon,
-  angle,
-  radius,
   delay,
   index,
   isActive,
@@ -41,10 +39,7 @@ export function FloatingCard({
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.8, delay, ease: "easeOut" }}
-      className="absolute left-1/2 top-1/2 z-20"
-      style={{
-        transform: `translate(-50%, -50%) rotate(${angle}deg) translateY(-${radius}px) rotate(-${angle}deg)`,
-      }}
+      className="relative z-20"
     >
       <motion.div
         animate={

@@ -40,8 +40,8 @@ export function NeuralIllustration({
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 1.5, ease: "easeOut" }}
-      className="absolute inset-0 m-auto flex items-center justify-center pointer-events-none"
-      style={{ width: size, height: size }}
+      // REMOVED fixed style={{ width: size, height: size }} to enable responsive scaling
+      className="absolute inset-0 flex items-center justify-center pointer-events-none w-full h-full"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,color-mix(in_oklab,var(--color-primary)_15%,transparent)_0%,transparent_70%)] rounded-full blur-2xl" />
       <div className="absolute inset-[15%] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4)_0%,transparent_60%)] rounded-full blur-xl" />
