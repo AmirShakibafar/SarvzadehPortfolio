@@ -1,7 +1,6 @@
 import { Navbar } from "@/components/layout/navbar";
 import { HeroSection } from "@/components/hero/hero-section";
-import { FeaturesSection } from "@/components/hero/features-section";
-import { ConditionsSection } from "@/components/hero/conditions-section";
+import MSCareSections from "@/components/ms-care";
 
 export default function Home() {
   return (
@@ -20,8 +19,7 @@ export default function Home() {
       {/* Constrained Page Content */}
       <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col pb-20 pt-8 gap-8 lg:gap-12">
         <HeroSection />
-        <FeaturesSection />
-        <ConditionsSection />
+        <MSCareSections/>
       </div>
     </div>
   );

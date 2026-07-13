@@ -2,7 +2,7 @@ import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
-import { HeroImage } from "./HeroImage";
+import { HeroImage } from "./hero-image";
 
 export function HeroSection() {
   return (

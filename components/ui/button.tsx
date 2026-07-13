@@ -14,6 +14,7 @@ const buttonVariants = cva(
     "disabled:pointer-events-none",
     "disabled:opacity-50",
     "select-none",
+    "cursor-pointer", // Added to force the click indicator
   ].join(" "),
   {
     variants: {
@@ -34,7 +35,6 @@ const buttonVariants = cva(
           "bg-gradient-to-b from-primary/90 to-primary",
           "text-primary-foreground",
           "border border-white/10",
-          // Refined inset shadow for the top gloss edge, paired with a soft colored drop shadow
           "shadow-[inset_0_1px_0_rgba(255,255,255,0.15),0_4px_14px_color-mix(in_oklab,var(--color-primary)_30%,transparent)]",
           "hover:from-primary hover:to-primary/90",
           "hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_6px_20px_color-mix(in_oklab,var(--color-primary)_40%,transparent)]",
@@ -47,10 +47,11 @@ const buttonVariants = cva(
           "backdrop-blur-md",
           "border border-white/20",
           "text-primary",
-          // Clean white inset shadow to define the glass rim without heavy borders
           "shadow-[0_4px_14px_rgba(0,0,0,0.03),inset_0_1px_0_rgba(255,255,255,0.4)]",
-          "hover:bg-white",
-          "hover:shadow-[0_6px_20px_rgba(0,0,0,0.04),inset_0_1px_0_rgba(255,255,255,0.5)]",
+          // Updated hover states for visibility on light backgrounds
+          "hover:bg-primary/10",
+          "hover:border-primary/20",
+          "hover:shadow-[0_6px_20px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.5)]",
           "active:scale-[0.98]",
         ].join(" "),
       },
