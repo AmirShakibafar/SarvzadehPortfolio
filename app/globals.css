@@ -48,7 +48,7 @@
 
 :root {
   /* Brand primary color */
-  --primary: #0ddcd5;
+  --primary: rgb(13, 220, 213);
   /* Text color on top of primary background */
   --primary-foreground: #ffffff;
 

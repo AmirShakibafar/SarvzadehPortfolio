@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { JourneyEditorialImage } from "./journey-editorial-image";
-import { JourneyStep } from "../constants";
+import { JourneyStep } from "../ms-care/constants";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { GlassCard } from "@/components/ui/glass-card";
@@ -94,7 +94,7 @@ export function JourneyStepCard({
           as="h3"
           size="h2"
           className={cn(
-            "mb-4 tracking-tight transition-colors duration-1000",
+            "mb-4 text-balance font-bold leading-snug transition-colors duration-1000",
             isActive ? "text-foreground" : "text-foreground/40",
           )}
         >
@@ -105,7 +105,7 @@ export function JourneyStepCard({
         <Paragraph
           size="lg"
           className={cn(
-            "mb-10 max-w-xl transition-colors duration-1000",
+            "mb-10 max-w-xl leading-relaxed transition-colors duration-1000",
             isActive ? "text-muted-foreground" : "text-muted-foreground/40",
           )}
         >
@@ -167,7 +167,7 @@ export function JourneyStepCard({
             <Paragraph
               size="sm"
               className={cn(
-                "font-medium transition-colors duration-1000",
+                "font-medium leading-relaxed transition-colors duration-1000",
                 isActive ? "text-foreground/80" : "text-muted-foreground",
               )}
             >
