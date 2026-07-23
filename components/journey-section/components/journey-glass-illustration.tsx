@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useFloatingAnimation } from "./hooks/useJourney";
+import { useFloatingAnimation } from "../hooks/useJourney";
 
 interface IllustrationProps {
   src: string;

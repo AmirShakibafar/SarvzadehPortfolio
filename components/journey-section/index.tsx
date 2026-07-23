@@ -1,38 +1,24 @@
-"use client";
-
-import React, { useRef } from "react";
-import { useJourneyProgress } from "./hooks/useJourney";
-import { JourneyPath } from "./JourneyPath";
-import { JourneyStep } from "./journey-step";
-import { JourneyBackground } from "./journey-background";
+import React from "react";
 import { JOURNEY_STEPS } from "./constants/journey";
+import { JourneyStep } from "./components/journey-step";
+import { JourneyScrollContainer } from "./components/journey-scroll-container";
 
 export const JourneySection: React.FC = () => {
-  const containerRef = useRef<HTMLElement>(null);
-  const progress = useJourneyProgress(containerRef);
-
   return (
-    <section
-      ref={containerRef}
-      dir="rtl"
-      className="relative w-full min-h-[400vh] py-24 overflow-hidden font-sans"
-    >
-      <JourneyBackground progress={progress} />
+    <JourneyScrollContainer>
+      {JOURNEY_STEPS.map((step, index) => {
+        // Destructure the icon component so we can render it safely
+        const { icon: Icon, id, ...rest } = step;
 
-      <div className="relative max-w-6xl mx-auto px-6">
-        <JourneyPath progress={progress} />
-
-        <div className="relative z-10 flex flex-col gap-[30vh]">
-          {JOURNEY_STEPS.map((step, index) => (
-            <JourneyStep
-              key={step.id}
-              step={step}
-              index={index}
-              align={index % 2 === 0 ? "right" : "left"} // Swapped for RTL logical flow
-            />
-          ))}
-        </div>
-      </div>
-    </section>
+        return (
+          <JourneyStep
+            key={id}
+            {...rest}
+            icon={<Icon className="w-5 h-5 text-primary" />}
+            align={index % 2 === 0 ? "right" : "left"}
+          />
+        );
+      })}
+    </JourneyScrollContainer>
   );
 };
