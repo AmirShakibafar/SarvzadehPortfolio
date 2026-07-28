@@ -2,18 +2,17 @@
 
 import React from "react";
 import { motion, MotionValue, useTransform } from "framer-motion";
-
 interface JourneyPathProps {
   progress: MotionValue<number>;
 }
 
 export function JourneyPath({ progress }: JourneyPathProps) {
   const path = `
-    M2000 0
-    C2000 550 2350 700 2300 1350
-    C2250 2000 1700 2100 1750 2800
-    C1800 3450 2000 3600 2000 4000
-  `;
+  M2000 180
+  C2000 700 2350 850 2300 1450
+  C2250 2100 1700 2200 1750 2950
+  C1800 3600 2000 3750 2000 3820
+`;
 
   const distance = useTransform(progress, (v) => `${v * 100}%`);
 

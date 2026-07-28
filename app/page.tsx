@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layout/navbar";
 import { HeroSection } from "@/components/hero/hero-section";
 import { JourneySection } from "@/components/journey-section";
+import WhyTrustMeSection from "@/components/approach-section/why-trust-me-section";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col pb-20 pt-8 gap-8 lg:gap-12">
         <HeroSection />
       </div>
+      <WhyTrustMeSection />
       <JourneySection />
     </div>
   );

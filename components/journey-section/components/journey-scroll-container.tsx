@@ -9,7 +9,7 @@ export function JourneyScrollContainer({
 }: {
   children: React.ReactNode;
 }) {
-  const containerRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLElement>(null!);
   const progress = useJourneyProgress(containerRef);
 
   return (
@@ -18,7 +18,7 @@ export function JourneyScrollContainer({
       dir="rtl"
       className="relative w-full min-h-[400vh] py-24 overflow-hidden font-sans"
     >
-      <JourneyBackground progress={progress} />
+      <JourneyBackground />
       <div className="relative max-w-6xl mx-auto px-6">
         <JourneyPath progress={progress} />
         <div className="relative z-10 flex flex-col gap-[30vh]">{children}</div>

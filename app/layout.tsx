@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-import { Vazirmatn } from "next/font/google";
+import { Vazirmatn, Lateef } from "next/font/google";
 import "./globals.css";
 
 const vazir = Vazirmatn({
   subsets: ["arabic"],
   variable: "--font-vazir",
+});
+
+const lateef = Lateef({
+  subsets: ["arabic"],
+  weight: ["400", "700"],
+  variable: "--font-lateef",
 });
 
 export const metadata: Metadata = {
@@ -19,7 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl" className="scroll-smooth">
-      <body className={`${vazir.variable} font-sans antialiased text-start`}>
+      <body
+        className={`${vazir.variable} ${lateef.variable} font-sans antialiased text-start`}
+      >
         {children}
       </body>
     </html>
