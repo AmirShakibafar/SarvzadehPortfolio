@@ -2,6 +2,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { HeroSection } from "@/components/hero/hero-section";
 import { JourneySection } from "@/components/journey-section";
 import WhyTrustMeSection from "@/components/approach-section/why-trust-me-section";
+import CtaSection from "@/components/cta/cta";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       </div>
       <WhyTrustMeSection />
       <JourneySection />
+      <CtaSection />
     </div>
   );
 }
