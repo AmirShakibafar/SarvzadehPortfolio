@@ -16,12 +16,14 @@ export function JourneyScrollContainer({
     <section
       ref={containerRef}
       dir="rtl"
-      className="relative w-full min-h-[400vh] py-24 overflow-hidden font-sans"
+      className="relative w-full py-16 md:py-24 overflow-hidden font-sans"
     >
       <JourneyBackground />
-      <div className="relative max-w-6xl mx-auto px-6">
+      <div className="relative max-w-6xl mx-auto px-6 mt-8 md:mt-12">
         <JourneyPath progress={progress} />
-        <div className="relative z-10 flex flex-col gap-[30vh]">{children}</div>
+        <div className="relative z-10 flex flex-col gap-20 md:gap-32">
+          {children}
+        </div>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { JourneyGlassIllustration } from "./journey-glass-illustration";
 
 interface StepProps {
@@ -15,9 +15,7 @@ interface StepProps {
   align: "left" | "right";
 }
 
-// Inside journey-step.tsx
-
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -25,7 +23,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
@@ -52,19 +50,19 @@ export const JourneyStep: React.FC<StepProps> = ({
 
   return (
     <motion.div
-      className={`flex items-center gap-16 w-full ${
-        isRightAligned ? "flex-row" : "flex-row-reverse"
+      className={`flex flex-col items-center gap-8 md:gap-16 w-full ${
+        isRightAligned ? "md:flex-row" : "md:flex-row-reverse"
       }`}
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-20%" }}
     >
-      <div className="flex-1">
+      <div className="flex-1 w-full">
         <JourneyGlassIllustration src={image} alt={title} />
       </div>
 
-      <div className="flex-1 flex flex-col gap-5">
+      <div className="flex-1 flex flex-col gap-5 w-full">
         <motion.span
           variants={itemVariants}
           className="text-primary font-medium text-sm"
