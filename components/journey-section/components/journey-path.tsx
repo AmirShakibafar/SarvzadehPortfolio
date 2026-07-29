@@ -2,24 +2,29 @@
 
 import React from "react";
 import { motion, MotionValue, useTransform } from "framer-motion";
+
 interface JourneyPathProps {
   progress: MotionValue<number>;
 }
 
 export function JourneyPath({ progress }: JourneyPathProps) {
+  // Extended further so content finishes before the end
   const path = `
   M2000 180
   C2000 700 2350 850 2300 1450
   C2250 2100 1700 2200 1750 2950
-  C1800 3600 2000 3750 2000 3820
+  C1800 3600 2000 4200 2000 4550
 `;
 
   const distance = useTransform(progress, (v) => `${v * 100}%`);
 
+  const heartOpacity = useTransform(progress, [0.985, 1], [0, 0.9]);
+  const heartScale = useTransform(progress, [0.97, 1], [0.85, 1.15]);
+
   return (
     <div className="absolute inset-0 pointer-events-none z-10">
       <svg
-        viewBox="0 0 4000 4000"
+        viewBox="0 0 4000 4700"
         preserveAspectRatio="xMidYMin slice"
         className="w-full h-full"
       >
@@ -33,7 +38,6 @@ export function JourneyPath({ progress }: JourneyPathProps) {
                 repeatCount="indefinite"
               />
             </stop>
-
             <stop offset="100%" stopColor="#0DDCD5" />
           </linearGradient>
 
@@ -44,7 +48,7 @@ export function JourneyPath({ progress }: JourneyPathProps) {
           </radialGradient>
 
           <filter id="glow">
-            <feGaussianBlur stdDeviation="8" result="blur" />
+            <feGaussianBlur stdDeviation="10" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -56,8 +60,8 @@ export function JourneyPath({ progress }: JourneyPathProps) {
         <path
           d={path}
           stroke="#0DDCD5"
-          strokeWidth={22}
-          opacity={0.06}
+          strokeWidth={26}
+          opacity={0.05}
           fill="none"
         />
 
@@ -75,7 +79,7 @@ export function JourneyPath({ progress }: JourneyPathProps) {
           d={path}
           stroke="white"
           strokeWidth={2}
-          opacity={0.7}
+          opacity={0.6}
           fill="none"
           strokeLinecap="round"
           transform="translate(-2 -2)"
@@ -92,36 +96,140 @@ export function JourneyPath({ progress }: JourneyPathProps) {
           filter="url(#glow)"
         />
 
+        {/* --- START NODE (MEDICAL / PREMIUM) --- */}
+        <g transform="translate(2000, 180)">
+          {/* Soft ambient glow */}
+          <motion.circle
+            r={70}
+            fill="#0DDCD5"
+            opacity={0.08}
+            animate={{ scale: [0.9, 1.2, 0.9] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          {/* Pulse ring (like heartbeat monitor) */}
+          <motion.circle
+            r={42}
+            fill="none"
+            stroke="#0DDCD5"
+            strokeWidth={2}
+            opacity={0.25}
+            animate={{ scale: [1, 1.5, 1], opacity: [0.25, 0, 0.25] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
+          />
+
+          {/* Glass base */}
+          <circle
+            r={30}
+            fill="rgba(255,255,255,0.75)"
+            stroke="rgba(13,220,213,0.6)"
+            strokeWidth={2}
+            filter="url(#glow)"
+          />
+
+          {/* Inner ring */}
+          <circle
+            r={22}
+            fill="none"
+            stroke="rgba(255,255,255,0.5)"
+            strokeWidth={1}
+          />
+
+          {/* Medical cross (clean + premium) */}
+          <g transform="scale(1.2)">
+            <rect
+              x={-4}
+              y={-12}
+              width={8}
+              height={24}
+              rx={3}
+              fill="url(#orb)"
+            />
+            <rect
+              x={-12}
+              y={-4}
+              width={24}
+              height={8}
+              rx={3}
+              fill="url(#orb)"
+            />
+          </g>
+
+          {/* Highlight */}
+          <circle cx="-6" cy="-6" r={4} fill="white" opacity={0.9} />
+        </g>
+        {/* --- END NODE (APPEARS ONLY AT FINAL MOMENT) --- */}
+        <g transform="translate(2000, 4550)">
+          {/* Entire node hidden until very end */}
+          <motion.g
+            style={{
+              opacity: heartOpacity, // 0 → 1 only at the end
+              scale: heartScale,
+            }}
+          >
+            {/* Strong arrival glow */}
+            <motion.circle
+              r={80}
+              fill="#0DDCD5"
+              opacity={0.25}
+              filter="url(#glow)"
+            />
+
+            {/* Glass base */}
+            <circle
+              r={36}
+              fill="rgba(255,255,255,0.7)"
+              stroke="rgba(13,220,213,0.7)"
+              strokeWidth={2}
+            />
+
+            {/* Inner soft ring */}
+            <circle
+              r={26}
+              fill="none"
+              stroke="rgba(255,255,255,0.5)"
+              strokeWidth={1}
+            />
+
+            {/* Heart */}
+            <g transform="scale(2.8) translate(-12, -12)">
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+                fill="url(#orb)"
+                stroke="white"
+                strokeWidth={1}
+                filter="url(#glow)"
+              />
+
+              {/* Highlight */}
+              <path
+                d="M12 6 C10 4, 6 5, 5 8"
+                stroke="white"
+                strokeWidth={1}
+                opacity={0.6}
+                fill="none"
+              />
+            </g>
+          </motion.g>
+        </g>
+
         {/* Traveling orb */}
         <motion.g
-          animate={{
-            scale: [1, 1.08, 1],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ duration: 2, repeat: Infinity }}
           style={{
             offsetPath: `path('${path}')`,
             offsetDistance: distance,
           }}
         >
-          {/* Glow */}
-          <circle r={28} fill="#0DDCD5" opacity={0.18} />
-
-          {/* Glass */}
+          <circle r={30} fill="#0DDCD5" opacity={0.15} />
           <circle
             r={16}
             fill="url(#orb)"
-            stroke="rgba(255,255,255,.8)"
+            stroke="rgba(255,255,255,.85)"
             strokeWidth={1.5}
           />
-
-          {/* Highlight */}
           <circle cx="-5" cy="-5" r={4} fill="white" opacity={0.85} />
-
-          {/* Core */}
           <circle r={5} fill="#0DDCD5" />
         </motion.g>
       </svg>
