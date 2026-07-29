@@ -6,21 +6,19 @@ import { BackgroundDecorations } from "./bg-decoration";
 import { SectionHeader } from "./section-header";
 import { GlassBrainArtwork } from "./glass-brain-artwork";
 import { QuoteDisplay } from "./quote-display";
-import { StatsOverImageBlob } from "./stats-over-image-blob";
-
+import { DecoratedStatsGrid } from "./decorated-stats-grid";
 export default function WhyTrustMeSection() {
   return (
     <section
       dir="rtl"
-      className="relative bg-background py-24 lg:py-32"
+      className="relative overflow-hidden bg-background py-24 lg:py-32"
     >
       <BackgroundDecorations />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-24">
-        {/* Inside why_trust_me_section.tsx */}
-        <div className="grid min-h-[600px] gap-16 lg:grid-cols-12 lg:items-center">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="grid gap-16 lg:grid-cols-12 lg:items-center">
           <SectionHeader />
-          <StatsOverImageBlob />
+          <DecoratedStatsGrid />
         </div>
 
         <motion.div

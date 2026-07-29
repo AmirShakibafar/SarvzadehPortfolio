@@ -1,8 +1,11 @@
-// components/approach-section/dot-pattern.tsx
-export function DotPattern() {
+import React from "react";
+
+export function DotPattern({ className }: { className?: string }) {
   return (
     <svg
-      className="absolute top-0 right-0 -mt-8 -mr-8 w-32 h-32 text-primary/20 -z-10"
+      className={`absolute -z-10 text-primary/20 ${
+        className || "top-0 right-0 -mt-8 -mr-8 w-32 h-32"
+      }`}
       aria-hidden="true"
       fill="currentColor"
       viewBox="0 0 100 100"

@@ -28,7 +28,7 @@ export function GlassBrainArtwork() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="relative z-10 h-5/6 w-5/6 object-contain drop-shadow-2xl"
+          className="relative z-10 h-full w-full object-contain drop-shadow-2xl"
           style={{ willChange: "transform" }}
           draggable={false}
         />

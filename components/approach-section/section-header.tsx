@@ -11,7 +11,7 @@ export function SectionHeader() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className="lg:col-span-5"
+      className="lg:col-span-5 z-30"
     >
       <motion.span
         variants={fadeInUp}
