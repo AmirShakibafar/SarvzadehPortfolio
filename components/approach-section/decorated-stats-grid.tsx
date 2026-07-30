@@ -40,8 +40,8 @@ export function DecoratedStatsGrid() {
         <DotPattern className="-right-8 -top-8 h-32 w-32 opacity-60" />
         <DotPattern className="-bottom-8 -left-8 h-32 w-32 opacity-40" />
 
-        {/* Stronger primary blob to provide depth and tint the glass cards */}
-        <div className="absolute left-1/2 top-1/2 -z-10 h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/30 blur-[100px]" />
+        {/* Fainter ambient glow for the whole container */}
+        <div className="absolute left-1/2 top-1/2 -z-10 h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[100px]" />
 
         <div className="grid w-full grid-cols-2 gap-6 lg:grid-cols-3 lg:gap-6">
           {statsData.map((stat, index) => (
@@ -52,6 +52,9 @@ export function DecoratedStatsGrid() {
                 index === 2 ? "col-span-2 lg:col-span-1" : "col-span-1"
               }`}
             >
+              {/* Individual localized teal blob behind this specific card */}
+              <div className="absolute left-1/2 top-1/2 -z-10 h-3/4 w-3/4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/30 blur-2xl" />
+
               <GlassCard
                 className={`flex h-full flex-col items-center justify-center p-6 text-center ${
                   stat.highlight

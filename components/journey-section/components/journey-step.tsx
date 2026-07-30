@@ -1,7 +1,9 @@
 "use client";
+
 import React from "react";
 import { motion, Variants } from "framer-motion";
 import { JourneyGlassIllustration } from "./journey-glass-illustration";
+import { GlassCard } from "@/components/ui/glass-card";
 
 interface StepProps {
   title: string;
@@ -82,38 +84,41 @@ export const JourneyStep: React.FC<StepProps> = ({
           {text}
         </motion.p>
 
-        {/* Feature Pills */}
+        {/* Feature Pills using GlassCard */}
         <motion.div
           variants={itemVariants}
           className="flex flex-wrap gap-3 mt-2"
         >
           {chips.map((chip, idx) => (
-            <span
+            <GlassCard
               key={idx}
-              className="px-4 py-2 rounded-full text-sm font-medium bg-white/10 backdrop-blur-md border text-primary shadow-[0_4px_14px_rgba(0,0,0,0.03),inset_0_1px_0_rgba(255,255,255,0.4)] transition-all duration-300 ease-out border-primary/20 hover:shadow-[0_6px_20px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.5)] cursor-default"
+              className="px-4 py-2 rounded-full border-primary/20 bg-white/40 text-sm font-medium text-primary shadow-sm hover:shadow-md transition-all duration-300 ease-out cursor-default"
             >
               {chip}
-            </span>
+            </GlassCard>
           ))}
         </motion.div>
 
-        {/* Bottom Glass Card */}
+        {/* Bottom Glass Card with Blob */}
         <motion.div
           variants={{
             hidden: { opacity: 0, scale: 0.95 },
             visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
           }}
-          className="mt-6 p-6 rounded-[24px] bg-gradient-to-br from-white/60 to-white/20 border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.7)] isolate"
+          className="relative mt-6 isolate"
         >
-          <div className="flex items-center gap-3 mb-3">
-            {icon}
-            <h4 className="text-balance font-semibold text-foreground leading-snug">
-              {trustBadge}
-            </h4>
-          </div>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            {reassurance}
-          </p>
+
+          <GlassCard className="p-6 rounded-[24px]">
+            <div className="flex items-center gap-3 mb-3">
+              {icon}
+              <h4 className="text-balance font-semibold text-foreground leading-snug">
+                {trustBadge}
+              </h4>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              {reassurance}
+            </p>
+          </GlassCard>
         </motion.div>
       </div>
     </motion.div>

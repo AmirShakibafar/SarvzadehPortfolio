@@ -1,12 +1,12 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, TargetAndTransition } from "framer-motion";
 import { useFloatingAnimation } from "../hooks/useJourney";
+import { GlassCard } from "@/components/ui/glass-card";
 
 interface IllustrationProps {
   src: string;
   alt: string;
 }
-// Inside JourneyGlassIllustration.tsx
 
 export const JourneyGlassIllustration: React.FC<IllustrationProps> = ({
   src,
@@ -16,28 +16,22 @@ export const JourneyGlassIllustration: React.FC<IllustrationProps> = ({
 
   return (
     <motion.div
-      className="relative w-full aspect-square flex items-center justify-center z-0 isolate"
+      className="relative z-0 flex aspect-square w-full items-center justify-center isolate"
       initial={{ scale: 0.95, y: 20, opacity: 0 }}
       whileInView={{ scale: 1, y: 0, opacity: 1 }}
       viewport={{ once: true, margin: "-15%" }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div
-        className="
-          absolute inset-4 
-          rounded-[64px] 
-          bg-gradient-to-br from-white/60 to-white/20 
-          border border-white/60 
-          shadow-[0_8px_32px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.7)]
-          -z-10
-        "
-      />
+      {/* Localized primary blob behind the glass */}
+      <div className="absolute left-1/2 top-1/2 -z-20 h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/30 blur-3xl" />
+
+      <GlassCard className="absolute inset-4 -z-10 rounded-[4rem]" />
+
       <motion.img
         src={src}
         alt={alt}
-        className="relative z-10 w-5/6 h-5/6 object-cover drop-shadow-2xl"
-        animate={floatingAnimation}
-        // Adding will-change improves performance for infinite floating animations
+        className="relative z-10 h-5/6 w-5/6 object-cover drop-shadow-2xl"
+        animate={floatingAnimation as TargetAndTransition}
         style={{ willChange: "transform" }}
       />
     </motion.div>
