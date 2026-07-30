@@ -1,0 +1,58 @@
+import React from "react";
+import { GlassCard } from "@/components/ui/glass-card";
+import { ShieldCheck, UserCircle, Zap } from "lucide-react";
+
+export function CtaFeatures() {
+  return (
+    <GlassCard className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 p-6 lg:p-8 rounded-[2rem] border-white/60 bg-white/30 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative z-10">
+      <FeatureItem
+        icon={<ShieldCheck className="h-6 w-6" />}
+        title="حفظ حریم خصوصی"
+        subtitle="اطلاعات شما کاملاً محرمانه است"
+      />
+
+      <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-right border-y md:border-y-0 md:border-x border-white/40 py-4 md:py-0 md:px-8 relative">
+        <div className="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-slate-200/50 to-transparent hidden md:block" />
+        <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-slate-200/50 to-transparent hidden md:block" />
+        <FeatureItem
+          icon={<UserCircle className="h-6 w-6" />}
+          title="مشاوره تخصصی"
+          subtitle="راهنمایی توسط دکتر رضا سرورزاده"
+          wrapperClassName="w-full"
+        />
+      </div>
+
+      <FeatureItem
+        icon={<Zap className="h-6 w-6" />}
+        title="پاسخ سریع"
+        subtitle="در اولین فرصت با شما تماس می‌گیریم"
+      />
+    </GlassCard>
+  );
+}
+
+function FeatureItem({
+  icon,
+  title,
+  subtitle,
+  wrapperClassName = "",
+}: {
+  icon: React.ReactNode;
+  title: string;
+  subtitle: string;
+  wrapperClassName?: string;
+}) {
+  return (
+    <div
+      className={`flex flex-col md:flex-row items-center gap-4 text-center md:text-right ${wrapperClassName}`}
+    >
+      <div className="h-12 w-12 rounded-full bg-white/60 border border-white shadow-sm flex items-center justify-center text-teal-500 shrink-0">
+        {icon}
+      </div>
+      <div>
+        <h4 className="font-bold text-slate-900 mb-1">{title}</h4>
+        <p className="text-xs text-slate-600">{subtitle}</p>
+      </div>
+    </div>
+  );
+}

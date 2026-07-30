@@ -2,7 +2,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { HeroSection } from "@/components/hero/hero-section";
 import { JourneySection } from "@/components/journey-section";
 import WhyTrustMeSection from "@/components/approach-section/why-trust-me-section";
-import CtaSection from "@/components/cta/cta";
+import CtaSection from "@/components/cta/index";
 
 export default function Home() {
   return (
