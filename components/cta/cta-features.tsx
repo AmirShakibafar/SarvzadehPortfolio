@@ -6,7 +6,7 @@ export function CtaFeatures() {
   return (
     <div className="relative mt-16 isolate w-full">
       {/* Teal blob behind the features section matching the form */}
-      <div className="absolute -inset-4 bg-primary/15 rounded-[2.5rem] blur-2xl -z-10" />
+      <div className="absolute -inset-4 bg-primary/10 rounded-[2.5rem] blur-2xl -z-10" />
 
       <GlassCard className="grid grid-cols-1 md:grid-cols-3 gap-8 p-6 lg:p-8 rounded-[2rem] border-white/60 bg-white/30 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative z-10">
         <FeatureItem

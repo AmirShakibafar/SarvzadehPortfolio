@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/hero/hero-section";
 import { JourneySection } from "@/components/journey-section";
 import WhyTrustMeSection from "@/components/approach-section/why-trust-me-section";
 import CtaSection from "@/components/cta/index";
+import { Footer } from "@/components/layout/footer";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
       <WhyTrustMeSection />
       <JourneySection />
       <CtaSection />
+      <Footer />
     </div>
   );
 }
