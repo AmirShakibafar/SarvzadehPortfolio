@@ -19,7 +19,7 @@ export function JourneyScrollContainer({
     <section
       ref={containerRef}
       dir="rtl"
-      className="relative w-full py-8 md:py-24 overflow-hidden font-sans"
+      className="relative w-full py-8 md:py-24 font-sans"
     >
       <JourneyBackground />
 

@@ -19,12 +19,14 @@ export default function Home() {
       </div>
 
       {/* Constrained Page Content */}
-      <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col pb-20 pt-8 gap-8 lg:gap-12">
+      <div className="w-full px-4 sm:px-6 lg:px-8 flex flex-col pb-20 pt-8 gap-8 lg:gap-12">
         <HeroSection />
       </div>
       <WhyTrustMeSection />
       <JourneySection />
       <CtaSection />
+
     </div>
+    
   );
 }

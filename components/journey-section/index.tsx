@@ -5,7 +5,7 @@ import { JourneyScrollContainer } from "./components/journey-scroll-container";
 
 export const JourneySection: React.FC = () => {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative">
       <JourneyScrollContainer>
         {JOURNEY_STEPS.map((step, index) => {
           const { icon: Icon, id, ...rest } = step;

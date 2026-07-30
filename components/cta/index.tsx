@@ -5,7 +5,7 @@ import { CtaFeatures } from "./cta-features";
 
 export default function CtaSection() {
   return (
-    <section dir="rtl" className="relative py-16 lg:py-24 overflow-hidden">
+    <section dir="rtl" className="relative py-16 lg:py-24 max-w-7xl">
       {/* Background Decorative Blobs */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-100/40 rounded-full mix-blend-multiply filter blur-3xl opacity-70 -z-10 translate-x-1/3 -translate-y-1/4" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 -z-10 -translate-x-1/3 translate-y-1/4" />

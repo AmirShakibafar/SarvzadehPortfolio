@@ -4,30 +4,35 @@ import { ShieldCheck, UserCircle, Zap } from "lucide-react";
 
 export function CtaFeatures() {
   return (
-    <GlassCard className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 p-6 lg:p-8 rounded-[2rem] border-white/60 bg-white/30 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative z-10">
-      <FeatureItem
-        icon={<ShieldCheck className="h-6 w-6" />}
-        title="حفظ حریم خصوصی"
-        subtitle="اطلاعات شما کاملاً محرمانه است"
-      />
+    <div className="relative mt-16 isolate w-full">
+      {/* Teal blob behind the features section matching the form */}
+      <div className="absolute -inset-4 bg-teal-400/20 rounded-[2.5rem] blur-2xl -z-10" />
 
-      <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-right border-y md:border-y-0 md:border-x border-white/40 py-4 md:py-0 md:px-8 relative">
-        <div className="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-slate-200/50 to-transparent hidden md:block" />
-        <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-slate-200/50 to-transparent hidden md:block" />
+      <GlassCard className="grid grid-cols-1 md:grid-cols-3 gap-8 p-6 lg:p-8 rounded-[2rem] border-white/60 bg-white/30 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative z-10">
         <FeatureItem
-          icon={<UserCircle className="h-6 w-6" />}
-          title="مشاوره تخصصی"
-          subtitle="راهنمایی توسط دکتر رضا سرورزاده"
-          wrapperClassName="w-full"
+          icon={<ShieldCheck className="h-6 w-6" />}
+          title="حفظ حریم خصوصی"
+          subtitle="اطلاعات شما کاملاً محرمانه است"
         />
-      </div>
 
-      <FeatureItem
-        icon={<Zap className="h-6 w-6" />}
-        title="پاسخ سریع"
-        subtitle="در اولین فرصت با شما تماس می‌گیریم"
-      />
-    </GlassCard>
+        <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-right border-y md:border-y-0 md:border-x border-white/40 py-4 md:py-0 md:px-8 relative">
+          <div className="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-slate-200/50 to-transparent hidden md:block" />
+          <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-slate-200/50 to-transparent hidden md:block" />
+          <FeatureItem
+            icon={<UserCircle className="h-6 w-6" />}
+            title="مشاوره تخصصی"
+            subtitle="راهنمایی توسط دکتر رضا سرورزاده"
+            wrapperClassName="w-full"
+          />
+        </div>
+
+        <FeatureItem
+          icon={<Zap className="h-6 w-6" />}
+          title="پاسخ سریع"
+          subtitle="در اولین فرصت با شما تماس می‌گیریم"
+        />
+      </GlassCard>
+    </div>
   );
 }
 
