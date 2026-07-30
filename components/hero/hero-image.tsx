@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion, Variants } from "framer-motion";
 import { Apple, Activity, Brain } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
 
@@ -85,40 +88,79 @@ function DoctorImage({ src }: { src: string }) {
     </div>
   );
 }
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.6,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const cardItem: Variants = {
+  hidden: { opacity: 0, x: 40 }, // Start further right for a more pronounced slide
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      damping: 20, // Controls the "bounciness" (higher = less bounce)
+      stiffness: 100, // Controls the speed
+    },
+  },
+};
 
 function FloatingCards() {
   return (
-    <div className="absolute inset-0 z-20 pointer-events-none isolate">
-      {/* Top right - Pushed higher on mobile to clear the face */}
-      <div className="absolute top-[2%] -right-4 sm:top-[8%] sm:-right-8 lg:top-[18%] lg:-right-12 pointer-events-auto transition-transform hover:scale-105 scale-90 sm:scale-100 origin-right">
+    <motion.div
+      className="absolute inset-0 z-20 pointer-events-none isolate"
+      variants={staggerContainer}
+      initial="hidden"
+      animate="visible"
+    >
+      {/* Top right - Card 1 */}
+      <motion.div
+        variants={cardItem}
+        whileHover={{ scale: 1.05 }} // Handled natively by Framer Motion now
+        className="absolute top-[2%] -right-4 sm:top-[8%] sm:-right-8 lg:top-[18%] lg:-right-12 pointer-events-auto scale-90 sm:scale-100 origin-right will-change-transform"
+      >
         <FloatingCardItem
           title="مدیریت ام‌اس"
           description="کاهش التهاب با تغذیه اصولی"
           icon={<Brain className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />}
         />
-      </div>
+      </motion.div>
 
-      {/* Middle/Bottom left - Pushed lower on mobile to clear the chest/shoulder */}
-      <div className="absolute top-[65%] -left-6 sm:top-[55%] sm:-left-8 lg:top-[48%] lg:left-auto lg:-right-16 pointer-events-auto transition-transform hover:scale-105 scale-90 sm:scale-100 origin-left lg:origin-right">
+      {/* Middle/Bottom left - Card 2 */}
+      <motion.div
+        variants={cardItem}
+        whileHover={{ scale: 1.05 }}
+        className="absolute top-[65%] -left-6 sm:top-[55%] sm:-left-8 lg:top-[48%] lg:left-auto lg:-right-16 pointer-events-auto scale-90 sm:scale-100 origin-left lg:origin-right will-change-transform"
+      >
         <FloatingCardItem
           title="کاهش خستگی"
           description="افزایش انرژی در طول روز"
           icon={<Activity className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />}
         />
-      </div>
+      </motion.div>
 
-      {/* Bottom right - Adjusted to not clash with the fade */}
-      <div className="absolute bottom-[2%] -right-2 sm:bottom-[5%] sm:-right-4 lg:bottom-auto lg:top-[72%] lg:-right-6 pointer-events-auto transition-transform hover:scale-105 scale-90 sm:scale-100 origin-right">
+      {/* Bottom right - Card 3 */}
+      <motion.div
+        variants={cardItem}
+        whileHover={{ scale: 1.05 }}
+        className="absolute bottom-[2%] -right-2 sm:bottom-[5%] sm:-right-4 lg:bottom-auto lg:top-[72%] lg:-right-6 pointer-events-auto scale-90 sm:scale-100 origin-right will-change-transform"
+      >
         <FloatingCardItem
           title="سلامت سیستم عصبی"
           description="تامین مواد مغذی ضروری"
           icon={<Apple className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />}
         />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
-
 function FloatingCardItem({
   title,
   description,

@@ -1,8 +1,34 @@
+"use client";
+
+import { motion, Variants } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { HeroImage } from "./hero-image";
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.45,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
 
 export function HeroSection() {
   return (
@@ -16,24 +42,36 @@ export function HeroSection() {
       "
     >
       {/* Right Side: Text Content */}
-      <div className="flex flex-col items-center lg:items-start text-center lg:text-right gap-5 md:gap-6 lg:gap-8 w-full md:max-w-2xl lg:w-[45%] z-10 shrink-0">
-        <Heading
-          as="h1"
-          size="h1"
-          className="text-3xl md:text-4xl lg:text-5xl text-foreground leading-[1.3] lg:leading-[1.2]"
+      <motion.div
+        className="flex flex-col items-center lg:items-start text-center lg:text-right gap-5 md:gap-6 lg:gap-8 w-full md:max-w-2xl lg:w-[45%] z-10 shrink-0"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div variants={itemVariants} className="will-change-transform">
+          <Heading
+            as="h1"
+            size="h1"
+            className="text-3xl md:text-4xl lg:text-5xl text-foreground leading-[1.3] lg:leading-[1.2]"
+          >
+            تغذیه شخصی‌سازی شده <br className="hidden lg:block" />
+            برای مدیریت بهتر <span className="text-primary">ام‌اس</span>{" "}
+            <br className="hidden lg:block" />و بهبود کیفیت{" "}
+            <span className="text-primary">زندگی</span> شما
+          </Heading>
+        </motion.div>
+
+        <motion.div variants={itemVariants} className="will-change-transform">
+          <Paragraph size="lg" className="text-sm md:text-base max-w-[480px]">
+            با برنامه‌های غذایی علمی و متناسب با شرایط شما، به کنترل علائم ام‌اس
+            کمک کرده و سلامت‌تان را بهبود ببخشید.
+          </Paragraph>
+        </motion.div>
+
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-4 mt-2 will-change-transform"
         >
-          تغذیه شخصی‌سازی شده <br className="hidden lg:block" />
-          برای مدیریت بهتر <span className="text-primary">ام‌اس</span>{" "}
-          <br className="hidden lg:block" />و بهبود کیفیت{" "}
-          <span className="text-primary">زندگی</span> شما
-        </Heading>
-
-        <Paragraph size="lg" className="text-sm md:text-base max-w-[480px]">
-          با برنامه‌های غذایی علمی و متناسب با شرایط شما، به کنترل علائم ام‌اس
-          کمک کرده و سلامت‌تان را بهبود ببخشید.
-        </Paragraph>
-
-        <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-4 mt-2">
           <Button
             variant="pillPrimary"
             size="pill"
@@ -50,14 +88,21 @@ export function HeroSection() {
             بیشتر بدانید
             <ArrowLeft className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground" />
           </Button>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Left Side: Image Content */}
-      {/* Removed conflicting min-h classes here */}
-      <div className="relative flex justify-center items-end w-full md:w-[80%] lg:w-[55%]">
+      <motion.div
+        className="relative flex justify-center items-end w-full md:w-[80%] lg:w-[55%] isolate"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+      >
+        {/* Background Blob */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 rounded-full bg-primary/40 blur-[100px] -z-10" />
+
         <HeroImage src="/images/hero/Hero-Image.png" />
-      </div>
+      </motion.div>
     </main>
   );
 }

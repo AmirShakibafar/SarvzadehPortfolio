@@ -28,12 +28,12 @@ export function Navbar() {
       }}
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="sticky top-0 z-50 w-full h-24 bg-white/80 backdrop-blur-md"
+      className="sticky top-0 z-50 w-full h-24 bg-white/20 backdrop-blur-md border-b border-primary/10 shadow-[0_8px_32px_-8px] shadow-primary/20"
     >
       <div className="flex h-full items-center justify-between w-full max-w-7xl mx-auto px-[56px]">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center w-12 h-12 rounded-full border border-primary/20 bg-primary/5 text-primary">
+          <div className="flex items-center justify-center w-12 h-12 rounded-full border border-primary/20 bg-primary/5 text-primary shadow-[inset_0_0_12px_rgba(var(--primary),0.2)]">
             <Leaf className="w-6 h-6" />
           </div>
           <div className="flex flex-col justify-center">
