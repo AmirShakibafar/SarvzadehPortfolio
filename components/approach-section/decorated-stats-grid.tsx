@@ -1,7 +1,10 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "./animations";
 import { DotPattern } from "../ui/dot-pattern";
+import { GlassCard } from "@/components/ui/glass-card";
 
 const statsData = [
   {
@@ -34,37 +37,42 @@ export function DecoratedStatsGrid() {
       className="relative flex items-center justify-center lg:col-span-7 lg:mt-0"
     >
       <div className="relative w-full max-w-2xl">
-        <DotPattern className="-top-8 -right-8 w-32 h-32 opacity-60" />
-        <DotPattern className="-bottom-8 -left-8 w-32 h-32 opacity-40" />
+        <DotPattern className="-right-8 -top-8 h-32 w-32 opacity-60" />
+        <DotPattern className="-bottom-8 -left-8 h-32 w-32 opacity-40" />
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] bg-primary/5 blur-[90px] rounded-full -z-10" />
+        {/* Stronger primary blob to provide depth and tint the glass cards */}
+        <div className="absolute left-1/2 top-1/2 -z-10 h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/30 blur-[100px]" />
 
         <div className="grid w-full grid-cols-2 gap-6 lg:grid-cols-3 lg:gap-6">
           {statsData.map((stat, index) => (
             <motion.div
               key={index}
               variants={fadeInUp}
-              className={`relative flex flex-col items-center text-center p-6 rounded-3xl border backdrop-blur-xl ${
+              className={`relative h-full ${
                 index === 2 ? "col-span-2 lg:col-span-1" : "col-span-1"
-              } ${
-                stat.highlight
-                  ? "border-primary/20 bg-primary/5 shadow-md shadow-primary/5"
-                  : "border-white/60 bg-white/30 shadow-lg shadow-black/[0.02]"
               }`}
             >
-              <div
-                className={`text-4xl font-extrabold tracking-tight lg:text-5xl ${
-                  stat.highlight ? "text-primary" : "text-foreground"
+              <GlassCard
+                className={`flex h-full flex-col items-center justify-center p-6 text-center ${
+                  stat.highlight
+                    ? "border-primary/30 bg-white/50 shadow-md shadow-primary/10"
+                    : ""
                 }`}
               >
-                {stat.value}
-              </div>
-              <div className="mt-2 text-sm font-semibold text-foreground">
-                {stat.title}
-              </div>
-              <div className="mt-1 whitespace-pre-line text-xs leading-6 text-muted-foreground">
-                {stat.description}
-              </div>
+                <div
+                  className={`text-4xl font-extrabold tracking-tight lg:text-5xl ${
+                    stat.highlight ? "text-primary" : "text-foreground"
+                  }`}
+                >
+                  {stat.value}
+                </div>
+                <div className="mt-4 text-sm font-bold text-foreground">
+                  {stat.title}
+                </div>
+                <div className="mt-2 whitespace-pre-line text-xs leading-6 text-muted-foreground">
+                  {stat.description}
+                </div>
+              </GlassCard>
             </motion.div>
           ))}
         </div>

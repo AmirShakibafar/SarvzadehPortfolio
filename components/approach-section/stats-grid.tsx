@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "./animations";
+import { GlassCard } from "@/components/ui/glass-card";
 
 const stats = [
   {
@@ -32,24 +33,26 @@ export function StatsGrid() {
       whileInView="visible"
       viewport={{ once: true }}
       variants={staggerContainer}
-      className="flex items-center lg:col-span-7"
+      className="relative flex items-center lg:col-span-7"
     >
-      <div className="grid w-full grid-cols-2 gap-8 lg:grid-cols-4 lg:gap-4">
+      <div className="grid w-full grid-cols-2 gap-6 lg:grid-cols-3">
         {stats.map((stat, index) => (
-          <motion.div key={index} variants={fadeInUp} className="text-center">
-            <div
-              className={`text-4xl font-extrabold tracking-tight lg:text-5xl ${
-                stat.highlight ? "text-primary" : "text-foreground"
-              }`}
-            >
-              {stat.value}
-            </div>
-            <div className="mt-2 text-sm font-semibold text-foreground">
-              {stat.title}
-            </div>
-            <div className="mt-1 whitespace-pre-line text-xs leading-6 text-muted-foreground">
-              {stat.description}
-            </div>
+          <motion.div key={index} variants={fadeInUp} className="h-full">
+            <GlassCard className="flex h-full flex-col items-center justify-center p-6 text-center">
+              <div
+                className={`text-4xl font-extrabold tracking-tight lg:text-5xl ${
+                  stat.highlight ? "text-primary" : "text-foreground"
+                }`}
+              >
+                {stat.value}
+              </div>
+              <div className="mt-4 text-sm font-bold text-foreground">
+                {stat.title}
+              </div>
+              <div className="mt-2 whitespace-pre-line text-xs leading-6 text-muted-foreground">
+                {stat.description}
+              </div>
+            </GlassCard>
           </motion.div>
         ))}
       </div>
