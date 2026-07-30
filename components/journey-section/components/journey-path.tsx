@@ -8,23 +8,22 @@ interface JourneyPathProps {
 }
 
 export function JourneyPath({ progress }: JourneyPathProps) {
-  // Extended further so content finishes before the end
   const path = `
-  M2000 180
-  C2000 700 2350 850 2300 1450
-  C2250 2100 1700 2200 1750 2950
-  C1800 3600 2000 4200 2000 4550
-`;
+    M1800 80 
+    C1800 800 2350 1000 2350 2000 
+    C2350 3000 1650 3200 1650 4200 
+    C1650 4600 1800 4800 1800 4950
+  `;
 
   const distance = useTransform(progress, (v) => `${v * 100}%`);
-
   const heartOpacity = useTransform(progress, [0.985, 1], [0, 0.9]);
   const heartScale = useTransform(progress, [0.97, 1], [0.85, 1.15]);
 
   return (
     <div className="absolute inset-0 pointer-events-none z-10">
+      {/* Viewbox height gently increased to 5200 to prevent the bottom glow from clipping */}
       <svg
-        viewBox="0 0 4000 4700"
+        viewBox="0 0 4000 5100"
         preserveAspectRatio="xMidYMin slice"
         className="w-full h-full"
       >
@@ -96,9 +95,8 @@ export function JourneyPath({ progress }: JourneyPathProps) {
           filter="url(#glow)"
         />
 
-        {/* --- START NODE (MEDICAL / PREMIUM) --- */}
-        <g transform="translate(2000, 180)">
-          {/* Soft ambient glow */}
+        {/* --- START NODE --- */}
+        <g transform="translate(1800, 80)">
           <motion.circle
             r={70}
             fill="#0DDCD5"
@@ -107,7 +105,6 @@ export function JourneyPath({ progress }: JourneyPathProps) {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
 
-          {/* Pulse ring (like heartbeat monitor) */}
           <motion.circle
             r={42}
             fill="none"
@@ -118,7 +115,6 @@ export function JourneyPath({ progress }: JourneyPathProps) {
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
           />
 
-          {/* Glass base */}
           <circle
             r={30}
             fill="rgba(255,255,255,0.75)"
@@ -127,7 +123,6 @@ export function JourneyPath({ progress }: JourneyPathProps) {
             filter="url(#glow)"
           />
 
-          {/* Inner ring */}
           <circle
             r={22}
             fill="none"
@@ -135,7 +130,6 @@ export function JourneyPath({ progress }: JourneyPathProps) {
             strokeWidth={1}
           />
 
-          {/* Medical cross (clean + premium) */}
           <g transform="scale(1.2)">
             <rect
               x={-4}
@@ -155,35 +149,29 @@ export function JourneyPath({ progress }: JourneyPathProps) {
             />
           </g>
 
-          {/* Highlight */}
           <circle cx="-6" cy="-6" r={4} fill="white" opacity={0.9} />
         </g>
-        {/* --- END NODE (APPEARS ONLY AT FINAL MOMENT) --- */}
-        <g transform="translate(2000, 4550)">
-          {/* Entire node hidden until very end */}
+
+        {/* --- END NODE --- */}
+        <g transform="translate(1800, 4950)">
           <motion.g
             style={{
-              opacity: heartOpacity, // 0 → 1 only at the end
+              opacity: heartOpacity,
               scale: heartScale,
             }}
           >
-            {/* Strong arrival glow */}
             <motion.circle
               r={80}
               fill="#0DDCD5"
               opacity={0.25}
               filter="url(#glow)"
             />
-
-            {/* Glass base */}
             <circle
               r={36}
               fill="rgba(255,255,255,0.7)"
               stroke="rgba(13,220,213,0.7)"
               strokeWidth={2}
             />
-
-            {/* Inner soft ring */}
             <circle
               r={26}
               fill="none"
@@ -191,7 +179,6 @@ export function JourneyPath({ progress }: JourneyPathProps) {
               strokeWidth={1}
             />
 
-            {/* Heart */}
             <g transform="scale(2.8) translate(-12, -12)">
               <path
                 d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
@@ -200,8 +187,6 @@ export function JourneyPath({ progress }: JourneyPathProps) {
                 strokeWidth={1}
                 filter="url(#glow)"
               />
-
-              {/* Highlight */}
               <path
                 d="M12 6 C10 4, 6 5, 5 8"
                 stroke="white"

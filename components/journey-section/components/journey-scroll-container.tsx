@@ -1,11 +1,9 @@
 "use client";
+
 import React, { useRef } from "react";
 import { useJourneyProgress } from "../hooks/useJourney";
 import { JourneyPath } from "./journey-path";
 import { JourneyBackground } from "./journey-background";
-import { Heading } from "@/components/ui/heading";
-import { Paragraph } from "@/components/ui/paragraph";
-import { DotPattern } from "@/components/ui/dot-pattern";
 
 export function JourneyScrollContainer({
   children,
@@ -19,31 +17,37 @@ export function JourneyScrollContainer({
     <section
       ref={containerRef}
       dir="rtl"
-      className="relative w-full py-8 md:py-24 font-sans"
+      className="relative w-full bg-background font-sans"
     >
       <JourneyBackground />
 
-      <div className="relative w-full mt-8 md:mt-12">
+      <div className="relative w-full">
         {/* PATH = FULL BLEED */}
         <JourneyPath progress={progress} />
 
         {/* CONTENT = CONSTRAINED */}
-        <div className="relative max-w-6xl mx-auto px-6">
-          {/* TITLE */}
-          <div className="relative text-center max-w-3xl mx-auto px-4 flex flex-col items-center space-y-6 z-10 mb-20 md:mb-32 pt-8">
-            <DotPattern className="absolute inset-0 w-full h-full text-teal-500/20 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
+          {/* TITLE SECTION - Right Aligned with Blob */}
+          <div className="relative z-20 flex flex-col items-start text-right max-w-2xl mb-8 lg:mb-16 pt-8 isolate">
+            {/* Background Blob behind the title */}
+            <div className="absolute right-0 top-1/2 -z-10 h-[250px] w-[250px] -translate-y-1/2 translate-x-1/4 rounded-full bg-primary/20 blur-[80px]" />
 
-            <Heading className="text-4xl lg:text-5xl font-extrabold leading-tight text-slate-900 relative z-10">
-              مسیر <span className="text-teal-400">درمان</span> شما
-            </Heading>
+            <span className="inline-block text-sm font-semibold tracking-wide text-primary">
+              نقشه راه شما
+            </span>
 
-            <Paragraph className="text-lg text-slate-600 leading-relaxed max-w-lg relative z-10">
-              یک فرآیند علمی و شخصی‌سازی‌شده برای رسیدن به بهترین نتیجه
-            </Paragraph>
+            <h2 className="mt-4 text-4xl font-extrabold leading-tight text-foreground lg:text-5xl">
+              مسیر درمانی <span className="text-primary">مرحله به مرحله</span>
+            </h2>
+
+            <p className="mt-6 text-lg leading-9 text-muted-foreground">
+              ما در این مسیر قدم به قدم همراه شما هستیم تا با یک برنامه اصولی،
+              بهبود کیفیت زندگی و کنترل علائم ام‌اس را تجربه کنید.
+            </p>
           </div>
 
-          {/* STEPS */}
-          <div className="relative z-10 flex flex-col gap-20 md:gap-32">
+          {/* STEPS CONTAINER */}
+          <div className="flex flex-col gap-24 md:gap-32 pt-10 pb-40 md:pb-64">
             {children}
           </div>
         </div>
