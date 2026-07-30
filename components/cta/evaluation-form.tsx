@@ -58,7 +58,7 @@ export function EvaluationForm() {
 
   return (
     <div className="relative">
-      <div className="absolute -inset-4 bg-teal-400/20 rounded-[2.5rem] blur-2xl -z-10" />
+      <div className="absolute -inset-4 bg-primary/20 rounded-16 blur-2xl -z-10" />
       <GlassCard className="p-8 lg:p-10 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-white/60 bg-white/40 backdrop-blur-2xl min-h-[420px] flex flex-col relative z-10 overflow-hidden">
         {!isComplete && (
           <ProgressBar
