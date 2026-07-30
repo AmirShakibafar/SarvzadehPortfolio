@@ -10,19 +10,12 @@ export function QuoteDisplay() {
         مسیری درمانی، علمی و ماندگار است.
       </p>
 
-      <div className="mt-12 flex justify-between">
-        <div>
-          <div className="text-lg font-semibold text-foreground">
-            دکتر رضا سروزاده
-          </div>
-          <div className="mt-2 text-sm text-muted-foreground">
-            متخصص تغذیه بالینی
-          </div>
-        </div>
+      {/* justify-end pushes the image to the left (end of RTL flow) */}
+      <div className="mt-2 flex justify-end">
         <img
           src="/images/approach/signiture.png"
           alt="امضا دکتر رضا سروزاده"
-          className="h-40 w-auto -translate-y-12"
+          className="h-40 w-auto"
         />
       </div>
     </div>

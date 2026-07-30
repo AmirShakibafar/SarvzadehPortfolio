@@ -34,8 +34,17 @@ export default function WhyTrustMeSection() {
           </div>
 
           <div className="relative z-10 grid items-center gap-16 lg:grid-cols-2">
-            <GlassBrainArtwork />
-            <QuoteDisplay />
+            {/* order-first forces the brain to the top on mobile. 
+      lg:order-last moves it to the second column (left side in RTL) on desktop. */}
+            <div className="order-first lg:order-last">
+              <GlassBrainArtwork />
+            </div>
+
+            {/* order-last pushes the quote to the bottom on mobile. 
+      lg:order-first keeps it in the first column (right side in RTL) on desktop. */}
+            <div className="order-last lg:order-first">
+              <QuoteDisplay />
+            </div>
           </div>
         </motion.div>
       </div>

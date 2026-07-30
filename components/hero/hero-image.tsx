@@ -74,7 +74,7 @@ function DecorativeEllipse() {
 
 function DoctorImage({ src }: { src: string }) {
   return (
-    <div className="relative w-[85%] h-full lg:w-[100%] max-w-[800px] z-10 translate-x-[2%] isolate">
+    <div className="relative w-[85%] h-full lg:w-[100%] max-w-[800px] z-10 translate-x-[2%] isolate [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)]">
       <Image
         src={src}
         alt="Doctor"
@@ -89,7 +89,8 @@ function DoctorImage({ src }: { src: string }) {
 function FloatingCards() {
   return (
     <div className="absolute inset-0 z-20 pointer-events-none isolate">
-      <div className="absolute top-[8%] -right-2 md:-right-8 lg:top-[18%] lg:-right-12 pointer-events-auto transition-transform hover:scale-105">
+      {/* Top right - Pushed higher on mobile to clear the face */}
+      <div className="absolute top-[2%] -right-4 sm:top-[8%] sm:-right-8 lg:top-[18%] lg:-right-12 pointer-events-auto transition-transform hover:scale-105 scale-90 sm:scale-100 origin-right">
         <FloatingCardItem
           title="مدیریت ام‌اس"
           description="کاهش التهاب با تغذیه اصولی"
@@ -97,7 +98,8 @@ function FloatingCards() {
         />
       </div>
 
-      <div className="absolute top-[42%] -left-4 md:-left-8 lg:top-[48%] lg:left-auto lg:-right-16 pointer-events-auto transition-transform hover:scale-105">
+      {/* Middle/Bottom left - Pushed lower on mobile to clear the chest/shoulder */}
+      <div className="absolute top-[65%] -left-6 sm:top-[55%] sm:-left-8 lg:top-[48%] lg:left-auto lg:-right-16 pointer-events-auto transition-transform hover:scale-105 scale-90 sm:scale-100 origin-left lg:origin-right">
         <FloatingCardItem
           title="کاهش خستگی"
           description="افزایش انرژی در طول روز"
@@ -105,7 +107,8 @@ function FloatingCards() {
         />
       </div>
 
-      <div className="absolute bottom-[5%] -right-0 md:-right-4 lg:bottom-auto lg:top-[72%] lg:-right-6 pointer-events-auto transition-transform hover:scale-105">
+      {/* Bottom right - Adjusted to not clash with the fade */}
+      <div className="absolute bottom-[2%] -right-2 sm:bottom-[5%] sm:-right-4 lg:bottom-auto lg:top-[72%] lg:-right-6 pointer-events-auto transition-transform hover:scale-105 scale-90 sm:scale-100 origin-right">
         <FloatingCardItem
           title="سلامت سیستم عصبی"
           description="تامین مواد مغذی ضروری"
