@@ -1,10 +1,32 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import { fadeInUp, staggerContainer } from "./animations";
+import { motion, Variants } from "framer-motion";
 import { DotPattern } from "../ui/dot-pattern";
 import { GlassCard } from "@/components/ui/glass-card";
+
+const gridContainerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 1.2, // Increased from 0.2 to wait for the text to finish
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardItemVariants: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
 
 const statsData = [
   {
@@ -30,29 +52,27 @@ const statsData = [
 export function DecoratedStatsGrid() {
   return (
     <motion.div
-      variants={staggerContainer}
+      variants={gridContainerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-10%" }}
       className="relative flex items-center justify-center lg:col-span-7 lg:mt-0"
     >
       <div className="relative w-full max-w-2xl">
         <DotPattern className="-right-8 -top-8 h-32 w-32 opacity-60" />
         <DotPattern className="-bottom-8 -left-8 h-32 w-32 opacity-40" />
 
-        {/* Fainter ambient glow for the whole container */}
         <div className="absolute left-1/2 top-1/2 -z-10 h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[100px]" />
 
         <div className="grid w-full grid-cols-2 gap-6 lg:grid-cols-3 lg:gap-6">
           {statsData.map((stat, index) => (
             <motion.div
               key={index}
-              variants={fadeInUp}
-              className={`relative h-full ${
+              variants={cardItemVariants}
+              className={`relative h-full will-change-transform ${
                 index === 2 ? "col-span-2 lg:col-span-1" : "col-span-1"
               }`}
             >
-              {/* Individual localized teal blob behind this specific card */}
               <div className="absolute left-1/2 top-1/2 -z-10 h-3/4 w-3/4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/30 blur-2xl" />
 
               <GlassCard

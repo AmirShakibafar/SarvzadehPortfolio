@@ -15,16 +15,15 @@ export function GlassBrainArtwork() {
       >
         <div className="absolute inset-8 -z-20 rounded-full bg-primary/20 blur-[80px]" />
 
-        
         <motion.img
           src="/images/approach/brain2.png"
           alt="Glass Brain"
           animate={{
-            y: [0, -10, 0],
-            rotate: [-4, -2, -4],
+            y: [0, -24, 0], // Increased vertical travel from -10px to -24px
+            rotate: [-4, 2, -4], // Increased rotation range from 2 degrees to 6 degrees total variance
           }}
           transition={{
-            duration: 8,
+            duration: 6, // Reduced from 8s to 6s so the larger movement is more apparent
             repeat: Infinity,
             ease: "easeInOut",
           }}
