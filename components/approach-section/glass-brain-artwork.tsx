@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function GlassBrainArtwork() {
   return (
@@ -15,22 +16,28 @@ export function GlassBrainArtwork() {
       >
         <div className="absolute inset-8 -z-20 rounded-full bg-primary/20 blur-[80px]" />
 
-        <motion.img
-          src="/images/approach/brain2.webp"
-          alt="Glass Brain"
+        <motion.div
           animate={{
-            y: [0, -24, 0], // Increased vertical travel from -10px to -24px
-            rotate: [-4, 2, -4], // Increased rotation range from 2 degrees to 6 degrees total variance
+            y: [0, -24, 0],
+            rotate: [-4, 2, -4],
           }}
           transition={{
-            duration: 6, // Reduced from 8s to 6s so the larger movement is more apparent
+            duration: 6,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="relative z-10 h-full w-full object-contain drop-shadow-2xl"
+          className="relative z-10 h-full w-full drop-shadow-2xl"
           style={{ willChange: "transform" }}
-          draggable={false}
-        />
+        >
+          <Image
+            src="/images/approach/brain2.webp"
+            alt="Glass Brain"
+            fill
+            className="object-contain"
+            draggable={false}
+            sizes="(max-width: 768px) 100vw, 480px"
+          />
+        </motion.div>
       </motion.div>
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 
 const containerVariants: Variants = {
@@ -60,10 +61,12 @@ export function QuoteDisplay() {
         variants={itemVariants}
         className="mt-2 flex justify-end will-change-transform"
       >
-        <img
+        <Image
           src="/images/approach/signiture.webp"
           alt="امضا دکتر رضا سروزاده"
-          className="h-40 w-auto"
+          width={240}
+          height={160}
+          className="h-40 w-auto object-contain"
         />
       </motion.div>
     </motion.div>

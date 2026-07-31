@@ -52,7 +52,7 @@ export const JourneyStep: React.FC<StepProps> = ({
 
   return (
     <motion.div
-      className={`flex flex-col items-center gap-8 md:gap-16 w-full ${
+      className={`flex w-full flex-col items-center gap-8 md:gap-16 ${
         isRightAligned ? "md:flex-row" : "md:flex-row-reverse"
       }`}
       variants={containerVariants}
@@ -60,42 +60,42 @@ export const JourneyStep: React.FC<StepProps> = ({
       whileInView="visible"
       viewport={{ once: true, margin: "-20%" }}
     >
-      <div className="flex-1 w-full">
+      <div className="w-full flex-1">
         <JourneyGlassIllustration src={image} alt={title} />
       </div>
 
-      <div className="flex-1 flex flex-col gap-5 w-full">
+      <div className="flex w-full flex-1 flex-col gap-5">
         <motion.span
           variants={itemVariants}
-          className="text-primary font-medium text-sm"
+          className="text-sm font-medium text-primary"
         >
           {duration}
         </motion.span>
         <motion.h3
           variants={itemVariants}
-          className="text-balance text-3xl font-bold text-foreground leading-snug"
+          className="text-balance text-3xl font-bold leading-snug text-foreground"
         >
           {title}
         </motion.h3>
         <motion.p
           variants={itemVariants}
-          className="text-lg text-muted-foreground leading-relaxed"
+          className="text-lg leading-relaxed text-muted-foreground"
         >
           {text}
         </motion.p>
 
-        {/* Feature Pills using GlassCard */}
+        {/* Feature Pills using flat minimal styles */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-wrap gap-3 mt-2"
+          className="mt-2 flex flex-wrap gap-2"
         >
           {chips.map((chip, idx) => (
-            <GlassCard
+            <span
               key={idx}
-              className="px-4 py-2 rounded-full border-primary/20 bg-white/40 text-sm font-medium text-primary shadow-sm hover:shadow-md transition-all duration-300 ease-out cursor-default"
+              className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary"
             >
               {chip}
-            </GlassCard>
+            </span>
           ))}
         </motion.div>
 
@@ -105,17 +105,20 @@ export const JourneyStep: React.FC<StepProps> = ({
             hidden: { opacity: 0, scale: 0.95 },
             visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
           }}
-          className="relative mt-6 isolate"
+          className="relative isolate mt-6"
+          style={{
+            willChange: "transform, opacity",
+            WebkitTransform: "translateZ(0)",
+          }}
         >
-
-          <GlassCard className="p-6 rounded-[24px]">
-            <div className="flex items-center gap-3 mb-3">
+          <GlassCard className="rounded-[24px] p-6">
+            <div className="mb-3 flex items-center gap-3">
               {icon}
-              <h4 className="text-balance font-semibold text-foreground leading-snug">
+              <h4 className="text-balance font-semibold leading-snug text-foreground">
                 {trustBadge}
               </h4>
             </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-sm leading-relaxed text-muted-foreground">
               {reassurance}
             </p>
           </GlassCard>

@@ -10,7 +10,7 @@ const gridContainerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      delayChildren: 1.2, // Increased from 0.2 to wait for the text to finish
+      delayChildren: 1.2,
       staggerChildren: 0.15,
     },
   },
@@ -57,6 +57,10 @@ export function DecoratedStatsGrid() {
       whileInView="visible"
       viewport={{ once: true, margin: "-10%" }}
       className="relative flex items-center justify-center lg:col-span-7 lg:mt-0"
+      style={{
+        willChange: "transform, opacity",
+        WebkitTransform: "translateZ(0)",
+      }}
     >
       <div className="relative w-full max-w-2xl">
         <DotPattern className="-right-8 -top-8 h-32 w-32 opacity-60" />
@@ -69,9 +73,14 @@ export function DecoratedStatsGrid() {
             <motion.div
               key={index}
               variants={cardItemVariants}
-              className={`relative h-full will-change-transform ${
+              className={`relative h-full ${
                 index === 2 ? "col-span-2 lg:col-span-1" : "col-span-1"
               }`}
+              // Force hardware acceleration to persist after the animation ends
+              style={{
+                willChange: "transform, opacity",
+                WebkitTransform: "translateZ(0)",
+              }}
             >
               <div className="absolute left-1/2 top-1/2 -z-10 h-3/4 w-3/4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/30 blur-2xl" />
 

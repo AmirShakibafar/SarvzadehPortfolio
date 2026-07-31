@@ -84,10 +84,12 @@ function DoctorImage({ src }: { src: string }) {
         fill
         className="object-contain object-bottom drop-shadow-2xl"
         priority
+        sizes="(max-width: 1024px) 85vw, 800px"
       />
     </div>
   );
 }
+
 const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -100,14 +102,14 @@ const staggerContainer: Variants = {
 };
 
 const cardItem: Variants = {
-  hidden: { opacity: 0, x: 40 }, // Start further right for a more pronounced slide
+  hidden: { opacity: 0, x: 40 },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
       type: "spring",
-      damping: 20, // Controls the "bounciness" (higher = less bounce)
-      stiffness: 100, // Controls the speed
+      damping: 20,
+      stiffness: 100,
     },
   },
 };
@@ -123,7 +125,7 @@ function FloatingCards() {
       {/* Top right - Card 1 */}
       <motion.div
         variants={cardItem}
-        whileHover={{ scale: 1.05 }} // Handled natively by Framer Motion now
+        whileHover={{ scale: 1.05 }}
         className="absolute top-[2%] -right-4 sm:top-[8%] sm:-right-8 lg:top-[18%] lg:-right-12 pointer-events-auto scale-90 sm:scale-100 origin-right will-change-transform"
       >
         <FloatingCardItem
@@ -161,6 +163,7 @@ function FloatingCards() {
     </motion.div>
   );
 }
+
 function FloatingCardItem({
   title,
   description,
