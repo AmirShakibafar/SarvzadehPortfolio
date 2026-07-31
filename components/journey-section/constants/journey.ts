@@ -33,7 +33,7 @@ export const JOURNEY_STEPS: JourneyStepData[] = [
     title: "بررسی کامل وضعیت بیمار",
     icon: User,
     text: "ارزیابی جامع بالینی و تحلیل دقیق سوابق پزشکی شما.",
-    image: "/images/journey/1.png",
+    image: "/images/journey/1.webp",
     duration: "هفته اول",
     chips: ["ارزیابی دقیق بالینی", "بررسی کامل سوابق"],
     reassurance:
@@ -45,7 +45,7 @@ export const JOURNEY_STEPS: JourneyStepData[] = [
     title: "طراحی برنامه اختصاصی",
     icon: ClipboardList,
     text: "تدوین پروتکل تغذیه‌ای بر اساس شاخص‌های التهابی و عصبی.",
-    image: "/images/journey/2.png",
+    image: "/images/journey/2.webp",
     duration: "هفته دوم",
     chips: ["تغذیه ضدالتهابی", "منطبق با نیاز شما"],
     reassurance:
@@ -57,7 +57,7 @@ export const JOURNEY_STEPS: JourneyStepData[] = [
     title: "پایش مداوم سبک زندگی",
     icon: Activity,
     text: "نظارت روزانه بر سطح انرژی، خواب و تغییرات فیزیکی.",
-    image: "/images/journey/3.png",
+    image: "/images/journey/3.webp",
     duration: "پایش پیوسته",
     chips: ["نظارت روزانه", "پشتیبانی مستقیم"],
     reassurance:
@@ -69,7 +69,7 @@ export const JOURNEY_STEPS: JourneyStepData[] = [
     title: "اصلاح برنامه بر اساس پیشرفت",
     icon: RefreshCw,
     text: "به‌روزرسانی دینامیک مسیر درمان با توجه به بازخورد بدن شما.",
-    image: "/images/journey/4.png",
+    image: "/images/journey/4.webp",
     duration: "بازبینی دوره‌ای",
     chips: ["به‌روزرسانی مسیر", "تطبیق با شرایط بدن"],
     reassurance:
@@ -81,7 +81,7 @@ export const JOURNEY_STEPS: JourneyStepData[] = [
     title: "بهبود کیفیت زندگی",
     icon: Heart,
     text: "رسیدن به ثبات پایدار، کاهش خستگی و مدیریت علائم.",
-    image: "/images/journey/5.png",
+    image: "/images/journey/5.webp",
     duration: "هدف نهایی",
     chips: ["ثبات پایدار", "مدیریت خستگی"],
     reassurance:

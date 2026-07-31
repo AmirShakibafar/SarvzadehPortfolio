@@ -61,7 +61,7 @@ export function QuoteDisplay() {
         className="mt-2 flex justify-end will-change-transform"
       >
         <img
-          src="/images/approach/signiture.png"
+          src="/images/approach/signiture.webp"
           alt="امضا دکتر رضا سروزاده"
           className="h-40 w-auto"
         />

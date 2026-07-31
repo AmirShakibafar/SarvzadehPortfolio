@@ -9,7 +9,7 @@ export function BackgroundDecorations() {
       <div className="absolute left-1/3 top-1/2 h-36 w-36 rounded-full bg-cyan-300/10 blur-[70px]" />
       <div
         className="absolute inset-0 opacity-[0.015]"
-        style={{ backgroundImage: "url('/images/noise.png')" }}
+        style={{ backgroundImage: "url('/images/noise.webp')" }}
       />
     </div>
   );

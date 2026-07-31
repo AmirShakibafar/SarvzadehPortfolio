@@ -16,7 +16,7 @@ export function GlassBrainArtwork() {
         <div className="absolute inset-8 -z-20 rounded-full bg-primary/20 blur-[80px]" />
 
         <motion.img
-          src="/images/approach/brain2.png"
+          src="/images/approach/brain2.webp"
           alt="Glass Brain"
           animate={{
             y: [0, -24, 0], // Increased vertical travel from -10px to -24px

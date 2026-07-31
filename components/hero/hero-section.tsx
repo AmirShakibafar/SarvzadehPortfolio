@@ -101,7 +101,7 @@ export function HeroSection() {
         {/* Background Blob */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 rounded-full bg-primary/25 blur-[100px] -z-10" />
 
-        <HeroImage src="/images/hero/Hero-Image.png" />
+        <HeroImage src="/images/hero/Hero-Image.webp" />
       </motion.div>
     </main>
   );
