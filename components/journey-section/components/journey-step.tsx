@@ -58,7 +58,7 @@ export const JourneyStep: React.FC<StepProps> = ({
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
+      viewport={{ once: true, margin: "-100px 0px", amount: 0.2 }}
     >
       <div className="w-full flex-1">
         <JourneyGlassIllustration src={image} alt={title} />

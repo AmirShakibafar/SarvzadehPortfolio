@@ -125,7 +125,8 @@ function FloatingCards() {
       animate="visible"
     >
       {/* Top right - Card 1 */}
-      <div className="absolute top-[2%] -right-4 sm:top-[8%] sm:-right-8 lg:top-[18%] lg:-right-12 pointer-events-auto scale-90 sm:scale-100 origin-right">
+      {/* Changed lg:-right-12 to lg:right-4 */}
+      <div className="absolute top-[2%] -right-4 sm:top-[8%] sm:-right-8 lg:top-[18%] lg:right-4 pointer-events-auto scale-90 sm:scale-100 origin-right">
         <motion.div
           variants={cardItem}
           whileHover={{ scale: 1.05 }}
@@ -140,7 +141,8 @@ function FloatingCards() {
       </div>
 
       {/* Middle/Bottom left - Card 2 */}
-      <div className="absolute top-[65%] -left-6 sm:top-[55%] sm:-left-8 lg:top-[48%] lg:left-auto lg:-right-16 pointer-events-auto scale-90 sm:scale-100 origin-left lg:origin-right">
+      {/* Changed lg:-right-16 to lg:-right-2 */}
+      <div className="absolute top-[65%] -left-6 sm:top-[55%] sm:-left-8 lg:top-[48%] lg:left-auto lg:-right-2 pointer-events-auto scale-90 sm:scale-100 origin-left lg:origin-right">
         <motion.div
           variants={cardItem}
           whileHover={{ scale: 1.05 }}
@@ -155,7 +157,8 @@ function FloatingCards() {
       </div>
 
       {/* Bottom right - Card 3 */}
-      <div className="absolute bottom-[2%] -right-2 sm:bottom-[5%] sm:-right-4 lg:bottom-auto lg:top-[72%] lg:-right-6 pointer-events-auto scale-90 sm:scale-100 origin-right">
+      {/* Changed lg:-right-6 to lg:right-6 */}
+      <div className="absolute bottom-[2%] -right-2 sm:bottom-[5%] sm:-right-4 lg:bottom-auto lg:top-[72%] lg:right-6 pointer-events-auto scale-90 sm:scale-100 origin-right">
         <motion.div
           variants={cardItem}
           whileHover={{ scale: 1.05 }}

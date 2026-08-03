@@ -19,11 +19,7 @@ export default function Home() {
         <Navbar />
       </div>
 
-      {/* Constrained Page Content */}
-      {/* Added -mt-8 lg:-mt-16 to pull the hero section up */}
-      <div className="relative z-10 flex w-full max-w-7xl flex-col gap-8 px-4 pb-20 sm:px-6 lg:gap-12 lg:px-8 -mt-8 lg:-mt-16">
-        <HeroSection />
-      </div>
+      <HeroSection />
 
       <WhyTrustMeSection />
       <JourneySection />
