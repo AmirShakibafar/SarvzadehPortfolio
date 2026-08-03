@@ -10,20 +10,21 @@ const gridContainerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      delayChildren: 1.2,
+      delayChildren: 0.2,
       staggerChildren: 0.15,
     },
   },
 };
 
 const cardItemVariants: Variants = {
-  hidden: { opacity: 0, y: 40 },
+  // Reduced slide distance. Animating 'y' on backdrop-filters is extremely expensive.
+  hidden: { opacity: 0, y: 15 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      ease: [0.16, 1, 0.3, 1],
+      duration: 0.5,
+      ease: "easeOut",
     },
   },
 };
@@ -51,35 +52,31 @@ const statsData = [
 
 export function DecoratedStatsGrid() {
   return (
-    <motion.div
-      variants={gridContainerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
-      className="relative flex items-center justify-center lg:col-span-7 lg:mt-0 isolate transform-gpu will-change-transform"
-    >
-      <div className="relative w-full max-w-2xl">
+    <div className="relative flex items-center justify-center lg:col-span-7 lg:mt-0 isolate">
+      {/* Background blur pulled entirely out of the Framer Motion tree */}
+      <div className="absolute left-1/2 top-1/2 -z-10 h-full w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[100px] transform-gpu pointer-events-none" />
+
+      <motion.div
+        variants={gridContainerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
+        className="relative w-full max-w-2xl"
+      >
         <DotPattern className="-right-8 -top-8 h-32 w-32 opacity-60" />
         <DotPattern className="-bottom-8 -left-8 h-32 w-32 opacity-40" />
-
-        <div
-          className="absolute left-1/2 top-1/2 -z-10 h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[100px] transform-gpu pointer-events-none"
-          style={{ willChange: "filter, transform" }}
-        />
 
         <div className="grid w-full grid-cols-2 gap-6 lg:grid-cols-3 lg:gap-6">
           {statsData.map((stat, index) => (
             <motion.div
               key={index}
               variants={cardItemVariants}
-              className={`relative h-full transform-gpu will-change-transform ${
+              className={`relative h-full transform-gpu ${
                 index === 2 ? "col-span-2 lg:col-span-1" : "col-span-1"
               }`}
             >
-              <div
-                className="absolute left-1/2 top-1/2 -z-10 h-3/4 w-3/4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/15 blur-2xl transform-gpu pointer-events-none"
-                style={{ willChange: "filter, transform" }}
-              />
+              {/* Card-specific blur kept static inside the card wrapper, no explicit willChange filter */}
+              <div className="absolute left-1/2 top-1/2 -z-10 h-3/4 w-3/4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/15 blur-2xl transform-gpu pointer-events-none" />
 
               <GlassCard
                 className={`flex h-full flex-col items-center justify-center p-6 text-center transform-gpu ${
@@ -105,7 +102,7 @@ export function DecoratedStatsGrid() {
             </motion.div>
           ))}
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }

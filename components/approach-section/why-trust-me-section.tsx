@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
-import { fadeInUp } from "./animations";
 import { BackgroundDecorations } from "./bg-decoration";
 import { SectionHeader } from "./section-header";
 import { GlassBrainArtwork } from "./glass-brain-artwork";
@@ -22,19 +20,11 @@ export default function WhyTrustMeSection() {
           <DecoratedStatsGrid />
         </div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
-          variants={fadeInUp}
-          className="relative mt-16 lg:mt-24 transform-gpu will-change-transform"
-        >
-          {/* Quote Background Glow */}
+        {/* Removed motion.div wrapper. Children handle their own animations. */}
+        <div className="relative mt-16 lg:mt-24">
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-            <div
-              className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-[120px] transform-gpu"
-              style={{ willChange: "filter, transform" }}
-            />
+            {/* Kept static, removed from animation tree */}
+            <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-[120px] transform-gpu" />
           </div>
 
           <div className="relative z-10 grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
@@ -46,7 +36,7 @@ export default function WhyTrustMeSection() {
               <QuoteDisplay />
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
