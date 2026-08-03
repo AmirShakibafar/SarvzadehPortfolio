@@ -82,7 +82,7 @@ export function DecoratedStatsGrid() {
                 WebkitTransform: "translateZ(0)",
               }}
             >
-              <div className="absolute left-1/2 top-1/2 -z-10 h-3/4 w-3/4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/30 blur-2xl" />
+              <div className="absolute left-1/2 top-1/2 -z-10 h-3/4 w-3/4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/15 blur-2xl" />
 
               <GlassCard
                 className={`flex h-full flex-col items-center justify-center p-6 text-center ${

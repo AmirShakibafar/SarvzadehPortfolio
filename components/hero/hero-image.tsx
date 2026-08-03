@@ -77,12 +77,14 @@ function DecorativeEllipse() {
 
 function DoctorImage({ src }: { src: string }) {
   return (
-    <div className="relative w-[85%] h-full lg:w-[100%] max-w-[800px] z-10 translate-x-[2%] isolate [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)]">
+    // Added transform-gpu to isolate the mask-image layer
+    <div className="relative w-[85%] h-full lg:w-[100%] max-w-[800px] z-10 translate-x-[2%] isolate [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)] transform-gpu">
       <Image
         src={src}
         alt="Doctor"
         fill
-        className="object-contain object-bottom drop-shadow-2xl"
+        // Added transform-gpu to offload drop-shadow rendering to the GPU
+        className="object-contain object-bottom drop-shadow-2xl transform-gpu"
         priority
         sizes="(max-width: 1024px) 85vw, 800px"
       />
@@ -126,7 +128,7 @@ function FloatingCards() {
       <motion.div
         variants={cardItem}
         whileHover={{ scale: 1.05 }}
-        className="absolute top-[2%] -right-4 sm:top-[8%] sm:-right-8 lg:top-[18%] lg:-right-12 pointer-events-auto scale-90 sm:scale-100 origin-right will-change-transform"
+        className="absolute top-[2%] -right-4 sm:top-[8%] sm:-right-8 lg:top-[18%] lg:-right-12 pointer-events-auto scale-90 sm:scale-100 origin-right transform-gpu"
       >
         <FloatingCardItem
           title="مدیریت ام‌اس"
@@ -139,7 +141,7 @@ function FloatingCards() {
       <motion.div
         variants={cardItem}
         whileHover={{ scale: 1.05 }}
-        className="absolute top-[65%] -left-6 sm:top-[55%] sm:-left-8 lg:top-[48%] lg:left-auto lg:-right-16 pointer-events-auto scale-90 sm:scale-100 origin-left lg:origin-right will-change-transform"
+        className="absolute top-[65%] -left-6 sm:top-[55%] sm:-left-8 lg:top-[48%] lg:left-auto lg:-right-16 pointer-events-auto scale-90 sm:scale-100 origin-left lg:origin-right transform-gpu"
       >
         <FloatingCardItem
           title="کاهش خستگی"
@@ -152,7 +154,7 @@ function FloatingCards() {
       <motion.div
         variants={cardItem}
         whileHover={{ scale: 1.05 }}
-        className="absolute bottom-[2%] -right-2 sm:bottom-[5%] sm:-right-4 lg:bottom-auto lg:top-[72%] lg:-right-6 pointer-events-auto scale-90 sm:scale-100 origin-right will-change-transform"
+        className="absolute bottom-[2%] -right-2 sm:bottom-[5%] sm:-right-4 lg:bottom-auto lg:top-[72%] lg:-right-6 pointer-events-auto scale-90 sm:scale-100 origin-right transform-gpu"
       >
         <FloatingCardItem
           title="سلامت سیستم عصبی"

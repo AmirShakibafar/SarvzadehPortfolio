@@ -22,9 +22,9 @@ export function JourneyScrollContainer({
       <JourneyBackground />
 
       <div className="relative w-full">
-        {/* PATH = FULL BLEED */}
-        <JourneyPath progress={progress} />
-
+        <div className="hidden md:block">
+          <JourneyPath progress={progress} />
+        </div>
         {/* CONTENT = CONSTRAINED */}
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           {/* TITLE SECTION - Right Aligned with Blob */}

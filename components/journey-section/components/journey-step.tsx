@@ -26,12 +26,14 @@ const containerVariants: Variants = {
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  // Reduced slide distance slightly for faster perceived performance
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.8,
+      // Shortened duration from 0.8s to 0.6s to free up the GPU faster
+      duration: 0.6,
       ease: [0.16, 1, 0.3, 1],
     },
   },
@@ -58,7 +60,9 @@ export const JourneyStep: React.FC<StepProps> = ({
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-20%" }}
+      // FIX: Replaced percentage margin (-20%) with a static pixel margin and amount threshold.
+      // This prevents the IntersectionObserver from failing during mobile layout shifts/refreshes.
+      viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
     >
       <div className="w-full flex-1">
         <JourneyGlassIllustration src={image} alt={title} />
@@ -84,7 +88,7 @@ export const JourneyStep: React.FC<StepProps> = ({
           {text}
         </motion.p>
 
-        {/* Feature Pills using flat minimal styles */}
+        {/* Feature Pills */}
         <motion.div
           variants={itemVariants}
           className="mt-2 flex flex-wrap gap-2"
@@ -99,17 +103,13 @@ export const JourneyStep: React.FC<StepProps> = ({
           ))}
         </motion.div>
 
-        {/* Bottom Glass Card with Blob */}
+        {/* Bottom Glass Card */}
         <motion.div
-          variants={{
-            hidden: { opacity: 0, scale: 0.95 },
-            visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
-          }}
-          className="relative isolate mt-6"
-          style={{
-            willChange: "transform, opacity",
-            WebkitTransform: "translateZ(0)",
-          }}
+          // FIX: Swapped custom scaling variant for the standard item variant
+          variants={itemVariants}
+          className="relative isolate mt-6 transform-gpu"
+          // FIX: Removed static willChange & translateZ(0) to prevent permanent VRAM bloating.
+          // Framer motion will handle this dynamically during the entrance.
         >
           <GlassCard className="rounded-[24px] p-6">
             <div className="mb-3 flex items-center gap-3">

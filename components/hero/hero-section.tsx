@@ -48,7 +48,7 @@ export function HeroSection() {
         initial="hidden"
         animate="visible"
       >
-        <motion.div variants={itemVariants} className="will-change-transform">
+        <motion.div variants={itemVariants}>
           <Heading
             as="h1"
             size="h1"
@@ -61,7 +61,7 @@ export function HeroSection() {
           </Heading>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="will-change-transform">
+        <motion.div variants={itemVariants}>
           <Paragraph size="lg" className="text-sm md:text-base max-w-[480px]">
             با برنامه‌های غذایی علمی و متناسب با شرایط شما، به کنترل علائم ام‌اس
             کمک کرده و سلامت‌تان را بهبود ببخشید.
@@ -70,7 +70,7 @@ export function HeroSection() {
 
         <motion.div
           variants={itemVariants}
-          className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-4 mt-2 will-change-transform"
+          className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-4 mt-2"
         >
           <Button
             variant="pillPrimary"
@@ -83,7 +83,7 @@ export function HeroSection() {
           <Button
             variant="pillSecondary"
             size="pill"
-            className="gap-2 bg-white/50 hover:bg-white/80 text-sm md:text-base"
+            className="gap-2 bg-white/50 hover:bg-white/80 text-sm md:text-base transform-gpu"
           >
             بیشتر بدانید
             <ArrowLeft className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground" />
@@ -93,13 +93,13 @@ export function HeroSection() {
 
       {/* Left Side: Image Content */}
       <motion.div
-        className="relative flex justify-center items-end w-full md:w-[80%] lg:w-[55%] isolate"
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
+        className="relative flex justify-center items-end w-full md:w-[80%] lg:w-[55%] isolate transform-gpu"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
       >
         {/* Background Blob */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 rounded-full bg-primary/25 blur-[100px] -z-10" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 rounded-full bg-primary/25 blur-[100px] -z-10 transform-gpu" />
 
         <HeroImage src="/images/hero/Hero-Image.webp" />
       </motion.div>

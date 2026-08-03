@@ -21,7 +21,6 @@ export function JourneyPath({ progress }: JourneyPathProps) {
 
   return (
     <div className="absolute inset-0 pointer-events-none z-10">
-      {/* Viewbox height gently increased to 5200 to prevent the bottom glow from clipping */}
       <svg
         viewBox="0 0 4000 5100"
         preserveAspectRatio="xMidYMin slice"
@@ -29,14 +28,7 @@ export function JourneyPath({ progress }: JourneyPathProps) {
       >
         <defs>
           <linearGradient id="activeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#7DF8F3">
-              <animate
-                attributeName="stop-color"
-                values="#7DF8F3;#0DDCD5;#7DF8F3"
-                dur="6s"
-                repeatCount="indefinite"
-              />
-            </stop>
+            <stop offset="0%" stopColor="#7DF8F3" />
             <stop offset="100%" stopColor="#0DDCD5" />
           </linearGradient>
 
@@ -45,17 +37,9 @@ export function JourneyPath({ progress }: JourneyPathProps) {
             <stop offset="40%" stopColor="#8EF6F2" />
             <stop offset="100%" stopColor="#0DDCD5" />
           </radialGradient>
-
-          <filter id="glow">
-            <feGaussianBlur stdDeviation="10" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
         </defs>
 
-        {/* Ambient glow */}
+        {/* Ambient background path */}
         <path
           d={path}
           stroke="#0DDCD5"
@@ -84,34 +68,37 @@ export function JourneyPath({ progress }: JourneyPathProps) {
           transform="translate(-2 -2)"
         />
 
-        {/* Active glow */}
+        {/* Simulated Glow (Replaces feGaussianBlur) */}
+        <motion.path
+          d={path}
+          stroke="url(#activeGradient)"
+          strokeWidth={24}
+          opacity={0.2}
+          fill="none"
+          strokeLinecap="round"
+          style={{ pathLength: progress, willChange: "stroke-dashoffset" }}
+        />
+
+        {/* Active glowing path */}
         <motion.path
           d={path}
           stroke="url(#activeGradient)"
           strokeWidth={12}
           fill="none"
           strokeLinecap="round"
-          style={{ pathLength: progress }}
-          filter="url(#glow)"
+          style={{ pathLength: progress, willChange: "stroke-dashoffset" }}
         />
 
         {/* --- START NODE --- */}
         <g transform="translate(1800, 80)">
+          {/* Reduced complex overlapping layers */}
           <motion.circle
-            r={70}
-            fill="#0DDCD5"
-            opacity={0.08}
-            animate={{ scale: [0.9, 1.2, 0.9] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          />
-
-          <motion.circle
-            r={42}
+            r={50}
             fill="none"
             stroke="#0DDCD5"
             strokeWidth={2}
             opacity={0.25}
-            animate={{ scale: [1, 1.5, 1], opacity: [0.25, 0, 0.25] }}
+            animate={{ scale: [1, 1.2, 1], opacity: [0.25, 0.1, 0.25] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
           />
 
@@ -120,14 +107,6 @@ export function JourneyPath({ progress }: JourneyPathProps) {
             fill="rgba(255,255,255,0.75)"
             stroke="rgba(13,220,213,0.6)"
             strokeWidth={2}
-            filter="url(#glow)"
-          />
-
-          <circle
-            r={22}
-            fill="none"
-            stroke="rgba(255,255,255,0.5)"
-            strokeWidth={1}
           />
 
           <g transform="scale(1.2)">
@@ -158,25 +137,14 @@ export function JourneyPath({ progress }: JourneyPathProps) {
             style={{
               opacity: heartOpacity,
               scale: heartScale,
+              willChange: "opacity, transform",
             }}
           >
-            <motion.circle
-              r={80}
-              fill="#0DDCD5"
-              opacity={0.25}
-              filter="url(#glow)"
-            />
             <circle
               r={36}
               fill="rgba(255,255,255,0.7)"
               stroke="rgba(13,220,213,0.7)"
               strokeWidth={2}
-            />
-            <circle
-              r={26}
-              fill="none"
-              stroke="rgba(255,255,255,0.5)"
-              strokeWidth={1}
             />
 
             <g transform="scale(2.8) translate(-12, -12)">
@@ -185,14 +153,6 @@ export function JourneyPath({ progress }: JourneyPathProps) {
                 fill="url(#orb)"
                 stroke="white"
                 strokeWidth={1}
-                filter="url(#glow)"
-              />
-              <path
-                d="M12 6 C10 4, 6 5, 5 8"
-                stroke="white"
-                strokeWidth={1}
-                opacity={0.6}
-                fill="none"
               />
             </g>
           </motion.g>
@@ -205,16 +165,16 @@ export function JourneyPath({ progress }: JourneyPathProps) {
           style={{
             offsetPath: `path('${path}')`,
             offsetDistance: distance,
+            willChange: "offset-distance, transform",
           }}
         >
-          <circle r={30} fill="#0DDCD5" opacity={0.15} />
+          <circle r={24} fill="#0DDCD5" opacity={0.2} />
           <circle
             r={16}
             fill="url(#orb)"
             stroke="rgba(255,255,255,.85)"
             strokeWidth={1.5}
           />
-          <circle cx="-5" cy="-5" r={4} fill="white" opacity={0.85} />
           <circle r={5} fill="#0DDCD5" />
         </motion.g>
       </svg>
