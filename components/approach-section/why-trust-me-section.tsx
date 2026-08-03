@@ -12,8 +12,7 @@ export default function WhyTrustMeSection() {
   return (
     <section
       dir="rtl"
-      // Retain the top padding, drastically reduce the bottom padding
-      className="relative overflow-hidden bg-background pt-16 pb-8 lg:pt-24 lg:pb-16"
+      className="relative overflow-hidden bg-background pt-16 pb-8 lg:pt-24 lg:pb-16 isolate"
     >
       <BackgroundDecorations />
 
@@ -26,13 +25,16 @@ export default function WhyTrustMeSection() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
           variants={fadeInUp}
-          className="relative mt-16 lg:mt-24"
+          className="relative mt-16 lg:mt-24 transform-gpu will-change-transform"
         >
           {/* Quote Background Glow */}
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-            <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-[120px]" />
+            <div
+              className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-[120px] transform-gpu"
+              style={{ willChange: "filter, transform" }}
+            />
           </div>
 
           <div className="relative z-10 grid items-center gap-10 lg:grid-cols-2 lg:gap-12">

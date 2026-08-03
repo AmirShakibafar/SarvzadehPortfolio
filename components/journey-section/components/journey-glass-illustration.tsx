@@ -22,8 +22,10 @@ export const JourneyGlassIllustration: React.FC<IllustrationProps> = ({
       className="relative z-0 flex aspect-square w-full items-center justify-center isolate"
       initial={{ scale: 0.95, y: 20, opacity: 0 }}
       whileInView={{ scale: 1, y: 0, opacity: 1 }}
-      viewport={{ once: true, margin: "-15%" }}
+      viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+      // Forces the browser to keep the composite layer active after the animation ends
+      style={{ willChange: "transform, opacity" }}
     >
       <div
         className="absolute left-1/2 top-1/2 -z-20 h-[80%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/30 blur-3xl transform-gpu pointer-events-none"
