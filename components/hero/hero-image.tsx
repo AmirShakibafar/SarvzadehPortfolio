@@ -23,10 +23,10 @@ export function HeroImage({ src }: HeroImageProps) {
 
 function BackgroundGlow() {
   return (
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none -z-30">
-      <div className="absolute w-[120%] h-[120%] bg-[radial-gradient(circle,rgba(34,211,238,0.12)_0%,transparent_60%)]" />
-      <div className="absolute top-[-10%] left-[-10%] w-[90%] h-[90%] bg-[radial-gradient(circle,rgba(255,255,255,0.4)_0%,transparent_60%)]" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[80%] h-[80%] bg-[radial-gradient(circle,rgba(20,184,166,0.12)_0%,transparent_60%)]" />
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none -z-30 transform-gpu">
+      <div className="absolute w-[120%] h-[120%] bg-[radial-gradient(circle,rgba(34,211,238,0.12)_0%,transparent_60%)] transform-gpu" />
+      <div className="absolute top-[-10%] left-[-10%] w-[90%] h-[90%] bg-[radial-gradient(circle,rgba(255,255,255,0.4)_0%,transparent_60%)] transform-gpu" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[80%] h-[80%] bg-[radial-gradient(circle,rgba(20,184,166,0.12)_0%,transparent_60%)] transform-gpu" />
     </div>
   );
 }
@@ -48,6 +48,7 @@ function GlassBlob() {
         border border-white/60
         shadow-[0_24px_80px_rgba(0,0,0,0.03)]
         -z-10
+        transform-gpu
       "
     />
   );
@@ -70,6 +71,7 @@ function DecorativeEllipse() {
         border border-white/20
         -z-40
         rotate-6
+        transform-gpu
       "
     />
   );
@@ -77,14 +79,12 @@ function DecorativeEllipse() {
 
 function DoctorImage({ src }: { src: string }) {
   return (
-    // Added transform-gpu to isolate the mask-image layer
-    <div className="relative w-[85%] h-full lg:w-[100%] max-w-[800px] z-10 translate-x-[2%] isolate [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)] transform-gpu">
+    <div className="relative w-[85%] h-full lg:w-[100%] max-w-[800px] z-10 translate-x-[2%] isolate [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)] transform-gpu will-change-transform">
       <Image
         src={src}
         alt="Doctor"
         fill
-        // Added transform-gpu to offload drop-shadow rendering to the GPU
-        className="object-contain object-bottom drop-shadow-2xl transform-gpu"
+        className="object-contain object-bottom drop-shadow-2xl transform-gpu will-change-transform"
         priority
         sizes="(max-width: 1024px) 85vw, 800px"
       />
@@ -125,43 +125,49 @@ function FloatingCards() {
       animate="visible"
     >
       {/* Top right - Card 1 */}
-      <motion.div
-        variants={cardItem}
-        whileHover={{ scale: 1.05 }}
-        className="absolute top-[2%] -right-4 sm:top-[8%] sm:-right-8 lg:top-[18%] lg:-right-12 pointer-events-auto scale-90 sm:scale-100 origin-right transform-gpu"
-      >
-        <FloatingCardItem
-          title="مدیریت ام‌اس"
-          description="کاهش التهاب با تغذیه اصولی"
-          icon={<Brain className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />}
-        />
-      </motion.div>
+      <div className="absolute top-[2%] -right-4 sm:top-[8%] sm:-right-8 lg:top-[18%] lg:-right-12 pointer-events-auto scale-90 sm:scale-100 origin-right">
+        <motion.div
+          variants={cardItem}
+          whileHover={{ scale: 1.05 }}
+          className="will-change-transform"
+        >
+          <FloatingCardItem
+            title="مدیریت ام‌اس"
+            description="کاهش التهاب با تغذیه اصولی"
+            icon={<Brain className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />}
+          />
+        </motion.div>
+      </div>
 
       {/* Middle/Bottom left - Card 2 */}
-      <motion.div
-        variants={cardItem}
-        whileHover={{ scale: 1.05 }}
-        className="absolute top-[65%] -left-6 sm:top-[55%] sm:-left-8 lg:top-[48%] lg:left-auto lg:-right-16 pointer-events-auto scale-90 sm:scale-100 origin-left lg:origin-right transform-gpu"
-      >
-        <FloatingCardItem
-          title="کاهش خستگی"
-          description="افزایش انرژی در طول روز"
-          icon={<Activity className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />}
-        />
-      </motion.div>
+      <div className="absolute top-[65%] -left-6 sm:top-[55%] sm:-left-8 lg:top-[48%] lg:left-auto lg:-right-16 pointer-events-auto scale-90 sm:scale-100 origin-left lg:origin-right">
+        <motion.div
+          variants={cardItem}
+          whileHover={{ scale: 1.05 }}
+          className="will-change-transform"
+        >
+          <FloatingCardItem
+            title="کاهش خستگی"
+            description="افزایش انرژی در طول روز"
+            icon={<Activity className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />}
+          />
+        </motion.div>
+      </div>
 
       {/* Bottom right - Card 3 */}
-      <motion.div
-        variants={cardItem}
-        whileHover={{ scale: 1.05 }}
-        className="absolute bottom-[2%] -right-2 sm:bottom-[5%] sm:-right-4 lg:bottom-auto lg:top-[72%] lg:-right-6 pointer-events-auto scale-90 sm:scale-100 origin-right transform-gpu"
-      >
-        <FloatingCardItem
-          title="سلامت سیستم عصبی"
-          description="تامین مواد مغذی ضروری"
-          icon={<Apple className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />}
-        />
-      </motion.div>
+      <div className="absolute bottom-[2%] -right-2 sm:bottom-[5%] sm:-right-4 lg:bottom-auto lg:top-[72%] lg:-right-6 pointer-events-auto scale-90 sm:scale-100 origin-right">
+        <motion.div
+          variants={cardItem}
+          whileHover={{ scale: 1.05 }}
+          className="will-change-transform"
+        >
+          <FloatingCardItem
+            title="سلامت سیستم عصبی"
+            description="تامین مواد مغذی ضروری"
+            icon={<Apple className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />}
+          />
+        </motion.div>
+      </div>
     </motion.div>
   );
 }

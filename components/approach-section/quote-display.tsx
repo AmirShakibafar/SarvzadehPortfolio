@@ -30,13 +30,16 @@ const itemVariants: Variants = {
 export function QuoteDisplay() {
   return (
     <motion.div
-      className="order-1 text-center lg:order-2 lg:text-right"
+      className="order-1 text-center lg:order-2 lg:text-right isolate"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-10%" }}
+      viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
     >
-      <motion.div variants={itemVariants} className="will-change-transform">
+      <motion.div
+        variants={itemVariants}
+        className="transform-gpu will-change-transform"
+      >
         <span className="inline-block text-sm font-semibold tracking-wide text-primary">
           رویکرد من
         </span>
@@ -44,14 +47,14 @@ export function QuoteDisplay() {
 
       <motion.div
         variants={itemVariants}
-        className="mt-2 text-8xl leading-none text-primary/15 will-change-transform"
+        className="mt-2 text-8xl leading-none text-primary/15 transform-gpu will-change-transform"
       >
         ❝
       </motion.div>
 
       <motion.p
         variants={itemVariants}
-        className="mt-6 text-2xl font-light leading-[2.1] text-foreground md:text-3xl will-change-transform"
+        className="mt-6 text-2xl font-light leading-[2.1] text-foreground md:text-3xl transform-gpu will-change-transform"
       >
         هدف من فقط تجویز یک رژیم غذایی نیست؛ بلکه همراهی با هر بیمار برای ساختن
         مسیری درمانی، علمی و ماندگار است.
@@ -59,14 +62,14 @@ export function QuoteDisplay() {
 
       <motion.div
         variants={itemVariants}
-        className="mt-2 flex justify-end will-change-transform"
+        className="mt-2 flex justify-end transform-gpu will-change-transform"
       >
         <Image
           src="/images/approach/signiture.webp"
           alt="امضا دکتر رضا سروزاده"
           width={240}
           height={160}
-          className="h-40 w-auto object-contain"
+          className="h-40 w-auto object-contain transform-gpu"
         />
       </motion.div>
     </motion.div>

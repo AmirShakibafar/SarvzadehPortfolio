@@ -26,13 +26,11 @@ const containerVariants: Variants = {
 };
 
 const itemVariants: Variants = {
-  // Reduced slide distance slightly for faster perceived performance
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      // Shortened duration from 0.8s to 0.6s to free up the GPU faster
       duration: 0.6,
       ease: [0.16, 1, 0.3, 1],
     },
@@ -54,14 +52,12 @@ export const JourneyStep: React.FC<StepProps> = ({
 
   return (
     <motion.div
-      className={`flex w-full flex-col items-center gap-8 md:gap-16 ${
+      className={`flex w-full flex-col items-center gap-8 md:gap-16 isolate ${
         isRightAligned ? "md:flex-row" : "md:flex-row-reverse"
       }`}
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      // FIX: Replaced percentage margin (-20%) with a static pixel margin and amount threshold.
-      // This prevents the IntersectionObserver from failing during mobile layout shifts/refreshes.
       viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
     >
       <div className="w-full flex-1">
@@ -71,19 +67,21 @@ export const JourneyStep: React.FC<StepProps> = ({
       <div className="flex w-full flex-1 flex-col gap-5">
         <motion.span
           variants={itemVariants}
-          className="text-sm font-medium text-primary"
+          className="text-sm font-medium text-primary will-change-transform"
         >
           {duration}
         </motion.span>
+
         <motion.h3
           variants={itemVariants}
-          className="text-balance text-3xl font-bold leading-snug text-foreground"
+          className="text-balance text-3xl font-bold leading-snug text-foreground will-change-transform"
         >
           {title}
         </motion.h3>
+
         <motion.p
           variants={itemVariants}
-          className="text-lg leading-relaxed text-muted-foreground"
+          className="text-lg leading-relaxed text-muted-foreground will-change-transform"
         >
           {text}
         </motion.p>
@@ -91,7 +89,7 @@ export const JourneyStep: React.FC<StepProps> = ({
         {/* Feature Pills */}
         <motion.div
           variants={itemVariants}
-          className="mt-2 flex flex-wrap gap-2"
+          className="mt-2 flex flex-wrap gap-2 will-change-transform"
         >
           {chips.map((chip, idx) => (
             <span
@@ -105,13 +103,10 @@ export const JourneyStep: React.FC<StepProps> = ({
 
         {/* Bottom Glass Card */}
         <motion.div
-          // FIX: Swapped custom scaling variant for the standard item variant
           variants={itemVariants}
-          className="relative isolate mt-6 transform-gpu"
-          // FIX: Removed static willChange & translateZ(0) to prevent permanent VRAM bloating.
-          // Framer motion will handle this dynamically during the entrance.
+          className="relative isolate mt-6 transform-gpu will-change-transform"
         >
-          <GlassCard className="rounded-[24px] p-6">
+          <GlassCard className="rounded-[24px] p-6 transform-gpu">
             <div className="mb-3 flex items-center gap-3">
               {icon}
               <h4 className="text-balance font-semibold leading-snug text-foreground">

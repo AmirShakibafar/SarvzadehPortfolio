@@ -39,6 +39,7 @@ export function HeroSection() {
         w-full gap-8 md:gap-12 lg:gap-8 
         min-h-[calc(100svh-80px)]
         py-6
+        isolate
       "
     >
       {/* Right Side: Text Content */}
@@ -48,7 +49,7 @@ export function HeroSection() {
         initial="hidden"
         animate="visible"
       >
-        <motion.div variants={itemVariants}>
+        <motion.div variants={itemVariants} className="will-change-transform">
           <Heading
             as="h1"
             size="h1"
@@ -61,7 +62,7 @@ export function HeroSection() {
           </Heading>
         </motion.div>
 
-        <motion.div variants={itemVariants}>
+        <motion.div variants={itemVariants} className="will-change-transform">
           <Paragraph size="lg" className="text-sm md:text-base max-w-[480px]">
             با برنامه‌های غذایی علمی و متناسب با شرایط شما، به کنترل علائم ام‌اس
             کمک کرده و سلامت‌تان را بهبود ببخشید.
@@ -70,7 +71,7 @@ export function HeroSection() {
 
         <motion.div
           variants={itemVariants}
-          className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-4 mt-2"
+          className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-4 mt-2 will-change-transform"
         >
           <Button
             variant="pillPrimary"
@@ -93,13 +94,16 @@ export function HeroSection() {
 
       {/* Left Side: Image Content */}
       <motion.div
-        className="relative flex justify-center items-end w-full md:w-[80%] lg:w-[55%] isolate transform-gpu"
+        className="relative flex justify-center items-end w-full md:w-[80%] lg:w-[55%] isolate will-change-transform"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
       >
         {/* Background Blob */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 rounded-full bg-primary/25 blur-[100px] -z-10 transform-gpu" />
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 rounded-full bg-primary/25 blur-[100px] -z-10 transform-gpu pointer-events-none"
+          style={{ willChange: "filter, transform" }}
+        />
 
         <HeroImage src="/images/hero/Hero-Image.webp" />
       </motion.div>

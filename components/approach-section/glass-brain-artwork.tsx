@@ -6,37 +6,37 @@ import Image from "next/image";
 
 export function GlassBrainArtwork() {
   return (
-    <div className="order-2 flex w-full justify-center lg:order-1">
-      {/* Enhanced initial entry: increased drop distance, scaled down further, and added blur */}
+    <div className="order-2 flex w-full justify-center lg:order-1 isolate">
       <motion.div
-        className="relative isolate z-0 flex aspect-square w-full max-w-[480px] items-center justify-center"
-        initial={{ scale: 0.8, y: 40, opacity: 0, filter: "blur(10px)" }}
-        whileInView={{ scale: 1, y: 0, opacity: 1, filter: "blur(0px)" }}
-        viewport={{ once: true, margin: "-15%" }}
+        className="relative isolate z-0 flex aspect-square w-full max-w-[480px] items-center justify-center will-change-transform"
+        initial={{ scale: 0.8, y: 40, opacity: 0 }}
+        whileInView={{ scale: 1, y: 0, opacity: 1 }}
+        viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="absolute inset-8 -z-20 rounded-full bg-primary/20 blur-[80px]" />
+        <div
+          className="absolute inset-8 -z-20 rounded-full bg-primary/20 blur-[80px] transform-gpu pointer-events-none"
+          style={{ willChange: "filter, transform" }}
+        />
 
-        {/* Added 1s delay to sync with outer entry, plus hardware acceleration fix */}
         <motion.div
           animate={{
             y: [0, -24, 0],
             rotate: [-4, 2, -4],
           }}
           transition={{
-            delay: 1, // Waits for the wrapper's entry animation to finish
+            delay: 1,
             duration: 6,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="relative z-10 h-full w-full drop-shadow-2xl"
-          style={{ willChange: "transform", WebkitTransform: "translateZ(0)" }}
+          className="relative z-10 h-full w-full transform-gpu will-change-transform"
         >
           <Image
             src="/images/approach/brain2.webp"
             alt="Glass Brain"
             fill
-            className="object-contain"
+            className="object-contain drop-shadow-2xl transform-gpu"
             draggable={false}
             sizes="(max-width: 768px) 100vw, 480px"
           />

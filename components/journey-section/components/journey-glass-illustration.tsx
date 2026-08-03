@@ -11,8 +11,6 @@ interface IllustrationProps {
   alt: string;
 }
 
-const MotionImage = motion(Image);
-
 export const JourneyGlassIllustration: React.FC<IllustrationProps> = ({
   src,
   alt,
@@ -26,27 +24,27 @@ export const JourneyGlassIllustration: React.FC<IllustrationProps> = ({
       whileInView={{ scale: 1, y: 0, opacity: 1 }}
       viewport={{ once: true, margin: "-15%" }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      // Removed permanent willChange. Framer Motion dynamically applies it
-      // during the animation and removes it after, saving VRAM.
     >
-      {/* Reduced element size by 20% to minimize the calculation area for the blur */}
-      <div className="absolute left-1/2 top-1/2 -z-20 h-[80%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/30 blur-3xl" />
-
-      <GlassCard className="absolute inset-4 -z-10 rounded-[4rem]" />
-
-      <MotionImage
-        src={src}
-        alt={alt}
-        width={800}
-        height={800}
-        // Added transform-gpu to force the drop-shadow rendering onto the GPU
-        className="relative z-10 h-5/6 w-5/6 object-cover drop-shadow-2xl transform-gpu"
-        animate={floatingAnimation as TargetAndTransition}
-        style={{
-          willChange: "transform",
-        }}
-        sizes="(max-width: 768px) 83vw, 40vw"
+      <div
+        className="absolute left-1/2 top-1/2 -z-20 h-[80%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/30 blur-3xl transform-gpu pointer-events-none"
+        style={{ willChange: "filter, transform" }}
       />
+
+      <GlassCard className="absolute inset-4 -z-10 rounded-[4rem] transform-gpu" />
+
+      <motion.div
+        animate={floatingAnimation as TargetAndTransition}
+        className="relative z-10 flex h-5/6 w-5/6 items-center justify-center will-change-transform"
+      >
+        <Image
+          src={src}
+          alt={alt}
+          width={800}
+          height={800}
+          className="h-full w-full object-cover drop-shadow-2xl transform-gpu"
+          sizes="(max-width: 768px) 83vw, 40vw"
+        />
+      </motion.div>
     </motion.div>
   );
 };
