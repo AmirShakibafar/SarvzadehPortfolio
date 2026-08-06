@@ -1,21 +1,17 @@
 // hero-image-mobile.tsx
 "use client";
-
+import doctorImage from "@/public/images/hero/Hero-Image.webp";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Apple, Activity, Brain } from "lucide-react";
 
-interface HeroImageMobileProps {
-  src: string;
-}
-
-export function HeroImageMobile({ src }: HeroImageMobileProps) {
+export function HeroImageMobile() {
   return (
     <div className="relative w-full h-[420px] sm:h-[480px] max-w-[800px] flex items-end justify-center z-0 isolate">
       <BackgroundGlow />
       <DecorativeEllipse />
       <GlassBlob />
-      <DoctorImage src={src} />
+      <DoctorImage />
       <FloatingCards />
     </div>
   );
@@ -75,16 +71,17 @@ function DecorativeEllipse() {
   );
 }
 
-function DoctorImage({ src }: { src: string }) {
+function DoctorImage() {
   return (
-    <div className="relative w-[85%] h-full max-w-[800px] z-10 translate-x-[2%] isolate [mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)]">
+    <div className="relative w-[85%] h-full max-w-[800px] z-10 translate-x-[2%] isolate ">
       <Image
-        src={src}
+        src={doctorImage}
         alt="Doctor"
         fill
-        className="object-contain object-bottom drop-shadow-2xl"
         priority
+        fetchPriority="high"
         sizes="(max-width: 768px) 85vw, 800px"
+        className="object-contain object-bottom drop-shadow-2xl"
       />
     </div>
   );

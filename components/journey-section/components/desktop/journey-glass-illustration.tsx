@@ -24,13 +24,18 @@ export const JourneyGlassIllustration: React.FC<IllustrationProps> = ({
       whileInView={{ scale: 1, y: 0, opacity: 1 }}
       viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      // Forces the browser to keep the composite layer active after the animation ends
       style={{ willChange: "transform, opacity" }}
     >
-      <div
-        className="absolute left-1/2 top-1/2 -z-20 h-[80%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/30 blur-3xl transform-gpu pointer-events-none"
-        style={{ willChange: "filter, transform" }}
-      />
+      {/* Increased container size to 150% to account for the baked-in blur spread */}
+      <div className="absolute left-1/2 top-1/2 -z-20 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2 opacity-60 pointer-events-none">
+        <Image
+          src="/blob.svg"
+          alt=""
+          fill
+          className="object-contain"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+      </div>
 
       <GlassCard className="absolute inset-4 -z-10 rounded-[4rem] transform-gpu" />
 

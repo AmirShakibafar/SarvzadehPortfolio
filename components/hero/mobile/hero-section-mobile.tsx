@@ -73,10 +73,13 @@ export function HeroSectionMobile() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >
-        {/* Background Blob - Replaced CSS blur with native radial gradient */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 rounded-full bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-primary/25 to-transparent -z-10 pointer-events-none" />
+        {/* Replaced CSS radial gradient with SVG blob */}
+        <div
+          className="absolute top-1/2 left-1/2 -z-10 h-[500px] w-[500px] md:h-[750px] md:w-[750px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-60 pointer-events-none"
+          aria-hidden="true"
+        />
 
-        <HeroImageMobile src="/images/hero/Hero-Image.webp" />
+        <HeroImageMobile />
       </motion.div>
     </main>
   );

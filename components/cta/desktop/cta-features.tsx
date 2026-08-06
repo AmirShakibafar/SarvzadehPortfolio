@@ -5,8 +5,11 @@ import { ShieldCheck, UserCircle, Zap } from "lucide-react";
 export function CtaFeatures() {
   return (
     <div className="relative mt-16 isolate w-full">
-      {/* Teal blob behind the features section matching the form */}
-      <div className="absolute -inset-4 bg-primary/10 rounded-[2.5rem] blur-2xl -z-10" />
+      {/* Replaced CSS blur with SVG blob using fixed sizes to preserve aspect ratio behind the wide card */}
+      <div
+        className="absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] md:h-[800px] opacity-40 md:w-[800px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
+        aria-hidden="true"
+      />
 
       <GlassCard className="grid grid-cols-1 md:grid-cols-3 gap-8 p-6 lg:p-8 rounded-[2rem] border-white/60 bg-white/30 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative z-10">
         <FeatureItem

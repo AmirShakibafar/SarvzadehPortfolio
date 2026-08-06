@@ -1,0 +1,529 @@
+
+
+============================================================
+PROJECT STRUCTURE
+============================================================
+├── app
+│   ├── api
+│   │   └── send-email
+│   │       └── route.ts
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── components
+│   ├── approach-section
+│   │   ├── desktop
+│   │   │   ├── bg-decoration.tsx
+│   │   │   ├── decorated-stats-grid.tsx
+│   │   │   ├── glass-brain-artwork.tsx
+│   │   │   ├── quote-display.tsx
+│   │   │   └── why-trust-me-section.tsx
+│   │   ├── mobile
+│   │   │   ├── glass-artwork-mobile.tsx
+│   │   │   ├── quote-display-mobile.tsx
+│   │   │   ├── stats-mobile.tsx
+│   │   │   └── why-trust-me-section-mobile.tsx
+│   │   ├── animations.ts
+│   │   ├── data.ts
+│   │   ├── index.tsx
+│   │   └── section-header.tsx
+│   ├── cta
+│   │   ├── desktop
+│   │   ├── mobile
+│   │   ├── cta-features.tsx
+│   │   ├── cta-info.tsx
+│   │   ├── evaluation-constants.ts
+│   │   ├── evaluation-form.tsx
+│   │   └── index.tsx
+│   ├── hero
+│   │   ├── desktop
+│   │   │   ├── hero-image.tsx
+│   │   │   └── hero-section-desktop.tsx
+│   │   ├── mobile
+│   │   │   ├── hero-image-mobile.tsx
+│   │   │   └── hero-section-mobile.tsx
+│   │   └── hero-section-index.tsx
+│   ├── journey-section
+│   │   ├── components
+│   │   │   ├── desktop
+│   │   │   │   ├── journey-background.tsx
+│   │   │   │   ├── journey-glass-illustration.tsx
+│   │   │   │   ├── journey-path.tsx
+│   │   │   │   ├── journey-scroll-container.tsx
+│   │   │   │   └── journey-step.tsx
+│   │   │   └── mobile
+│   │   │       ├── journey-glass-illustration-mobile.tsx
+│   │   │       ├── journey-mobile.tsx
+│   │   │       ├── journey-path-mobile.tsx
+│   │   │       └── journey-scroll-container-mobile.tsx
+│   │   ├── constants
+│   │   │   └── journey.ts
+│   │   ├── hooks
+│   │   │   └── useJourney.ts
+│   │   └── index.tsx
+│   ├── layout
+│   │   ├── navbar
+│   │   │   ├── index.tsx
+│   │   │   ├── navbar-desktop.tsx
+│   │   │   └── navbar-mobile.tsx
+│   │   └── footer.tsx
+│   ├── testemonial
+│   ├── ui
+│   │   ├── button.tsx
+│   │   ├── dot-pattern.tsx
+│   │   ├── glass-card.tsx
+│   │   ├── heading.tsx
+│   │   ├── nav-item.tsx
+│   │   └── paragraph.tsx
+│   └── .DS_Store
+├── hooks
+│   └── use-media-query.ts
+├── lib
+│   └── utils.ts
+├── public
+│   ├── images
+│   │   ├── approach
+│   │   │   ├── .DS_Store
+│   │   │   ├── bg.png
+│   │   │   ├── bg.webp
+│   │   │   ├── bg2.png
+│   │   │   ├── bg2.webp
+│   │   │   ├── bg3.png
+│   │   │   ├── bg3.webp
+│   │   │   ├── bg4.png
+│   │   │   ├── bg4.webp
+│   │   │   ├── brain.png
+│   │   │   ├── brain.webp
+│   │   │   ├── brain2.png
+│   │   │   ├── brain2.webp
+│   │   │   ├── signiture.png
+│   │   │   └── signiture.webp
+│   │   ├── hero
+│   │   │   ├── Hero-Image.png
+│   │   │   └── Hero-Image.webp
+│   │   ├── journey
+│   │   │   ├── 1.png
+│   │   │   ├── 1.webp
+│   │   │   ├── 2.1.png
+│   │   │   ├── 2.1.webp
+│   │   │   ├── 2.png
+│   │   │   ├── 2.webp
+│   │   │   ├── 3.png
+│   │   │   ├── 3.webp
+│   │   │   ├── 4.png
+│   │   │   ├── 4.webp
+│   │   │   ├── 5.png
+│   │   │   ├── 5.webp
+│   │   │   ├── test.jpeg
+│   │   │   └── test.webp
+│   │   └── .DS_Store
+│   ├── .DS_Store
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
+├── .DS_Store
+├── .env.local
+├── .gitignore
+├── AGENTS.md
+├── analyze_frontend.py
+├── CLAUDE.md
+├── components.json
+├── eslint.config.mjs
+├── frontend-analysis.txt
+├── metadata.json
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── README.md
+├── script.py
+└── tsconfig.json
+
+
+============================================================
+PACKAGE.JSON
+============================================================
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -H 0.0.0.0",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.6.0",
+    "@hookform/resolvers": "^5.4.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.42.2",
+    "lucide-react": "^1.24.0",
+    "next": "16.2.10",
+    "nodemailer": "^9.0.3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-hook-form": "^7.81.0",
+    "shadcn": "^4.13.0",
+    "tailwind-merge": "^3.6.0",
+    "tw-animate-css": "^1.4.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/nodemailer": "^8.0.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+
+
+============================================================
+CONFIGURATION FILES
+============================================================
+
+--- next.config.ts ---
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  output: "standalone",
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
+  },
+};
+
+export default nextConfig;
+
+--- tsconfig.json ---
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": ["node_modules"]
+}
+
+
+============================================================
+SOURCE FILE INVENTORY
+============================================================
+app/layout.tsx
+app/page.tsx
+app/api/send-email/route.ts
+components/ui/paragraph.tsx
+components/ui/dot-pattern.tsx
+components/ui/heading.tsx
+components/ui/nav-item.tsx
+components/ui/button.tsx
+components/ui/glass-card.tsx
+components/approach-section/index.tsx
+components/approach-section/data.ts
+components/approach-section/section-header.tsx
+components/approach-section/animations.ts
+components/layout/footer.tsx
+components/cta/index.tsx
+components/cta/evaluation-constants.ts
+components/cta/cta-features.tsx
+components/cta/cta-info.tsx
+components/cta/evaluation-form.tsx
+components/hero/hero-section-index.tsx
+components/journey-section/index.tsx
+components/approach-section/desktop/why-trust-me-section.tsx
+components/approach-section/desktop/glass-brain-artwork.tsx
+components/approach-section/desktop/quote-display.tsx
+components/approach-section/desktop/bg-decoration.tsx
+components/approach-section/desktop/decorated-stats-grid.tsx
+components/approach-section/mobile/why-trust-me-section-mobile.tsx
+components/approach-section/mobile/stats-mobile.tsx
+components/approach-section/mobile/glass-artwork-mobile.tsx
+components/approach-section/mobile/quote-display-mobile.tsx
+components/layout/navbar/index.tsx
+components/layout/navbar/navbar-desktop.tsx
+components/layout/navbar/navbar-mobile.tsx
+components/hero/desktop/hero-section-desktop.tsx
+components/hero/desktop/hero-image.tsx
+components/hero/mobile/hero-image-mobile.tsx
+components/hero/mobile/hero-section-mobile.tsx
+components/journey-section/constants/journey.ts
+components/journey-section/hooks/useJourney.ts
+components/journey-section/components/desktop/journey-scroll-container.tsx
+components/journey-section/components/desktop/journey-background.tsx
+components/journey-section/components/desktop/journey-glass-illustration.tsx
+components/journey-section/components/desktop/journey-step.tsx
+components/journey-section/components/desktop/journey-path.tsx
+components/journey-section/components/mobile/journey-scroll-container-mobile.tsx
+components/journey-section/components/mobile/journey-glass-illustration-mobile.tsx
+components/journey-section/components/mobile/journey-mobile.tsx
+components/journey-section/components/mobile/journey-path-mobile.tsx
+hooks/use-media-query.ts
+lib/utils.ts
+
+
+============================================================
+COMPONENT EXPORT SUMMARY
+============================================================
+
+--- app/layout.tsx ---
+export const metadata: Metadata = {
+export default function RootLayout({
+
+--- app/page.tsx ---
+export default function Home() {
+
+--- components/ui/dot-pattern.tsx ---
+export function DotPattern({ className }: { className?: string }) {
+
+--- components/ui/nav-item.tsx ---
+export function NavItem({ href, label, isActive, className }: NavItemProps) {
+
+--- components/ui/glass-card.tsx ---
+export const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
+
+--- components/approach-section/index.tsx ---
+export default function WhyTrustMeSection() {
+
+--- components/approach-section/data.ts ---
+export const FEATURE_CARDS = [
+export const QUOTE_DATA = {
+
+--- components/approach-section/section-header.tsx ---
+export function SectionHeader() {
+
+--- components/approach-section/animations.ts ---
+export const fadeInUp: Variants = {
+export const staggerContainer: Variants = {
+
+--- components/layout/footer.tsx ---
+export function Footer() {
+
+--- components/cta/index.tsx ---
+export default function CtaSection() {
+
+--- components/cta/evaluation-constants.ts ---
+export const EVALUATION_QUESTIONS: EvaluationQuestion[] = [
+
+--- components/cta/cta-features.tsx ---
+export function CtaFeatures() {
+function FeatureItem({
+
+--- components/cta/cta-info.tsx ---
+export function CtaInfo() {
+
+--- components/cta/evaluation-form.tsx ---
+export function EvaluationForm() {
+function ProgressBar({
+function QuestionStep({
+function ContactStep({
+function SuccessStep({ onReset }: { onReset: () => void }) {
+
+--- components/hero/hero-section-index.tsx ---
+export function HeroSection() {
+
+--- components/journey-section/index.tsx ---
+export const JourneySection: React.FC = () => {
+
+--- components/approach-section/desktop/why-trust-me-section.tsx ---
+export default function WhyTrustMeSection() {
+
+--- components/approach-section/desktop/glass-brain-artwork.tsx ---
+export function GlassBrainArtwork() {
+
+--- components/approach-section/desktop/quote-display.tsx ---
+export function QuoteDisplay() {
+
+--- components/approach-section/desktop/bg-decoration.tsx ---
+export function BackgroundDecorations() {
+
+--- components/approach-section/desktop/decorated-stats-grid.tsx ---
+export function DecoratedStatsGrid() {
+
+--- components/approach-section/mobile/why-trust-me-section-mobile.tsx ---
+export default function WhyTrustMeSectionMobile() {
+
+--- components/approach-section/mobile/stats-mobile.tsx ---
+export function DecoratedStatsGridMobile() {
+
+--- components/approach-section/mobile/glass-artwork-mobile.tsx ---
+export function GlassBrainArtworkMobile() {
+
+--- components/approach-section/mobile/quote-display-mobile.tsx ---
+export function QuoteDisplayMobile() {
+
+--- components/layout/navbar/index.tsx ---
+export function Navbar() {
+
+--- components/layout/navbar/navbar-desktop.tsx ---
+export function NavbarDesktop() {
+
+--- components/layout/navbar/navbar-mobile.tsx ---
+export function NavbarMobile() {
+
+--- components/hero/desktop/hero-section-desktop.tsx ---
+export function HeroSection() {
+
+--- components/hero/desktop/hero-image.tsx ---
+export function HeroImage({ src }: HeroImageProps) {
+function BackgroundGlow() {
+function GlassBlob() {
+function DecorativeEllipse() {
+function DoctorImage({ src }: { src: string }) {
+function FloatingCards() {
+function FloatingCardItem({
+
+--- components/hero/mobile/hero-image-mobile.tsx ---
+export function HeroImageMobile({ src }: HeroImageMobileProps) {
+function BackgroundGlow() {
+function GlassBlob() {
+function DecorativeEllipse() {
+function DoctorImage({ src }: { src: string }) {
+function FloatingCards() {
+function FloatingCardItem({
+
+--- components/hero/mobile/hero-section-mobile.tsx ---
+export function HeroSectionMobile() {
+
+--- components/journey-section/constants/journey.ts ---
+export const JOURNEY_STEPS: JourneyStepData[] = [
+
+--- components/journey-section/hooks/useJourney.ts ---
+export const useJourneyProgress = (ref: RefObject<HTMLElement>) => {
+export const useFloatingAnimation = () => {
+
+--- components/journey-section/components/desktop/journey-scroll-container.tsx ---
+export function JourneyScrollContainer({ steps }: { steps: StepData[] }) {
+
+--- components/journey-section/components/desktop/journey-background.tsx ---
+export function JourneyBackground() {
+
+--- components/journey-section/components/desktop/journey-glass-illustration.tsx ---
+export const JourneyGlassIllustration: React.FC<IllustrationProps> = ({
+
+--- components/journey-section/components/desktop/journey-step.tsx ---
+export const JourneyStep: React.FC<StepProps> = ({
+
+--- components/journey-section/components/desktop/journey-path.tsx ---
+export function JourneyPath({ progress }: JourneyPathProps) {
+
+--- components/journey-section/components/mobile/journey-scroll-container-mobile.tsx ---
+export function JourneyScrollContainerMobile({ steps }: { steps: StepData[] }) {
+
+--- components/journey-section/components/mobile/journey-glass-illustration-mobile.tsx ---
+export const JourneyGlassIllustrationMobile: React.FC<
+
+--- components/journey-section/components/mobile/journey-mobile.tsx ---
+export const JourneyMobile: React.FC<{ steps: StepProps[] }> = ({ steps }) => {
+
+--- components/journey-section/components/mobile/journey-path-mobile.tsx ---
+export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
+
+--- hooks/use-media-query.ts ---
+export function useMediaQuery(query: string): boolean {
+
+--- lib/utils.ts ---
+export function cn(...inputs: ClassValue[]) {
+
+
+============================================================
+DEPENDENCIES
+============================================================
+{
+  "dependencies": {
+    "@base-ui/react": "^1.6.0",
+    "@hookform/resolvers": "^5.4.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.42.2",
+    "lucide-react": "^1.24.0",
+    "next": "16.2.10",
+    "nodemailer": "^9.0.3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-hook-form": "^7.81.0",
+    "shadcn": "^4.13.0",
+    "tailwind-merge": "^3.6.0",
+    "tw-animate-css": "^1.4.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/nodemailer": "^8.0.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+
+============================================================
+NPM PACKAGE TREE
+============================================================
+my-app@0.1.0 /Users/amirshakibafar/Code-Hub/Projects/Sarvzadeh/my-app
+├── @base-ui/react@1.6.0
+├── @hookform/resolvers@5.4.0
+├── @tailwindcss/postcss@4.3.2
+├── @types/node@20.19.43
+├── @types/nodemailer@8.0.1
+├── @types/react-dom@19.2.3
+├── @types/react@19.2.17
+├── class-variance-authority@0.7.1
+├── clsx@2.1.1
+├── eslint-config-next@16.2.10
+├── eslint@9.39.5
+├── framer-motion@12.42.2
+├── lucide-react@1.24.0
+├── next@16.2.10
+├── nodemailer@9.0.3
+├── react-dom@19.2.4
+├── react-hook-form@7.81.0
+├── react@19.2.4
+├── shadcn@4.13.0
+├── tailwind-merge@3.6.0
+├── tailwindcss@4.3.2
+├── tw-animate-css@1.4.0
+├── typescript@5.9.3
+└── zod@4.4.3
+

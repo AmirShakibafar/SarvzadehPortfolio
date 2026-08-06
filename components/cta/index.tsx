@@ -1,21 +1,43 @@
-"use client"
-import { CtaInfo } from "./cta-info";
-import { EvaluationForm } from "./evaluation-form";
-import { CtaFeatures } from "./cta-features";
+"use client";
+
+import React from "react";
+// Desktop Components
+import { CtaInfo } from "./desktop/cta-info";
+import { EvaluationForm } from "./desktop/evaluation-form";
+import { CtaFeatures } from "./desktop/cta-features";
+// Mobile Components (Adjust the import paths if they are in the same folder)
+import { CtaInfoMobile } from "./mobile/cta-info-mobile";
+import { EvaluationFormMobile } from "./mobile/evaluation-form-mobile";
+import { CtaFeaturesMobile } from "./mobile/cta-features-mobile";
 
 export default function CtaSection() {
   return (
-    <section dir="rtl" className="relative py-4 lg:py-24 max-w-7xl">
-      {/* Background Decorative Blobs */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-100/40 rounded-full mix-blend-multiply filter blur-3xl opacity-70 -z-10 translate-x-1/3 -translate-y-1/4" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 -z-10 -translate-x-1/3 translate-y-1/4" />
+    <section
+      dir="rtl"
+      // Added overflow-hidden to prevent the large SVG blobs from causing horizontal scrollbars
+      className="relative py-8 lg:py-24 max-w-7xl mx-auto overflow-hidden isolate"
+    >
+      
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <CtaInfo />
-          <EvaluationForm />
+        {/* --- DESKTOP VIEW (Large screens and up) --- */}
+        <div className="hidden lg:block">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <CtaInfo />
+            <EvaluationForm />
+          </div>
+          <CtaFeatures />
         </div>
-        <CtaFeatures />
+
+        {/* --- MOBILE VIEW (Tablets and phones) --- */}
+        <div className="block lg:hidden space-y-12">
+          <div className="flex flex-col gap-10 items-center">
+            <CtaInfoMobile />
+            <EvaluationForm />
+
+          </div>
+          <CtaFeaturesMobile />
+        </div>
       </div>
     </section>
   );

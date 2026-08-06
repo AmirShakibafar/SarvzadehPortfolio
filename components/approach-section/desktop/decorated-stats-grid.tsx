@@ -8,7 +8,7 @@ import { GlassCard } from "@/components/ui/glass-card";
 const gridContainerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
-    opacity: 1,
+    opacity: 0.99, // Forces browser to maintain composite layer for consistent backdrop-filter rendering
     transition: {
       delayChildren: 0.2,
       staggerChildren: 0.15,
@@ -17,10 +17,9 @@ const gridContainerVariants: Variants = {
 };
 
 const cardItemVariants: Variants = {
-  // Reduced slide distance. Animating 'y' on backdrop-filters is extremely expensive.
   hidden: { opacity: 0, y: 15 },
   visible: {
-    opacity: 1,
+    opacity: 0.99, // Prevents glass transparency pop at the end of the animation
     y: 0,
     transition: {
       duration: 0.5,
@@ -53,8 +52,10 @@ const statsData = [
 export function DecoratedStatsGrid() {
   return (
     <div className="relative flex items-center justify-center lg:col-span-7 lg:mt-0 isolate">
-      {/* Background blur pulled entirely out of the Framer Motion tree */}
-      <div className="absolute left-1/2 top-1/2 -z-10 h-full w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[100px] transform-gpu pointer-events-none" />
+      <div
+        className="absolute left-1/2 top-1/2 -z-10 h-[150%] opacity-40 w-[150%] max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 pointer-events-none"
+        aria-hidden="true"
+      />
 
       <motion.div
         variants={gridContainerVariants}
@@ -71,12 +72,14 @@ export function DecoratedStatsGrid() {
             <motion.div
               key={index}
               variants={cardItemVariants}
-              className={`relative h-full transform-gpu ${
+              className={`relative h-full transform-gpu isolate ${
                 index === 2 ? "col-span-2 lg:col-span-1" : "col-span-1"
               }`}
             >
-              {/* Card-specific blur kept static inside the card wrapper, no explicit willChange filter */}
-              <div className="absolute left-1/2 top-1/2 -z-10 h-3/4 w-3/4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/15 blur-2xl transform-gpu pointer-events-none" />
+              <div
+                className="absolute left-1/2 top-1/2 -z-10 h-[150%] w-[150%] opacity-40 -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
+                aria-hidden="true"
+              />
 
               <GlassCard
                 className={`flex h-full flex-col items-center justify-center p-6 text-center transform-gpu ${

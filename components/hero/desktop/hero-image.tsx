@@ -1,21 +1,18 @@
 "use client";
+import doctorImage from "@/public/images/hero/Hero-Image.webp";
 
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { Apple, Activity, Brain } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
 
-interface HeroImageProps {
-  src: string;
-}
-
-export function HeroImage({ src }: HeroImageProps) {
+export function HeroImage() {
   return (
     <div className="relative w-full h-[420px] sm:h-[480px] md:h-[560px] lg:h-[clamp(600px,calc(100svh-120px),850px)] max-w-[800px] flex items-end justify-center z-0 isolate">
       <BackgroundGlow />
       <DecorativeEllipse />
       <GlassBlob />
-      <DoctorImage src={src} />
+      <DoctorImage />
       <FloatingCards />
     </div>
   );
@@ -77,15 +74,16 @@ function DecorativeEllipse() {
   );
 }
 
-function DoctorImage({ src }: { src: string }) {
+function DoctorImage() {
   return (
     <div className="relative w-[85%] h-full lg:w-[100%] max-w-[800px] z-10 translate-x-[2%] isolate [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)] transform-gpu will-change-transform">
       <Image
-        src={src}
+        src={doctorImage}
         alt="Doctor"
         fill
         className="object-contain object-bottom drop-shadow-2xl transform-gpu will-change-transform"
         priority
+        fetchPriority="high"
         sizes="(max-width: 1024px) 85vw, 800px"
       />
     </div>

@@ -99,13 +99,13 @@ export function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
       >
-        {/* Background Blob */}
+        {/* Replaced CSS blur with SVG blob, scaled up to account for baked-in blur spread */}
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 rounded-full bg-primary/25 blur-[100px] -z-10 transform-gpu pointer-events-none"
-          style={{ willChange: "filter, transform" }}
+          className="absolute top-1/2 left-1/2 -z-10 h-[500px] w-[500px] md:h-[750px] md:w-[750px] lg:h-[1000px] lg:w-[1000px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-60 pointer-events-none"
+          aria-hidden="true"
         />
 
-        <HeroImage src="/images/hero/Hero-Image.webp" />
+        <HeroImage />
       </motion.div>
     </main>
   );

@@ -15,6 +15,9 @@ export function GlassBrainArtworkMobile() {
         viewport={{ once: true, margin: "50px 0px", amount: 0.1 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >
+        {/* SVG background blob replacing CSS blur */}
+        <div className="absolute left-1/2 top-1/2 -z-20 h-[150%] w-[150%] opacity-60 -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat -z-10 pointer-events-none" />
+
         {/* Replaced Framer Motion JS loop with native CSS animation for iOS performance */}
         <div className="relative z-10 h-full w-full animate-[pulse_8s_ease-in-out_infinite]">
           <Image

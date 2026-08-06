@@ -1,4 +1,3 @@
-// journey-glass-illustration-mobile.tsx
 "use client";
 
 import React from "react";
@@ -20,17 +19,15 @@ export const JourneyGlassIllustrationMobile: React.FC<
       whileInView={{ scale: 1, y: 0, opacity: 1 }}
       viewport={{ once: true, margin: "50px 0px", amount: 0.05 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      // Removed inline willChange style to prevent persistent memory overhead on iOS
     >
-      {/* Replaced CSS blur-3xl with a lightweight native radial gradient and stripped transform-gpu */}
-      <div className="absolute left-1/2 top-1/2 -z-20 h-[80%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-primary/30 to-transparent pointer-events-none" />
+      <div className="absolute left-1/2 top-1/2 -z-20 opacity-80 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none" />
 
-      {/* Fake Glass Structure replacing the expensive GlassCard and backdrop-blurs */}
-      <div className="absolute inset-4 -z-10 rounded-[2.5rem] bg-white/50 border border-white/50 shadow-[0_8px_20px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.8)] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-white/50 to-transparent pointer-events-none" />
+      {/* Reduced opacity from 50% to 10% so the blob is visible through the card */}
+      <div className="absolute inset-4 -z-10 rounded-[2.5rem] bg-white/10 border border-white/30 shadow-[0_8px_20px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.8)] overflow-hidden">
+        {/* Adjusted gradient opacity to maintain visibility */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-white/10 to-transparent pointer-events-none" />
       </div>
 
-      {/* Replaced JS-driven useFloatingAnimation with native Tailwind CSS keyframes and stripped will-change */}
       <div className="relative z-10 flex h-5/6 w-5/6 items-center justify-center animate-[pulse_6s_ease-in-out_infinite]">
         <Image
           src={src}

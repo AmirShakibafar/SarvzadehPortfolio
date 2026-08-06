@@ -14,7 +14,10 @@ export function QuoteDisplayMobile() {
       viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
     >
-      {/* Removed hidden background blur element completely for mobile performance */}
+      <div
+        className="absolute top-1/2 left-1/2 -z-10 h-[500px] w-[1200px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-35 pointer-events-none"
+        aria-hidden="true"
+      />
 
       <div>
         <span className="inline-block text-sm font-semibold tracking-wide text-primary">
@@ -29,7 +32,6 @@ export function QuoteDisplayMobile() {
         مسیری درمانی، علمی و ماندگار است.
       </p>
 
-      {/* Changed justify-end to justify-center to better align with mobile's text-center layout */}
       <div className="mt-2 flex justify-center">
         <Image
           src="/images/approach/signiture.webp"

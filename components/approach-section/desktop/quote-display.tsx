@@ -36,9 +36,8 @@ export function QuoteDisplay() {
       whileInView="visible"
       viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
     >
-      {/* Background blur is already correctly hidden on mobile via md:block */}
       <div
-        className="hidden md:block absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none"
+        className="hidden md:block absolute -z-10 top-1/2 opacity-20 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
         aria-hidden="true"
       />
 

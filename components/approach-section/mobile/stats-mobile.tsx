@@ -29,7 +29,6 @@ const statsData = [
 export function DecoratedStatsGridMobile() {
   return (
     <div className="relative flex items-center justify-center isolate">
-      {/* Flattened staggered animation into a single container fade */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -43,11 +42,16 @@ export function DecoratedStatsGridMobile() {
           {statsData.map((stat, index) => (
             <div
               key={index}
-              className={`relative h-full ${
+              className={`relative h-full isolate ${
                 index === 2 ? "col-span-2" : "col-span-1"
               }`}
             >
-              {/* Fake Glass Structure replacing GlassCard and backdrop-blur */}
+              {/* Blob placed individually behind each card */}
+              <div
+                className="absolute top-1/2 left-1/2 -z-10 h-[200%] w-[200%] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-60 pointer-events-none"
+                aria-hidden="true"
+              />
+
               <div
                 className={`
                   relative flex h-full flex-col items-center justify-center p-6 text-center 
@@ -55,13 +59,13 @@ export function DecoratedStatsGridMobile() {
                   shadow-[0_8px_20px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.8)]
                   ${
                     stat.highlight
-                      ? "bg-white/70 border border-primary/20"
-                      : "bg-white/50 border border-white/50"
+                      ? "bg-white/40 border border-primary/20"
+                      : "bg-white/20 border border-white/30"
                   }
                 `}
               >
                 {/* Surface Glare Layer */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-white/50 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-white/20 to-transparent pointer-events-none" />
 
                 {/* Z-Index Content */}
                 <div className="relative z-10 flex flex-col items-center">

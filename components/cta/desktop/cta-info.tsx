@@ -32,12 +32,17 @@ const itemVariants: Variants = {
 export function CtaInfo() {
   return (
     <motion.div
-      className="flex flex-col space-y-2 isolate"
+      className="relative flex flex-col space-y-2 isolate"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
     >
+      <div
+        className="absolute left-1/2 top-1/2 -z-10 h-[500px] opacity-40 w-[500px] md:h-[700px] md:w-[700px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
+        aria-hidden="true"
+      />
+
       <motion.div
         variants={itemVariants}
         className="transform-gpu will-change-transform"

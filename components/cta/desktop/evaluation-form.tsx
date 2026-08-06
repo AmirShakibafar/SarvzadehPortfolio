@@ -15,7 +15,7 @@ import {
 import {
   EVALUATION_QUESTIONS,
   type EvaluationQuestion,
-} from "./evaluation-constants";
+} from "../evaluation-constants";
 
 interface ContactData {
   phone: string;
@@ -74,8 +74,8 @@ export function EvaluationForm() {
   return (
     <div className="relative isolate">
       <div
-        className="absolute -inset-4 bg-primary/20 rounded-[2rem] blur-2xl -z-10 transform-gpu pointer-events-none"
-        style={{ willChange: "filter" }}
+        className="absolute left-1/2 top-1/2 -z-10 h-[150%] w-[150%] max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-60 pointer-events-none"
+        aria-hidden="true"
       />
       <GlassCard className="p-6 md:p-8 lg:p-10 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-white/60 bg-white/40 backdrop-blur-2xl min-h-[420px] flex flex-col relative z-10 overflow-hidden transform-gpu">
         {!isComplete && (
@@ -264,8 +264,8 @@ function SuccessStep({ onReset }: { onReset: () => void }) {
     <div className="flex flex-col items-center justify-center text-center space-y-4 h-full py-8">
       <div className="relative isolate">
         <div
-          className="absolute inset-0 bg-teal-400 blur-xl opacity-20 rounded-full transform-gpu pointer-events-none"
-          style={{ willChange: "filter" }}
+          className="absolute left-1/2 top-1/2 -z-10 h-[200px] w-[200px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-60 pointer-events-none"
+          aria-hidden="true"
         />
         <div className="h-24 w-24 bg-gradient-to-br from-teal-100 to-white border border-white rounded-full flex items-center justify-center text-teal-500 mb-4 shadow-xl relative z-10 transform-gpu">
           <CheckCircle2 className="h-12 w-12" />
