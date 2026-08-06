@@ -119,7 +119,8 @@ const cardItem: Variants = {
 function FloatingCards() {
   return (
     <motion.div
-      className="absolute inset-0 z-20 pointer-events-none isolate"
+      // Added `hidden md:block` to hide the container on screens smaller than 768px
+      className="hidden md:block absolute inset-0 z-20 pointer-events-none isolate"
       variants={staggerContainer}
       initial="hidden"
       animate="visible"
