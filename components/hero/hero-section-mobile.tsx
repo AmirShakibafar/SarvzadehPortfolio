@@ -41,7 +41,7 @@ export function HeroSectionMobile() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="relative flex flex-col items-center w-full px-4 pt-8 pb-10 gap-6 isolate overflow-hidden"
+      className="relative flex flex-col items-center w-full px-4 pb-10 gap-6 isolate overflow-hidden"
     >
       {/* Optimized Background Glow */}
       <div className="absolute top-[-40px] left-1/2 -translate-x-1/2 w-[140%] h-[320px] rounded-full bg-primary/20 blur-[40px] opacity-70 -z-10 pointer-events-none" />
@@ -57,7 +57,7 @@ export function HeroSectionMobile() {
           fill
           priority
           sizes="(max-width: 768px) 100vw, 400px"
-          className="object-contain object-bottom"
+          className="object-contain object-bottom [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)]"
         />
 
         {/* Floating Cards Container - Positioned absolutely around the image */}
@@ -69,7 +69,7 @@ export function HeroSectionMobile() {
           >
             <CompactFloatingCard
               title="مدیریت ام‌اس"
-              icon={<Brain className="w-4 h-4 text-primary" />}
+              icon={<Brain className="w-3.5 h-3.5 text-primary" />}
             />
           </motion.div>
 
@@ -80,7 +80,7 @@ export function HeroSectionMobile() {
           >
             <CompactFloatingCard
               title="کاهش خستگی"
-              icon={<Activity className="w-4 h-4 text-primary" />}
+              icon={<Activity className="w-3.5 h-3.5 text-primary" />}
             />
           </motion.div>
 
@@ -91,13 +91,10 @@ export function HeroSectionMobile() {
           >
             <CompactFloatingCard
               title="سلامت سیستم عصبی"
-              icon={<Apple className="w-4 h-4 text-primary" />}
+              icon={<Apple className="w-3.5 h-3.5 text-primary" />}
             />
           </motion.div>
         </div>
-
-        {/* Safer fade instead of mask-image */}
-        <div className="absolute bottom-0 w-full h-6 bg-gradient-to-t from-background to-transparent z-20" />
       </motion.div>
 
       {/* Typography */}
@@ -165,21 +162,21 @@ function CompactFloatingCard({
   return (
     <div
       className="
-        flex items-center gap-2 
-        px-2.5 py-1.5 
-        rounded-2xl 
-        bg-white/60 
-        border border-white/60 
-        shadow-[0_4px_16px_rgba(0,0,0,0.05),inset_0_1px_1px_rgba(255,255,255,1)]
-        backdrop-blur-sm
+        flex items-center gap-1.5 
+        px-2.5 py-1 
+        rounded-full 
+        bg-white/40 
+        border border-white/30 
+        shadow-[0_8px_20px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.4)]
+        backdrop-blur-md
         transform-gpu
         pointer-events-auto
       "
     >
-      <div className="flex items-center justify-center w-7 h-7 rounded-full bg-primary/15 shadow-[inset_0_0_8px_rgba(255,255,255,0.6)]">
+      <div className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/10 shadow-[inset_0_0_8px_rgba(255,255,255,0.3)]">
         {icon}
       </div>
-      <span className="text-[11px] font-bold text-foreground whitespace-nowrap">
+      <span className="text-[11px] font-bold text-foreground/90 whitespace-nowrap pl-1">
         {title}
       </span>
     </div>

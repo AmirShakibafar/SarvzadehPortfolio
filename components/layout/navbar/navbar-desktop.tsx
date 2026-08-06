@@ -6,7 +6,7 @@ import { ArrowLeft, Leaf } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NavItem } from "@/components/ui/nav-item";
 
-export function Navbar() {
+export function NavbarDesktop() {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
 
