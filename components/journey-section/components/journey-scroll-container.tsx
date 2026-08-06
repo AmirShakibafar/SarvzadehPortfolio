@@ -4,12 +4,22 @@ import React, { useRef } from "react";
 import { useJourneyProgress } from "../hooks/useJourney";
 import { JourneyPath } from "./journey-path";
 import { JourneyBackground } from "./journey-background";
+import { JourneyStep } from "./journey-step";
+import { JourneyMobile } from "./journey-mobile"; // New import
 
-export function JourneyScrollContainer({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+// Ensure this matches your data structure
+interface StepData {
+  title: string;
+  text: string;
+  image: string;
+  duration: string;
+  chips: string[];
+  reassurance: string;
+  trustBadge: string;
+  icon: React.ReactNode;
+}
+
+export function JourneyScrollContainer({ steps }: { steps: StepData[] }) {
   const containerRef = useRef<HTMLElement>(null!);
   const progress = useJourneyProgress(containerRef);
 
@@ -19,9 +29,8 @@ export function JourneyScrollContainer({
       dir="rtl"
       className="relative w-full bg-background font-sans"
     >
-      {" "}
       <JourneyBackground />
-      ```
+
       <div className="relative w-full">
         {/* Path only on desktop */}
         <div className="hidden md:block">
@@ -32,7 +41,6 @@ export function JourneyScrollContainer({
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           {/* TITLE */}
           <div className="relative z-20 flex flex-col items-start text-right max-w-2xl mb-6 md:mb-16 pt-6 md:pt-8 isolate">
-            {/* Background Blob */}
             <div className="absolute right-0 top-1/2 -z-10 h-[180px] w-[180px] md:h-[250px] md:w-[250px] -translate-y-1/2 translate-x-1/4 rounded-full bg-primary/20 blur-[80px]" />
 
             <span className="inline-block text-sm font-semibold tracking-wide text-primary">
@@ -50,8 +58,20 @@ export function JourneyScrollContainer({
           </div>
 
           {/* STEPS */}
-          <div className="flex flex-col gap-14 md:gap-32 pt-6 md:pt-10 pb-20 md:pb-64">
-            {children}
+          <div className="pt-10 md:pb-64">
+            {/* Desktop View */}
+            <div className="hidden md:flex flex-col gap-32">
+              {steps.map((step, index) => (
+                <JourneyStep
+                  key={index}
+                  {...step}
+                  align={index % 2 === 0 ? "left" : "right"}
+                />
+              ))}
+            </div>
+
+            {/* Mobile View */}
+            <JourneyMobile steps={steps} />
           </div>
         </div>
       </div>
