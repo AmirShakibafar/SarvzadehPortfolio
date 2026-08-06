@@ -3,7 +3,8 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 import { GlassCard } from "@/components/ui/glass-card";
-import { JourneyGlassIllustration } from "./journey-glass-illustration";
+import { JourneyGlassIllustration } from "../desktop/journey-glass-illustration";
+import { JourneyGlassIllustrationMobile } from "./journey-glass-illustration-mobile";
 
 interface StepProps {
   title: string;
@@ -66,7 +67,10 @@ export const JourneyMobile: React.FC<{ steps: StepProps[] }> = ({ steps }) => {
                 variants={itemVariants}
                 className={`w-[80%] max-w-[280px] ${isEven ? "self-start" : "self-end"}`}
               >
-                <JourneyGlassIllustration src={step.image} alt={step.title} />
+                <JourneyGlassIllustrationMobile
+                  src={step.image}
+                  alt={step.title}
+                />
               </motion.div>
 
               {/* Text Block (Mirrors Desktop Typography) */}

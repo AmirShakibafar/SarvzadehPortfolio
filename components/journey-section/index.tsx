@@ -1,6 +1,7 @@
 import React from "react";
 import { JOURNEY_STEPS } from "./constants/journey";
-import { JourneyScrollContainer } from "./components/journey-scroll-container";
+import { JourneyScrollContainer } from "./components/desktop/journey-scroll-container";
+import { JourneyScrollContainerMobile } from "./components/mobile/journey-scroll-container-mobile";
 
 export const JourneySection: React.FC = () => {
   // Map the raw data to instantiate the icon component for each step
@@ -14,8 +15,9 @@ export const JourneySection: React.FC = () => {
   });
 
   return (
-    <section className="relative">
+    <div className="relative">
       <JourneyScrollContainer steps={formattedSteps} />
-    </section>
+      <JourneyScrollContainerMobile steps={formattedSteps} />
+    </div>
   );
 };

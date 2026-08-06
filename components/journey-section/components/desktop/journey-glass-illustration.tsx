@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion, TargetAndTransition } from "framer-motion";
-import { useFloatingAnimation } from "../hooks/useJourney";
+import { useFloatingAnimation } from "../../hooks/useJourney";
 import { GlassCard } from "@/components/ui/glass-card";
 
 interface IllustrationProps {
