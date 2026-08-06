@@ -1,5 +1,5 @@
-import { HeroSection as DesktopHero } from "./hero-section-desktop";
-import { HeroSectionMobile as MobileHero } from "./hero-section-mobile";
+import { HeroSection as DesktopHero } from "./desktop/hero-section-desktop";
+import { HeroSectionMobile as MobileHero } from "./mobile/hero-section-mobile";
 
 export function HeroSection() {
   return (
