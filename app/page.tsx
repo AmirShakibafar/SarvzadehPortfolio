@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/navbar";
-import { HeroSection } from "@/components/hero/hero-section";
+// Updated to import the wrapper component using snake_case
+import { HeroSection } from "@/components/hero/hero-section-index";
 import { JourneySection } from "@/components/journey-section";
 import WhyTrustMeSection from "@/components/approach-section/why-trust-me-section";
 import CtaSection from "@/components/cta/index";
