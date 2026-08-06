@@ -36,16 +36,13 @@ export function QuoteDisplay() {
       whileInView="visible"
       viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
     >
-      {/* Teal blob background */}
+      {/* Background blur is already correctly hidden on mobile via md:block */}
       <div
-        className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none"
+        className="hidden md:block absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none"
         aria-hidden="true"
       />
 
-      <motion.div
-        variants={itemVariants}
-        className="transform-gpu will-change-transform"
-      >
+      <motion.div variants={itemVariants}>
         <span className="inline-block text-sm font-semibold tracking-wide text-primary">
           رویکرد من
         </span>
@@ -53,29 +50,26 @@ export function QuoteDisplay() {
 
       <motion.div
         variants={itemVariants}
-        className="mt-2 text-8xl leading-none text-primary/15 transform-gpu will-change-transform"
+        className="mt-2 text-8xl leading-none text-primary/15"
       >
         ❝
       </motion.div>
 
       <motion.p
         variants={itemVariants}
-        className="mt-6 text-2xl font-light leading-[2.1] text-foreground md:text-3xl transform-gpu will-change-transform"
+        className="mt-6 text-2xl font-light leading-[2.1] text-foreground md:text-3xl"
       >
         هدف من فقط تجویز یک رژیم غذایی نیست؛ بلکه همراهی با هر بیمار برای ساختن
         مسیری درمانی، علمی و ماندگار است.
       </motion.p>
 
-      <motion.div
-        variants={itemVariants}
-        className="mt-2 flex justify-end transform-gpu will-change-transform"
-      >
+      <motion.div variants={itemVariants} className="mt-2 flex justify-end">
         <Image
           src="/images/approach/signiture.webp"
           alt="امضا دکتر رضا سروزاده"
           width={240}
           height={160}
-          className="h-40 w-auto object-contain transform-gpu"
+          className="h-40 w-auto object-contain"
         />
       </motion.div>
     </motion.div>

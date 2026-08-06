@@ -1,8 +1,8 @@
 import { Navbar } from "@/components/layout/navbar";
-// Updated to import the wrapper component using snake_case
+// Corrected: Using kebab-case (not snake_case) to maintain strict naming conventions
 import { HeroSection } from "@/components/hero/hero-section-index";
 import { JourneySection } from "@/components/journey-section";
-import WhyTrustMeSection from "@/components/approach-section/why-trust-me-section";
+import WhyTrustMeSection from "@/components/approach-section";
 import CtaSection from "@/components/cta/index";
 import { Footer } from "@/components/layout/footer";
 
