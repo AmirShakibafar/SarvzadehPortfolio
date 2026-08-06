@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { BackgroundDecorations } from "./bg-decoration";
-import { SectionHeader } from "./section-header";
+import { SectionHeader } from "../section-header";
 import { GlassBrainArtwork } from "./glass-brain-artwork";
 import { QuoteDisplay } from "./quote-display";
 import { DecoratedStatsGrid } from "./decorated-stats-grid";

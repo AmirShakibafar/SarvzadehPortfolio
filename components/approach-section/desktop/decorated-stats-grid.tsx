@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, Variants } from "framer-motion";
-import { DotPattern } from "../ui/dot-pattern";
+import { DotPattern } from "../../ui/dot-pattern";
 import { GlassCard } from "@/components/ui/glass-card";
 
 const gridContainerVariants: Variants = {

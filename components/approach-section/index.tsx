@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import WhyTrustMeSectionDesktop from "./why-trust-me-section";
-import WhyTrustMeSectionMobile from "./why-trust-me-section-mobile";
+import WhyTrustMeSectionDesktop from "./desktop/why-trust-me-section";
+import WhyTrustMeSectionMobile from "./mobile/why-trust-me-section-mobile";
 
 export default function WhyTrustMeSection() {
   return (
