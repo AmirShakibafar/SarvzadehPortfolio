@@ -16,12 +16,13 @@ interface StepProps {
   icon: React.ReactNode;
 }
 
+// Simplified to a pure opacity fade. No vertical shifting (y: 20),
+// which removes layout calculation overhead on mobile browsers.
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.4, ease: "easeOut" },
   },
 };
 
