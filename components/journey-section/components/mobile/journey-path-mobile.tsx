@@ -1,8 +1,7 @@
-// journey-path-mobile.tsx
 "use client";
 
 import React from "react";
-import { motion, MotionValue, useTransform } from "framer-motion";
+import { motion, MotionValue, useTransform, useSpring } from "framer-motion";
 
 interface JourneyPathMobileProps {
   progress: MotionValue<number>;
@@ -16,9 +15,16 @@ export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
     C1650 4600 1800 4800 1800 4950
   `;
 
-  const distance = useTransform(progress, (v) => `${v * 100}%`);
-  const heartOpacity = useTransform(progress, [0.985, 1], [0, 0.9]);
-  const heartScale = useTransform(progress, [0.97, 1], [0.85, 1.15]);
+  // MUST apply a spring. Mobile CPUs cannot compute SVG path lengths 1:1 with scroll events.
+  const smoothProgress = useSpring(progress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  const distance = useTransform(smoothProgress, (v) => `${v * 100}%`);
+  const heartOpacity = useTransform(smoothProgress, [0.985, 1], [0, 0.9]);
+  const heartScale = useTransform(smoothProgress, [0.97, 1], [0.85, 1.15]);
 
   return (
     <div className="absolute inset-0 pointer-events-none z-10">
@@ -40,7 +46,6 @@ export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
           </radialGradient>
         </defs>
 
-        {/* Ambient background path */}
         <path
           d={path}
           stroke="#0DDCD5"
@@ -49,7 +54,6 @@ export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
           fill="none"
         />
 
-        {/* Glass tube */}
         <path
           d={path}
           stroke="#EEF4F6"
@@ -58,7 +62,6 @@ export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
           strokeLinecap="round"
         />
 
-        {/* Highlight */}
         <path
           d={path}
           stroke="white"
@@ -69,7 +72,6 @@ export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
           transform="translate(-2 -2)"
         />
 
-        {/* Simulated Glow - Removed willChange for performance */}
         <motion.path
           d={path}
           stroke="url(#activeGradient)"
@@ -77,22 +79,19 @@ export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
           opacity={0.2}
           fill="none"
           strokeLinecap="round"
-          style={{ pathLength: progress }}
+          style={{ pathLength: smoothProgress }}
         />
 
-        {/* Active glowing path - Removed willChange for performance */}
         <motion.path
           d={path}
           stroke="url(#activeGradient)"
           strokeWidth={12}
           fill="none"
           strokeLinecap="round"
-          style={{ pathLength: progress }}
+          style={{ pathLength: smoothProgress }}
         />
 
-        {/* --- START NODE --- */}
         <g transform="translate(1800, 80)">
-          {/* Replaced Framer Motion continuous loop with native CSS animation */}
           <circle
             r={50}
             fill="none"
@@ -131,14 +130,8 @@ export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
           <circle cx="-6" cy="-6" r={4} fill="white" opacity={0.9} />
         </g>
 
-        {/* --- END NODE --- */}
         <g transform="translate(1800, 4950)">
-          <motion.g
-            style={{
-              opacity: heartOpacity,
-              scale: heartScale,
-            }}
-          >
+          <motion.g style={{ opacity: heartOpacity, scale: heartScale }}>
             <circle
               r={36}
               fill="rgba(255,255,255,0.7)"
@@ -157,7 +150,6 @@ export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
           </motion.g>
         </g>
 
-        {/* Traveling orb - Replaced JS continuous scale animation with CSS ping/pulse class & removed willChange */}
         <motion.g
           className="animate-[pulse_2s_ease-in-out_infinite]"
           style={{

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, MotionValue, useTransform } from "framer-motion";
+import { motion, MotionValue, useTransform, useSpring } from "framer-motion";
 
 interface JourneyPathProps {
   progress: MotionValue<number>;
@@ -15,9 +15,16 @@ export function JourneyPath({ progress }: JourneyPathProps) {
     C1650 4600 1800 4800 1800 4950
   `;
 
-  const distance = useTransform(progress, (v) => `${v * 100}%`);
-  const heartOpacity = useTransform(progress, [0.985, 1], [0, 0.9]);
-  const heartScale = useTransform(progress, [0.97, 1], [0.85, 1.15]);
+  // Smooth the scroll raw value to prevent main-thread thrashing
+  const smoothProgress = useSpring(progress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  const distance = useTransform(smoothProgress, (v) => `${v * 100}%`);
+  const heartOpacity = useTransform(smoothProgress, [0.985, 1], [0, 0.9]);
+  const heartScale = useTransform(smoothProgress, [0.97, 1], [0.85, 1.15]);
 
   return (
     <div className="absolute inset-0 pointer-events-none z-10">
@@ -68,7 +75,7 @@ export function JourneyPath({ progress }: JourneyPathProps) {
           transform="translate(-2 -2)"
         />
 
-        {/* Simulated Glow (Replaces feGaussianBlur) */}
+        {/* Simulated Glow */}
         <motion.path
           d={path}
           stroke="url(#activeGradient)"
@@ -76,7 +83,7 @@ export function JourneyPath({ progress }: JourneyPathProps) {
           opacity={0.2}
           fill="none"
           strokeLinecap="round"
-          style={{ pathLength: progress, willChange: "stroke-dashoffset" }}
+          style={{ pathLength: smoothProgress }}
         />
 
         {/* Active glowing path */}
@@ -86,12 +93,11 @@ export function JourneyPath({ progress }: JourneyPathProps) {
           strokeWidth={12}
           fill="none"
           strokeLinecap="round"
-          style={{ pathLength: progress, willChange: "stroke-dashoffset" }}
+          style={{ pathLength: smoothProgress }}
         />
 
         {/* --- START NODE --- */}
         <g transform="translate(1800, 80)">
-          {/* Reduced complex overlapping layers */}
           <motion.circle
             r={50}
             fill="none"
@@ -137,7 +143,6 @@ export function JourneyPath({ progress }: JourneyPathProps) {
             style={{
               opacity: heartOpacity,
               scale: heartScale,
-              willChange: "opacity, transform",
             }}
           >
             <circle
@@ -165,7 +170,6 @@ export function JourneyPath({ progress }: JourneyPathProps) {
           style={{
             offsetPath: `path('${path}')`,
             offsetDistance: distance,
-            willChange: "offset-distance, transform",
           }}
         >
           <circle r={24} fill="#0DDCD5" opacity={0.2} />

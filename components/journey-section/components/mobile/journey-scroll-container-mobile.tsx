@@ -1,4 +1,3 @@
-// journey-scroll-container-mobile.tsx
 "use client";
 
 import React, { useRef } from "react";
@@ -23,20 +22,12 @@ export function JourneyScrollContainerMobile({ steps }: { steps: StepData[] }) {
     <section
       ref={containerRef}
       dir="rtl"
-      // Added `block md:hidden` to ensure it only shows on mobile
       className="relative w-full bg-background font-sans overflow-hidden block md:hidden"
     >
       <JourneyBackground />
 
       <div className="relative w-full">
-        {/* 
-          REMOVED: JourneyPathMobile. 
-          The mobile view should solely rely on the vertical layout inside <JourneyMobile /> 
-        */}
-
-        {/* CONTENT */}
         <div className="relative z-10 max-w-7xl mx-auto px-6">
-          {/* TITLE */}
           <div className="relative z-20 flex flex-col items-start text-right max-w-2xl mb-6 pt-6 isolate">
             <div className="absolute right-0 top-1/2 -z-10 h-[180px] w-[180px] -translate-y-1/2 translate-x-1/4 rounded-full bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-primary/20 to-transparent pointer-events-none" />
 
@@ -54,7 +45,6 @@ export function JourneyScrollContainerMobile({ steps }: { steps: StepData[] }) {
             </p>
           </div>
 
-          {/* STEPS */}
           <div className="pt-10">
             <JourneyMobile steps={steps} />
           </div>

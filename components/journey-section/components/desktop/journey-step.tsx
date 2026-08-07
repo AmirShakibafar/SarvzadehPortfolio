@@ -67,21 +67,21 @@ export const JourneyStep: React.FC<StepProps> = ({
       <div className="flex w-full flex-1 flex-col gap-5">
         <motion.span
           variants={itemVariants}
-          className="text-sm font-medium text-primary will-change-transform"
+          className="text-sm font-medium text-primary"
         >
           {duration}
         </motion.span>
 
         <motion.h3
           variants={itemVariants}
-          className="text-balance text-3xl font-bold leading-snug text-foreground will-change-transform"
+          className="text-balance text-3xl font-bold leading-snug text-foreground"
         >
           {title}
         </motion.h3>
 
         <motion.p
           variants={itemVariants}
-          className="text-lg leading-relaxed text-muted-foreground will-change-transform"
+          className="text-lg leading-relaxed text-muted-foreground"
         >
           {text}
         </motion.p>
@@ -89,7 +89,7 @@ export const JourneyStep: React.FC<StepProps> = ({
         {/* Feature Pills */}
         <motion.div
           variants={itemVariants}
-          className="mt-2 flex flex-wrap gap-2 will-change-transform"
+          className="mt-2 flex flex-wrap gap-2"
         >
           {chips.map((chip, idx) => (
             <span
@@ -102,11 +102,8 @@ export const JourneyStep: React.FC<StepProps> = ({
         </motion.div>
 
         {/* Bottom Glass Card */}
-        <motion.div
-          variants={itemVariants}
-          className="relative isolate mt-6 transform-gpu will-change-transform"
-        >
-          <GlassCard className="rounded-[24px] p-6 transform-gpu">
+        <motion.div variants={itemVariants} className="relative isolate mt-6">
+          <GlassCard className="rounded-[24px] p-6">
             <div className="mb-3 flex items-center gap-3">
               {icon}
               <h4 className="text-balance font-semibold leading-snug text-foreground">
