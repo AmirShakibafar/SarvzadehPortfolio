@@ -2,12 +2,31 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* Regular */
+@font-face {
+  font-family: "Vazir";
+  src: url("/fonts/vazir/Vazirmatn-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vazir";
+  src: url("/fonts/vazir/Vazirmatn-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-vazir), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-lateef), ui-serif, Georgia, serif;
-  --font-mono: var(--font-geist-mono);
+  --font-sans:
+    "Vazir", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+
+  --font-serif: Georgia, Cambria, "Times New Roman", serif;
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -48,77 +67,37 @@
 }
 
 :root {
-  /* Brand primary color */
   --primary: rgb(13, 220, 213);
-  /* Text color on top of primary background */
   --primary-foreground: #ffffff;
-
-  /* Secondary interactive elements and backgrounds */
   --secondary: #ebf5f5;
-  /* Text color on top of secondary background */
   --secondary-foreground: #2a5a5c;
-
-  /* Main application body background */
   --background: #ffffff;
-  /* Main application text color */
   --foreground: #242424;
-
-  /* Background color for card components */
   --card: #ffffff;
-  /* Text color inside card components */
   --card-foreground: #242424;
-
-  /* Background color for dropdowns, tooltips, and popovers */
   --popover: #ffffff;
-  /* Text color inside popovers */
   --popover-foreground: #242424;
-
-  /* Background for muted elements (e.g., disabled states or subtle backgrounds) */
   --muted: #f7f7f7;
-  /* Text color for secondary/faded text */
   --muted-foreground: #848484;
-
-  /* Background color for hover states and subtle highlights */
   --accent: #f7f7f7;
-  /* Text color on top of accent backgrounds */
   --accent-foreground: #343434;
-
-  /* Background color for errors, deletions, or destructive actions */
   --destructive: #e23624;
-
-  /* Default border color for standard elements */
   --border: #eaeaea;
-  /* Border color specific to form inputs */
   --input: #eaeaea;
-  /* Color of the focus ring around active elements (accessibility) */
   --ring: #b0b0b0;
-
-  /* Sequential colors for data visualization and charts */
   --chart-1: #dedede;
   --chart-2: #848484;
   --chart-3: #666666;
   --chart-4: #545454;
   --chart-5: #3c3c3c;
-
-  /* Global border radius base value */
   --radius: 0.625rem;
-
-  /* Sidebar specific variables */
-  /* Main sidebar background */
   --sidebar: #fafafa;
-  /* Main sidebar text color */
   --sidebar-foreground: #242424;
-  /* Sidebar primary accent background */
   --sidebar-primary: #343434;
-  /* Text color on sidebar primary accent */
   --sidebar-primary-foreground: #fafafa;
-  /* Hover/active state background in sidebar */
   --sidebar-accent: #f7f7f7;
-  /* Hover/active state text color in sidebar */
   --sidebar-accent-foreground: #343434;
-  /* Border separating sidebar from content */
   --sidebar-border: #eaeaea;
-  /* Focus ring color for sidebar interactive elements */
   --sidebar-ring: #b0b0b0;
 }
 

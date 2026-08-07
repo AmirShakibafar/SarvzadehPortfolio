@@ -73,15 +73,28 @@ function DecorativeEllipse() {
 
 function DoctorImage() {
   return (
-    <div className="relative w-[85%] h-full max-w-[800px] z-10 translate-x-[2%] isolate ">
+    <div className="relative z-10 w-full flex items-center justify-center">
       <Image
         src={doctorImage}
         alt="Doctor"
-        fill
         priority
         fetchPriority="high"
-        sizes="(max-width: 768px) 85vw, 800px"
-        className="object-contain object-bottom drop-shadow-2xl"
+        placeholder="empty"
+        sizes="
+          (max-width: 640px) 85vw,
+          (max-width: 1024px) 60vw,
+          (max-width: 1280px) 45vw,
+          420px
+        "
+        className="
+          w-full h-auto
+          max-w-[320px]
+          sm:max-w-[380px]
+          md:max-w-[420px]
+          lg:max-w-[460px]
+          object-contain
+          select-none
+        "
       />
     </div>
   );
