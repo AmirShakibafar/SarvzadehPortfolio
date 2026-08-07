@@ -21,7 +21,7 @@ export function CtaFeaturesMobile() {
           bg-contain
           bg-center
           bg-no-repeat
-          opacity-30
+          opacity-20
           pointer-events-none
         "
         aria-hidden="true"

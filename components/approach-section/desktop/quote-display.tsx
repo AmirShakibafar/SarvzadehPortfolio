@@ -37,7 +37,7 @@ export function QuoteDisplay() {
       viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
     >
       <div
-        className="hidden md:block absolute -z-10 top-1/2 opacity-20 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
+        className="hidden md:block absolute -z-10 top-1/2 opacity-10 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
         aria-hidden="true"
       />
 

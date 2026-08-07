@@ -20,7 +20,7 @@ export const JourneyGlassIllustrationMobile: React.FC<
       viewport={{ once: true, margin: "50px 0px", amount: 0.05 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      <div className="absolute left-1/2 top-1/2 -z-20 opacity-80 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none" />
+      <div className="absolute left-1/2 top-1/2 -z-20 opacity-60 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none" />
 
       {/* Reduced opacity from 50% to 10% so the blob is visible through the card */}
       <div className="absolute inset-4 -z-10 rounded-[2.5rem] bg-white/10 border border-white/30 shadow-[0_8px_20px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.8)] overflow-hidden">

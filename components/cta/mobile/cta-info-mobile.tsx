@@ -18,7 +18,7 @@ export function CtaInfoMobile() {
     >
       {/* Mobile-scaled Background Blob */}
       <div
-        className="absolute left-1/2 top-1/2 -z-10 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-60 pointer-events-none"
+        className="absolute left-1/2 top-1/2 -z-10 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 pointer-events-none"
         aria-hidden="true"
       />
 

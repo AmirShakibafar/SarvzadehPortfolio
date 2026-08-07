@@ -36,7 +36,7 @@ export function DecoratedStatsGridMobile() {
         transition={{ duration: 0.4, ease: "easeOut" }}
         className="relative w-full"
       >
-        <DotPattern className="-right-4 -top-4 h-24 w-24 opacity-30" />
+        <DotPattern className="-right-4 -top-4 h-24 w-24 opacity-20" />
 
         <div className="grid w-full grid-cols-2 gap-4">
           {statsData.map((stat, index) => (
@@ -48,7 +48,7 @@ export function DecoratedStatsGridMobile() {
             >
               {/* Blob placed individually behind each card */}
               <div
-                className="absolute top-1/2 left-1/2 -z-10 h-[200%] w-[200%] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-60 pointer-events-none"
+                className="absolute top-1/2 left-1/2 -z-10 h-[200%] w-[200%] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 pointer-events-none"
                 aria-hidden="true"
               />
 

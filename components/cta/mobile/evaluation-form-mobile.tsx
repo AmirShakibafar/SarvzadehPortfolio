@@ -75,7 +75,7 @@ export function EvaluationFormMobile() {
     <div className="relative isolate w-full">
       {/* Mobile-scaled Background Blob */}
       <div
-        className="absolute left-1/2 top-1/2 -z-10 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-60 pointer-events-none"
+        className="absolute left-1/2 top-1/2 -z-10 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 pointer-events-none"
         aria-hidden="true"
       />
 
@@ -277,7 +277,7 @@ function ContactStep({
       <Button
         type="submit"
         disabled={isSubmitting || !contactData.phone}
-        className="w-full h-12 rounded-2xl bg-gradient-to-l from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-white font-bold text-base flex items-center justify-center gap-2 shadow-md shadow-teal-500/20 transition-opacity disabled:opacity-70"
+        className="w-full h-12 rounded-2xl bg-gradient-to-l from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-white font-bold text-base flex items-center justify-center gap-2 shadow-md shadow-teal-500/20 transition-opacity disabled:opacity-50"
       >
         {isSubmitting ? (
           <Loader2 className="h-4 w-4 animate-spin" />
@@ -295,7 +295,7 @@ function SuccessStep({ onReset }: { onReset: () => void }) {
     <div className="flex flex-col items-center justify-center text-center space-y-4 h-full py-6">
       <div className="relative isolate">
         <div
-          className="absolute left-1/2 top-1/2 -z-10 h-[150px] w-[150px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-60 pointer-events-none"
+          className="absolute left-1/2 top-1/2 -z-10 h-[150px] w-[150px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 pointer-events-none"
           aria-hidden="true"
         />
         <div className="h-20 w-20 bg-gradient-to-br from-teal-100 to-white border border-white rounded-full flex items-center justify-center text-teal-500 mb-2 shadow-lg relative z-10">

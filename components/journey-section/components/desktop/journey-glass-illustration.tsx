@@ -27,7 +27,7 @@ export const JourneyGlassIllustration: React.FC<IllustrationProps> = ({
       style={{ willChange: "transform, opacity" }}
     >
       {/* Increased container size to 150% to account for the baked-in blur spread */}
-      <div className="absolute left-1/2 top-1/2 -z-20 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2 opacity-60 pointer-events-none">
+      <div className="absolute left-1/2 top-1/2 -z-20 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2 opacity-40 pointer-events-none">
         <Image
           src="/blob.svg"
           alt=""

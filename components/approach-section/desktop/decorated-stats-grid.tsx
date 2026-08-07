@@ -64,7 +64,7 @@ export function DecoratedStatsGrid() {
         viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
         className="relative w-full max-w-2xl"
       >
-        <DotPattern className="-right-8 -top-8 h-32 w-32 opacity-60" />
+        <DotPattern className="-right-8 -top-8 h-32 w-32 opacity-40" />
         <DotPattern className="-bottom-8 -left-8 h-32 w-32 opacity-40" />
 
         <div className="grid w-full grid-cols-2 gap-6 lg:grid-cols-3 lg:gap-6">
