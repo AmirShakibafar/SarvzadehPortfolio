@@ -5,20 +5,27 @@ import { ShieldCheck, UserCircle, Zap } from "lucide-react";
 export function CtaFeatures() {
   return (
     <div className="relative mt-16 isolate w-full">
-      {/* Replaced CSS blur with SVG blob using fixed sizes to preserve aspect ratio behind the wide card */}
       <div
         className="absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] md:h-[800px] opacity-40 md:w-[800px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
         aria-hidden="true"
       />
 
-      <GlassCard className="grid grid-cols-1 md:grid-cols-3 gap-8 p-6 lg:p-8 rounded-[2rem] border-white/60 bg-white/30 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative z-10">
+      <GlassCard className="grid grid-cols-1 md:grid-cols-3 gap-8 p-6 lg:p-8 rounded-[2rem] bg-white/10 border border-white/30 shadow-[0_8px_30px_rgb(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.8)] overflow-hidden relative z-10">
+        {/* Fake glass gradient layer to replace backdrop-blur */}
+        <div
+          className="absolute inset-0 bg-gradient-to-tr from-white/5 via-white/10 to-transparent pointer-events-none"
+          aria-hidden="true"
+        />
+
         <FeatureItem
-          icon={<ShieldCheck className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />}
+          icon={
+            <ShieldCheck className="w-5 h-5 lg:w-6 lg:h-6 text-primary relative z-10" />
+          }
           title="حفظ حریم خصوصی"
           subtitle="اطلاعات شما کاملاً محرمانه است"
         />
 
-        <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-right border-y md:border-y-0 md:border-x border-white/40 py-4 md:py-0 md:px-8 relative">
+        <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-right border-y md:border-y-0 md:border-x border-white/40 py-4 md:py-0 md:px-8 relative z-10">
           <div className="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-slate-200/50 to-transparent hidden md:block" />
           <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-slate-200/50 to-transparent hidden md:block" />
           <FeatureItem
@@ -30,7 +37,9 @@ export function CtaFeatures() {
         </div>
 
         <FeatureItem
-          icon={<Zap className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />}
+          icon={
+            <Zap className="w-5 h-5 lg:w-6 lg:h-6 text-primary relative z-10" />
+          }
           title="پاسخ سریع"
           subtitle="در اولین فرصت با شما تماس می‌گیریم"
         />
@@ -52,7 +61,7 @@ function FeatureItem({
 }) {
   return (
     <div
-      className={`flex flex-col md:flex-row items-center gap-4 text-center md:text-right ${wrapperClassName}`}
+      className={`flex flex-col md:flex-row items-center gap-4 text-center md:text-right relative z-10 ${wrapperClassName}`}
     >
       <div className="flex items-center justify-center shrink-0 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-primary/10 shadow-[inset_0_0_12px_rgba(255,255,255,0.6)]">
         {icon}
