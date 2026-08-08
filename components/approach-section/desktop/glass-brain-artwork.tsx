@@ -8,7 +8,7 @@ export function GlassBrainArtwork() {
   return (
     <div className="order-2 flex w-full justify-center lg:order-1 isolate">
       <motion.div
-        className="relative isolate z-0 flex aspect-square w-full max-w-[480px] items-center justify-center  "
+        className="relative isolate z-0 flex aspect-square w-full max-w-[480px] items-center justify-center"
         initial={{ scale: 0.8, y: 40, opacity: 0 }}
         whileInView={{ scale: 1, y: 0, opacity: 1 }}
         viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
@@ -27,15 +27,15 @@ export function GlassBrainArtwork() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="relative z-10 h-full w-full    "
+          className="relative z-10 h-full w-full"
         >
           <Image
             src="/images/approach/brain2.webp"
             alt="Glass Brain"
             fill
-            className="object-contain    "
+            className="object-contain"
             draggable={false}
-            sizes="(max-width: 768px) 100vw, 480px"
+            sizes="(max-width: 480px) 100vw, 480px"
           />
         </motion.div>
       </motion.div>
