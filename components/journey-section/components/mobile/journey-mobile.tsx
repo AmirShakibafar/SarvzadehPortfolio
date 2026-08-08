@@ -16,8 +16,14 @@ interface StepProps {
   icon: React.ReactNode;
 }
 
-// Simplified to a pure opacity fade. No vertical shifting (y: 20),
-// which removes layout calculation overhead on mobile browsers.
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
 const itemVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -47,11 +53,15 @@ export const JourneyMobile: React.FC<{ steps: StepProps[] }> = ({ steps }) => {
 
             <div className="absolute top-12 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-primary ring-[6px] ring-background z-0" />
 
-            <div className="flex flex-col gap-6 px-4 pt-12 pb-20 relative z-10">
+            {/* SINGLE Intersection Observer Wrapper per step */}
+            <motion.div
+              className="flex flex-col gap-6 px-4 pt-12 pb-20 relative z-10"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={containerVariants}
+            >
               <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
                 variants={itemVariants}
                 className={`w-[80%] max-w-[280px] ${isEven ? "self-start" : "self-end"}`}
               >
@@ -62,9 +72,6 @@ export const JourneyMobile: React.FC<{ steps: StepProps[] }> = ({ steps }) => {
               </motion.div>
 
               <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
                 variants={itemVariants}
                 className={`w-[90%] flex flex-col gap-4 mt-2 ${
                   isEven ? "self-end" : "self-start"
@@ -107,7 +114,7 @@ export const JourneyMobile: React.FC<{ steps: StepProps[] }> = ({ steps }) => {
                   </GlassCard>
                 </div>
               </motion.div>
-            </div>
+            </motion.div>
           </div>
         );
       })}
