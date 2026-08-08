@@ -37,18 +37,18 @@ export const JourneyGlassIllustration: React.FC<IllustrationProps> = ({
         />
       </div>
 
-      <GlassCard className="absolute inset-4 -z-10 rounded-[4rem] transform-gpu" />
+      <GlassCard className="absolute inset-4 -z-10 rounded-[4rem]  " />
 
       <motion.div
         animate={floatingAnimation as TargetAndTransition}
-        className="relative z-10 flex h-5/6 w-5/6 items-center justify-center will-change-transform"
+        className="relative z-10 flex h-5/6 w-5/6 items-center justify-center  "
       >
         <Image
           src={src}
           alt={alt}
           width={800}
           height={800}
-          className="h-full w-full object-cover drop-shadow-2xl transform-gpu"
+          className="h-full w-full object-cover    "
           sizes="(max-width: 768px) 83vw, 40vw"
         />
       </motion.div>

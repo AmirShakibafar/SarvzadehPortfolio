@@ -32,7 +32,7 @@ export const JourneyGlassIllustrationMobile: React.FC<
           alt={alt}
           width={800}
           height={800}
-          className="h-full w-full object-cover drop-shadow-2xl"
+          className="h-full w-full object-cover  "
           sizes="(max-width: 768px) 83vw, 400px"
         />
       </div>

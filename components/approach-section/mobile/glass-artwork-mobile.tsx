@@ -24,7 +24,7 @@ export function GlassBrainArtworkMobile() {
             src="/images/approach/brain2.webp"
             alt="Glass Brain"
             fill
-            className="object-contain drop-shadow-xl [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)]"
+            className="object-contain   [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)]"
             draggable={false}
             sizes="280px"
             priority

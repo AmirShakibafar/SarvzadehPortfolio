@@ -72,7 +72,7 @@ export function DecoratedStatsGrid() {
             <motion.div
               key={index}
               variants={cardItemVariants}
-              className={`relative h-full transform-gpu isolate ${
+              className={`relative h-full   isolate ${
                 index === 2 ? "col-span-2 lg:col-span-1" : "col-span-1"
               }`}
             >
@@ -82,7 +82,7 @@ export function DecoratedStatsGrid() {
               />
 
               <GlassCard
-                className={`flex h-full flex-col items-center justify-center p-6 text-center transform-gpu ${
+                className={`flex h-full flex-col items-center justify-center p-6 text-center   ${
                   stat.highlight
                     ? "border-primary/30 bg-white/50 shadow-md shadow-primary/10"
                     : ""

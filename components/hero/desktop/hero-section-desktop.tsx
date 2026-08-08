@@ -49,7 +49,7 @@ export function HeroSection() {
         initial="hidden"
         animate="visible"
       >
-        <motion.div variants={itemVariants} className="will-change-transform">
+        <motion.div variants={itemVariants} className=" ">
           <Heading
             as="h1"
             size="h1"
@@ -62,7 +62,7 @@ export function HeroSection() {
           </Heading>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="will-change-transform">
+        <motion.div variants={itemVariants} className=" ">
           <Paragraph size="lg" className="text-sm md:text-base max-w-[480px]">
             با برنامه‌های غذایی علمی و متناسب با شرایط شما، به کنترل علائم ام‌اس
             کمک کرده و سلامت‌تان را بهبود ببخشید.
@@ -71,7 +71,7 @@ export function HeroSection() {
 
         <motion.div
           variants={itemVariants}
-          className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-4 mt-2 will-change-transform"
+          className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-4 mt-2  "
         >
           <Button
             variant="pillPrimary"
@@ -84,7 +84,7 @@ export function HeroSection() {
           <Button
             variant="pillSecondary"
             size="pill"
-            className="gap-2 bg-white/50 hover:bg-white/80 text-sm md:text-base transform-gpu"
+            className="gap-2 bg-white/50 hover:bg-white/80 text-sm md:text-base  "
           >
             بیشتر بدانید
             <ArrowLeft className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground" />
@@ -94,7 +94,7 @@ export function HeroSection() {
 
       {/* Left Side: Image Content */}
       <motion.div
-        className="relative flex justify-center items-end w-full md:w-[80%] lg:w-[55%] isolate will-change-transform"
+        className="relative flex justify-center items-end w-full md:w-[80%] lg:w-[55%] isolate  "
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}

@@ -43,52 +43,40 @@ export function CtaInfo() {
         aria-hidden="true"
       />
 
-      <motion.div
-        variants={itemVariants}
-        className="transform-gpu will-change-transform"
-      >
+      <motion.div variants={itemVariants} className="   ">
         <span className="inline-block text-sm font-semibold tracking-wide text-primary">
           ارتباط سریع و آسان
         </span>
       </motion.div>
 
-      <motion.div
-        variants={itemVariants}
-        className="transform-gpu will-change-transform"
-      >
+      <motion.div variants={itemVariants} className="   ">
         <Heading className="text-4xl font-extrabold leading-tight text-foreground lg:text-5xl">
           برای شروع، <br />
           <span className="text-primary">مسیر مناسب</span> را انتخاب کنید
         </Heading>
       </motion.div>
 
-      <motion.div
-        variants={itemVariants}
-        className="transform-gpu will-change-transform"
-      >
+      <motion.div variants={itemVariants} className="   ">
         <Paragraph className="max-w-lg text-lg leading-9 text-muted-foreground">
           فرم ارزیابی کوتاه ما را تکمیل کنید تا با اطلاعات کامل با شما تماس
           بگیریم، یا برای پاسخ سریع‌تر مستقیماً در پیام‌رسان‌ها به ما پیام دهید.
         </Paragraph>
       </motion.div>
 
-      <motion.div
-        variants={itemVariants}
-        className="space-y-4 pt-4 transform-gpu will-change-transform"
-      >
+      <motion.div variants={itemVariants} className="space-y-4 pt-4    ">
         <h4 className="font-semibold text-foreground">
           ارتباط مستقیم در پیام‌رسان‌ها:
         </h4>
         <div className="flex flex-wrap items-center gap-4">
           <Button
-            className="flex h-12 items-center gap-2 rounded-full border border-white/20 bg-[#18a983]/90 px-6 text-white shadow-lg shadow-[#18a983]/20 transition-all hover:bg-[#18a983] backdrop-blur-md transform-gpu"
+            className="flex h-12 items-center gap-2 rounded-full border border-white/20 bg-[#18a983]/90 px-6 text-white shadow-lg shadow-[#18a983]/20 transition-all hover:bg-[#18a983] backdrop-blur-md  "
             onClick={() => window.open("https://ble.ir/your_bale_id", "_blank")}
           >
             پشتیبانی بله
           </Button>
 
           <Button
-            className="flex h-12 items-center gap-2 rounded-full border border-white/20 bg-[#ea7a2c]/90 px-6 text-white shadow-lg shadow-[#ea7a2c]/20 transition-all hover:bg-[#ea7a2c] backdrop-blur-md transform-gpu"
+            className="flex h-12 items-center gap-2 rounded-full border border-white/20 bg-[#ea7a2c]/90 px-6 text-white shadow-lg shadow-[#ea7a2c]/20 transition-all hover:bg-[#ea7a2c] backdrop-blur-md  "
             onClick={() =>
               window.open("https://eitaa.com/your_eitaa_id", "_blank")
             }

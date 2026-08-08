@@ -35,10 +35,7 @@ export function SectionHeader() {
       viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
       className="lg:col-span-5 z-30 isolate"
     >
-      <motion.div
-        variants={itemVariants}
-        className="transform-gpu will-change-transform"
-      >
+      <motion.div variants={itemVariants} className="   ">
         <span className="inline-block text-sm font-semibold tracking-wide text-primary">
           چرا بیماران به من اعتماد می‌کنند؟
         </span>
@@ -46,7 +43,7 @@ export function SectionHeader() {
 
       <motion.h2
         variants={itemVariants}
-        className="mt-4 max-w-xl text-4xl font-extrabold leading-tight text-foreground lg:text-5xl transform-gpu will-change-transform"
+        className="mt-4 max-w-xl text-4xl font-extrabold leading-tight text-foreground lg:text-5xl    "
       >
         هیچ دو بیمار
         <span className="text-primary"> ام‌اس </span>
@@ -55,7 +52,7 @@ export function SectionHeader() {
 
       <motion.p
         variants={itemVariants}
-        className="mt-8 max-w-md text-lg leading-9 text-muted-foreground transform-gpu will-change-transform"
+        className="mt-8 max-w-md text-lg leading-9 text-muted-foreground    "
       >
         هر بیمار شرایط، علائم، سبک زندگی و اهداف متفاوتی دارد. به همین دلیل،
         برنامه درمانی باید بر پایه شواهد علمی و متناسب با نیازهای واقعی هر فرد

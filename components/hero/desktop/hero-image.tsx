@@ -20,10 +20,10 @@ export function HeroImage() {
 
 function BackgroundGlow() {
   return (
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none -z-30 transform-gpu">
-      <div className="absolute w-[120%] h-[120%] bg-[radial-gradient(circle,rgba(34,211,238,0.12)_0%,transparent_60%)] transform-gpu" />
-      <div className="absolute top-[-10%] left-[-10%] w-[90%] h-[90%] bg-[radial-gradient(circle,rgba(255,255,255,0.4)_0%,transparent_60%)] transform-gpu" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[80%] h-[80%] bg-[radial-gradient(circle,rgba(20,184,166,0.12)_0%,transparent_60%)] transform-gpu" />
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none -z-30  ">
+      <div className="absolute w-[120%] h-[120%] bg-[radial-gradient(circle,rgba(34,211,238,0.12)_0%,transparent_60%)]  " />
+      <div className="absolute top-[-10%] left-[-10%] w-[90%] h-[90%] bg-[radial-gradient(circle,rgba(255,255,255,0.4)_0%,transparent_60%)]  " />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[80%] h-[80%] bg-[radial-gradient(circle,rgba(20,184,166,0.12)_0%,transparent_60%)]  " />
     </div>
   );
 }
@@ -45,7 +45,7 @@ function GlassBlob() {
         border border-white/60
         shadow-[0_24px_80px_rgba(0,0,0,0.03)]
         -z-10
-        transform-gpu
+         
       "
     />
   );
@@ -68,7 +68,7 @@ function DecorativeEllipse() {
         border border-white/20
         -z-40
         rotate-6
-        transform-gpu
+         
       "
     />
   );
@@ -141,7 +141,7 @@ function FloatingCards() {
         <motion.div
           variants={cardItem}
           whileHover={{ scale: 1.05 }}
-          className="will-change-transform"
+          className=" "
         >
           <FloatingCardItem
             title="مدیریت ام‌اس"
@@ -157,7 +157,7 @@ function FloatingCards() {
         <motion.div
           variants={cardItem}
           whileHover={{ scale: 1.05 }}
-          className="will-change-transform"
+          className=" "
         >
           <FloatingCardItem
             title="کاهش خستگی"
@@ -173,7 +173,7 @@ function FloatingCards() {
         <motion.div
           variants={cardItem}
           whileHover={{ scale: 1.05 }}
-          className="will-change-transform"
+          className=" "
         >
           <FloatingCardItem
             title="سلامت سیستم عصبی"
