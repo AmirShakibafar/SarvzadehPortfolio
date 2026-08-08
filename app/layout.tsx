@@ -1,20 +1,42 @@
+import localFont from "next/font/local";
 import "./globals.css";
-import type { ReactNode } from "react";
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+const vazir = localFont({
+  src: [
+    {
+      path: "../public/fonts/vazir/Vazirmatn-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/vazir/Vazirmatn-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-vazir",
+  display: "swap",
+  preload: true,
+});
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="fa" dir="rtl">
+    // Inject the font CSS variable here
+    <html lang="fa" dir="rtl" className={`${vazir.variable}`}>
       <head>
-        <link
-          rel="preload"
-          href="/fonts/vazir/Vazirmatn-Regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
+        <title>دکتر رضا سرورزاده - تغذیه بالینی</title>
+        <meta
+          name="description"
+          content="تغذیه شخصی‌سازی شده برای مدیریت بهتر ام‌اس و بهبود کیفیت زندگی."
         />
       </head>
-
-      <body className="fantialiased text-start">{children}</body>
+      <body className="min-h-screen bg-background text-foreground antialiased font-sans">
+        {children}
+      </body>
     </html>
   );
 }
