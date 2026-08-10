@@ -91,7 +91,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 
   return (
     <motion.div variants={itemVariants}>
-      <GlassCard className="rounded-2xl bg-white/10 border border-white/30 shadow-[0_4px_20px_rgb(0,0,0,0.03),inset_0_1px_1px_rgba(255,255,255,0.6)] overflow-hidden relative backdrop-blur-md transition-colors hover:bg-white/20">
+      <GlassCard className="relative overflow-hidden rounded-2xl border border-white/60 bg-gradient-to-br from-white/60 to-white/20 shadow-[0_4px_20px_rgb(0,0,0,0.03),inset_0_1px_1px_rgba(255,255,255,0.6)] transition-all hover:from-white/70 hover:to-white/30">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="flex w-full items-center justify-between gap-4 p-5 text-right focus:outline-none"
