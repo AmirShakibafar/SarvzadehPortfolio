@@ -36,7 +36,7 @@ function GlassBlob() {
         top-[10%] lg:top-[5%] 
         left-1/2 
         -translate-x-[52%] 
-        w-[95%] lg:w-[95%] 
+        w-[75%] lg:w-[75%] 
         h-[75%] lg:h-[80%] 
         max-w-[760px] 
         max-h-[620px]

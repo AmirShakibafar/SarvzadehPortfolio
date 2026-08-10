@@ -6,6 +6,7 @@ import WhyTrustMeSection from "@/components/approach-section";
 import CtaSection from "@/components/cta/index";
 import { Footer } from "@/components/layout/footer";
 import { FaqSection } from "@/components/faq";
+import { SpecialtiesSection } from "@/components/experties";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <HeroSection />
 
       <WhyTrustMeSection />
+      <SpecialtiesSection/>
       <JourneySection />
       <CtaSection />
       <FaqSection />
