@@ -1,5 +1,5 @@
 "use client";
-import doctorImage from "@/public/images/hero/Hero-Image.webp";
+import doctorImage from "@/public/images/hero/hero4.png";
 
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
@@ -73,7 +73,6 @@ function DecorativeEllipse() {
     />
   );
 }
-
 function DoctorImage() {
   return (
     <div className="relative z-10 w-full flex items-center justify-center">
@@ -97,6 +96,8 @@ function DoctorImage() {
           lg:max-w-[460px]
           object-contain
           select-none
+          [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)]
+          [-webkit-mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)]
         "
       />
     </div>
