@@ -4,7 +4,7 @@ from PIL import Image
 
 def convert_images_to_webp(directory: str, quality: int = 80):
     target_dir = Path(directory)
-    valid_extensions = {'.jpg', '.jpeg', '.webp'}
+    valid_extensions = {'.jpg', '.jpeg', '.webp', ".png", ".gif", ".tiff", ".bmp"}
 
     for file_path in target_dir.rglob('*'):
         if file_path.suffix.lower() in valid_extensions:

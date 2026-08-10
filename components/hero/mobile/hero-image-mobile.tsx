@@ -1,6 +1,6 @@
 // hero-image-mobile.tsx
 "use client";
-import doctorImage from "@/public/images/hero/hero4.png";
+import doctorImage from "@/public/images/hero/hero4.webp";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Apple, Activity, Brain } from "lucide-react";
