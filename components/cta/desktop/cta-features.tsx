@@ -6,7 +6,7 @@ export function CtaFeatures() {
   return (
     <div className="relative mt-16 isolate w-full">
       <div
-        className="absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] md:h-[800px] opacity-40 md:w-[800px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
+        className="absolute left-1/2 top-1/2 -z-10 h-[200px] w-[500px] md:h-[800px] opacity-40 md:w-[300px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
         aria-hidden="true"
       />
 
