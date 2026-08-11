@@ -43,6 +43,7 @@ export interface DiseasePageData {
   title: string;
   subtitle: string;
   description: string;
+  heroImageUrl?: string;
   mechanismTitle: string;
   mechanismDescription: string;
   featuredDiseases: FeaturedDisease[];
@@ -141,19 +142,12 @@ function FloatingBadge({
   className?: string;
   delay?: number;
 }) {
-  const prefersReduced = useReducedMotion();
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
-      animate={prefersReduced ? {} : { y: [0, -6, 0] }}
-      // @ts-ignore
-      transition={{
-        y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay },
-      }}
       className={cn("absolute z-20", className)}
     >
       <GlassCard className="flex items-center gap-4 p-3 pr-4 rounded-2xl">
@@ -180,11 +174,13 @@ function AutoimmuneHero({
   title,
   subtitle,
   description,
+  heroImageUrl,
   firstDiseaseId,
 }: {
   title: string;
   subtitle: string;
   description: string;
+  heroImageUrl?: string;
   firstDiseaseId?: string;
 }) {
   const scrollToDiseases = () => {
@@ -270,25 +266,43 @@ function AutoimmuneHero({
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="absolute inset-0 flex items-center justify-center"
+            className="absolute inset-0 flex items-center justify-center pointer-events-none"
           >
             <div className="w-[80%] h-[80%] bg-primary/10 rounded-full blur-3xl" />
             <div className="absolute w-[60%] h-[60%] bg-primary/20 rounded-full blur-2xl opacity-60" />
             <div className="absolute w-full h-full border border-primary/10 rounded-full opacity-30 border-dashed" />
           </motion.div>
 
+          {heroImageUrl && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+              className="relative w-[70%] h-[70%] lg:w-full lg:h-full z-10 drop-shadow-xl"
+            >
+              <Image
+                src={heroImageUrl}
+                alt={title}
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
+            </motion.div>
+          )}
+
           <FloatingBadge
             icon={Shield}
             title="سیستم ایمنی"
             subtitle="شبکه دفاعی بدن"
-            className="top-12 right-0 lg:right-12"
+            className="top-12 right-0 lg:right-12 z-20"
             delay={0.4}
           />
           <FloatingBadge
             icon={HeartPulse}
             title="کنترل التهاب"
             subtitle="مدیریت علائم"
-            className="bottom-12 left-0 lg:left-12"
+            className="bottom-12 left-0 lg:left-12 z-20"
             delay={0.6}
           />
         </div>
@@ -674,6 +688,7 @@ export default function DiseaseCategoryTemplate({
         title={data.title}
         subtitle={data.subtitle}
         description={data.description}
+        heroImageUrl={data.heroImageUrl}
         firstDiseaseId={data.featuredDiseases[0]?.id}
       />
       <ImmuneSystemProcess

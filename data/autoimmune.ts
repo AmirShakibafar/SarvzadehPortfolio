@@ -1,24 +1,35 @@
 // data/autoimmune.ts
+
 export const autoimmuneData = {
-  title: "بیماری‌های خودایمنی",
+  // Hero Section Data
+  title: "آشنایی با بیماری‌های خودایمنی",
+  subtitle: "رویکرد نوین ایمونولوژی",
   description:
-    "مدیریت و کنترل بیماری‌های مرتبط با سیستم ایمنی از طریق رویکردهای نوین علمی.",
+    "مدیریت و کنترل بیماری‌های مرتبط با سیستم ایمنی از طریق رویکردهای نوین علمی. در این بیماری‌ها، سیستم ایمنی به اشتباه بافت‌های سالم بدن را هدف قرار می‌دهد.",
+  heroImageUrl: "/images/diseases/ms2.png", // <-- ADD THIS
+
+  // Mechanism Section Data
+  mechanismTitle: "سازوکار بیماری‌های خودایمنی",
+  mechanismDescription:
+    "در این بیماری‌ها، سیستم ایمنی به اشتباه بافت‌های سالم بدن را هدف قرار داده و باعث ایجاد التهاب می‌شود.",
+
+  // Featured Diseases Array
   featuredDiseases: [
     {
       id: "ms",
       name: "Multiple Sclerosis (ام‌اس)",
       description:
         "بیماری است که در آن سیستم ایمنی به میلین و گاهی خود آکسون‌های سیستم عصبی مرکزی آسیب می‌زند.",
-      imageUrl: "/images/icons/ms.png", // Add your icon paths here
-      media: { type: "video" },
+      imageUrl: "/images/diseases/ms2.png",
+      media: { type: "video" as const },
     },
     {
       id: "psoriasis",
       name: "Psoriasis (پسوریازیس)",
       description:
         "بیماری التهابی مزمن است که باعث فعال‌شدن بیش‌ازحد سیستم ایمنی و افزایش سرعت تکثیر سلول‌های پوست می‌شود.",
-      imageUrl: "/images/icons/psoriasis.png",
-      media: { type: "photo" },
+      imageUrl: "/images/diseases/ms2.png",
+      media: { type: "photo" as const },
       paperDoi: "10.5281/zenodo.7799594",
     },
     {
@@ -26,10 +37,12 @@ export const autoimmuneData = {
       name: "Vitiligo (ویتیلیگو)",
       description:
         "بیماری خودایمنی است که در آن سیستم ایمنی ملانوسیت‌های تولیدکننده رنگدانه را تخریب می‌کند.",
-      imageUrl: "/images/icons/vitiligo.png",
-      media: { type: "photo" },
+      imageUrl: "/images/diseases/ms2.png",
+      media: { type: "photo" as const },
     },
   ],
+
+  // Library Search Keywords
   keywords: [
     "نوروپاتی آکسونی حرکتی حاد",
     "سندرم آنتی‌فسفولیپید",
