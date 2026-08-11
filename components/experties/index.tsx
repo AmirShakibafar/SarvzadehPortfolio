@@ -3,43 +3,43 @@
 import React from "react";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
-import { Brain, Activity, HeartPulse, Scale, ArrowLeft } from "lucide-react";
+import { Shield, Activity, HeartPulse, Leaf, ArrowLeft } from "lucide-react";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { GlassCard } from "@/components/ui/glass-card";
 
 const specialtiesData = [
   {
-    id: "ms",
-    title: "مدیریت ام‌اس (MS)",
+    id: "autoimmune",
+    title: "بیماری‌های خودایمنی",
     description:
-      "کاهش التهاب و کنترل علائم بیماری با برنامه‌های دقیق و شخصی‌سازی‌شده تغذیه‌ای.",
-    icon: Brain,
-    href: "/specialties/ms",
+      "مدیریت بیماری‌های مرتبط با سیستم ایمنی از جمله ام‌اس، میاستنی گراویس، پسوریازیس و ویتیلیگو.",
+    icon: Shield,
+    href: "/specialties/autoimmune",
   },
   {
-    id: "diabetes",
-    title: "کنترل دیابت",
+    id: "cancer",
+    title: "سرطان",
     description:
-      "تنظیم نوسانات قند خون و پیشگیری از عوارض ثانویه از طریق اصلاح الگوی غذایی.",
-    icon: Activity,
-    href: "/specialties/diabetes",
-  },
-  {
-    id: "cardiovascular",
-    title: "سلامت قلب و عروق",
-    description:
-      "مدیریت فشار خون، کلسترول و تری‌گلیسیرید با رژیم‌های مبتنی بر شواهد علمی.",
+      "پشتیبانی ساختاریافته برای انواع سرطان‌ها نظیر ملانوما، سرطان پروستات و سرطان پستان.",
     icon: HeartPulse,
-    href: "/specialties/cardiovascular",
+    href: "/specialties/cancer",
   },
   {
-    id: "weight-management",
-    title: "مدیریت اصولی وزن",
+    id: "hormonal-metabolic",
+    title: "هورمونی - متابولیک",
     description:
-      "کاهش یا افزایش وزن پایدار بدون آسیب به متابولیسم و با حفظ توده عضلانی.",
-    icon: Scale,
-    href: "/specialties/weight-management",
+      "کنترل شرایط فیزیولوژیک شامل فیبروم رحم، اندومتریوز، سندروم تخمدان پلی‌کیستیک (PCOS) و سندروم متابولیک.",
+    icon: Activity,
+    href: "/specialties/hormonal-metabolic",
+  },
+  {
+    id: "allergy",
+    title: "آلرژی و حساسیت",
+    description:
+      "تنظیم و بهبود واکنش‌های سیستمیک مرتبط با آسم، حساسیت‌های پوستی و سندرم MCAS.",
+    icon: Leaf,
+    href: "/specialties/allergy",
   },
 ];
 
