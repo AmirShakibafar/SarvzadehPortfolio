@@ -61,23 +61,47 @@ export function ImmuneSystemProcess({
   ];
 
   return (
-    <section id="mechanism" className="py-24 relative z-10 w-full">
-      <div className="mx-auto max-w-7xl px-6 lg:px-14">
+    <section
+      id="mechanism"
+      className="relative z-10 w-full min-w-0 overflow-hidden py-24"
+    >
+      <div className="mx-auto w-full min-w-0 max-w-7xl px-6 lg:px-14">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center max-w-2xl mx-auto mb-20"
+          className="mx-auto mb-20 max-w-2xl text-center"
         >
           <Heading size="h2" className="mb-4">
             {title}
           </Heading>
+
           <Paragraph>{description}</Paragraph>
         </motion.div>
 
-        <div className="relative flex items-center justify-center isolate">
+        {/* ================================================================
+            PROCESS AREA
+        ================================================================ */}
+        <div className="relative min-w-0 overflow-hidden">
+          {/* Background blob */}
           <div
-            className="absolute left-1/2 top-1/2 -z-10 h-[150%] w-[150%] max-w-5xl opacity-40 -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
+            className="
+              pointer-events-none
+              absolute
+              left-1/2
+              top-1/2
+              -z-10
+              h-[120%]
+              w-[120%]
+              max-w-5xl
+              -translate-x-1/2
+              -translate-y-1/2
+              bg-[url('/blob.svg')]
+              bg-contain
+              bg-center
+              bg-no-repeat
+              opacity-40
+            "
             aria-hidden="true"
           />
 
@@ -85,43 +109,67 @@ export function ImmuneSystemProcess({
             variants={gridContainerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
-            className="relative w-full"
+            viewport={{
+              once: true,
+              margin: "100px 0px",
+              amount: 0.05,
+            }}
+            className="relative w-full min-w-0"
           >
-            <DotPattern className="-right-8 -top-8 h-32 w-32 opacity-40" />
-            <DotPattern className="-bottom-8 -left-8 h-32 w-32 opacity-40" />
+            {/* Decorative dots */}
+            <DotPattern className="absolute -right-4 -top-4 h-24 w-24 opacity-40" />
+            <DotPattern className="absolute -bottom-4 -left-4 h-24 w-24 opacity-40" />
 
-            {/* Background connection line for Gestalt Continuity */}
-            <div className="hidden lg:block absolute top-1/2 right-12 left-12 h-[2px] bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-y-1/2 -z-10" />
+            {/* Connection line */}
+            <div className="pointer-events-none absolute left-12 right-12 top-1/2 z-0 hidden h-[2px] -translate-y-1/2 bg-gradient-to-r from-transparent via-primary/20 to-transparent lg:block" />
 
-            <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4 relative">
+            {/* ============================================================
+                GRID
+            ============================================================ */}
+            <div className="relative grid w-full min-w-0 grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
               {steps.map((step, idx) => (
                 <motion.div
                   key={idx}
                   variants={cardItemVariants}
-                  className="relative h-full isolate flex flex-col items-center"
+                  className="relative isolate flex h-full min-w-0 flex-col items-center overflow-hidden"
                 >
+                  {/* Card-local background */}
                   <div
-                    className="absolute left-1/2 top-1/2 -z-10 h-[150%] w-[150%] opacity-40 -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
+                    className="
+                      pointer-events-none
+                      absolute
+                      left-1/2
+                      top-1/2
+                      -z-10
+                      h-[125%]
+                      w-[125%]
+                      -translate-x-1/2
+                      -translate-y-1/2
+                      bg-[url('/blob.svg')]
+                      bg-contain
+                      bg-center
+                      bg-no-repeat
+                      opacity-40
+                    "
                     aria-hidden="true"
                   />
 
-                  {/* Connecting Arrow for sequential flow */}
+                  {/* Sequential arrow */}
                   {idx < steps.length - 1 && (
-                    <div className="hidden lg:flex absolute top-1/2 -left-5 -translate-y-1/2 z-20 text-primary/40 bg-background rounded-full p-1 border border-primary/10">
-                      <ChevronLeft className="w-5 h-5" />
+                    <div className="absolute -left-5 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center rounded-full border border-primary/10 bg-background p-1 text-primary/40 lg:flex">
+                      <ChevronLeft className="h-5 w-5" />
                     </div>
                   )}
 
                   <GlassCard
-                    className={`flex h-full w-full flex-col items-center justify-start p-6 text-center ${
+                    className={`flex h-full w-full min-w-0 flex-col items-center justify-start p-6 text-center ${
                       step.highlight
                         ? "border-primary/30 bg-white/60 shadow-lg shadow-primary/10"
                         : "bg-white/40"
                     }`}
                   >
                     <div
-                      className={`flex items-center justify-center w-12 h-12 rounded-full mb-4 text-xl font-bold ${
+                      className={`mb-4 flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-xl font-bold ${
                         step.highlight
                           ? "bg-primary text-white"
                           : "bg-primary/10 text-primary"
@@ -129,9 +177,11 @@ export function ImmuneSystemProcess({
                     >
                       {String(idx + 1).padStart(2, "0")}
                     </div>
+
                     <div className="mt-2 text-sm font-bold text-foreground">
                       {step.title}
                     </div>
+
                     <div className="mt-2 whitespace-pre-line text-xs leading-6 text-muted-foreground">
                       {step.desc}
                     </div>

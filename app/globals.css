@@ -48,6 +48,10 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* * {
+  outline: 1px solid rgba(255, 0, 0, 1) !important;
+} */
+
 :root {
   --primary: rgb(13, 220, 213);
   --primary-foreground: #ffffff;
