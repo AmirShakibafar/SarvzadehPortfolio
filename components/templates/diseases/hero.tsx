@@ -97,16 +97,33 @@ export function AutoimmuneHero({
           </motion.div>
         </div>
 
-        <div className="relative h-[400px] lg:h-[500px] w-full order-1 lg:order-2 flex items-center justify-center">
+        <div className="relative h-[400px] lg:h-[500px] w-full order-1 lg:order-2 flex items-center justify-center isolate">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="absolute inset-0 flex items-center justify-center pointer-events-none"
+            className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10"
           >
-            <div className="w-[80%] h-[80%] bg-primary/10 rounded-full blur-3xl" />
-            <div className="absolute w-[60%] h-[60%] bg-primary/20 rounded-full blur-2xl opacity-60" />
-            <div className="absolute w-full h-full border border-primary/10 rounded-full opacity-30 border-dashed" />
+            {/* Background Glow */}
+            <div className="absolute w-[90%] h-[90%] bg-primary/10 rounded-full blur-3xl" />
+
+            {/* Glass Blob */}
+            <div
+              className="
+    absolute 
+    w-[100%] h-[100%] 
+    lg:w-[95%] lg:h-[95%]
+    max-w-[600px] max-h-[600px]
+    rounded-[45%_55%_48%_52%/55%_45%_50%_50%]
+    bg-gradient-to-br from-white/60 to-white/20
+    border border-white/60
+    shadow-[0_24px_80px_rgba(0,0,0,0.03)]
+    backdrop-blur-sm
+  "
+            />
+
+            {/* Decorative Ellipse / Dashed Border */}
+            <div className="absolute w-[95%] h-[95%] max-w-[550px] max-h-[550px] border border-primary/20 rounded-[50%] opacity-40 border-dashed rotate-6" />
           </motion.div>
 
           {heroImageUrl && (
@@ -114,7 +131,7 @@ export function AutoimmuneHero({
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-              className="relative w-[70%] h-[70%] lg:w-full lg:h-full z-10 drop-shadow-xl"
+              className="relative w-[85%] h-[85%] lg:w-full lg:h-full lg:scale-120 z-10 drop-shadow-xl"
             >
               <Image
                 src={heroImageUrl}
