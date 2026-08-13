@@ -16,8 +16,6 @@ export default async function DiseaseCategoryPage({
   // 1. Await the params object
   const resolvedParams = await params;
 
-  // 2. Safely log the slug to the terminal to verify Next.js sees it
-  console.log("Requested category slug:", resolvedParams.category);
 
   // 3. Convert to lowercase to prevent case-sensitivity 404s (e.g. /Autoimmune)
   const safeSlug = resolvedParams.category?.toLowerCase();

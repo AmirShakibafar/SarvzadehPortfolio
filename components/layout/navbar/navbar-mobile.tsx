@@ -34,14 +34,11 @@ export function NavbarMobile() {
       setHidden(false);
     }
   });
-
-  // Lock body scroll when drawer is open
   useEffect(() => {
     if (typeof document !== "undefined") {
       document.body.style.overflow = isOpen ? "hidden" : "unset";
     }
 
-    // Cleanup ensures scrolling is restored if the component unmounts
     return () => {
       document.body.style.overflow = "unset";
     };

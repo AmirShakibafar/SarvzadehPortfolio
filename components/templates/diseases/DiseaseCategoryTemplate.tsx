@@ -48,11 +48,12 @@ export default function DiseaseCategoryTemplate({
       dir="rtl"
     >
       <MedicalBackground />
-      <ScrollProgressIndicator
-        activeSection={activeSection}
-        featuredDiseases={data.featuredDiseases}
-      />
-
+      <div className="hidden lg:block">
+        <ScrollProgressIndicator
+          activeSection={activeSection}
+          featuredDiseases={data.featuredDiseases}
+        />
+      </div>
       <AutoimmuneHero
         title={data.title}
         subtitle={data.subtitle}

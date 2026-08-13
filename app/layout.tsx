@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fa" dir="rtl" className={vazir.variable}>
+    <html lang="fa" dir="rtl" className={`${vazir.variable} overflow-x-clip`}>
       <head>
         <title>دکتر رضا سرورزاده - تغذیه بالینی</title>
 
@@ -38,15 +38,13 @@ export default function RootLayout({
         />
       </head>
 
-      <body className="min-h-screen bg-background text-foreground antialiased font-sans">
-        {/* Global Navbar */}
+      <body className="min-h-screen w-full overflow-x-clip bg-background text-foreground antialiased font-sans">
         <div className="sticky top-0 z-50 w-full">
           <Navbar />
         </div>
 
         {children}
 
-        {/* Global Footer */}
         <Footer />
       </body>
     </html>
