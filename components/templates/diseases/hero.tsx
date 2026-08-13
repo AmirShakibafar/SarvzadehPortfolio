@@ -33,16 +33,13 @@ export function AutoimmuneHero({
       className="relative w-full min-h-[90vh] flex items-center pt-24 pb-20"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-14 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center w-full">
-        <div className="flex flex-col items-start text-right z-10 order-2 lg:order-1">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary/10 text-primary font-medium text-sm mb-8"
-          >
-            <Activity className="w-4 h-4" />
-            <span>{subtitle}</span>
-          </motion.div>
+        <div className="relative isolate flex flex-col items-start text-right z-10 order-2 lg:order-1">
+          <div
+            className="absolute left-1/2 top-1/2 -z-10 h-[150%] w-[150%] opacity-40 -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
+            aria-hidden="true"
+          />
+
+          
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -105,21 +102,24 @@ export function AutoimmuneHero({
             className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10"
           >
             {/* Background Glow */}
-            <div className="absolute w-[90%] h-[90%] bg-primary/10 rounded-full blur-3xl" />
+            <div
+              className="absolute left-1/2 top-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 opacity-40 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
+              aria-hidden="true"
+            />
 
             {/* Glass Blob */}
             <div
               className="
-    absolute 
-    w-[100%] h-[100%] 
-    lg:w-[95%] lg:h-[95%]
-    max-w-[600px] max-h-[600px]
-    rounded-[45%_55%_48%_52%/55%_45%_50%_50%]
-    bg-gradient-to-br from-white/60 to-white/20
-    border border-white/60
-    shadow-[0_24px_80px_rgba(0,0,0,0.03)]
-    backdrop-blur-sm
-  "
+                absolute 
+                w-[100%] h-[100%] 
+                lg:w-[95%] lg:h-[95%]
+                max-w-[600px] max-h-[600px]
+                rounded-[45%_55%_48%_52%/55%_45%_50%_50%]
+                bg-gradient-to-br from-white/60 to-white/20
+                border border-white/60
+                shadow-[0_24px_80px_rgba(0,0,0,0.03)]
+                backdrop-blur-sm
+              "
             />
 
             {/* Decorative Ellipse / Dashed Border */}

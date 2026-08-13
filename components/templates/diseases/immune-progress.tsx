@@ -1,6 +1,34 @@
+"use client";
+
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
+import { DotPattern } from "@/components/ui/dot-pattern";
+import { GlassCard } from "@/components/ui/glass-card";
+import { ChevronLeft } from "lucide-react";
+
+const gridContainerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 0.99,
+    transition: {
+      delayChildren: 0.2,
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardItemVariants: Variants = {
+  hidden: { opacity: 0, x: 20 },
+  visible: {
+    opacity: 0.99,
+    x: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
 
 export function ImmuneSystemProcess({
   title,
@@ -10,10 +38,26 @@ export function ImmuneSystemProcess({
   description: string;
 }) {
   const steps = [
-    { title: "سیستم ایمنی", desc: "عملکرد طبیعی دفاعی بدن" },
-    { title: "فعال‌شدن نابجا", desc: "تشخیص اشتباه بافت خودی" },
-    { title: "التهاب", desc: "تجمع سلول‌های ایمنی" },
-    { title: "آسیب بافتی", desc: "بروز علائم بیماری" },
+    {
+      title: "محرک‌های اولیه",
+      desc: "عوامل ژنتیکی یا محیطی\nسیستم ایمنی را تحریک می‌کنند",
+      highlight: false,
+    },
+    {
+      title: "نقص در تشخیص",
+      desc: "ناتوانی در تمایز بین\nسلول‌های خودی و مهاجم",
+      highlight: false,
+    },
+    {
+      title: "حمله خودایمنی",
+      desc: "تولید آنتی‌بادی و حمله\nبه بافت‌های سالم بدن",
+      highlight: false,
+    },
+    {
+      title: "التهاب مزمن",
+      desc: "آسیب بافتی و بروز\nعلائم پیش‌رونده",
+      highlight: true,
+    },
   ];
 
   return (
@@ -31,34 +75,71 @@ export function ImmuneSystemProcess({
           <Paragraph>{description}</Paragraph>
         </motion.div>
 
-        <div className="relative">
-          <div className="hidden lg:block absolute top-6 right-16 left-16 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent -z-10" />
-          <div className="lg:hidden absolute right-6 top-8 bottom-16 w-px bg-gradient-to-b from-transparent via-primary/20 to-transparent -z-10" />
+        <div className="relative flex items-center justify-center isolate">
+          <div
+            className="absolute left-1/2 top-1/2 -z-10 h-[150%] w-[150%] max-w-5xl opacity-40 -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
+            aria-hidden="true"
+          />
 
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8">
-            {steps.map((step, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: idx * 0.15 }}
-                className="flex flex-row lg:flex-col items-start lg:items-center lg:text-center gap-6 lg:gap-4 relative"
-              >
-                <div className="text-primary/40 font-light text-4xl lg:text-5xl leading-none shrink-0 bg-[#FAFAFA] pr-2 lg:pr-0 lg:px-4">
-                  {String(idx + 1).padStart(2, "0")}
-                </div>
-                <div className="flex flex-col lg:items-center mt-1 lg:mt-2">
-                  <h4 className="text-slate-900 font-bold mb-1.5 text-lg">
-                    {step.title}
-                  </h4>
-                  <Paragraph size="sm" className="max-w-[200px]">
-                    {step.desc}
-                  </Paragraph>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <motion.div
+            variants={gridContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
+            className="relative w-full"
+          >
+            <DotPattern className="-right-8 -top-8 h-32 w-32 opacity-40" />
+            <DotPattern className="-bottom-8 -left-8 h-32 w-32 opacity-40" />
+
+            {/* Background connection line for Gestalt Continuity */}
+            <div className="hidden lg:block absolute top-1/2 right-12 left-12 h-[2px] bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-y-1/2 -z-10" />
+
+            <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4 relative">
+              {steps.map((step, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={cardItemVariants}
+                  className="relative h-full isolate flex flex-col items-center"
+                >
+                  <div
+                    className="absolute left-1/2 top-1/2 -z-10 h-[150%] w-[150%] opacity-40 -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
+                    aria-hidden="true"
+                  />
+
+                  {/* Connecting Arrow for sequential flow */}
+                  {idx < steps.length - 1 && (
+                    <div className="hidden lg:flex absolute top-1/2 -left-5 -translate-y-1/2 z-20 text-primary/40 bg-background rounded-full p-1 border border-primary/10">
+                      <ChevronLeft className="w-5 h-5" />
+                    </div>
+                  )}
+
+                  <GlassCard
+                    className={`flex h-full w-full flex-col items-center justify-start p-6 text-center ${
+                      step.highlight
+                        ? "border-primary/30 bg-white/60 shadow-lg shadow-primary/10"
+                        : "bg-white/40"
+                    }`}
+                  >
+                    <div
+                      className={`flex items-center justify-center w-12 h-12 rounded-full mb-4 text-xl font-bold ${
+                        step.highlight
+                          ? "bg-primary text-white"
+                          : "bg-primary/10 text-primary"
+                      }`}
+                    >
+                      {String(idx + 1).padStart(2, "0")}
+                    </div>
+                    <div className="mt-2 text-sm font-bold text-foreground">
+                      {step.title}
+                    </div>
+                    <div className="mt-2 whitespace-pre-line text-xs leading-6 text-muted-foreground">
+                      {step.desc}
+                    </div>
+                  </GlassCard>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
