@@ -1,34 +1,9 @@
-"use client";
-
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
-import { motion, Variants } from "framer-motion";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { GlassCard } from "@/components/ui/glass-card";
-import { ChevronLeft } from "lucide-react";
-
-const gridContainerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 0.99,
-    transition: {
-      delayChildren: 0.2,
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const cardItemVariants: Variants = {
-  hidden: { opacity: 0, x: 20 },
-  visible: {
-    opacity: 0.99,
-    x: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut",
-    },
-  },
-};
+import { Dna, ScanSearch, ShieldAlert, Flame } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function ImmuneSystemProcess({
   title,
@@ -40,22 +15,26 @@ export function ImmuneSystemProcess({
   const steps = [
     {
       title: "محرک‌های اولیه",
-      desc: "عوامل ژنتیکی یا محیطی\nسیستم ایمنی را تحریک می‌کنند",
+      desc: "عوامل ژنتیکی یا محیطی سیستم ایمنی را تحریک می‌کنند",
+      icon: Dna,
       highlight: false,
     },
     {
       title: "نقص در تشخیص",
-      desc: "ناتوانی در تمایز بین\nسلول‌های خودی و مهاجم",
+      desc: "ناتوانی در تمایز بین سلول‌های خودی و مهاجم",
+      icon: ScanSearch,
       highlight: false,
     },
     {
       title: "حمله خودایمنی",
-      desc: "تولید آنتی‌بادی و حمله\nبه بافت‌های سالم بدن",
+      desc: "تولید آنتی‌بادی و حمله به بافت‌های سالم بدن",
+      icon: ShieldAlert,
       highlight: false,
     },
     {
       title: "التهاب مزمن",
-      desc: "آسیب بافتی و بروز\nعلائم پیش‌رونده",
+      desc: "آسیب بافتی و بروز علائم پیش‌رونده",
+      icon: Flame,
       highlight: true,
     },
   ];
@@ -63,133 +42,97 @@ export function ImmuneSystemProcess({
   return (
     <section
       id="mechanism"
-      className="relative z-10 w-full min-w-0 overflow-hidden py-24"
+      className="relative z-10 w-full min-w-0 overflow-hidden py-16 lg:py-24"
     >
+      {/* Global Background Blob */}
+      <div
+        className="absolute left-1/2 top-1/2 -z-10 h-[100%] w-[100%] max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-30 pointer-events-none"
+        aria-hidden="true"
+      />
+
       <div className="mx-auto w-full min-w-0 max-w-7xl px-6 lg:px-14">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="mx-auto mb-20 max-w-2xl text-center"
-        >
+        <div className="mx-auto mb-16 lg:mb-24 max-w-2xl text-center">
           <Heading size="h2" className="mb-4">
             {title}
           </Heading>
-
-          <Paragraph>{description}</Paragraph>
-        </motion.div>
+          <Paragraph size="sm" className="text-slate-600">
+            {description}
+          </Paragraph>
+        </div>
 
         {/* ================================================================
-            PROCESS AREA
+            PROCESS TIMELINE
         ================================================================ */}
-        <div className="relative min-w-0 overflow-hidden">
-          {/* Background blob */}
-          <div
-            className="
-              pointer-events-none
-              absolute
-              left-1/2
-              top-1/2
-              -z-10
-              h-[120%]
-              w-[120%]
-              max-w-5xl
-              -translate-x-1/2
-              -translate-y-1/2
-              bg-[url('/blob.svg')]
-              bg-contain
-              bg-center
-              bg-no-repeat
-              opacity-40
-            "
-            aria-hidden="true"
-          />
+        <div className="relative w-full max-w-5xl mx-auto">
+          {/* Decorative dots - Hidden on mobile to save repaints */}
+          <DotPattern className="hidden lg:block absolute -right-8 -top-8 h-32 w-32 opacity-40" />
 
-          <motion.div
-            variants={gridContainerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{
-              once: true,
-              margin: "100px 0px",
-              amount: 0.05,
-            }}
-            className="relative w-full min-w-0"
-          >
-            {/* Decorative dots */}
-            <DotPattern className="absolute -right-4 -top-4 h-24 w-24 opacity-40" />
-            <DotPattern className="absolute -bottom-4 -left-4 h-24 w-24 opacity-40" />
+          {/* 
+            Connecting Line 
+            Mobile: Vertical line on the right side (RTL)
+            Desktop: Horizontal line across the top
+          */}
+          <div className="absolute right-[27px] top-0 bottom-0 w-[2px] lg:right-0 lg:left-0 lg:top-[27px] lg:bottom-auto lg:w-full lg:h-[2px] bg-gradient-to-b lg:bg-gradient-to-l from-transparent via-primary/30 to-transparent -z-10" />
 
-            {/* Connection line */}
-            <div className="pointer-events-none absolute left-12 right-12 top-1/2 z-0 hidden h-[2px] -translate-y-1/2 bg-gradient-to-r from-transparent via-primary/20 to-transparent lg:block" />
+          <div className="flex flex-col lg:flex-row lg:justify-between gap-10 lg:gap-6">
+            {steps.map((step, idx) => {
+              const Icon = step.icon;
 
-            {/* ============================================================
-                GRID
-            ============================================================ */}
-            <div className="relative grid w-full min-w-0 grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
-              {steps.map((step, idx) => (
-                <motion.div
+              return (
+                <div
                   key={idx}
-                  variants={cardItemVariants}
-                  className="relative isolate flex h-full min-w-0 flex-col items-center overflow-hidden"
+                  className="relative flex flex-row lg:flex-col items-start lg:items-center gap-6 w-full lg:flex-1 group"
                 >
-                  {/* Card-local background */}
+                  {/* Step Node */}
                   <div
-                    className="
-                      pointer-events-none
-                      absolute
-                      left-1/2
-                      top-1/2
-                      -z-10
-                      h-[125%]
-                      w-[125%]
-                      -translate-x-1/2
-                      -translate-y-1/2
-                      bg-[url('/blob.svg')]
-                      bg-contain
-                      bg-center
-                      bg-no-repeat
-                      opacity-40
-                    "
-                    aria-hidden="true"
-                  />
-
-                  {/* Sequential arrow */}
-                  {idx < steps.length - 1 && (
-                    <div className="absolute -left-5 top-1/2 z-20 hidden -translate-y-1/2 items-center justify-center rounded-full border border-primary/10 bg-background p-1 text-primary/40 lg:flex">
-                      <ChevronLeft className="h-5 w-5" />
-                    </div>
-                  )}
-
-                  <GlassCard
-                    className={`flex h-full w-full min-w-0 flex-col items-center justify-start p-6 text-center ${
+                    className={cn(
+                      "relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-4 border-background transition-colors duration-300",
                       step.highlight
-                        ? "border-primary/30 bg-white/60 shadow-lg shadow-primary/10"
-                        : "bg-white/40"
-                    }`}
+                        ? "bg-primary text-white shadow-lg shadow-primary/30"
+                        : "bg-white text-primary shadow-md group-hover:border-primary/20",
+                    )}
                   >
+                    <Icon className="w-6 h-6" />
+
+                    {/* Number Badge */}
                     <div
-                      className={`mb-4 flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-xl font-bold ${
+                      className={cn(
+                        "absolute -bottom-2 -left-2 flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold shadow-sm",
                         step.highlight
-                          ? "bg-primary text-white"
-                          : "bg-primary/10 text-primary"
-                      }`}
+                          ? "bg-white text-primary"
+                          : "bg-primary text-white",
+                      )}
                     >
-                      {String(idx + 1).padStart(2, "0")}
+                      {idx + 1}
                     </div>
+                  </div>
 
-                    <div className="mt-2 text-sm font-bold text-foreground">
+                  {/* Card Content */}
+                  <GlassCard
+                    className={cn(
+                      "flex flex-1 flex-col justify-start p-5 lg:p-6 text-right lg:text-center w-full transition-all duration-300",
+                      step.highlight
+                        ? "border-primary/30 bg-white/70 shadow-lg shadow-primary/5"
+                        : "bg-white/40 border-white/60 hover:bg-white/60",
+                    )}
+                  >
+                    <h3
+                      className={cn(
+                        "mb-2 text-base lg:text-lg font-bold",
+                        step.highlight ? "text-primary" : "text-slate-800",
+                      )}
+                    >
                       {step.title}
-                    </div>
+                    </h3>
 
-                    <div className="mt-2 whitespace-pre-line text-xs leading-6 text-muted-foreground">
+                    <p className="text-sm leading-relaxed text-slate-600">
                       {step.desc}
-                    </div>
+                    </p>
                   </GlassCard>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

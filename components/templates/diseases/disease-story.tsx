@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { BookOpen, ImageIcon, PlayCircle, Shield } from "lucide-react";
 import { ResourceAction } from "./resource-action";
 import { Paragraph } from "@/components/ui/paragraph";
@@ -35,61 +34,47 @@ export function DiseaseStory({
   return (
     <section
       id={disease.id}
-      className="flex items-center py-12 lg:py-16 relative w-full"
+      className="flex items-center py-10 lg:py-16 relative w-full"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-14 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-center">
+          {/* Text Section */}
           <div
             className={cn(
               "flex flex-col items-start text-right w-full relative",
-              isEven ? "order-2 lg:order-1" : "order-2 lg:order-2",
+              // Mobile: Always bottom (order-2). Desktop: Alternate based on index.
+              "order-2",
+              isEven ? "lg:order-1" : "lg:order-2",
             )}
           >
-            <DotPattern className="top-0 right-0 -mt-6 -mr-6 w-32 h-32 opacity-70" />
+            {/* Hidden on mobile to prevent repaint lag */}
+            <DotPattern className="hidden lg:block absolute top-0 right-0 -mt-6 -mr-6 w-32 h-32 opacity-70" />
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7 }}
-              className="w-full text-right relative z-10"
-            >
-              <div className="text-primary font-medium text-sm mb-4">
+            <div className="w-full text-right relative z-10">
+              <div className="text-primary font-medium text-sm mb-3 lg:mb-4">
                 {(index + 1).toString().padStart(2, "0")} — {enName}
               </div>
-              <Heading size="h2" className="mb-6">
+              <Heading size="h2" className="mb-4 lg:mb-6">
                 {faName}
               </Heading>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="relative z-10"
-            >
-              <Paragraph size="lg" className="mb-10">
+            <div className="relative z-10 w-full">
+              <Paragraph size="lg" className="mb-8 lg:mb-10 text-slate-700">
                 {disease.description}
               </Paragraph>
-            </motion.div>
+            </div>
 
             {hasResources && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="w-full relative z-10"
-              >
-                <div className="mb-6 flex items-center gap-3">
+              <div className="w-full relative z-10">
+                <div className="mb-5 lg:mb-6 flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary/60" />
                   <h4 className="text-sm font-bold text-slate-800">
                     مطالب و منابع مرتبط
                   </h4>
                 </div>
 
-                <div className="flex flex-col w-full">
+                <div className="flex flex-col w-full gap-2">
                   {disease.media?.type === "video" && (
                     <ResourceAction
                       icon={PlayCircle}
@@ -110,34 +95,30 @@ export function DiseaseStory({
                     />
                   )}
                 </div>
-              </motion.div>
+              </div>
             )}
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.96 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
+
+          {/* Visual Section */}
+          <div
             className={cn(
-              "relative w-full max-w-[480px] mx-auto aspect-square isolate",
-              isEven ? "order-1 lg:order-2" : "order-1 lg:order-1",
+              "relative w-full max-w-[320px] lg:max-w-[480px] mx-auto aspect-square isolate",
+              // Mobile: Always top (order-1). Desktop: Alternate based on index.
+              "order-1",
+              isEven ? "lg:order-2" : "lg:order-1",
             )}
           >
             {/* Blob background */}
             <div
               className="absolute inset-[-8%] -z-20 bg-contain bg-center bg-no-repeat pointer-events-none"
-              style={{
-                backgroundImage: "url('/blob.svg')",
-              }}
+              style={{ backgroundImage: "url('/blob.svg')" }}
               aria-hidden="true"
             />
 
-            {/* Soft glass shape that follows the same visual footprint */}
+            {/* Soft glass shape */}
             <GlassCard
               className={cn(
-                "absolute inset-[8%] -z-10 opacity-50",
-                "transition-all duration-700",
-                "shadow-xl shadow-primary/10",
+                "absolute inset-[8%] -z-10 opacity-50 shadow-xl shadow-primary/10 transition-all duration-700",
                 blobShapeClass,
               )}
             />
@@ -149,26 +130,22 @@ export function DiseaseStory({
                   src={disease.imageUrl}
                   alt={faName}
                   fill
-                  className="object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.10)]"
-                  sizes="(max-width: 768px) 90vw, 45vw"
+                  className="object-contain drop-shadow-[0_15px_25px_rgba(0,0,0,0.10)]"
+                  sizes="(max-width: 1024px) 90vw, 45vw"
                   priority={index < 2}
                 />
               ) : (
                 <div
                   className={cn(
-                    "w-[72%] h-[72%]",
-                    "bg-white/20 backdrop-blur-sm",
-                    "border border-white/30",
-                    "flex items-center justify-center",
-                    "transition-all duration-700",
+                    "w-[72%] h-[72%] bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center transition-all duration-700",
                     blobShapeClass,
                   )}
                 >
-                  <Shield className="w-20 h-20 text-primary/40" />
+                  <Shield className="w-16 h-16 lg:w-20 lg:h-20 text-primary/40" />
                 </div>
               )}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
