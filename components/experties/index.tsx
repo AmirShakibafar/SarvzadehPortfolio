@@ -15,7 +15,8 @@ const specialtiesData = [
     description:
       "مدیریت بیماری‌های مرتبط با سیستم ایمنی از جمله ام‌اس، میاستنی گراویس، پسوریازیس و ویتیلیگو.",
     icon: Shield,
-    href: "/specialties/autoimmune",
+    href: "/diseases/autoimmune",
+    isActive: true,
   },
   {
     id: "cancer",
@@ -24,6 +25,7 @@ const specialtiesData = [
       "پشتیبانی ساختاریافته برای انواع سرطان‌ها نظیر ملانوما، سرطان پروستات و سرطان پستان.",
     icon: HeartPulse,
     href: "/specialties/cancer",
+    isActive: false,
   },
   {
     id: "hormonal-metabolic",
@@ -32,6 +34,7 @@ const specialtiesData = [
       "کنترل شرایط فیزیولوژیک شامل فیبروم رحم، اندومتریوز، سندروم تخمدان پلی‌کیستیک (PCOS) و سندروم متابولیک.",
     icon: Activity,
     href: "/specialties/hormonal-metabolic",
+    isActive: false,
   },
   {
     id: "allergy",
@@ -40,6 +43,7 @@ const specialtiesData = [
       "تنظیم و بهبود واکنش‌های سیستمیک مرتبط با آسم، حساسیت‌های پوستی و سندرم MCAS.",
     icon: Leaf,
     href: "/specialties/allergy",
+    isActive: false,
   },
 ];
 
@@ -98,31 +102,85 @@ export function SpecialtiesSection() {
         {specialtiesData.map((item) => {
           const Icon = item.icon;
 
-          return (
-            <motion.div key={item.id} variants={itemVariants}>
-              <Link
-                href={item.href}
-                className="group block h-full focus:outline-none"
+          const CardContent = (
+            <GlassCard
+              className={`h-full flex flex-col p-8 transition-all duration-300 text-right ${
+                item.isActive
+                  ? "border border-white/60 group-hover:-translate-y-2 group-hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] group-hover:bg-white/50 group-focus-visible:ring-2 group-focus-visible:ring-primary"
+                  : "border border-slate-200/50 bg-slate-50/40"
+              }`}
+            >
+              <div className="mb-8 flex w-full items-start justify-between">
+                <div className="mt-2">
+                  {!item.isActive && (
+                    <span className="inline-block rounded-full bg-slate-200/60 px-3 py-1 text-xs font-medium text-slate-500">
+                      به زودی
+                    </span>
+                  )}
+                </div>
+                <div
+                  className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl transition-colors ${
+                    item.isActive
+                      ? "bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white"
+                      : "bg-slate-100 text-slate-400"
+                  }`}
+                >
+                  <Icon className="h-7 w-7" />
+                </div>
+              </div>
+
+              <h3
+                className={`mb-4 text-xl font-bold ${
+                  item.isActive ? "text-slate-900" : "text-slate-500"
+                }`}
               >
-                <GlassCard className="h-full flex flex-col p-8 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] group-hover:bg-white/50 group-focus-visible:ring-2 group-focus-visible:ring-primary border border-white/60 text-right">
-                  <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white ml-auto">
-                    <Icon className="h-7 w-7" />
-                  </div>
+                {item.title}
+              </h3>
 
-                  <h3 className="mb-4 text-xl font-bold text-slate-900">
-                    {item.title}
-                  </h3>
+              <p
+                className={`mb-8 text-sm leading-7 flex-grow ${
+                  item.isActive ? "text-slate-600" : "text-slate-400"
+                }`}
+              >
+                {item.description}
+              </p>
 
-                  <p className="mb-8 text-sm leading-7 text-slate-600 flex-grow">
-                    {item.description}
-                  </p>
-
-                  <div className="mt-auto flex items-center gap-2 text-sm font-semibold text-primary transition-transform duration-300 group-hover:gap-3 justify-end">
+              <div
+                className={`mt-auto flex items-center gap-2 text-sm font-semibold transition-all duration-300 justify-end ${
+                  item.isActive
+                    ? "text-primary group-hover:gap-3"
+                    : "text-slate-400"
+                }`}
+              >
+                {item.isActive ? (
+                  <>
                     <span>اطلاعات بیشتر</span>
                     <ArrowLeft className="h-4 w-4" />
-                  </div>
-                </GlassCard>
-              </Link>
+                  </>
+                ) : (
+                  <span>در حال آماده‌سازی</span>
+                )}
+              </div>
+            </GlassCard>
+          );
+
+          return (
+            <motion.div key={item.id} variants={itemVariants}>
+              {item.isActive ? (
+                <Link
+                  href={item.href}
+                  className="group block h-full focus:outline-none"
+                >
+                  {CardContent}
+                </Link>
+              ) : (
+                <div
+                  className="block h-full cursor-not-allowed"
+                  aria-disabled="true"
+                >
+                  {CardContent}
+                </div>
+              )}
             </motion.div>
           );
         })}

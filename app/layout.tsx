@@ -1,6 +1,9 @@
 import localFont from "next/font/local";
 import "./globals.css";
 
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+
 const vazir = localFont({
   src: [
     {
@@ -25,17 +28,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    // Inject the font CSS variable here
-    <html lang="fa" dir="rtl" className={`${vazir.variable}`}>
+    <html lang="fa" dir="rtl" className={vazir.variable}>
       <head>
         <title>دکتر رضا سرورزاده - تغذیه بالینی</title>
+
         <meta
           name="description"
           content="تغذیه شخصی‌سازی شده برای مدیریت بهتر ام‌اس و بهبود کیفیت زندگی."
         />
       </head>
+
       <body className="min-h-screen bg-background text-foreground antialiased font-sans">
+        {/* Global Navbar */}
+        <div className="sticky top-0 z-50 w-full">
+          <Navbar />
+        </div>
+
         {children}
+
+        {/* Global Footer */}
+        <Footer />
       </body>
     </html>
   );
