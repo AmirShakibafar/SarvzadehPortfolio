@@ -1,5 +1,5 @@
 // lib/disease-data.ts
-import { DiseasePageData } from "@/components/templates/DiseaseCategoryTemplate";
+import { DiseasePageData } from "@/components/templates/diseases/DiseaseCategoryTemplate";
 import { autoimmuneData } from "@/data/autoimmune";
 
 const diseaseRegistry: Record<string, any> = {

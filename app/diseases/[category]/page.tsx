@@ -1,6 +1,6 @@
 // app/diseases/[category]/page.tsx
 import { notFound } from "next/navigation";
-import DiseaseCategoryTemplate from "@/components/templates/DiseaseCategoryTemplate";
+import DiseaseCategoryTemplate from "@/components/templates/diseases/DiseaseCategoryTemplate";
 import { getDiseaseData } from "@/lib/disease-data";
 
 export async function generateStaticParams() {
