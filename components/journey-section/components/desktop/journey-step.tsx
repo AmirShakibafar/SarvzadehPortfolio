@@ -15,6 +15,7 @@ interface StepProps {
   trustBadge: string;
   icon: React.ReactNode;
   align: "left" | "right";
+  index: number; // Added to determine the blob shape
 }
 
 const containerVariants: Variants = {
@@ -47,6 +48,7 @@ export const JourneyStep: React.FC<StepProps> = ({
   trustBadge,
   icon,
   align,
+  index,
 }) => {
   const isRightAligned = align === "right";
 
@@ -61,7 +63,8 @@ export const JourneyStep: React.FC<StepProps> = ({
       viewport={{ once: true, margin: "-100px 0px", amount: 0.2 }}
     >
       <div className="w-full flex-1">
-        <JourneyGlassIllustration src={image} alt={title} />
+        {/* Pass the index down to the illustration */}
+        <JourneyGlassIllustration src={image} alt={title} index={index} />
       </div>
 
       <div className="flex w-full flex-1 flex-col gap-5">

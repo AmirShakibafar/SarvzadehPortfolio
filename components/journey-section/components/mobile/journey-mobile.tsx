@@ -53,7 +53,6 @@ export const JourneyMobile: React.FC<{ steps: StepProps[] }> = ({ steps }) => {
 
             <div className="absolute top-12 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-primary ring-[6px] ring-background z-0" />
 
-            {/* SINGLE Intersection Observer Wrapper per step */}
             <motion.div
               className="flex flex-col gap-6 px-4 pt-12 pb-20 relative z-10"
               initial="hidden"
@@ -68,6 +67,7 @@ export const JourneyMobile: React.FC<{ steps: StepProps[] }> = ({ steps }) => {
                 <JourneyGlassIllustrationMobile
                   src={step.image}
                   alt={step.title}
+                  index={index}
                 />
               </motion.div>
 

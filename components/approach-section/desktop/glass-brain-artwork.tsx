@@ -14,21 +14,13 @@ export function GlassBrainArtwork() {
         viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="absolute left-1/2 top-1/2 -z-20 h-[150%] w-[150%] opacity-40 -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none" />
+        <div
+          className="absolute left-1/2 top-1/2 -z-20 h-[150%] w-[150%] opacity-40 -translate-x-1/2 -translate-y-1/2 bg-contain bg-center bg-no-repeat pointer-events-none"
+          style={{ backgroundImage: "url('/blob.svg')" }}
+          aria-hidden="true"
+        />
 
-        <motion.div
-          animate={{
-            y: [0, -24, 0],
-            rotate: [-4, 2, -4],
-          }}
-          transition={{
-            delay: 1,
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="relative z-10 h-full w-full"
-        >
+        <div className="relative z-10 h-full w-full">
           <Image
             src="/images/approach/brain2.webp"
             alt="Glass Brain"
@@ -37,7 +29,7 @@ export function GlassBrainArtwork() {
             draggable={false}
             sizes="(max-width: 480px) 100vw, 480px"
           />
-        </motion.div>
+        </div>
       </motion.div>
     </div>
   );

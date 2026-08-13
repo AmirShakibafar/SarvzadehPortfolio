@@ -68,7 +68,7 @@ const itemVariants: Variants = {
 
 export function SpecialtiesSection() {
   return (
-    <section className="relative mb-16 isolate w-full px-4 lg:px-14 max-w-7xl mx-auto">
+    <section className="relative mb-32 isolate w-full px-4 lg:px-14 max-w-7xl mx-auto">
       {/* Background Blob */}
       <div
         className="absolute left-1/2 top-1/2 -z-10 h-[600px] w-[600px] opacity-40 md:h-[900px] md:w-[900px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"

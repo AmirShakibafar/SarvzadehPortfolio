@@ -66,6 +66,7 @@ export function JourneyScrollContainer({ steps }: { steps: StepData[] }) {
               {steps.map((step, index) => (
                 <JourneyStep
                   key={index}
+                  index={index}
                   {...step}
                   align={index % 2 === 0 ? "left" : "right"}
                 />
