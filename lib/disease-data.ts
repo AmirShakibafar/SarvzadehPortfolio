@@ -1,8 +1,8 @@
 // lib/disease-data.ts
-import { DiseasePageData } from "@/components/templates/diseases/DiseaseCategoryTemplate";
+import { DiseasePageData } from "@/components/templates/diseases/types";
 import { autoimmuneData } from "@/data/autoimmune";
 
-const diseaseRegistry: Record<string, any> = {
+const diseaseRegistry: Record<string, DiseasePageData> = {
   autoimmune: autoimmuneData,
 };
 
@@ -17,10 +17,10 @@ export async function getDiseaseData(
     title: data.title,
     subtitle: data.subtitle,
     description: data.description,
-    heroImageUrl: data.heroImageUrl, // <-- Pass the image URL
+    heroImageUrl: data.heroImageUrl,
     mechanismTitle: data.mechanismTitle,
     mechanismDescription: data.mechanismDescription,
-    featuredDiseases: data.featuredDiseases || [],
-    keywords: data.keywords || [],
+    featuredDiseases: data.featuredDiseases ?? [],
+    keywords: data.keywords ?? [],
   };
 }
