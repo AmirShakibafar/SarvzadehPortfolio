@@ -79,19 +79,24 @@ export function DiseaseStory({
                     <ResourceAction
                       icon={PlayCircle}
                       title="مشاهده ویدیو آموزشی"
+                      action="play"
                     />
                   )}
+
                   {disease.media?.type === "photo" && (
                     <ResourceAction
                       icon={ImageIcon}
                       title="مشاهده تصاویر بالینی"
+                      action="view"
                     />
                   )}
+
                   {disease.paperDoi && (
                     <ResourceAction
                       icon={BookOpen}
                       title="مطالعه مقاله علمی مرجع"
                       href={`https://doi.org/${disease.paperDoi}`}
+                      action="external"
                     />
                   )}
                 </div>

@@ -1,33 +1,40 @@
-import { cn } from "@/lib/utils";
-import { ArrowLeft, ExternalLink, LucideIcon } from "lucide-react";
+import { ExternalLink, Eye, Play, LucideIcon } from "lucide-react";
+
+type ResourceActionProps = {
+  icon: LucideIcon;
+  title: string;
+  href?: string;
+  action?: "play" | "view" | "external";
+  onClick?: () => void;
+};
 
 export function ResourceAction({
   icon: Icon,
   title,
   href,
-}: {
-  icon: LucideIcon;
-  title: string;
-  href?: string;
-}) {
-  const ActionIcon = href ? ExternalLink : ArrowLeft;
+  action = "view",
+  onClick,
+}: ResourceActionProps) {
+  const ActionIcon =
+    action === "play" ? Play : action === "external" ? ExternalLink : Eye;
+
+  const actionLabel =
+    action === "play" ? "پخش" : action === "external" ? "مطالعه" : "مشاهده";
 
   const content = (
-    <div className="group flex items-center gap-4 py-3 cursor-pointer border-b border-slate-100 hover:border-primary/30 transition-colors w-full md:max-w-md">
-      <div className="w-10 h-10 rounded-xl bg-primary/5 text-primary flex items-center justify-center group-hover:bg-primary/10 group-hover:scale-105 transition-all shrink-0">
-        <Icon className="w-5 h-5" />
+    <div className="group flex w-full cursor-pointer items-center gap-4 border-b border-slate-100 py-3 transition-colors hover:border-primary/30">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/5 text-primary transition-all group-hover:scale-105 group-hover:bg-primary/10">
+        <Icon className="h-5 w-5" />
       </div>
-      <span className="text-sm font-medium text-slate-700 group-hover:text-primary transition-colors flex-grow text-right">
+
+      <span className="flex-grow text-right text-sm font-medium text-slate-700 transition-colors group-hover:text-primary">
         {title}
       </span>
-      <ActionIcon
-        className={cn(
-          "w-4 h-4 text-primary opacity-0 transition-all shrink-0",
-          href
-            ? "group-hover:opacity-100"
-            : "-translate-x-2 group-hover:opacity-100 group-hover:translate-x-0",
-        )}
-      />
+
+      <div className="flex shrink-0 items-center gap-1.5 text-xs font-medium text-slate-600 transition-all group-hover:-translate-x-0.5 group-hover:text-primary">
+        <span>{actionLabel}</span>
+        <ActionIcon className="h-4 w-4" />
+      </div>
     </div>
   );
 
@@ -38,9 +45,11 @@ export function ResourceAction({
       </a>
     );
   }
+
   return (
     <button
       type="button"
+      onClick={onClick}
       className="block w-full text-right focus:outline-none"
     >
       {content}
