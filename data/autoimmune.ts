@@ -20,7 +20,7 @@ export const autoimmuneData = {
       name: "Multiple Sclerosis (ام‌اس)",
       description:
         "بیماری است که در آن سیستم ایمنی به میلین و گاهی خود آکسون‌های سیستم عصبی مرکزی آسیب می‌زند.",
-      imageUrl: "/images/diseases/ms2.png",
+      imageUrl: "/images/diseases/ms4.png",
       media: { type: "video" as const },
     },
     {
@@ -28,7 +28,7 @@ export const autoimmuneData = {
       name: "Psoriasis (پسوریازیس)",
       description:
         "بیماری التهابی مزمن است که باعث فعال‌شدن بیش‌ازحد سیستم ایمنی و افزایش سرعت تکثیر سلول‌های پوست می‌شود.",
-      imageUrl: "/images/diseases/ms2.png",
+      imageUrl: "/images/diseases/pes.png",
       media: { type: "photo" as const },
       paperDoi: "10.5281/zenodo.7799594",
     },
@@ -37,7 +37,7 @@ export const autoimmuneData = {
       name: "Vitiligo (ویتیلیگو)",
       description:
         "بیماری خودایمنی است که در آن سیستم ایمنی ملانوسیت‌های تولیدکننده رنگدانه را تخریب می‌کند.",
-      imageUrl: "/images/diseases/ms2.png",
+      imageUrl: "/images/diseases/vitiligo.png",
       media: { type: "photo" as const },
     },
   ],
