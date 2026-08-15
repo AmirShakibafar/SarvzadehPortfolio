@@ -16,15 +16,7 @@ const specialtiesData = [
     href: "/diseases/autoimmune",
     isActive: true,
   },
-  {
-    id: "cancer",
-    title: "سرطان",
-    description:
-      "پشتیبانی ساختاریافته برای انواع سرطان‌ها نظیر ملانوما، سرطان پروستات و سرطان پستان.",
-    icon: HeartPulse,
-    href: "/diseases/cancer",
-    isActive: true,
-  },
+
   {
     id: "hormonal-metabolic",
     title: "هورمونی - متابولیک",
@@ -43,11 +35,20 @@ const specialtiesData = [
     href: "/diseases/allergy",
     isActive: true,
   },
+  {
+    id: "cancer",
+    title: "سرطان",
+    description:
+      "پشتیبانی ساختاریافته برای انواع سرطان‌ها نظیر ملانوما، سرطان پروستات و سرطان پستان.",
+    icon: HeartPulse,
+    href: "/diseases/cancer",
+    isActive: false,
+  },
 ];
 
 export function SpecialtiesSection() {
   return (
-    <section className="relative z-10 w-full min-w-0 overflow-hidden py-16 lg:py-24">
+    <section className="relative z-10 w-full min-w-0 overflow-hidden py-16">
       {/* Global Background Blob */}
       <div
         className="absolute left-1/2 top-1/2 -z-10 h-[100%] w-[100%] max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-30 pointer-events-none"
@@ -55,7 +56,7 @@ export function SpecialtiesSection() {
       />
 
       <div className="mx-auto w-full min-w-0 max-w-7xl px-6 lg:px-14">
-        <div className="mx-auto mb-16 lg:mb-24 max-w-2xl text-center relative z-10">
+        <div className="mx-auto mb-8 max-w-2xl text-center relative z-10">
           <span className="mb-4 inline-block text-xs lg:text-sm font-semibold tracking-wide text-primary">
             تخصص‌های درمانی
           </span>

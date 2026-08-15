@@ -4,7 +4,7 @@ export const hormonalMetabolicData = {
   subtitle: "کنترل شرایط فیزیولوژیک",
   description:
     "کنترل شرایط فیزیولوژیک شامل فیبروم رحم، اندومتریوز، سندروم تخمدان پلی‌کیستیک (PCOS) و سندروم متابولیک[cite: 1].",
-  heroImageUrl: "/images/diseases/hormonal-hero.png",
+  heroImageUrl: "/images/diseases/hormon.png",
   mechanismTitle: "سازوکار اختلالات هورمونی و متابولیک",
   mechanismDescription:
     "اختلال در عملکرد هورمون‌ها یا سیستم متابولیک که بر تنظیم قند، چربی و عملکردهای تولید مثلی تأثیر می‌گذارد[cite: 1].",
@@ -40,7 +40,7 @@ export const hormonalMetabolicData = {
       name: "Uterine Fibroids (فیبروم رحم)",
       description:
         "تومورهای خوش‌خیم و وابسته به هورمون‌های جنسی هستند که از عضله صاف رحم ایجاد می‌شوند[cite: 1].",
-      imageUrl: "/images/diseases/fibroids.png",
+      imageUrl: "/images/diseases/uti.png",
       media: { type: "photo" as const },
     },
     {
@@ -48,7 +48,7 @@ export const hormonalMetabolicData = {
       name: "Endometriosis (اندومتریوز)",
       description:
         "بیماری مزمن وابسته به استروژن است که در آن بافت شبیه آندومتر خارج از حفره رحم رشد می‌کند و باعث التهاب و درد می‌شود[cite: 1].",
-      imageUrl: "/images/diseases/endometriosis.png",
+      imageUrl: "/images/diseases/endo.png",
       media: { type: "photo" as const },
     },
     {
@@ -56,7 +56,7 @@ export const hormonalMetabolicData = {
       name: "Polycystic Ovary Syndrome (PCOS)",
       description:
         "یک اختلال شایع هورمونی ـ متابولیکی است که با مقاومت به انسولین، اختلال تخمک‌گذاری و افزایش آندروژن‌ها ارتباط دارد[cite: 1].",
-      imageUrl: "/images/diseases/pcos.png",
+      imageUrl: "/images/diseases/ovary.png",
       media: { type: "photo" as const },
     },
     {
@@ -64,7 +64,7 @@ export const hormonalMetabolicData = {
       name: "Metabolic Syndrome (سندروم متابولیک)",
       description:
         "مجموعه‌ای از اختلالات متابولیکی شامل چاقی شکمی، فشار خون بالا، قند خون بالا و اختلال چربی خون است که خطر بیماری قلبی و دیابت را افزایش می‌دهد[cite: 1].",
-      imageUrl: "/images/diseases/metabolic.png",
+      imageUrl: "/images/diseases/meta.png",
       media: { type: "photo" as const },
     },
   ],
