@@ -4,7 +4,12 @@ import DiseaseCategoryTemplate from "@/components/templates/diseases/DiseaseCate
 import { getDiseaseData } from "@/lib/disease-data";
 
 export async function generateStaticParams() {
-  return [{ category: "autoimmune" }];
+  return [
+    { category: "autoimmune" },
+    { category: "cancer" },
+    { category: "hormonal-metabolic" },
+    { category: "allergy" },
+  ];
 }
 
 // NOTE: params is typed as a Promise in Next.js 15+
@@ -15,7 +20,6 @@ export default async function DiseaseCategoryPage({
 }) {
   // 1. Await the params object
   const resolvedParams = await params;
-
 
   // 3. Convert to lowercase to prevent case-sensitivity 404s (e.g. /Autoimmune)
   const safeSlug = resolvedParams.category?.toLowerCase();

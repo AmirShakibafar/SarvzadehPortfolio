@@ -64,6 +64,7 @@ export default function DiseaseCategoryTemplate({
       <ImmuneSystemProcess
         title={data.mechanismTitle}
         description={data.mechanismDescription}
+        steps={data.processSteps}
       />
 
       <div className="flex flex-col w-full">

@@ -3,7 +3,6 @@ import { Shield, Activity, HeartPulse, Leaf, ArrowLeft } from "lucide-react";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { GlassCard } from "@/components/ui/glass-card";
-
 const specialtiesData = [
   {
     id: "autoimmune",
@@ -20,8 +19,8 @@ const specialtiesData = [
     description:
       "پشتیبانی ساختاریافته برای انواع سرطان‌ها نظیر ملانوما، سرطان پروستات و سرطان پستان.",
     icon: HeartPulse,
-    href: "/specialties/cancer",
-    isActive: false,
+    href: "/diseases/cancer",
+    isActive: true,
   },
   {
     id: "hormonal-metabolic",
@@ -29,8 +28,8 @@ const specialtiesData = [
     description:
       "کنترل شرایط فیزیولوژیک شامل فیبروم رحم، اندومتریوز، سندروم تخمدان پلی‌کیستیک (PCOS) و سندروم متابولیک.",
     icon: Activity,
-    href: "/specialties/hormonal-metabolic",
-    isActive: false,
+    href: "/diseases/hormonal-metabolic",
+    isActive: true,
   },
   {
     id: "allergy",
@@ -38,11 +37,10 @@ const specialtiesData = [
     description:
       "تنظیم و بهبود واکنش‌های سیستمیک مرتبط با آسم، حساسیت‌های پوستی و سندرم MCAS.",
     icon: Leaf,
-    href: "/specialties/allergy",
-    isActive: false,
+    href: "/diseases/allergy",
+    isActive: true,
   },
 ];
-
 export function SpecialtiesSection() {
   return (
     <section className="relative mb-12 lg:mb-16 isolate w-full px-6 lg:px-14 max-w-7xl mx-auto">

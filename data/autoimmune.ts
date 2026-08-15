@@ -12,7 +12,32 @@ export const autoimmuneData = {
   mechanismTitle: "سازوکار بیماری‌های خودایمنی",
   mechanismDescription:
     "در این بیماری‌ها، سیستم ایمنی به اشتباه بافت‌های سالم بدن را هدف قرار داده و باعث ایجاد التهاب می‌شود.",
-
+  processSteps: [
+    {
+      title: "محرک‌های اولیه",
+      desc: "عوامل ژنتیکی یا محیطی سیستم ایمنی را تحریک می‌کنند",
+      iconName: "Dna",
+      highlight: false,
+    },
+    {
+      title: "نقص در تشخیص",
+      desc: "ناتوانی در تمایز بین سلول‌های خودی و مهاجم",
+      iconName: "ScanSearch",
+      highlight: false,
+    },
+    {
+      title: "حمله خودایمنی",
+      desc: "تولید آنتی‌بادی و حمله به بافت‌های سالم بدن",
+      iconName: "ShieldAlert",
+      highlight: false,
+    },
+    {
+      title: "التهاب مزمن",
+      desc: "آسیب بافتی و بروز علائم پیش‌رونده",
+      iconName: "Flame",
+      highlight: true,
+    },
+  ],
   // Featured Diseases Array
   featuredDiseases: [
     {

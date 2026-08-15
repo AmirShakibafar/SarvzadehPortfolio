@@ -16,10 +16,9 @@ export default function Home() {
       </div>
 
       <HeroSection />
+      <SpecialtiesSection />
 
       <WhyTrustMeSection />
-
-      <SpecialtiesSection />
 
       <JourneySection />
 
