@@ -1,5 +1,6 @@
 // components/templates/diseases/types.ts
 
+export type ImageSize = "sm" | "md" | "lg";
 export interface ProcessStep {
   title: string;
   desc: string;
@@ -17,6 +18,7 @@ export interface FeaturedDisease {
   name: string;
   description: string;
   imageUrl?: string;
+  imageSize?: ImageSize;
   media?: DiseaseMedia;
   paperDoi?: string;
 }
@@ -26,6 +28,7 @@ export interface DiseasePageData {
   subtitle: string;
   description: string;
   heroImageUrl?: string;
+  heroImageSize?: ImageSize;
   mechanismTitle: string;
   mechanismDescription: string;
   featuredDiseases: FeaturedDisease[];

@@ -1,13 +1,16 @@
 // data/autoimmune.ts
 
+import { HeroImage } from "@/components/hero/desktop/hero-image";
+import { image } from "framer-motion/client";
+
 export const autoimmuneData = {
   // Hero Section Data
   title: "آشنایی با بیماری‌های خودایمنی",
   subtitle: "رویکرد نوین ایمونولوژی",
   description:
     "مدیریت و کنترل بیماری‌های مرتبط با سیستم ایمنی از طریق رویکردهای نوین علمی. در این بیماری‌ها، سیستم ایمنی به اشتباه بافت‌های سالم بدن را هدف قرار می‌دهد.",
-  heroImageUrl: "/images/diseases/ms2.png", // <-- ADD THIS
-
+  heroImageUrl: "/images/diseases/ms2.png",
+  heroImageSize: "lg" as const,
   // Mechanism Section Data
   mechanismTitle: "سازوکار بیماری‌های خودایمنی",
   mechanismDescription:

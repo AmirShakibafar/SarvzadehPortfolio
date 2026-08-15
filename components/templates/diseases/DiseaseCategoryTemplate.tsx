@@ -58,6 +58,7 @@ export default function DiseaseCategoryTemplate({
         title={data.title}
         subtitle={data.subtitle}
         description={data.description}
+        heroImageSize={data.heroImageSize}
         heroImageUrl={data.heroImageUrl}
         firstDiseaseId={data.featuredDiseases[0]?.id}
       />

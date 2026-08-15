@@ -24,6 +24,7 @@ export async function getDiseaseData(
     subtitle: data.subtitle,
     description: data.description,
     heroImageUrl: data.heroImageUrl,
+    heroImageSize: data.heroImageSize,
     mechanismTitle: data.mechanismTitle,
     mechanismDescription: data.mechanismDescription,
     processSteps: data.processSteps ?? [],

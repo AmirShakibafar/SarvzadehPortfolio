@@ -53,7 +53,7 @@
 } */
 
 :root {
-  --primary: rgb(13, 220, 213);
+  --primary: #0ddcd5;
   --primary-foreground: #ffffff;
   --secondary: #ebf5f5;
   --secondary-foreground: #2a5a5c;

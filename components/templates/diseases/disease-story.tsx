@@ -1,7 +1,7 @@
 import { BookOpen, ImageIcon, PlayCircle, Shield } from "lucide-react";
 import { ResourceAction } from "./resource-action";
 import { Paragraph } from "@/components/ui/paragraph";
-import { FeaturedDisease } from "./types";
+import { FeaturedDisease, ImageSize } from "./types";
 import { cn } from "@/lib/utils";
 import { Heading } from "@/components/ui/heading";
 import Image from "next/image";
@@ -15,6 +15,12 @@ const BLOB_SHAPES = [
   "rounded-[40%_60%_70%_30%/40%_50%_60%_50%]",
   "rounded-[70%_30%_50%_50%/60%_40%_60%_40%]",
 ];
+
+const IMAGE_SIZE_CLASSES: Record<ImageSize, string> = {
+  sm: "w-[65%] h-[65%]",
+  md: "w-[80%] h-[80%]",
+  lg: "w-[95%] h-[95%]",
+};
 
 export function DiseaseStory({
   disease,
@@ -31,6 +37,8 @@ export function DiseaseStory({
 
   const blobShapeClass = BLOB_SHAPES[index % BLOB_SHAPES.length];
 
+  const imageSizeClass = IMAGE_SIZE_CLASSES[disease.imageSize ?? "sm"];
+
   return (
     <section
       id={disease.id}
@@ -42,18 +50,17 @@ export function DiseaseStory({
           <div
             className={cn(
               "flex flex-col items-start text-right w-full relative",
-              // Mobile: Always bottom (order-2). Desktop: Alternate based on index.
               "order-2",
               isEven ? "lg:order-1" : "lg:order-2",
             )}
           >
-            {/* Hidden on mobile to prevent repaint lag */}
             <DotPattern className="hidden lg:block absolute top-0 right-0 -mt-6 -mr-6 w-32 h-32 opacity-70" />
 
             <div className="w-full text-right relative z-10">
               <div className="text-primary font-medium text-sm mb-3 lg:mb-4">
                 {(index + 1).toString().padStart(2, "0")} — {enName}
               </div>
+
               <Heading size="h2" className="mb-4 lg:mb-6">
                 {faName}
               </Heading>
@@ -69,6 +76,7 @@ export function DiseaseStory({
               <div className="w-full relative z-10">
                 <div className="mb-5 lg:mb-6 flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+
                   <h4 className="text-sm font-bold text-slate-800">
                     مطالب و منابع مرتبط
                   </h4>
@@ -108,7 +116,6 @@ export function DiseaseStory({
           <div
             className={cn(
               "relative w-full max-w-[320px] lg:max-w-[480px] mx-auto aspect-square isolate",
-              // Mobile: Always top (order-1). Desktop: Alternate based on index.
               "order-1",
               isEven ? "lg:order-2" : "lg:order-1",
             )}
@@ -129,16 +136,23 @@ export function DiseaseStory({
             />
 
             {/* Image */}
-            <div className="absolute inset-[4%] z-10 flex items-center justify-center">
+            <div className="absolute inset-0 z-10 flex items-center justify-center">
               {disease.imageUrl ? (
-                <Image
-                  src={disease.imageUrl}
-                  alt={faName}
-                  fill
-                  className="object-contain drop-shadow-[0_15px_25px_rgba(0,0,0,0.10)]"
-                  sizes="(max-width: 1024px) 90vw, 45vw"
-                  priority={index < 2}
-                />
+                <div
+                  className={cn(
+                    "relative transition-all duration-700",
+                    imageSizeClass,
+                  )}
+                >
+                  <Image
+                    src={disease.imageUrl}
+                    alt={faName}
+                    fill
+                    className="object-contain drop-shadow-[0_15px_25px_rgba(0,0,0,0.10)]"
+                    sizes="(max-width: 1024px) 70vw, 40vw"
+                    priority={index < 2}
+                  />
+                </div>
               ) : (
                 <div
                   className={cn(

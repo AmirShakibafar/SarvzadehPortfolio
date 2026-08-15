@@ -5,17 +5,27 @@ import { Paragraph } from "@/components/ui/paragraph";
 import { ArrowLeft, HeartPulse, Shield } from "lucide-react";
 import Image from "next/image";
 
+type ImageSize = "sm" | "md" | "lg";
+
+const heroImageSizeClasses: Record<ImageSize, string> = {
+  sm: "w-[70%] h-[70%] lg:w-[75%] lg:h-[75%]",
+  md: "w-[85%] h-[85%] lg:w-[90%] lg:h-[90%]",
+  lg: "w-[95%] h-[95%] lg:w-full lg:h-full",
+};
+
 export function AutoimmuneHero({
   title,
   subtitle,
   description,
   heroImageUrl,
+  heroImageSize = "md",
   firstDiseaseId,
 }: {
   title: string;
   subtitle: string;
   description: string;
   heroImageUrl?: string;
+  heroImageSize?: ImageSize;
   firstDiseaseId?: string;
 }) {
   const scrollToDiseases = () => {
@@ -32,11 +42,8 @@ export function AutoimmuneHero({
       className="relative w-full min-w-0 overflow-hidden lg:min-h-[90vh] flex items-center pt-12 pb-12 lg:pb-20"
     >
       <div className="mx-auto w-full min-w-0 max-w-7xl px-6 lg:px-14 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-        {/* ================================================================
-            TEXT
-        ================================================================ */}
+        {/* TEXT */}
         <div className="relative isolate min-w-0 flex flex-col items-start text-right z-10 order-2 lg:order-1 w-full">
-          {/* Background Blob */}
           <div
             className="absolute left-1/2 top-1/2 -z-10 h-[130%] w-[130%] -translate-x-1/2 -translate-y-1/2 opacity-30 lg:opacity-40 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
             aria-hidden="true"
@@ -82,27 +89,24 @@ export function AutoimmuneHero({
           </div>
         </div>
 
-        {/* ================================================================
-            IMAGE
-        ================================================================ */}
+        {/* IMAGE */}
         <div className="relative min-w-0 h-[320px] lg:h-[500px] w-full order-1 lg:order-2 flex items-center justify-center isolate">
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
-            {/* Background Glow */}
             <div
               className="absolute left-1/2 top-1/2 h-[110%] w-[110%] -translate-x-1/2 -translate-y-1/2 opacity-30 lg:opacity-40 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
               aria-hidden="true"
             />
 
-            {/* Glass Blob */}
             <div className="absolute w-[90%] h-[90%] lg:w-[95%] lg:h-[95%] max-w-[300px] lg:max-w-[600px] lg:max-h-[600px] rounded-[45%_55%_48%_52%/55%_45%_50%_50%] bg-gradient-to-br from-white/80 lg:from-white/60 to-white/40 lg:to-white/20 border border-white/60 shadow-sm lg:shadow-[0_24px_80px_rgba(0,0,0,0.03)] lg:backdrop-blur-sm" />
 
-            {/* Decorative Ellipse - Disabled on mobile */}
             <div className="hidden lg:block absolute w-[90%] h-[90%] max-w-[550px] max-h-[550px] border border-primary/20 rounded-[50%] opacity-40 border-dashed rotate-6" />
           </div>
 
           {/* Hero Image */}
           {heroImageUrl && (
-            <div className="relative w-[85%] h-[85%] lg:w-full lg:h-full lg:scale-[1.1] z-10 drop-shadow-md lg:drop-shadow-xl">
+            <div
+              className={`relative z-10 drop-shadow-md lg:drop-shadow-xl ${heroImageSizeClasses[heroImageSize]}`}
+            >
               <Image
                 src={heroImageUrl}
                 alt={title}
@@ -114,7 +118,6 @@ export function AutoimmuneHero({
             </div>
           )}
 
-          {/* Floating badges */}
           <FloatingBadge
             icon={Shield}
             title="سیستم ایمنی"
