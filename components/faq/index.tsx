@@ -55,7 +55,7 @@ const itemVariants: Variants = {
 
 export function FaqSection() {
   return (
-    <div className="relative mt-24 isolate w-full max-w-3xl mx-auto px-4 lg:px-0">
+    <div className="relative my-24 isolate w-full max-w-3xl mx-auto px-4 lg:px-0">
       {/* Background Blob */}
       <div
         className="absolute left-1/2 top-1/2 -z-10 h-[600px] w-[600px] opacity-30 md:h-[900px] md:w-[900px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"

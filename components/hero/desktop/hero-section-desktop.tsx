@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -35,8 +36,8 @@ export function HeroSection() {
     <main
       className="
         flex flex-col-reverse lg:flex-row-reverse
-        items-center justify-center lg:justify-between 
-        w-full gap-8 md:gap-12 lg:gap-8 
+        items-center justify-center lg:justify-between
+        w-full gap-8 md:gap-12 lg:gap-8
         min-h-[calc(100svh-80px)]
         py-6
         isolate
@@ -49,7 +50,7 @@ export function HeroSection() {
         initial="hidden"
         animate="visible"
       >
-        <motion.div variants={itemVariants} className=" ">
+        <motion.div variants={itemVariants}>
           <Heading
             as="h1"
             size="h1"
@@ -62,46 +63,61 @@ export function HeroSection() {
           </Heading>
         </motion.div>
 
-        <motion.div variants={itemVariants} className=" ">
+        <motion.div variants={itemVariants}>
           <Paragraph size="lg" className="text-sm md:text-base max-w-[480px]">
             با برنامه‌های غذایی علمی و متناسب با شرایط شما، به کنترل علائم ام‌اس
             کمک کرده و سلامت‌تان را بهبود ببخشید.
           </Paragraph>
         </motion.div>
 
+        {/* Buttons */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-4 mt-2  "
+          className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-4 mt-2"
         >
           <Button
             variant="pillPrimary"
             size="pill"
-            className="gap-2 text-sm md:text-base"
+            className="gap-2 px-5 text-sm md:text-base"
           >
-            رزرو مشاوره
-            <ArrowLeft className="h-4 w-4 md:h-5 md:w-5" />
+            <Link
+              href="/#contact"
+              className="flex items-center gap-2 whitespace-nowrap"
+            >
+              رزرو مشاوره
+              <ArrowLeft className="h-4 w-4 md:h-5 md:w-5 shrink-0" />
+            </Link>
           </Button>
+
           <Button
             variant="pillSecondary"
             size="pill"
-            className="gap-2 bg-white/50 hover:bg-white/80 text-sm md:text-base  "
+            className="gap-2 bg-white/50 px-5 text-sm md:text-base hover:bg-white/80"
           >
-            بیشتر بدانید
-            <ArrowLeft className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground" />
+            <Link
+              href="/#about"
+              className="flex items-center gap-2 whitespace-nowrap"
+            >
+              بیشتر بدانید
+              <ArrowLeft className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground shrink-0" />
+            </Link>
           </Button>
         </motion.div>
       </motion.div>
 
       {/* Left Side: Image Content */}
       <motion.div
-        className="relative flex justify-center items-end w-full md:w-[80%] lg:w-[55%] isolate  "
+        className="relative flex w-full items-end justify-center md:w-[80%] lg:w-[55%] isolate"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        transition={{
+          duration: 0.8,
+          delay: 0.3,
+          ease: [0.16, 1, 0.3, 1],
+        }}
       >
-        {/* Replaced CSS blur with SVG blob, scaled up to account for baked-in blur spread */}
         <div
-          className="absolute top-1/2 left-1/2 -z-10 h-[500px] w-[500px] md:h-[750px] md:w-[750px] lg:h-[1000px] lg:w-[1000px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 pointer-events-none"
+          className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 md:h-[750px] md:w-[750px] lg:h-[1000px] lg:w-[1000px]"
           aria-hidden="true"
         />
 

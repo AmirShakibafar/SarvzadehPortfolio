@@ -1,65 +1,137 @@
-import { Leaf } from "lucide-react";
+import Link from "next/link";
+import { Leaf, ArrowLeft } from "lucide-react";
+
+const diseaseCategories = [
+  {
+    href: "/diseases/autoimmune",
+    label: "بیماری‌های خودایمنی",
+  },
+  {
+    href: "/diseases/cancer",
+    label: "بیماری‌های سرطانی",
+  },
+  {
+    href: "/diseases/hormonal-metabolic",
+    label: "هورمونی و متابولیک",
+  },
+  {
+    href: "/diseases/allergy",
+    label: "آلرژی و اختلالات ایمنی",
+  },
+];
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/30 bg-white/20 backdrop-blur-md w-full">
-      <div className="absolute inset-x-0 top-0 h-96 bg-primary/10 blur-[120px] pointer-events-none" />
-      <div className="relative mx-auto w-full px-14 py-14 max-w-7xl">
-        <div className="flex flex-col md:flex-row justify-between gap-12">
+    <footer className="relative w-full overflow-hidden border-t border-white/30 bg-white/20 backdrop-blur-md">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-primary/10 blur-[120px]" />
+
+      <div className="relative mx-auto w-full max-w-7xl px-6 py-14 md:px-14">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
-          <div className="max-w-md">
-            <div className="mb-5 flex items-center gap-3">
+          <div className="max-w-md lg:col-span-2">
+            <Link href="/" className="mb-5 flex w-fit items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/20 bg-primary/5 text-primary shadow-[inset_0_0_12px_rgba(255,255,255,.6)]">
                 <Leaf className="h-6 w-6" />
               </div>
 
               <div>
                 <h3 className="font-bold text-slate-900">دکتر رضا سرورزاده</h3>
+
                 <p className="text-sm text-slate-600">
                   تغذیه بالینی و رژیم‌درمانی
                 </p>
               </div>
-            </div>
+            </Link>
 
-            <p className="leading-8 text-slate-600">
-              همراه شما برای داشتن سبک زندگی سالم‌تر با برنامه‌های تغذیه
-              شخصی‌سازی‌شده.
+            <p className="max-w-lg leading-8 text-slate-600">
+              همراه شما برای بهبود سلامت و کیفیت زندگی با رویکردی علمی،
+              شخصی‌سازی‌شده و مبتنی بر شواهد در تغذیه و رژیم‌درمانی.
             </p>
+
+            <Link
+              href="#contact"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/70"
+            >
+              دریافت مشاوره
+              <ArrowLeft className="h-4 w-4" />
+            </Link>
           </div>
 
-          {/* Navigation */}
+          {/* Main Navigation */}
           <div>
-            <h4 className="mb-4 font-semibold text-slate-900">دسترسی سریع</h4>
+            <h4 className="mb-5 font-semibold text-slate-900">دسترسی سریع</h4>
 
-            <ul className="flex flex-col space-y-3 text-slate-600">
+            <ul className="flex flex-col gap-3 text-slate-600">
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <Link href="/" className="transition-colors hover:text-primary">
+                  صفحه اصلی
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="/#specialties"
+                  className="transition-colors hover:text-primary"
+                >
                   خدمات
-                </a>
+                </Link>
               </li>
+
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <Link
+                  href="/#about"
+                  className="transition-colors hover:text-primary"
+                >
                   درباره من
-                </a>
+                </Link>
               </li>
+
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  مقالات
-                </a>
+                <Link
+                  href="/#contact"
+                  className="transition-colors hover:text-primary"
+                >
+                  تماس با من
+                </Link>
               </li>
+
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
-                  تماس
-                </a>
+                <Link
+                  href="/#faq"
+                  className="transition-colors hover:text-primary"
+                >
+                  سوالات متداول
+                </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* Diseases */}
+          <div>
+            <h4 className="mb-5 font-semibold text-slate-900">
+              شرایط تحت درمان
+            </h4>
+
+            <ul className="flex flex-col gap-3 text-slate-600">
+              {diseaseCategories.map((disease) => (
+                <li key={disease.href}>
+                  <Link
+                    href={disease.href}
+                    className="transition-colors hover:text-primary"
+                  >
+                    {disease.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-white/30 pt-6 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
+        {/* Bottom */}
+        <div className="mt-12 flex flex-col gap-3 border-t border-white/30 pt-6 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
           <span>© {new Date().getFullYear()} تمامی حقوق محفوظ است.</span>
 
-          <span>ساخته شده با ❤️ توسط امیر شکیبافر</span>
+          <span>طراحی و توسعه توسط امیر شکیبافر ❤️</span>
         </div>
       </div>
     </footer>

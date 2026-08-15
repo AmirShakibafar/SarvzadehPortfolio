@@ -7,44 +7,73 @@ import {
   useScroll,
   AnimatePresence,
 } from "framer-motion";
-import { ArrowLeft, Leaf, Menu, X } from "lucide-react";
+import { ArrowLeft, ChevronDown, Leaf, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const menuLinks = [
-  { href: "#", label: "صفحه اصلی" },
-  { href: "#", label: "خدمات" },
-  { href: "#", label: "درباره من" },
-  { href: "#", label: "شرایط تحت درمان" },
-  { href: "#", label: "مقالات" },
-  { href: "#", label: "تماس با من" },
+  { href: "/", label: "صفحه اصلی" },
+  { href: "/#about", label: "درباره من" },
+  { href: "/#journey", label: "مسیر درمان" },
+  { href: "/#faq", label: "سوالات متداول" },
+];
+
+const diseaseCategories = [
+  {
+    href: "/diseases/autoimmune",
+    label: "خودایمنی",
+    active: true,
+  },
+  {
+    href: "/diseases/cancer",
+    label: "سرطان",
+    active: false,
+  },
+  {
+    href: "/diseases/hormonal-metabolic",
+    label: "هورمونی و متابولیک",
+    active: true,
+  },
+  {
+    href: "/diseases/allergy",
+    label: "آلرژی",
+    active: true,
+  },
 ];
 
 export function NavbarMobile() {
   const { scrollY } = useScroll();
+
   const [hidden, setHidden] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
-    // Lower threshold for mobile viewports
+
     if (latest > previous && latest > 100) {
       setHidden(true);
     } else {
       setHidden(false);
     }
   });
+
   useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.body.style.overflow = isOpen ? "hidden" : "unset";
-    }
+    document.body.style.overflow = isOpen ? "hidden" : "unset";
 
     return () => {
       document.body.style.overflow = "unset";
     };
   }, [isOpen]);
+
+  const closeMenu = () => {
+    setIsOpen(false);
+    setIsServicesOpen(false);
+  };
+
   return (
     <>
+      {/* Navbar */}
       <motion.header
         variants={{
           visible: { y: 0 },
@@ -52,37 +81,43 @@ export function NavbarMobile() {
         }}
         animate={hidden && !isOpen ? "hidden" : "visible"}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="sticky top-0 z-40 w-full h-20 bg-white/80 backdrop-blur-md border-b border-primary/10 shadow-[0_8px_32px_-8px] shadow-primary/10  "
+        className="sticky top-0 z-40 h-20 w-full border-b border-primary/10 bg-white/80 shadow-[0_8px_32px_-8px] shadow-primary/10 backdrop-blur-md"
         dir="rtl"
       >
-        <div className="flex h-full items-center justify-between w-full px-5">
+        <div className="flex h-full w-full items-center justify-between px-5">
           {/* Logo */}
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full border border-primary/20 bg-primary/5 text-primary shadow-[inset_0_0_12px_rgba(13,220,213,0.1)]">
-              <Leaf className="w-5 h-5" />
+          <Link
+            href="/"
+            onClick={closeMenu}
+            className="flex items-center gap-3"
+          >
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-primary/20 bg-primary/5 text-primary shadow-[inset_0_0_12px_rgba(13,220,213,0.1)]">
+              <Leaf className="h-5 w-5" />
             </div>
+
             <div className="flex flex-col justify-center">
-              <span className="font-bold text-base text-foreground leading-tight">
+              <span className="text-base font-bold leading-tight text-foreground">
                 دکتر رضا سرورزاده
               </span>
-              <span className="text-[10px] text-muted-foreground mt-0.5">
+
+              <span className="mt-0.5 text-[10px] text-muted-foreground">
                 تغذیه بالینی و رژیم‌درمانی
               </span>
             </div>
-          </div>
+          </Link>
 
-          {/* Hamburger Menu Trigger */}
+          {/* Hamburger */}
           <button
             onClick={() => setIsOpen(true)}
-            className="p-2 text-foreground focus:outline-none"
+            className="rounded-lg p-2 text-foreground transition-colors hover:bg-primary/10 focus:outline-none"
             aria-label="باز کردن منو"
+            aria-expanded={isOpen}
           >
-            <Menu className="w-6 h-6" />
+            <Menu className="h-6 w-6" />
           </button>
         </div>
       </motion.header>
 
-      {/* Mobile Drawer Overlay */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -91,44 +126,119 @@ export function NavbarMobile() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setIsOpen(false)}
-              className="fixed inset-0 z-50 bg-black/20 backdrop-blur-sm  "
+              onClick={closeMenu}
+              className="fixed inset-0 z-50 bg-black/20 backdrop-blur-sm"
             />
 
-            {/* Side Panel */}
+            {/* Drawer */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 z-50 h-full w-[280px] bg-white shadow-2xl flex flex-col  "
+              transition={{
+                type: "spring",
+                damping: 25,
+                stiffness: 200,
+              }}
+              className="fixed right-0 top-0 z-50 flex h-full w-[280px] flex-col bg-white shadow-2xl"
               dir="rtl"
             >
               {/* Drawer Header */}
-              <div className="flex items-center justify-between p-5 border-b border-border/50">
-                <div className="flex items-center gap-2">
-                  <Leaf className="w-5 h-5 text-primary" />
-                  <span className="font-bold text-base text-foreground">
+              <div className="flex items-center justify-between border-b border-border/50 p-5">
+                <Link
+                  href="/"
+                  onClick={closeMenu}
+                  className="flex items-center gap-2"
+                >
+                  <Leaf className="h-5 w-5 text-primary" />
+
+                  <span className="text-base font-bold text-foreground">
                     منو
                   </span>
-                </div>
+                </Link>
+
                 <button
-                  onClick={() => setIsOpen(false)}
-                  className="p-2 text-muted-foreground hover:text-foreground focus:outline-none bg-secondary/50 rounded-full"
+                  onClick={closeMenu}
+                  className="rounded-full bg-secondary/50 p-2 text-muted-foreground transition-colors hover:text-foreground focus:outline-none"
+                  aria-label="بستن منو"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="h-5 w-5" />
                 </button>
               </div>
 
-              {/* Navigation Links */}
+              {/* Navigation */}
               <div className="flex-1 overflow-y-auto py-4">
                 <nav className="flex flex-col space-y-1 px-4">
-                  {menuLinks.map((link, index) => (
+                  {menuLinks.slice(0, 1).map((link) => (
                     <Link
-                      key={index}
+                      key={link.href}
                       href={link.href}
-                      onClick={() => setIsOpen(false)}
-                      className="px-4 py-3 text-sm font-medium text-foreground rounded-lg hover:bg-primary/10 hover:text-primary transition-colors"
+                      onClick={closeMenu}
+                      className="rounded-xl px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-primary/10 hover:text-primary"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+
+                  {/* Services Dropdown */}
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() => setIsServicesOpen((previous) => !previous)}
+                      className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-primary/10 hover:text-primary"
+                      aria-expanded={isServicesOpen}
+                    >
+                      <span>خدمات</span>
+
+                      <ChevronDown
+                        className={`h-4 w-4 transition-transform duration-200 ${
+                          isServicesOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isServicesOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="mr-3 border-r border-primary/20 py-1 pr-3">
+                            <Link
+                              href="/#specialties"
+                              onClick={closeMenu}
+                              className="block rounded-lg px-4 py-2.5 text-sm text-slate-600 transition-colors hover:bg-primary/10 hover:text-primary"
+                            >
+                              همه خدمات
+                            </Link>
+
+                            {diseaseCategories
+                              .filter((disease) => disease.active)
+                              .map((disease) => (
+                                <Link
+                                  key={disease.href}
+                                  href={disease.href}
+                                  onClick={closeMenu}
+                                  className="block rounded-lg px-4 py-2.5 text-sm text-slate-600 transition-colors hover:bg-primary/10 hover:text-primary"
+                                >
+                                  {disease.label}
+                                </Link>
+                              ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Remaining Links */}
+                  {menuLinks.slice(1).map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={closeMenu}
+                      className="rounded-xl px-4 py-3 text-sm font-medium text-foreground transition-colors hover:bg-primary/10 hover:text-primary"
                     >
                       {link.label}
                     </Link>
@@ -136,15 +246,21 @@ export function NavbarMobile() {
                 </nav>
               </div>
 
-              {/* CTA Section */}
-              <div className="p-5 border-t border-border/50 bg-slate-50/50">
+              {/* CTA */}
+              <div className="border-t border-border/50 bg-slate-50/50 p-5">
                 <Button
                   variant="pillPrimary"
                   size="pill"
-                  className="w-full justify-center gap-2 h-12"
+                  className="h-12 w-full justify-center gap-2 px-5"
                 >
-                  رزرو مشاوره
-                  <ArrowLeft className="h-5 w-5" />
+                  <Link
+                    href="/#contact"
+                    onClick={closeMenu}
+                    className="flex w-full items-center justify-center gap-2 whitespace-nowrap"
+                  >
+                    رزرو مشاوره
+                    <ArrowLeft className="h-5 w-5 shrink-0" />
+                  </Link>
                 </Button>
               </div>
             </motion.div>

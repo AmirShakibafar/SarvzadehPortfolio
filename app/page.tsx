@@ -16,15 +16,26 @@ export default function Home() {
       </div>
 
       <HeroSection />
-      <SpecialtiesSection />
 
-      <WhyTrustMeSection />
+      <div id="specialties">
+        <SpecialtiesSection />
+      </div>
 
-      <JourneySection />
+      <div id="about">
+        <WhyTrustMeSection />
+      </div>
 
-      <CtaSection />
+      <div id="journey">
+        <JourneySection />
+      </div>
 
-      <FaqSection />
+      <div id="contact">
+        <CtaSection />
+      </div>
+
+      <div id="faq" className="w-full">
+        <FaqSection />
+      </div>
     </div>
   );
 }

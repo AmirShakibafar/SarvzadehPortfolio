@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fa" dir="rtl" className={`${vazir.variable}`}>
+    <html lang="fa" dir="rtl" className={`${vazir.variable} scroll-smooth`}>
       <head>
         <title>دکتر رضا سرورزاده - تغذیه بالینی</title>
 
