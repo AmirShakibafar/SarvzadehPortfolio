@@ -56,7 +56,7 @@ export function DecoratedStatsGridMobile() {
                 className={`
                   relative flex h-full flex-col items-center justify-center p-6 text-center 
                   rounded-[24px] overflow-hidden
-                  shadow-[0_8px_20px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.8)]
+                    
                   ${
                     stat.highlight
                       ? "bg-white/40 border border-primary/20"

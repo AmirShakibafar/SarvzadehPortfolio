@@ -19,14 +19,13 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+        default: "bg-primary text-primary-foreground   hover:bg-primary/90",
         destructive:
-          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+          "bg-destructive text-destructive-foreground   hover:bg-destructive/90",
         outline:
-          "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+          "border border-input bg-background   hover:bg-accent hover:text-accent-foreground",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+          "bg-secondary text-secondary-foreground   hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
 
@@ -35,23 +34,23 @@ const buttonVariants = cva(
           "bg-gradient-to-b from-primary/90 to-primary",
           "text-primary-foreground",
           "border border-white/10",
-          "shadow-[inset_0_1px_0_rgba(255,255,255,0.15),0_4px_14px_color-mix(in_oklab,var(--color-primary)_30%,transparent)]",
+          "  ",
           "hover:from-primary hover:to-primary/90",
-          "hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_6px_20px_color-mix(in_oklab,var(--color-primary)_40%,transparent)]",
+          "  ",
           "active:scale-[0.98]",
         ].join(" "),
 
         pillSecondary: [
           "rounded-full",
           "bg-white/10",
-          "backdrop-blur-md",
+          "  ",
           "border border-white/20",
           "text-primary",
-          "shadow-[0_4px_14px_rgba(0,0,0,0.03),inset_0_1px_0_rgba(255,255,255,0.4)]",
+          "  ",
           // Updated hover states for visibility on light backgrounds
           "hover:bg-primary/10",
           "hover:border-primary/20",
-          "hover:shadow-[0_6px_20px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.5)]",
+          "  ",
           "active:scale-[0.98]",
         ].join(" "),
       },

@@ -23,8 +23,10 @@ export default function WhyTrustMeSection() {
         {/* Removed motion.div wrapper. Children handle their own animations. */}
         <div className="relative mt-16 lg:mt-24">
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-            {/* Kept static, removed from animation tree */}
-            <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-[120px]  " />
+            <div
+              className="absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 pointer-events-none"
+              aria-hidden="true"
+            />
           </div>
 
           <div className="relative z-10 grid items-center gap-10 lg:grid-cols-2 lg:gap-12">

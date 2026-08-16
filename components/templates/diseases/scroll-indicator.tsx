@@ -41,7 +41,7 @@ export function ScrollProgressIndicator({
               className={cn(
                 "transition-all duration-500 rounded-full",
                 isActive
-                  ? "w-2.5 h-2.5 bg-primary shadow-[0_0_12px_rgba(var(--primary-rgb),0.6)]"
+                  ? "w-2.5 h-2.5 bg-primary   "
                   : "w-1.5 h-1.5 bg-slate-300 group-hover:bg-primary/50 group-hover:scale-150",
               )}
             />
@@ -49,7 +49,7 @@ export function ScrollProgressIndicator({
               className={cn(
                 "absolute right-8 whitespace-nowrap text-xs font-medium transition-all duration-500 px-3 py-1.5 rounded-full",
                 isActive
-                  ? "opacity-100 translate-x-0 text-primary bg-primary/5 backdrop-blur-sm"
+                  ? "opacity-100 translate-x-0 text-primary bg-primary/5   "
                   : "opacity-0 translate-x-4 text-slate-400 group-hover:opacity-100 group-hover:translate-x-2",
               )}
             >

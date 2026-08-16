@@ -10,8 +10,8 @@ export function CtaFeatures() {
         aria-hidden="true"
       />
 
-      {/* 1. Use GlassCard with backdrop-blur-none and remove grid classes from here */}
-      <GlassCard className="p-6 lg:p-8 rounded-[2rem] bg-white/10 border border-white/30 shadow-[0_8px_30px_rgb(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.8)] overflow-hidden relative z-10 backdrop-blur-none">
+      {/* 1. Use GlassCard with   and remove grid classes from here */}
+      <GlassCard className="p-6 lg:p-8 rounded-[2rem] bg-white/10 border border-white/30   overflow-hidden relative z-10   ">
         {/* 2. Fake glass gradient layer */}
         <div
           className="absolute inset-0 bg-gradient-to-tr from-white/5 via-white/10 to-transparent pointer-events-none"
@@ -67,7 +67,7 @@ function FeatureItem({
     <div
       className={`flex flex-col md:flex-row items-center gap-4 text-center md:text-right ${wrapperClassName}`}
     >
-      <div className="flex items-center justify-center shrink-0 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-primary/10 shadow-[inset_0_0_12px_rgba(255,255,255,0.6)]">
+      <div className="flex items-center justify-center shrink-0 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-primary/10   ">
         {icon}
       </div>
       <div>

@@ -89,15 +89,15 @@ export function ImmuneSystemProcess({
                     className={cn(
                       "relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-4 border-background transition-colors duration-300",
                       step.highlight
-                        ? "bg-primary text-white shadow-lg shadow-primary/30"
-                        : "bg-white text-primary shadow-md group-hover:border-primary/20",
+                        ? "bg-primary text-white     "
+                        : "bg-white text-primary   group-hover:border-primary/20",
                     )}
                   >
                     <Icon className="w-6 h-6" />
 
                     <div
                       className={cn(
-                        "absolute -bottom-2 -left-2 flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold shadow-sm",
+                        "absolute -bottom-2 -left-2 flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold   ",
                         step.highlight
                           ? "bg-white text-primary"
                           : "bg-primary text-white",
@@ -111,7 +111,7 @@ export function ImmuneSystemProcess({
                     className={cn(
                       "flex flex-1 flex-col justify-start p-5 lg:p-6 text-right lg:text-center w-full transition-all duration-300",
                       step.highlight
-                        ? "border-primary/30 bg-white/70 shadow-lg shadow-primary/5"
+                        ? "border-primary/30 bg-white/70     "
                         : "bg-white/40 border-white/60 hover:bg-white/60",
                     )}
                   >

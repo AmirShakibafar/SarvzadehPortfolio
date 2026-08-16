@@ -13,7 +13,6 @@ const diseaseCategories = [
     href: "/diseases/autoimmune",
     label: "خودایمنی",
     active: true,
-
   },
   {
     href: "/diseases/cancer",
@@ -24,13 +23,11 @@ const diseaseCategories = [
     href: "/diseases/hormonal-metabolic",
     label: "هورمونی و متابولیک",
     active: true,
-
   },
   {
     href: "/diseases/allergy",
     label: "آلرژی",
     active: true,
-
   },
 ];
 
@@ -56,12 +53,12 @@ export function NavbarDesktop() {
       }}
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="sticky top-0 z-50 h-24 w-full border-b border-primary/10 bg-white/20 shadow-[0_8px_32px_-8px] shadow-primary/20 backdrop-blur-md"
+      className="sticky top-0 z-50 h-24 w-full border-b border-primary/10 bg-white/20       "
     >
       <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-between px-6 md:px-[56px]">
         {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/20 bg-primary/5 text-primary shadow-[inset_0_0_12px_rgba(var(--primary),0.2)]">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/20 bg-primary/5 text-primary   ">
             <Leaf className="h-6 w-6" />
           </div>
 
@@ -93,7 +90,7 @@ export function NavbarDesktop() {
               className="text-base"
               hasDropdown={true}
             />
-            <div className="pointer-events-none absolute right-0 top-[calc(100%-8px)] w-64 translate-y-2 rounded-2xl border border-white/40 bg-white/80 p-2 opacity-0 shadow-xl backdrop-blur-xl transition-all duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
+            <div className="pointer-events-none absolute right-0 top-[calc(100%-8px)] w-64 translate-y-2 rounded-2xl border border-white/40 bg-white/80 p-2 opacity-0     transition-all duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
               {diseaseCategories
                 .filter((disease) => disease.active)
                 .map((disease) => (

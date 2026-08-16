@@ -86,7 +86,7 @@ export function EvaluationFormMobile() {
     rounded-[2rem]
     border border-white/20
     bg-white/[0.08]
-    shadow-[0_8px_40px_rgba(0,0,0,0.08),inset_0_1px_1px_rgba(255,255,255,0.35)]
+      
     min-h-[420px]
     flex flex-col
     relative z-10
@@ -186,7 +186,7 @@ function ProgressBar({
           </button>
         )}
       </div>
-      <div className="h-1.5 w-full bg-white/50 border border-white/60 rounded-full overflow-hidden shadow-inner">
+      <div className="h-1.5 w-full bg-white/50 border border-white/60 rounded-full overflow-hidden   ">
         <div
           className="h-full bg-gradient-to-l from-teal-300 to-teal-500 transition-all duration-500 ease-out rounded-full"
           style={{ width: `${((currentStep + 1) / totalSteps) * 100}%` }}
@@ -213,7 +213,7 @@ function QuestionStep({
           <button
             key={idx}
             onClick={() => onSelect(question.id, option)}
-            className="w-full text-right px-5 py-3.5 rounded-2xl border border-white/50 bg-white/60 hover:bg-white/80 active:bg-teal-50 text-slate-700 font-semibold transition-colors text-sm shadow-sm"
+            className="w-full text-right px-5 py-3.5 rounded-2xl border border-white/50 bg-white/60 hover:bg-white/80 active:bg-teal-50 text-slate-700 font-semibold transition-colors text-sm   "
           >
             {option}
           </button>
@@ -257,7 +257,7 @@ function ContactStep({
             }
             placeholder="0912 345 6789"
             dir="ltr"
-            className="w-full pl-10 pr-4 py-3.5 rounded-2xl border border-white/50 bg-white/60 text-left focus:outline-none focus:ring-2 focus:ring-teal-400 focus:bg-white transition-colors text-sm shadow-sm"
+            className="w-full pl-10 pr-4 py-3.5 rounded-2xl border border-white/50 bg-white/60 text-left focus:outline-none focus:ring-2 focus:ring-teal-400 focus:bg-white transition-colors text-sm   "
           />
           <PhoneCall className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 group-focus-within:text-teal-500 transition-colors" />
         </div>
@@ -269,7 +269,7 @@ function ContactStep({
               setContactData({ ...contactData, description: e.target.value })
             }
             placeholder="توضیحات تکمیلی (اختیاری)"
-            className="w-full pl-10 pr-4 py-3.5 rounded-2xl border border-white/50 bg-white/60 resize-none focus:outline-none focus:ring-2 focus:ring-teal-400 focus:bg-white transition-colors text-sm shadow-sm"
+            className="w-full pl-10 pr-4 py-3.5 rounded-2xl border border-white/50 bg-white/60 resize-none focus:outline-none focus:ring-2 focus:ring-teal-400 focus:bg-white transition-colors text-sm   "
           />
           <MessageSquare className="absolute left-3.5 top-4 h-4 w-4 text-slate-400 group-focus-within:text-teal-500 transition-colors" />
         </div>
@@ -277,7 +277,7 @@ function ContactStep({
       <Button
         type="submit"
         disabled={isSubmitting || !contactData.phone}
-        className="w-full h-12 rounded-2xl bg-gradient-to-l from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-white font-bold text-base flex items-center justify-center gap-2 shadow-md shadow-teal-500/20 transition-opacity disabled:opacity-50"
+        className="w-full h-12 rounded-2xl bg-gradient-to-l from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-white font-bold text-base flex items-center justify-center gap-2     transition-opacity disabled:opacity-50"
       >
         {isSubmitting ? (
           <Loader2 className="h-4 w-4 animate-spin" />
@@ -298,7 +298,7 @@ function SuccessStep({ onReset }: { onReset: () => void }) {
           className="absolute left-1/2 top-1/2 -z-10 h-[150px] w-[150px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 pointer-events-none"
           aria-hidden="true"
         />
-        <div className="h-20 w-20 bg-gradient-to-br from-teal-100 to-white border border-white rounded-full flex items-center justify-center text-teal-500 mb-2 shadow-lg relative z-10">
+        <div className="h-20 w-20 bg-gradient-to-br from-teal-100 to-white border border-white rounded-full flex items-center justify-center text-teal-500 mb-2   relative z-10">
           <CheckCircle2 className="h-10 w-10" />
         </div>
       </div>
@@ -311,7 +311,7 @@ function SuccessStep({ onReset }: { onReset: () => void }) {
       <Button
         variant="outline"
         onClick={onReset}
-        className="mt-4 rounded-full border-white/50 bg-white/60 text-teal-700 hover:bg-white/80 active:bg-teal-50 shadow-sm transition-colors text-sm h-10 px-6"
+        className="mt-4 rounded-full border-white/50 bg-white/60 text-teal-700 hover:bg-white/80 active:bg-teal-50   transition-colors text-sm h-10 px-6"
       >
         ثبت درخواست جدید
       </Button>

@@ -54,7 +54,7 @@ export function CtaInfoMobile() {
           <Button
             variant="pillSecondary"
             size="pill"
-            className="w-full justify-start gap-3 border-primary/20 px-5 shadow-sm"
+            className="w-full justify-start gap-3 border-primary/20 px-5   "
             onClick={() => window.open("https://ble.ir/your_bale_id", "_blank")}
           >
             <Image
@@ -70,7 +70,7 @@ export function CtaInfoMobile() {
           <Button
             variant="pillSecondary"
             size="pill"
-            className="w-full justify-start gap-3 border-primary/20 px-5 shadow-sm"
+            className="w-full justify-start gap-3 border-primary/20 px-5   "
             onClick={() =>
               window.open("https://eitaa.com/your_eitaa_id", "_blank")
             }

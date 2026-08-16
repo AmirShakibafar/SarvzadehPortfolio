@@ -1,4 +1,288 @@
-### ./components/approach-section/section-header.tsx
+# Frontend Deep Audit Context
+
+### File: ./app/layout.tsx
+
+**Risk Flags:** CSS & GPU Overload (WebKit)
+
+```tsx
+import localFont from "next/font/local";
+import "./globals.css";
+
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+
+const vazir = localFont({
+  src: [
+    {
+      path: "../public/fonts/vazir/Vazirmatn-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/vazir/Vazirmatn-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-vazir",
+  display: "swap",
+  preload: true,
+});
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="fa" dir="rtl" className={`${vazir.variable} scroll-smooth`}>
+      <head>
+        <title>دکتر رضا سرورزاده - تغذیه بالینی</title>
+
+        <meta
+          name="description"
+          content="تغذیه شخصی‌سازی شده برای مدیریت بهتر ام‌اس و بهبود کیفیت زندگی."
+        />
+      </head>
+
+      <body className="min-h-screen w-full bg-background text-foreground antialiased font-sans">
+        <div className="sticky top-0 z-50 w-full">
+          <Navbar />
+        </div>
+
+        {children}
+
+        <Footer />
+      </body>
+    </html>
+  );
+}
+```
+
+---
+
+### File: ./app/page.tsx
+
+**Risk Flags:** CSS & GPU Overload (WebKit)
+
+```tsx
+import { HeroSection } from "@/components/hero/hero-section-index";
+import { JourneySection } from "@/components/journey-section";
+import WhyTrustMeSection from "@/components/approach-section";
+import CtaSection from "@/components/cta/index";
+import { FaqSection } from "@/components/faq";
+import { SpecialtiesSection } from "@/components/experties";
+
+export default function Home() {
+  return (
+    <div className="relative flex min-h-screen flex-col items-center bg-background font-sans overflow-x-clip">
+      {/* Global Background blobs */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
+        <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[60%] rounded-full bg-primary/10   " />
+
+        <div className="absolute top-[20%] -right-[10%] w-[40%] h-[50%] rounded-full bg-primary/5   " />
+      </div>
+
+      <HeroSection />
+
+      <div id="specialties">
+        <SpecialtiesSection />
+      </div>
+
+      <div id="about">
+        <WhyTrustMeSection />
+      </div>
+
+      <div id="journey">
+        <JourneySection />
+      </div>
+
+      <div id="contact">
+        <CtaSection />
+      </div>
+
+      <div id="faq" className="w-full">
+        <FaqSection />
+      </div>
+    </div>
+  );
+}
+```
+
+---
+
+### File: ./app/globals.css
+
+**Risk Flags:** CSS & GPU Overload (WebKit)
+
+```css
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans:
+    var(--font-vazir), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  --font-serif: Georgia, Cambria, "Times New Roman", serif;
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* * {
+  outline: 1px solid rgba(255, 0, 0, 1) !important;
+} */
+
+:root {
+  --primary: #0ddcd5;
+  --primary-foreground: #ffffff;
+  --secondary: #ebf5f5;
+  --secondary-foreground: #2a5a5c;
+  --background: #ffffff;
+  --foreground: #242424;
+  --card: #ffffff;
+  --card-foreground: #242424;
+  --popover: #ffffff;
+  --popover-foreground: #242424;
+  --muted: #f7f7f7;
+  --muted-foreground: #848484;
+  --accent: #f7f7f7;
+  --accent-foreground: #343434;
+  --destructive: #e23624;
+  --border: #eaeaea;
+  --input: #eaeaea;
+  --ring: #b0b0b0;
+  --chart-1: #dedede;
+  --chart-2: #848484;
+  --chart-3: #666666;
+  --chart-4: #545454;
+  --chart-5: #3c3c3c;
+  --radius: 0.625rem;
+  --sidebar: #fafafa;
+  --sidebar-foreground: #242424;
+  --sidebar-primary: #343434;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #f7f7f7;
+  --sidebar-accent-foreground: #343434;
+  --sidebar-border: #eaeaea;
+  --sidebar-ring: #b0b0b0;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+  }
+
+  body {
+    @apply min-h-screen bg-background text-foreground antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+```
+
+---
+
+### File: ./components/ui/float-badge.tsx
+
+**Risk Flags:** CSS & GPU Overload (WebKit)
+
+```tsx
+import { GlassCard } from "./glass-card";
+import { cn } from "@/lib/utils";
+import { LucideIcon } from "lucide-react";
+
+export function FloatingBadge({
+  icon: Icon,
+  title,
+  subtitle,
+  className,
+}: {
+  icon: LucideIcon;
+  title: string;
+  subtitle?: string;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "absolute z-20 transition-transform duration-300 hover:scale-105",
+        className,
+      )}
+    >
+      <GlassCard className="flex items-center gap-3 lg:gap-4 p-2.5 lg:p-3 pr-3 lg:pr-4 rounded-xl lg:rounded-2xl">
+        <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg lg:rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+          <Icon className="w-4 h-4 lg:w-5 lg:h-5 text-primary" />
+        </div>
+        <div className="flex flex-col pl-1 lg:pl-2 text-right">
+          <span className="text-xs lg:text-sm font-bold text-slate-800 leading-tight">
+            {title}
+          </span>
+          {subtitle && (
+            <span className="text-[10px] lg:text-xs text-slate-500 font-medium mt-0.5">
+              {subtitle}
+            </span>
+          )}
+        </div>
+      </GlassCard>
+    </div>
+  );
+}
+```
+
+---
+
+### File: ./components/approach-section/section-header.tsx
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
 "use client";
@@ -66,7 +350,11 @@ export function SectionHeader() {
 }
 ```
 
-### ./components/approach-section/animations.ts
+---
+
+### File: ./components/approach-section/animations.ts
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```ts
 import { Variants } from "framer-motion";
@@ -93,7 +381,63 @@ export const staggerContainer: Variants = {
 };
 ```
 
-### ./components/approach-section/desktop/glass-brain-artwork.tsx
+---
+
+### File: ./components/approach-section/desktop/why-trust-me-section.tsx
+
+**Risk Flags:** CSS & GPU Overload (WebKit)
+
+```tsx
+"use client";
+import React from "react";
+import { BackgroundDecorations } from "./bg-decoration";
+import { SectionHeader } from "../section-header";
+import { GlassBrainArtwork } from "./glass-brain-artwork";
+import { QuoteDisplay } from "./quote-display";
+import { DecoratedStatsGrid } from "./decorated-stats-grid";
+
+export default function WhyTrustMeSection() {
+  return (
+    <section
+      dir="rtl"
+      className="relative overflow-hidden bg-background pt-16 pb-8 lg:pt-24 lg:pb-16 isolate"
+    >
+      <BackgroundDecorations />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
+          <SectionHeader />
+          <DecoratedStatsGrid />
+        </div>
+
+        {/* Removed motion.div wrapper. Children handle their own animations. */}
+        <div className="relative mt-16 lg:mt-24">
+          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+            {/* Kept static, removed from animation tree */}
+            <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5    " />
+          </div>
+
+          <div className="relative z-10 grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
+            <div className="order-first">
+              <GlassBrainArtwork />
+            </div>
+
+            <div className="order-last lg:order-first">
+              <QuoteDisplay />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+
+---
+
+### File: ./components/approach-section/desktop/glass-brain-artwork.tsx
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
 "use client";
@@ -134,7 +478,11 @@ export function GlassBrainArtwork() {
 }
 ```
 
-### ./components/approach-section/desktop/quote-display.tsx
+---
+
+### File: ./components/approach-section/desktop/quote-display.tsx
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
 "use client";
@@ -215,7 +563,11 @@ export function QuoteDisplay() {
 }
 ```
 
-### ./components/approach-section/desktop/decorated-stats-grid.tsx
+---
+
+### File: ./components/approach-section/desktop/decorated-stats-grid.tsx
+
+**Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
 "use client";
@@ -329,7 +681,50 @@ export function DecoratedStatsGrid() {
 }
 ```
 
-### ./components/approach-section/mobile/stats-mobile.tsx
+---
+
+### File: ./components/approach-section/mobile/why-trust-me-section-mobile.tsx
+
+**Risk Flags:** CSS & GPU Overload (WebKit)
+
+```tsx
+// why-trust-me-section-mobile.tsx
+"use client";
+
+import React from "react";
+import { SectionHeader } from "../section-header";
+import { QuoteDisplay } from "../desktop/quote-display";
+import { DecoratedStatsGridMobile } from "./stats-mobile";
+import { GlassBrainArtworkMobile } from "./glass-artwork-mobile";
+import { QuoteDisplayMobile } from "./quote-display-mobile";
+
+export default function WhyTrustMeSectionMobile() {
+  return (
+    <section dir="rtl" className="relative isolate overflow-hidden py-16">
+      {/* Mobile-optimized ambient background - Replaced expensive blurs with native radial gradients and removed   */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute left-1/2 top-0 h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-primary/20 to-transparent opacity-40" />
+        <div className="absolute bottom-0 right-[-80px] h-[260px] w-[260px] rounded-full bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-primary/10 to-transparent opacity-40" />
+      </div>
+
+      <div className="flex flex-col px-5">
+        <div className="mb-8">
+          <SectionHeader />
+        </div>
+        <DecoratedStatsGridMobile />
+        <GlassBrainArtworkMobile />
+        <QuoteDisplayMobile />
+      </div>
+    </section>
+  );
+}
+```
+
+---
+
+### File: ./components/approach-section/mobile/stats-mobile.tsx
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
 // decorated-stats-grid-mobile.tsx
@@ -427,7 +822,11 @@ export function DecoratedStatsGridMobile() {
 }
 ```
 
-### ./components/approach-section/mobile/glass-artwork-mobile.tsx
+---
+
+### File: ./components/approach-section/mobile/glass-artwork-mobile.tsx
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
 "use client";
@@ -464,7 +863,11 @@ export function GlassBrainArtworkMobile() {
 }
 ```
 
-### ./components/approach-section/mobile/quote-display-mobile.tsx
+---
+
+### File: ./components/approach-section/mobile/quote-display-mobile.tsx
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
 // quote-display-mobile.tsx
@@ -515,7 +918,178 @@ export function QuoteDisplayMobile() {
 }
 ```
 
-### ./components/faq/index.tsx
+---
+
+### File: ./components/experties/index.tsx
+
+**Risk Flags:** CSS & GPU Overload (WebKit)
+
+```tsx
+import Link from "next/link";
+import { Shield, Activity, HeartPulse, Leaf, ArrowLeft } from "lucide-react";
+import { Heading } from "@/components/ui/heading";
+import { Paragraph } from "@/components/ui/paragraph";
+import { GlassCard } from "@/components/ui/glass-card";
+import { DotPattern } from "@/components/ui/dot-pattern";
+import { cn } from "@/lib/utils";
+
+const specialtiesData = [
+  {
+    id: "autoimmune",
+    title: "بیماری‌های خودایمنی",
+    description:
+      "مدیریت بیماری‌های مرتبط با سیستم ایمنی از جمله ام‌اس، میاستنی گراویس، پسوریازیس و ویتیلیگو.",
+    icon: Shield,
+    href: "/diseases/autoimmune",
+    isActive: true,
+  },
+
+  {
+    id: "hormonal-metabolic",
+    title: "هورمونی - متابولیک",
+    description:
+      "کنترل شرایط فیزیولوژیک شامل فیبروم رحم، اندومتریوز، سندروم تخمدان پلی‌کیستیک (PCOS) و سندروم متابولیک.",
+    icon: Activity,
+    href: "/diseases/hormonal-metabolic",
+    isActive: true,
+  },
+  {
+    id: "allergy",
+    title: "آلرژی و حساسیت",
+    description:
+      "تنظیم و بهبود واکنش‌های سیستمیک مرتبط با آسم، حساسیت‌های پوستی و سندرم MCAS.",
+    icon: Leaf,
+    href: "/diseases/allergy",
+    isActive: true,
+  },
+  {
+    id: "cancer",
+    title: "سرطان",
+    description:
+      "پشتیبانی ساختاریافته برای انواع سرطان‌ها نظیر ملانوما، سرطان پروستات و سرطان پستان.",
+    icon: HeartPulse,
+    href: "/diseases/cancer",
+    isActive: false,
+  },
+];
+
+export function SpecialtiesSection() {
+  return (
+    <section className="relative z-10 w-full min-w-0 overflow-hidden py-16">
+      {/* Global Background Blob */}
+      <div
+        className="absolute left-1/2 top-1/2 -z-10 h-[100%] w-[100%] max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-30 pointer-events-none"
+        aria-hidden="true"
+      />
+
+      <div className="mx-auto w-full min-w-0 max-w-7xl px-6 lg:px-14">
+        <div className="mx-auto mb-8 max-w-2xl text-center relative z-10">
+          <span className="mb-4 inline-block text-xs lg:text-sm font-semibold tracking-wide text-primary">
+            تخصص‌های درمانی
+          </span>
+          <Heading size="h2" className="mb-4">
+            زمینه‌های تخصصی مشاوره
+          </Heading>
+          <Paragraph size="sm" className="text-slate-600">
+            طراحی مسیر درمانی مبتنی بر جدیدترین مقالات علمی برای مدیریت و بهبود
+            شرایط بالینی زیر.
+          </Paragraph>
+        </div>
+
+        <div className="relative w-full max-w-7xl mx-auto pt-8">
+          {/* Decorative dots - Hidden on mobile */}
+          <DotPattern className="hidden lg:block absolute -left-8 -bottom-8 h-48 w-48 opacity-40" />
+          <DotPattern className="hidden lg:block absolute -right-8 -top-8 h-32 w-32 opacity-40" />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-6 gap-y-12 relative z-10">
+            {specialtiesData.map((item) => {
+              const Icon = item.icon;
+
+              const CardContent = (
+                <GlassCard
+                  className={cn(
+                    "relative flex h-full flex-col p-6 pt-10 text-right transition-all duration-300",
+                    item.isActive
+                      ? "group bg-white/40 border-white/60 hover:bg-white/60 hover:border-white/80     "
+                      : "bg-white/20 border-white/30 opacity-70",
+                  )}
+                >
+                  {/* Anchored Icon */}
+                  <div
+                    className={cn(
+                      "absolute -top-7 right-6 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-4 border-background transition-colors duration-300",
+                      item.isActive
+                        ? "bg-white text-primary   group-hover:bg-primary group-hover:text-white"
+                        : "bg-slate-100 text-slate-400",
+                    )}
+                  >
+                    <Icon className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
+                  </div>
+
+                  <h3
+                    className={cn(
+                      "mb-3 text-lg lg:text-xl font-bold",
+                      item.isActive ? "text-slate-800" : "text-slate-500",
+                    )}
+                  >
+                    {item.title}
+                  </h3>
+
+                  <p
+                    className={cn(
+                      "text-sm leading-relaxed flex-grow",
+                      item.isActive ? "text-slate-600" : "text-slate-400",
+                    )}
+                  >
+                    {item.description}
+                  </p>
+
+                  <div className="mt-6 flex items-center justify-start">
+                    {item.isActive ? (
+                      <div className="flex items-center gap-1.5 text-sm font-semibold text-primary">
+                        <span>اطلاعات بیشتر</span>
+                        <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
+                      </div>
+                    ) : (
+                      <span className="text-sm font-medium text-slate-400">
+                        به‌زودی
+                      </span>
+                    )}
+                  </div>
+                </GlassCard>
+              );
+
+              return item.isActive ? (
+                <Link
+                  key={item.id}
+                  href={item.href}
+                  className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-2xl"
+                >
+                  {CardContent}
+                </Link>
+              ) : (
+                <div
+                  key={item.id}
+                  className="block h-full cursor-default"
+                  aria-disabled="true"
+                >
+                  {CardContent}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+
+---
+
+### File: ./components/faq/index.tsx
+
+**Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
 "use client";
@@ -652,7 +1226,11 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 }
 ```
 
-### ./components/layout/navbar/navbar-desktop.tsx
+---
+
+### File: ./components/layout/navbar/navbar-desktop.tsx
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
 "use client";
@@ -791,7 +1369,11 @@ export function NavbarDesktop() {
 }
 ```
 
-### ./components/layout/navbar/navbar-mobile.tsx
+---
+
+### File: ./components/layout/navbar/navbar-mobile.tsx
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
 "use client";
@@ -1068,7 +1650,99 @@ export function NavbarMobile() {
 }
 ```
 
-### ./components/cta/desktop/cta-info.tsx
+---
+
+### File: ./components/cta/desktop/cta-features.tsx
+
+**Risk Flags:** CSS & GPU Overload (WebKit)
+
+```tsx
+import React from "react";
+import { GlassCard } from "@/components/ui/glass-card";
+import { ShieldCheck, UserCircle, Zap } from "lucide-react";
+
+export function CtaFeatures() {
+  return (
+    <div className="relative mt-16 isolate w-full">
+      <div
+        className="absolute left-1/2 top-1/2 -z-10 h-[200px] w-[500px] md:h-[800px] opacity-40 md:w-[300px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
+        aria-hidden="true"
+      />
+
+      {/* 1. Use GlassCard with   and remove grid classes from here */}
+      <GlassCard className="p-6 lg:p-8 rounded-[2rem] bg-white/10 border border-white/30   overflow-hidden relative z-10   ">
+        {/* 2. Fake glass gradient layer */}
+        <div
+          className="absolute inset-0 bg-gradient-to-tr from-white/5 via-white/10 to-transparent pointer-events-none"
+          aria-hidden="true"
+        />
+
+        {/* 3. Dedicated content wrapper that handles the grid layout */}
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+          <FeatureItem
+            icon={
+              <ShieldCheck className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />
+            }
+            title="حفظ حریم خصوصی"
+            subtitle="اطلاعات شما کاملاً محرمانه است"
+          />
+
+          <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-right border-y md:border-y-0 md:border-x border-white/40 py-4 md:py-0 md:px-8 relative isolate">
+            <div className="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-slate-200/50 to-transparent hidden md:block" />
+            <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-slate-200/50 to-transparent hidden md:block" />
+            <FeatureItem
+              icon={
+                <UserCircle className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />
+              }
+              title="مشاوره تخصصی"
+              subtitle="راهنمایی توسط دکتر رضا سرورزاده"
+              wrapperClassName="w-full"
+            />
+          </div>
+
+          <FeatureItem
+            icon={<Zap className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />}
+            title="پاسخ سریع"
+            subtitle="در اولین فرصت با شما تماس می‌گیریم"
+          />
+        </div>
+      </GlassCard>
+    </div>
+  );
+}
+
+function FeatureItem({
+  icon,
+  title,
+  subtitle,
+  wrapperClassName = "",
+}: {
+  icon: React.ReactNode;
+  title: string;
+  subtitle: string;
+  wrapperClassName?: string;
+}) {
+  return (
+    <div
+      className={`flex flex-col md:flex-row items-center gap-4 text-center md:text-right ${wrapperClassName}`}
+    >
+      <div className="flex items-center justify-center shrink-0 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-primary/10   ">
+        {icon}
+      </div>
+      <div>
+        <h4 className="font-bold text-slate-900 mb-1">{title}</h4>
+        <p className="text-xs text-slate-600">{subtitle}</p>
+      </div>
+    </div>
+  );
+}
+```
+
+---
+
+### File: ./components/cta/desktop/cta-info.tsx
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
 "use client";
@@ -1186,7 +1860,11 @@ export function CtaInfo() {
 }
 ```
 
-### ./components/cta/desktop/evaluation-form.tsx
+---
+
+### File: ./components/cta/desktop/evaluation-form.tsx
+
+**Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
 "use client";
@@ -1272,7 +1950,7 @@ export function EvaluationForm() {
 
       {/* 
         Exact simulated glass trick:
-        1. bg-white/10 + specific borders and   s
+        1. bg-white/10 + specific borders and shadows
         2. overflow-hidden for the inner fake gradient
         3.   ensures the base component doesn't sneak in a   filter
       */}
@@ -1498,7 +2176,11 @@ function SuccessStep({ onReset }: { onReset: () => void }) {
 }
 ```
 
-### ./components/cta/mobile/evaluation-form-mobile.tsx
+---
+
+### File: ./components/cta/mobile/evaluation-form-mobile.tsx
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
 // evaluation-form-mobile.tsx
@@ -1823,7 +2505,11 @@ function SuccessStep({ onReset }: { onReset: () => void }) {
 }
 ```
 
-### ./components/cta/mobile/cta-info-mobile.tsx
+---
+
+### File: ./components/cta/mobile/cta-info-mobile.tsx
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
 // cta-info-mobile.tsx
@@ -1919,7 +2605,508 @@ export function CtaInfoMobile() {
 }
 ```
 
-### ./components/hero/desktop/hero-section-desktop.tsx
+---
+
+### File: ./components/cta/mobile/cta-features-mobile.tsx
+
+**Risk Flags:** CSS & GPU Overload (WebKit)
+
+```tsx
+import React from "react";
+import { GlassCard } from "@/components/ui/glass-card";
+import { ShieldCheck, UserCircle, Zap } from "lucide-react";
+
+export function CtaFeaturesMobile() {
+  return (
+    <div className="relative mt-12 isolate w-full px-4">
+      <div
+        className="absolute left-1/2 top-1/2 -z-10 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 pointer-events-none"
+        aria-hidden="true"
+      />
+
+      {/* Removed "flex flex-col" from the GlassCard wrapper */}
+      <GlassCard className="relative z-10 rounded-[2rem] bg-white/10 border border-white/30   overflow-hidden   ">
+        <div
+          className="absolute inset-0 bg-gradient-to-tr from-white/5 via-white/10 to-transparent pointer-events-none"
+          aria-hidden="true"
+        />
+
+        {/* Layout is handled strictly by this inner wrapper */}
+        <div className="relative z-10 flex flex-col px-5 py-2">
+          <FeatureItemMobile
+            icon={<ShieldCheck className="w-5 h-5 text-primary" />}
+            title="حفظ حریم خصوصی"
+            subtitle="اطلاعات شما کاملاً محرمانه است"
+          />
+
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-slate-200/50 to-transparent" />
+
+          <FeatureItemMobile
+            icon={<UserCircle className="w-5 h-5 text-primary" />}
+            title="مشاوره تخصصی"
+            subtitle="راهنمایی توسط دکتر رضا سرورزاده"
+          />
+
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-slate-200/50 to-transparent" />
+
+          <FeatureItemMobile
+            icon={<Zap className="w-5 h-5 text-primary" />}
+            title="پاسخ سریع"
+            subtitle="در اولین فرصت با شما تماس می‌گیریم"
+          />
+        </div>
+      </GlassCard>
+    </div>
+  );
+}
+
+function FeatureItemMobile({
+  icon,
+  title,
+  subtitle,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  subtitle: string;
+}) {
+  return (
+    <div className="flex items-center gap-4 py-4 text-right">
+      <div className="flex items-center justify-center shrink-0 w-12 h-12 rounded-full bg-primary/10   ">
+        {icon}
+      </div>
+
+      <div className="flex-1">
+        <h4 className="font-bold text-[15px] text-slate-900 mb-0.5">{title}</h4>
+        <p className="text-[13px] text-slate-600 leading-relaxed">{subtitle}</p>
+      </div>
+    </div>
+  );
+}
+```
+
+---
+
+### File: ./components/templates/diseases/immune-progress.tsx
+
+**Risk Flags:** CSS & GPU Overload (WebKit)
+
+```tsx
+// components/ui/ImmuneSystemProcess.tsx
+import { Heading } from "@/components/ui/heading";
+import { Paragraph } from "@/components/ui/paragraph";
+import { DotPattern } from "@/components/ui/dot-pattern";
+import { GlassCard } from "@/components/ui/glass-card";
+import { cn } from "@/lib/utils";
+import { ProcessStep } from "@/components/templates/diseases/types";
+import {
+  Dna,
+  ScanSearch,
+  ShieldAlert,
+  Flame,
+  Activity,
+  Layers,
+  Network,
+  Scale,
+  Droplet,
+  AlertCircle,
+  Leaf,
+  Zap,
+  HelpCircle,
+} from "lucide-react";
+
+// Best practice: Map string names to components to keep data serializable
+// and prevent passing non-serializable elements across server/client boundaries.
+const iconMap: Record<string, React.ElementType> = {
+  Dna,
+  ScanSearch,
+  ShieldAlert,
+  Flame,
+  Activity,
+  Layers,
+  Network,
+  Scale,
+  Droplet,
+  AlertCircle,
+  Leaf,
+  Zap,
+};
+
+interface ImmuneSystemProcessProps {
+  title: string;
+  description: string;
+  steps: ProcessStep[];
+}
+
+export function ImmuneSystemProcess({
+  title,
+  description,
+  steps,
+}: ImmuneSystemProcessProps) {
+  if (!steps || steps.length === 0) return null;
+
+  return (
+    <section
+      id="mechanism"
+      className="relative z-10 w-full min-w-0 overflow-hidden py-16 lg:py-24"
+    >
+      <div
+        className="absolute left-1/2 top-1/2 -z-10 h-[100%] w-[100%] max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-30 pointer-events-none"
+        aria-hidden="true"
+      />
+
+      <div className="mx-auto w-full min-w-0 max-w-7xl px-6 lg:px-14">
+        <div className="mx-auto mb-16 lg:mb-24 max-w-2xl text-center">
+          <Heading size="h2" className="mb-4">
+            {title}
+          </Heading>
+          <Paragraph size="sm" className="text-slate-600">
+            {description}
+          </Paragraph>
+        </div>
+
+        <div className="relative w-full max-w-5xl mx-auto">
+          <DotPattern className="hidden lg:block absolute -right-8 -top-8 h-32 w-32 opacity-40" />
+
+          <div className="absolute right-[27px] top-0 bottom-0 w-[2px] lg:right-0 lg:left-0 lg:top-[27px] lg:bottom-auto lg:w-full lg:h-[2px] bg-gradient-to-b lg:bg-gradient-to-l from-transparent via-primary/30 to-transparent -z-10" />
+
+          <div className="flex flex-col lg:flex-row lg:justify-between gap-10 lg:gap-6">
+            {steps.map((step, idx) => {
+              const Icon = iconMap[step.iconName] || HelpCircle;
+
+              return (
+                <div
+                  key={idx}
+                  className="relative flex flex-row lg:flex-col items-start lg:items-center gap-6 w-full lg:flex-1 group"
+                >
+                  <div
+                    className={cn(
+                      "relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-4 border-background transition-colors duration-300",
+                      step.highlight
+                        ? "bg-primary text-white     "
+                        : "bg-white text-primary   group-hover:border-primary/20",
+                    )}
+                  >
+                    <Icon className="w-6 h-6" />
+
+                    <div
+                      className={cn(
+                        "absolute -bottom-2 -left-2 flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold   ",
+                        step.highlight
+                          ? "bg-white text-primary"
+                          : "bg-primary text-white",
+                      )}
+                    >
+                      {idx + 1}
+                    </div>
+                  </div>
+
+                  <GlassCard
+                    className={cn(
+                      "flex flex-1 flex-col justify-start p-5 lg:p-6 text-right lg:text-center w-full transition-all duration-300",
+                      step.highlight
+                        ? "border-primary/30 bg-white/70     "
+                        : "bg-white/40 border-white/60 hover:bg-white/60",
+                    )}
+                  >
+                    <h3
+                      className={cn(
+                        "mb-2 text-base lg:text-lg font-bold",
+                        step.highlight ? "text-primary" : "text-slate-800",
+                      )}
+                    >
+                      {step.title}
+                    </h3>
+
+                    <p className="text-sm leading-relaxed text-slate-600">
+                      {step.desc}
+                    </p>
+                  </GlassCard>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+
+---
+
+### File: ./components/templates/diseases/disease-story.tsx
+
+**Risk Flags:** CSS & GPU Overload (WebKit)
+
+```tsx
+import { BookOpen, ImageIcon, PlayCircle, Shield } from "lucide-react";
+import { ResourceAction } from "./resource-action";
+import { Paragraph } from "@/components/ui/paragraph";
+import { FeaturedDisease, ImageSize } from "./types";
+import { cn } from "@/lib/utils";
+import { Heading } from "@/components/ui/heading";
+import Image from "next/image";
+import { GlassCard } from "@/components/ui/glass-card";
+import { DotPattern } from "@/components/ui/dot-pattern";
+
+const BLOB_SHAPES = [
+  "rounded-[60%_40%_30%_70%/60%_30%_70%_40%]",
+  "rounded-[30%_70%_70%_30%/30%_30%_70%_70%]",
+  "rounded-[50%_50%_20%_80%/25%_80%_20%_75%]",
+  "rounded-[40%_60%_70%_30%/40%_50%_60%_50%]",
+  "rounded-[70%_30%_50%_50%/60%_40%_60%_40%]",
+];
+
+const IMAGE_SIZE_CLASSES: Record<ImageSize, string> = {
+  sm: "w-[65%] h-[65%]",
+  md: "w-[80%] h-[80%]",
+  lg: "w-[95%] h-[95%]",
+};
+
+export function DiseaseStory({
+  disease,
+  index,
+}: {
+  disease: FeaturedDisease;
+  index: number;
+}) {
+  const isEven = index % 2 === 0;
+  const nameParts = disease.name.split(" (");
+  const enName = nameParts[0];
+  const faName = nameParts[1]?.replace(")", "") || disease.name;
+  const hasResources = disease.media || disease.paperDoi;
+
+  const blobShapeClass = BLOB_SHAPES[index % BLOB_SHAPES.length];
+
+  const imageSizeClass = IMAGE_SIZE_CLASSES[disease.imageSize ?? "sm"];
+
+  return (
+    <section
+      id={disease.id}
+      className="flex items-center py-10 lg:py-16 relative w-full"
+    >
+      <div className="mx-auto max-w-7xl px-6 lg:px-14 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-center">
+          {/* Text Section */}
+          <div
+            className={cn(
+              "flex flex-col items-start text-right w-full relative",
+              "order-2",
+              isEven ? "lg:order-1" : "lg:order-2",
+            )}
+          >
+            <DotPattern className="hidden lg:block absolute top-0 right-0 -mt-6 -mr-6 w-32 h-32 opacity-70" />
+
+            <div className="w-full text-right relative z-10">
+              <div className="text-primary font-medium text-sm mb-3 lg:mb-4">
+                {(index + 1).toString().padStart(2, "0")} — {enName}
+              </div>
+
+              <Heading size="h2" className="mb-4 lg:mb-6">
+                {faName}
+              </Heading>
+            </div>
+
+            <div className="relative z-10 w-full">
+              <Paragraph size="lg" className="mb-8 lg:mb-10 text-slate-700">
+                {disease.description}
+              </Paragraph>
+            </div>
+
+            {hasResources && (
+              <div className="w-full relative z-10">
+                <div className="mb-5 lg:mb-6 flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+
+                  <h4 className="text-sm font-bold text-slate-800">
+                    مطالب و منابع مرتبط
+                  </h4>
+                </div>
+
+                <div className="flex flex-col w-full gap-2">
+                  {disease.media?.type === "video" && (
+                    <ResourceAction
+                      icon={PlayCircle}
+                      title="مشاهده ویدیو آموزشی"
+                      action="play"
+                    />
+                  )}
+
+                  {disease.media?.type === "photo" && (
+                    <ResourceAction
+                      icon={ImageIcon}
+                      title="مشاهده تصاویر بالینی"
+                      action="view"
+                    />
+                  )}
+
+                  {disease.paperDoi && (
+                    <ResourceAction
+                      icon={BookOpen}
+                      title="مطالعه مقاله علمی مرجع"
+                      href={`https://doi.org/${disease.paperDoi}`}
+                      action="external"
+                    />
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Visual Section */}
+          <div
+            className={cn(
+              "relative w-full max-w-[320px] lg:max-w-[480px] mx-auto aspect-square isolate",
+              "order-1",
+              isEven ? "lg:order-2" : "lg:order-1",
+            )}
+          >
+            {/* Blob background */}
+            <div
+              className="absolute inset-[-8%] -z-20 bg-contain bg-center bg-no-repeat pointer-events-none"
+              style={{ backgroundImage: "url('/blob.svg')" }}
+              aria-hidden="true"
+            />
+
+            {/* Soft glass shape */}
+            <GlassCard
+              className={cn(
+                "absolute inset-[8%] -z-10 opacity-50     transition-all duration-700",
+                blobShapeClass,
+              )}
+            />
+
+            {/* Image */}
+            <div className="absolute inset-0 z-10 flex items-center justify-center">
+              {disease.imageUrl ? (
+                <div
+                  className={cn(
+                    "relative transition-all duration-700",
+                    imageSizeClass,
+                  )}
+                >
+                  <Image
+                    src={disease.imageUrl}
+                    alt={faName}
+                    fill
+                    className="object-contain   "
+                    sizes="(max-width: 1024px) 70vw, 40vw"
+                    priority={index < 2}
+                  />
+                </div>
+              ) : (
+                <div
+                  className={cn(
+                    "w-[72%] h-[72%] bg-white/20   border border-white/30 flex items-center justify-center transition-all duration-700",
+                    blobShapeClass,
+                  )}
+                >
+                  <Shield className="w-16 h-16 lg:w-20 lg:h-20 text-primary/40" />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+
+---
+
+### File: ./components/templates/diseases/DiseaseCategoryTemplate.tsx
+
+**Risk Flags:** CSS & GPU Overload (WebKit)
+
+```tsx
+"use client";
+
+import { useEffect, useState } from "react";
+import { DiseasePageData } from "./types";
+import { MedicalBackground } from "./bg";
+import { ScrollProgressIndicator } from "./scroll-indicator";
+import { AutoimmuneHero } from "./hero";
+import { ImmuneSystemProcess } from "./immune-progress";
+import { DiseaseStory } from "./disease-story";
+import { DiseaseLibrary } from "./library";
+
+export default function DiseaseCategoryTemplate({
+  data,
+}: {
+  data: DiseasePageData;
+}) {
+  const [activeSection, setActiveSection] = useState<string>("hero");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -40% 0px" },
+    );
+
+    const sections = [
+      "hero",
+      "mechanism",
+      ...data.featuredDiseases.map((d) => d.id),
+      "library",
+    ];
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [data.featuredDiseases]);
+
+  return (
+    <div
+      className="relative w-full min-h-screen font-sans selection:bg-primary/20 selection:text-primary"
+      dir="rtl"
+    >
+      <MedicalBackground />
+      <div className="hidden lg:block">
+        <ScrollProgressIndicator
+          activeSection={activeSection}
+          featuredDiseases={data.featuredDiseases}
+        />
+      </div>
+      <AutoimmuneHero
+        title={data.title}
+        subtitle={data.subtitle}
+        description={data.description}
+        heroImageSize={data.heroImageSize}
+        heroImageUrl={data.heroImageUrl}
+        firstDiseaseId={data.featuredDiseases[0]?.id}
+      />
+      <ImmuneSystemProcess
+        title={data.mechanismTitle}
+        description={data.mechanismDescription}
+        steps={data.processSteps}
+      />
+
+      <div className="flex flex-col w-full">
+        {data.featuredDiseases.map((disease, i) => (
+          <DiseaseStory key={disease.id} disease={disease} index={i} />
+        ))}
+      </div>
+
+      <DiseaseLibrary keywords={data.keywords} />
+    </div>
+  );
+}
+```
+
+---
+
+### File: ./components/hero/desktop/hero-section-desktop.tsx
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
 "use client";
@@ -2052,7 +3239,11 @@ export function HeroSection() {
 }
 ```
 
-### ./components/hero/desktop/hero-image.tsx
+---
+
+### File: ./components/hero/desktop/hero-image.tsx
+
+**Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
 "use client";
@@ -2281,7 +3472,11 @@ function FloatingCardItem({
 }
 ```
 
-### ./components/hero/mobile/hero-image-mobile.tsx
+---
+
+### File: ./components/hero/mobile/hero-image-mobile.tsx
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
 // hero-image-mobile.tsx
@@ -2445,7 +3640,11 @@ function FloatingCardItem({
 }
 ```
 
-### ./components/hero/mobile/hero-section-mobile.tsx
+---
+
+### File: ./components/hero/mobile/hero-section-mobile.tsx
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
 // hero-section-mobile.tsx
@@ -2536,7 +3735,64 @@ export function HeroSectionMobile() {
 }
 ```
 
-### ./components/journey-section/components/desktop/journey-glass-illustration.tsx
+---
+
+### File: ./components/journey-section/index.tsx
+
+**Risk Flags:** Hydration & SSR Mismatches
+
+```tsx
+import React, { useEffect, useState } from "react";
+import { JOURNEY_STEPS } from "./constants/journey";
+import { JourneyScrollContainer } from "./components/desktop/journey-scroll-container";
+import { JourneyScrollContainerMobile } from "./components/mobile/journey-scroll-container-mobile";
+
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+
+    const handleChange = () => {
+      setIsMobile(mediaQuery.matches);
+    };
+
+    handleChange();
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, []);
+
+  return isMobile;
+};
+
+export const JourneySection: React.FC = () => {
+  const isMobile = useIsMobile();
+
+  const formattedSteps = JOURNEY_STEPS.map(({ icon: Icon, ...rest }) => ({
+    ...rest,
+    icon: <Icon className="h-5 w-5 text-primary" />,
+  }));
+
+  return (
+    <div className="relative">
+      {isMobile ? (
+        <JourneyScrollContainerMobile steps={formattedSteps} />
+      ) : (
+        <JourneyScrollContainer steps={formattedSteps} />
+      )}
+    </div>
+  );
+};
+```
+
+---
+
+### File: ./components/journey-section/components/desktop/journey-glass-illustration.tsx
+
+**Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
 "use client";
@@ -2613,7 +3869,11 @@ export const JourneyGlassIllustration: React.FC<IllustrationProps> = ({
 };
 ```
 
-### ./components/journey-section/components/desktop/journey-step.tsx
+---
+
+### File: ./components/journey-section/components/desktop/journey-step.tsx
+
+**Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
 "use client";
@@ -2742,7 +4002,11 @@ export const JourneyStep: React.FC<StepProps> = ({
 };
 ```
 
-### ./components/journey-section/components/desktop/journey-path.tsx
+---
+
+### File: ./components/journey-section/components/desktop/journey-path.tsx
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
 "use client";
@@ -2934,7 +4198,11 @@ export function JourneyPath({ progress }: JourneyPathProps) {
 }
 ```
 
-### ./components/journey-section/components/mobile/journey-glass-illustration-mobile.tsx
+---
+
+### File: ./components/journey-section/components/mobile/journey-glass-illustration-mobile.tsx
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
 "use client";
@@ -3010,7 +4278,11 @@ export const JourneyGlassIllustrationMobile: React.FC<
 };
 ```
 
-### ./components/journey-section/components/mobile/journey-mobile.tsx
+---
+
+### File: ./components/journey-section/components/mobile/journey-mobile.tsx
+
+**Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
 "use client";
@@ -3138,7 +4410,11 @@ export const JourneyMobile: React.FC<{ steps: StepProps[] }> = ({ steps }) => {
 };
 ```
 
-### ./components/journey-section/components/mobile/journey-path-mobile.tsx
+---
+
+### File: ./components/journey-section/components/mobile/journey-path-mobile.tsx
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
 "use client";
@@ -3315,7 +4591,11 @@ export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
 }
 ```
 
-### ./components/journey-section/hooks/useJourney.ts
+---
+
+### File: ./components/journey-section/hooks/useJourney.ts
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```ts
 "use client";
@@ -3355,7 +4635,38 @@ export const useFloatingAnimation = () => {
 };
 ```
 
-### ./data/autoimmune.ts
+---
+
+### File: ./hooks/use-media-query.ts
+
+**Risk Flags:** Hydration & SSR Mismatches
+
+```ts
+"use client";
+
+import { useSyncExternalStore } from "react";
+
+export function useMediaQuery(query: string): boolean {
+  const subscribe = (callback: () => void) => {
+    const media = window.matchMedia(query);
+    media.addEventListener("change", callback);
+    return () => media.removeEventListener("change", callback);
+  };
+
+  const getSnapshot = () => window.matchMedia(query).matches;
+
+  // Default fallback for SSR to prevent hydration errors
+  const getServerSnapshot = () => false;
+
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+}
+```
+
+---
+
+### File: ./data/autoimmune.ts
+
+**Risk Flags:** Framer Motion & Render Loops
 
 ```ts
 // data/autoimmune.ts
@@ -3441,3 +4752,5 @@ export const autoimmuneData = {
   ],
 };
 ```
+
+---

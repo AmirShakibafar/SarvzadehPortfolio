@@ -1,23 +1,43 @@
-import React from "react";
+"use client";
+
+import React, { useSyncExternalStore } from "react";
 import { JOURNEY_STEPS } from "./constants/journey";
 import { JourneyScrollContainer } from "./components/desktop/journey-scroll-container";
 import { JourneyScrollContainerMobile } from "./components/mobile/journey-scroll-container-mobile";
 
+function subscribe(callback: () => void) {
+  const mql = window.matchMedia("(max-width: 767px)");
+  mql.addEventListener("change", callback);
+  return () => mql.removeEventListener("change", callback);
+}
+
 export const JourneySection: React.FC = () => {
-  // Map the raw data to instantiate the icon component for each step
+  const isMobile = useSyncExternalStore(
+    subscribe,
+    () => window.matchMedia("(max-width: 767px)").matches,
+    () => null,
+  );
+
+  // SSR / Hydration Fallback
+  if (isMobile === null) {
+    return <div className="min-h-screen w-full" />;
+  }
+
   const formattedSteps = JOURNEY_STEPS.map((step) => {
     const { icon: Icon, id, ...rest } = step;
-
     return {
       ...rest,
-      icon: <Icon className="w-5 h-5 text-primary" />,
+      icon: <Icon className="h-5 w-5 text-primary" />,
     };
   });
 
   return (
     <div className="relative">
-      <JourneyScrollContainer steps={formattedSteps} />
-      <JourneyScrollContainerMobile steps={formattedSteps} />
+      {isMobile ? (
+        <JourneyScrollContainerMobile steps={formattedSteps} />
+      ) : (
+        <JourneyScrollContainer steps={formattedSteps} />
+      )}
     </div>
   );
 };

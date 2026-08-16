@@ -3,7 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
-import { GlassCard } from "@/components/ui/glass-card";
 import { cn } from "@/lib/utils";
 
 interface IllustrationProps {
@@ -42,21 +41,21 @@ export const JourneyGlassIllustration: React.FC<IllustrationProps> = ({
       className="relative z-0 flex aspect-square w-full items-center justify-center isolate"
       variants={illustrationVariants}
     >
-      {/* Optimized Background Blob */}
       <div
         className="absolute left-1/2 top-1/2 -z-20 h-[150%] w-[150%] max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 pointer-events-none"
         aria-hidden="true"
       />
 
-      {/* Fluid Glass Card */}
-      <GlassCard
+      {/* Replaced GlassCard with a raw div to prevent overriding the fluid border-radius */}
+      <div
         className={cn(
-          "absolute inset-0 md:inset-2 -z-10 transition-all duration-700",
+          "absolute inset-0 md:inset-2 -z-10 bg-white/10 border border-white/30 shadow-[0_8px_30px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.8)] overflow-hidden transition-all duration-700",
           blobShapeClass,
         )}
-      />
+      >
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-white/10 to-transparent pointer-events-none" />
+      </div>
 
-      {/* Enlarged image container - Infinite animation removed */}
       <div className="relative z-10 flex h-[95%] w-[95%] items-center justify-center">
         <Image
           src={src}

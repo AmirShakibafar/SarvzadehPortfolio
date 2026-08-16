@@ -39,29 +39,26 @@ export const JourneyGlassIllustrationMobile: React.FC<
       className="relative z-0 flex aspect-square w-full items-center justify-center isolate"
       variants={illustrationVariants}
     >
-      {/* Optimized Background Blob */}
-      <div 
-        className="absolute left-1/2 top-1/2 -z-10 opacity-60 h-[150%] w-[150%] max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none" 
+      <div
+        className="absolute left-1/2 top-1/2 -z-10 opacity-60 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
         aria-hidden="true"
       />
 
-      {/* Fluid Glass Card with inline styles adapted to shape */}
-      <div 
+      <div
         className={cn(
-          "absolute inset-2 -z-10 bg-white/10 border border-white/30 shadow-[0_8px_20px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.8)] overflow-hidden transition-all duration-700",
-          blobShapeClass
+          "absolute inset-2 -z-10 bg-white/10 border border-white/30 shadow-[0_4px_12px_rgba(0,0,0,0.03),inset_0_1px_0_rgba(255,255,255,0.4)] overflow-hidden",
+          blobShapeClass,
         )}
       >
-        <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-white/10 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
       </div>
 
-      {/* Enlarged image container to 95% to allow break-out effect */}
       <div className="relative z-10 flex h-[95%] w-[95%] items-center justify-center">
         <Image
           src={src}
           alt={alt}
-          width={800}
-          height={800}
+          width={400}
+          height={400}
           className="h-full w-full object-cover"
           sizes="(max-width: 480px) 100vw, 400px"
         />

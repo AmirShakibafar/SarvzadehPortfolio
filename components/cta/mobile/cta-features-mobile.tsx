@@ -11,7 +11,7 @@ export function CtaFeaturesMobile() {
       />
 
       {/* Removed "flex flex-col" from the GlassCard wrapper */}
-      <GlassCard className="relative z-10 rounded-[2rem] bg-white/10 border border-white/30 shadow-[0_8px_30px_rgb(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.8)] overflow-hidden backdrop-blur-none">
+      <GlassCard className="relative z-10 rounded-[2rem] bg-white/10 border border-white/30   overflow-hidden   ">
         <div
           className="absolute inset-0 bg-gradient-to-tr from-white/5 via-white/10 to-transparent pointer-events-none"
           aria-hidden="true"
@@ -57,7 +57,7 @@ function FeatureItemMobile({
 }) {
   return (
     <div className="flex items-center gap-4 py-4 text-right">
-      <div className="flex items-center justify-center shrink-0 w-12 h-12 rounded-full bg-primary/10 shadow-[inset_0_0_12px_rgba(255,255,255,0.6)]">
+      <div className="flex items-center justify-center shrink-0 w-12 h-12 rounded-full bg-primary/10   ">
         {icon}
       </div>
 

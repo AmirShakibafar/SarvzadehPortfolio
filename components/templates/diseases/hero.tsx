@@ -97,7 +97,7 @@ export function AutoimmuneHero({
               aria-hidden="true"
             />
 
-            <div className="absolute w-[90%] h-[90%] lg:w-[95%] lg:h-[95%] max-w-[300px] lg:max-w-[600px] lg:max-h-[600px] rounded-[45%_55%_48%_52%/55%_45%_50%_50%] bg-gradient-to-br from-white/80 lg:from-white/60 to-white/40 lg:to-white/20 border border-white/60 shadow-sm lg:shadow-[0_24px_80px_rgba(0,0,0,0.03)] lg:backdrop-blur-sm" />
+            <div className="absolute w-[90%] h-[90%] lg:w-[95%] lg:h-[95%] max-w-[300px] lg:max-w-[600px] lg:max-h-[600px] rounded-[45%_55%_48%_52%/55%_45%_50%_50%] bg-gradient-to-br from-white/80 lg:from-white/60 to-white/40 lg:to-white/20 border border-white/60     lg:  " />
 
             <div className="hidden lg:block absolute w-[90%] h-[90%] max-w-[550px] max-h-[550px] border border-primary/20 rounded-[50%] opacity-40 border-dashed rotate-6" />
           </div>
@@ -105,7 +105,7 @@ export function AutoimmuneHero({
           {/* Hero Image */}
           {heroImageUrl && (
             <div
-              className={`relative z-10 drop-shadow-md lg:drop-shadow-xl ${heroImageSizeClasses[heroImageSize]}`}
+              className={`relative z-10   lg:  ${heroImageSizeClasses[heroImageSize]}`}
             >
               <Image
                 src={heroImageUrl}

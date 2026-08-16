@@ -54,7 +54,7 @@ export function DiseaseLibrary({ keywords }: { keywords: string[] }) {
               placeholder="جستجو در بین بیماری‌ها..."
               value={searchQuery}
               onChange={handleSearch}
-              className="w-full h-14 pr-12 pl-6 rounded-full bg-white/80 backdrop-blur-sm border border-slate-200/80 text-slate-900 placeholder:text-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all hover:bg-white"
+              className="w-full h-14 pr-12 pl-6 rounded-full bg-white/80   border border-slate-200/80 text-slate-900 placeholder:text-slate-400   focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all hover:bg-white"
             />
           </div>
         </div>
@@ -85,7 +85,7 @@ export function DiseaseLibrary({ keywords }: { keywords: string[] }) {
                 <div className="mt-8 flex justify-center w-full">
                   <button
                     onClick={() => setIsExpanded(!isExpanded)}
-                    className="group flex items-center justify-center w-full lg:w-auto gap-2 px-6 py-3.5 lg:py-3 rounded-full bg-white border border-slate-200 hover:border-primary/40 hover:bg-primary/[0.02] text-slate-700 hover:text-primary shadow-sm transition-all font-medium text-sm active:scale-95"
+                    className="group flex items-center justify-center w-full lg:w-auto gap-2 px-6 py-3.5 lg:py-3 rounded-full bg-white border border-slate-200 hover:border-primary/40 hover:bg-primary/[0.02] text-slate-700 hover:text-primary   transition-all font-medium text-sm active:scale-95"
                   >
                     {isExpanded ? (
                       <>

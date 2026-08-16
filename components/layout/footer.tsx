@@ -22,15 +22,13 @@ const diseaseCategories = [
 
 export function Footer() {
   return (
-    <footer className="relative w-full overflow-hidden border-t border-white/30 bg-white/20 backdrop-blur-md">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-primary/10 blur-[120px]" />
-
+    <footer className="relative w-full overflow-hidden bg-gradient-to-b from-white/60 to-primary/10">
       <div className="relative mx-auto w-full max-w-7xl px-6 py-14 md:px-14">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="max-w-md lg:col-span-2">
             <Link href="/" className="mb-5 flex w-fit items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/20 bg-primary/5 text-primary shadow-[inset_0_0_12px_rgba(255,255,255,.6)]">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/20 bg-primary/5 text-primary shadow-[inset_0_0_12px_rgba(13,220,213,0.15)]">
                 <Leaf className="h-6 w-6" />
               </div>
 
@@ -128,7 +126,7 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 flex flex-col gap-3 border-t border-white/30 pt-6 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
+        <div className="mt-12 flex flex-col gap-3 border-t border-primary/10 pt-6 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
           <span>© {new Date().getFullYear()} تمامی حقوق محفوظ است.</span>
 
           <span>طراحی و توسعه توسط امیر شکیبافر ❤️</span>

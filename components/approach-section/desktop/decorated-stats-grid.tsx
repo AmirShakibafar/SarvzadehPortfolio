@@ -83,9 +83,7 @@ export function DecoratedStatsGrid() {
 
               <GlassCard
                 className={`flex h-full flex-col items-center justify-center p-6 text-center   ${
-                  stat.highlight
-                    ? "border-primary/30 bg-white/50 shadow-md shadow-primary/10"
-                    : ""
+                  stat.highlight ? "border-primary/30 bg-white/50     " : ""
                 }`}
               >
                 <div

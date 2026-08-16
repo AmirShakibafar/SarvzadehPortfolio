@@ -81,11 +81,11 @@ export function EvaluationForm() {
 
       {/* 
         Exact simulated glass trick:
-        1. bg-white/10 + specific borders and shadows
+        1. bg-white/10 + specific borders and   s
         2. overflow-hidden for the inner fake gradient
-        3. backdrop-blur-none ensures the base component doesn't sneak in a blur filter
+        3.   ensures the base component doesn't sneak in a   filter
       */}
-      <GlassCard className="p-6 md:p-8 lg:p-10 rounded-[2rem] bg-white/10 border border-white/30 shadow-[0_8px_30px_rgb(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.8)] overflow-hidden min-h-[420px] flex flex-col relative z-10 backdrop-blur-none">
+      <GlassCard className="p-6 md:p-8 lg:p-10 rounded-[2rem] bg-white/10 border border-white/30   overflow-hidden min-h-[420px] flex flex-col relative z-10   ">
         {/* Fake glass gradient layer */}
         <div
           className="absolute inset-0 bg-gradient-to-tr from-white/5 via-white/10 to-transparent pointer-events-none"
@@ -174,7 +174,7 @@ function ProgressBar({
           </button>
         )}
       </div>
-      <div className="h-2 w-full bg-white/50 border border-white/60 rounded-full overflow-hidden shadow-inner">
+      <div className="h-2 w-full bg-white/50 border border-white/60 rounded-full overflow-hidden   ">
         <div
           className="h-full bg-gradient-to-l from-teal-300 to-teal-500 transition-all duration-500 ease-out rounded-full"
           style={{ width: `${((currentStep + 1) / totalSteps) * 100}%` }}
@@ -201,7 +201,7 @@ function QuestionStep({
           <button
             key={idx}
             onClick={() => onSelect(question.id, option)}
-            className="w-full text-right px-6 py-4 rounded-2xl border border-white/60 bg-white/50 hover:bg-white/80 hover:border-teal-300 hover:shadow-md text-slate-700 font-semibold transition-all duration-300"
+            className="w-full text-right px-6 py-4 rounded-2xl border border-white/60 bg-white/50 hover:bg-white/80 hover:border-teal-300   text-slate-700 font-semibold transition-all duration-300"
           >
             {option}
           </button>
@@ -243,7 +243,7 @@ function ContactStep({
             }
             placeholder="0912 345 6789"
             dir="ltr"
-            className="w-full pl-10 pr-4 py-4 rounded-2xl border border-white/60 bg-white/50 text-left focus:outline-none focus:ring-2 focus:ring-teal-400 focus:bg-white transition-all shadow-sm"
+            className="w-full pl-10 pr-4 py-4 rounded-2xl border border-white/60 bg-white/50 text-left focus:outline-none focus:ring-2 focus:ring-teal-400 focus:bg-white transition-all   "
           />
           <PhoneCall className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-teal-500 transition-colors" />
         </div>
@@ -255,7 +255,7 @@ function ContactStep({
               setContactData({ ...contactData, description: e.target.value })
             }
             placeholder="توضیحات تکمیلی (اختیاری)"
-            className="w-full pl-10 pr-4 py-4 rounded-2xl border border-white/60 bg-white/50 resize-none focus:outline-none focus:ring-2 focus:ring-teal-400 focus:bg-white transition-all shadow-sm"
+            className="w-full pl-10 pr-4 py-4 rounded-2xl border border-white/60 bg-white/50 resize-none focus:outline-none focus:ring-2 focus:ring-teal-400 focus:bg-white transition-all   "
           />
           <MessageSquare className="absolute left-4 top-5 h-5 w-5 text-slate-400 group-focus-within:text-teal-500 transition-colors" />
         </div>
@@ -263,7 +263,7 @@ function ContactStep({
       <Button
         type="submit"
         disabled={isSubmitting || !contactData.phone}
-        className="w-full h-14 rounded-2xl bg-gradient-to-l from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-white font-bold text-lg flex items-center justify-center gap-2 shadow-lg shadow-teal-500/25 transition-all disabled:opacity-50"
+        className="w-full h-14 rounded-2xl bg-gradient-to-l from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-white font-bold text-lg flex items-center justify-center gap-2     transition-all disabled:opacity-50"
       >
         {isSubmitting ? (
           <Loader2 className="h-5 w-5 animate-spin" />
@@ -284,7 +284,7 @@ function SuccessStep({ onReset }: { onReset: () => void }) {
           className="absolute left-1/2 top-1/2 -z-10 h-[200px] w-[200px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 pointer-events-none"
           aria-hidden="true"
         />
-        <div className="h-24 w-24 bg-gradient-to-br from-teal-100 to-white border border-white rounded-full flex items-center justify-center text-teal-500 mb-4 shadow-xl relative z-10">
+        <div className="h-24 w-24 bg-gradient-to-br from-teal-100 to-white border border-white rounded-full flex items-center justify-center text-teal-500 mb-4   relative z-10">
           <CheckCircle2 className="h-12 w-12" />
         </div>
       </div>
@@ -298,7 +298,7 @@ function SuccessStep({ onReset }: { onReset: () => void }) {
       <Button
         variant="outline"
         onClick={onReset}
-        className="mt-6 rounded-full border-white/60 bg-white/50 text-teal-700 hover:bg-white/80 hover:text-teal-800 shadow-sm transition-all"
+        className="mt-6 rounded-full border-white/60 bg-white/50 text-teal-700 hover:bg-white/80 hover:text-teal-800   transition-all"
       >
         ثبت درخواست جدید
       </Button>

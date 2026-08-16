@@ -42,7 +42,7 @@ function GlassBlob() {
         rounded-[45%_55%_48%_52%/55%_45%_50%_50%]
         bg-gradient-to-br from-white/60 to-white/20
         border border-white/60
-        shadow-[0_24px_80px_rgba(0,0,0,0.03)]
+          
         -z-10
       "
     />
@@ -140,11 +140,11 @@ function FloatingCardItem({
   icon: React.ReactNode;
 }) {
   return (
-    <div className="relative bg-white/50 border border-white/50 shadow-[0_8px_20px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.8)] overflow-hidden rounded-[24px] px-3 py-2.5">
+    <div className="relative bg-white/50 border border-white/50   overflow-hidden rounded-[24px] px-3 py-2.5">
       <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-white/50 to-transparent pointer-events-none" />
 
       <div className="relative z-10 flex items-center gap-3">
-        <div className="flex items-center justify-center shrink-0 w-10 h-10 rounded-full bg-primary/10 shadow-[inset_0_0_12px_rgba(255,255,255,0.6)]">
+        <div className="flex items-center justify-center shrink-0 w-10 h-10 rounded-full bg-primary/10   ">
           {icon}
         </div>
 

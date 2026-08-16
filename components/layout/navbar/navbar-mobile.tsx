@@ -81,7 +81,7 @@ export function NavbarMobile() {
         }}
         animate={hidden && !isOpen ? "hidden" : "visible"}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="sticky top-0 z-40 h-20 w-full border-b border-primary/10 bg-white/80 shadow-[0_8px_32px_-8px] shadow-primary/10 backdrop-blur-md"
+        className="sticky top-0 z-40 h-20 w-full border-b border-primary/10 bg-white/80       "
         dir="rtl"
       >
         <div className="flex h-full w-full items-center justify-between px-5">
@@ -91,7 +91,7 @@ export function NavbarMobile() {
             onClick={closeMenu}
             className="flex items-center gap-3"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-primary/20 bg-primary/5 text-primary shadow-[inset_0_0_12px_rgba(13,220,213,0.1)]">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-primary/20 bg-primary/5 text-primary   ">
               <Leaf className="h-5 w-5" />
             </div>
 
@@ -127,7 +127,7 @@ export function NavbarMobile() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closeMenu}
-              className="fixed inset-0 z-50 bg-black/20 backdrop-blur-sm"
+              className="fixed inset-0 z-50 bg-black/20   "
             />
 
             {/* Drawer */}
@@ -140,7 +140,7 @@ export function NavbarMobile() {
                 damping: 25,
                 stiffness: 200,
               }}
-              className="fixed right-0 top-0 z-50 flex h-full w-[280px] flex-col bg-white shadow-2xl"
+              className="fixed right-0 top-0 z-50 flex h-full w-[280px] flex-col bg-white   "
               dir="rtl"
             >
               {/* Drawer Header */}

@@ -130,7 +130,7 @@ export function DiseaseStory({
             {/* Soft glass shape */}
             <GlassCard
               className={cn(
-                "absolute inset-[8%] -z-10 opacity-50 shadow-xl shadow-primary/10 transition-all duration-700",
+                "absolute inset-[8%] -z-10 opacity-50     transition-all duration-700",
                 blobShapeClass,
               )}
             />
@@ -148,7 +148,7 @@ export function DiseaseStory({
                     src={disease.imageUrl}
                     alt={faName}
                     fill
-                    className="object-contain drop-shadow-[0_15px_25px_rgba(0,0,0,0.10)]"
+                    className="object-contain   "
                     sizes="(max-width: 1024px) 70vw, 40vw"
                     priority={index < 2}
                   />
@@ -156,7 +156,7 @@ export function DiseaseStory({
               ) : (
                 <div
                   className={cn(
-                    "w-[72%] h-[72%] bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center transition-all duration-700",
+                    "w-[72%] h-[72%] bg-white/20   border border-white/30 flex items-center justify-center transition-all duration-700",
                     blobShapeClass,
                   )}
                 >
