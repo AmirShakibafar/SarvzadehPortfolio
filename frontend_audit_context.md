@@ -1,7 +1,6 @@
 # Frontend Deep Audit Context
 
 ### File: ./app/layout.tsx
-
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -57,12 +56,12 @@ export default function RootLayout({
     </html>
   );
 }
+
 ```
 
 ---
 
 ### File: ./app/page.tsx
-
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -107,12 +106,12 @@ export default function Home() {
     </div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./app/globals.css
-
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```css
@@ -227,12 +226,12 @@ export default function Home() {
     @apply font-heading;
   }
 }
+
 ```
 
 ---
 
 ### File: ./components/ui/float-badge.tsx
-
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -276,12 +275,12 @@ export function FloatingBadge({
     </div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/approach-section/section-header.tsx
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -348,12 +347,12 @@ export function SectionHeader() {
     </motion.div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/approach-section/animations.ts
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```ts
@@ -379,12 +378,12 @@ export const staggerContainer: Variants = {
     },
   },
 };
+
 ```
 
 ---
 
 ### File: ./components/approach-section/desktop/why-trust-me-section.tsx
-
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -413,8 +412,10 @@ export default function WhyTrustMeSection() {
         {/* Removed motion.div wrapper. Children handle their own animations. */}
         <div className="relative mt-16 lg:mt-24">
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-            {/* Kept static, removed from animation tree */}
-            <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5    " />
+            <div
+              className="absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 pointer-events-none"
+              aria-hidden="true"
+            />
           </div>
 
           <div className="relative z-10 grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
@@ -431,12 +432,12 @@ export default function WhyTrustMeSection() {
     </section>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/approach-section/desktop/glass-brain-artwork.tsx
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -476,12 +477,12 @@ export function GlassBrainArtwork() {
     </div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/approach-section/desktop/quote-display.tsx
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -561,12 +562,12 @@ export function QuoteDisplay() {
     </motion.div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/approach-section/desktop/decorated-stats-grid.tsx
-
 **Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -576,6 +577,7 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import { DotPattern } from "../../ui/dot-pattern";
 import { GlassCard } from "@/components/ui/glass-card";
+import { VIEWPORT_OFFSET } from "@/lib/animations";
 
 const gridContainerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -679,21 +681,19 @@ export function DecoratedStatsGrid() {
     </div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/approach-section/mobile/why-trust-me-section-mobile.tsx
-
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
 // why-trust-me-section-mobile.tsx
 "use client";
 
-import React from "react";
 import { SectionHeader } from "../section-header";
-import { QuoteDisplay } from "../desktop/quote-display";
 import { DecoratedStatsGridMobile } from "./stats-mobile";
 import { GlassBrainArtworkMobile } from "./glass-artwork-mobile";
 import { QuoteDisplayMobile } from "./quote-display-mobile";
@@ -701,7 +701,7 @@ import { QuoteDisplayMobile } from "./quote-display-mobile";
 export default function WhyTrustMeSectionMobile() {
   return (
     <section dir="rtl" className="relative isolate overflow-hidden py-16">
-      {/* Mobile-optimized ambient background - Replaced expensive blurs with native radial gradients and removed   */}
+      {/* Mobile-optimized ambient background - Replaced expensive   s with native radial gradients and removed   */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-0 h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-primary/20 to-transparent opacity-40" />
         <div className="absolute bottom-0 right-[-80px] h-[260px] w-[260px] rounded-full bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-primary/10 to-transparent opacity-40" />
@@ -718,12 +718,12 @@ export default function WhyTrustMeSectionMobile() {
     </section>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/approach-section/mobile/stats-mobile.tsx
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -820,12 +820,12 @@ export function DecoratedStatsGridMobile() {
     </div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/approach-section/mobile/glass-artwork-mobile.tsx
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -861,12 +861,12 @@ export function GlassBrainArtworkMobile() {
     </div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/approach-section/mobile/quote-display-mobile.tsx
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -916,12 +916,12 @@ export function QuoteDisplayMobile() {
     </motion.div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/experties/index.tsx
-
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -943,7 +943,6 @@ const specialtiesData = [
     href: "/diseases/autoimmune",
     isActive: true,
   },
-
   {
     id: "hormonal-metabolic",
     title: "هورمونی - متابولیک",
@@ -976,7 +975,6 @@ const specialtiesData = [
 export function SpecialtiesSection() {
   return (
     <section className="relative z-10 w-full min-w-0 overflow-hidden py-16">
-      {/* Global Background Blob */}
       <div
         className="absolute left-1/2 top-1/2 -z-10 h-[100%] w-[100%] max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-30 pointer-events-none"
         aria-hidden="true"
@@ -997,73 +995,76 @@ export function SpecialtiesSection() {
         </div>
 
         <div className="relative w-full max-w-7xl mx-auto pt-8">
-          {/* Decorative dots - Hidden on mobile */}
-          <DotPattern className="hidden lg:block absolute -left-8 -bottom-8 h-48 w-48 opacity-40" />
-          <DotPattern className="hidden lg:block absolute -right-8 -top-8 h-32 w-32 opacity-40" />
+          <DotPattern className="hidden lg:block absolute -left-8 -bottom-8 h-48 w-48 opacity-40 pointer-events-none" />
+          <DotPattern className="hidden lg:block absolute -right-8 -top-8 h-32 w-32 opacity-40 pointer-events-none" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-6 gap-y-12 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-6 gap-y-8 relative z-10">
             {specialtiesData.map((item) => {
               const Icon = item.icon;
 
               const CardContent = (
-                <GlassCard
-                  className={cn(
-                    "relative flex h-full flex-col p-6 pt-10 text-right transition-all duration-300",
-                    item.isActive
-                      ? "group bg-white/40 border-white/60 hover:bg-white/60 hover:border-white/80     "
-                      : "bg-white/20 border-white/30 opacity-70",
-                  )}
-                >
-                  {/* Anchored Icon */}
+                // 1. New Wrapper: Handles the spacing (pt-7) and hover group coordination
+                <div className="relative h-full pt-7 group">
+                  {/* 2. Anchored Icon: Placed outside GlassCard to bypass overflow-hidden */}
                   <div
                     className={cn(
-                      "absolute -top-7 right-6 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-4 border-background transition-colors duration-300",
+                      "absolute top-0 right-6 z-20 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-4 border-background transition-colors duration-300",
                       item.isActive
-                        ? "bg-white text-primary   group-hover:bg-primary group-hover:text-white"
+                        ? "bg-white text-primary shadow-sm md:group-hover:bg-primary md:group-hover:text-white"
                         : "bg-slate-100 text-slate-400",
                     )}
                   >
-                    <Icon className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
+                    <Icon className="h-6 w-6 transition-transform duration-300 md:group-hover:scale-110" />
                   </div>
 
-                  <h3
+                  {/* 3. GlassCard: Safely uses overflow-hidden internally */}
+                  <GlassCard
                     className={cn(
-                      "mb-3 text-lg lg:text-xl font-bold",
-                      item.isActive ? "text-slate-800" : "text-slate-500",
+                      "relative flex h-full flex-col p-6 pt-9 text-right transition-[background-color,border-color,box-shadow,transform] duration-300",
+                      item.isActive
+                        ? "bg-white/40 border-white/60 md:group-hover:bg-white/60 md:group-hover:border-white/80 md:group-hover:shadow-lg md:group-hover:shadow-black/5"
+                        : "bg-white/20 border-white/30 opacity-70",
                     )}
                   >
-                    {item.title}
-                  </h3>
+                    <h3
+                      className={cn(
+                        "mb-3 text-lg lg:text-xl font-bold",
+                        item.isActive ? "text-slate-800" : "text-slate-500",
+                      )}
+                    >
+                      {item.title}
+                    </h3>
 
-                  <p
-                    className={cn(
-                      "text-sm leading-relaxed flex-grow",
-                      item.isActive ? "text-slate-600" : "text-slate-400",
-                    )}
-                  >
-                    {item.description}
-                  </p>
+                    <p
+                      className={cn(
+                        "text-sm leading-relaxed flex-grow",
+                        item.isActive ? "text-slate-600" : "text-slate-400",
+                      )}
+                    >
+                      {item.description}
+                    </p>
 
-                  <div className="mt-6 flex items-center justify-start">
-                    {item.isActive ? (
-                      <div className="flex items-center gap-1.5 text-sm font-semibold text-primary">
-                        <span>اطلاعات بیشتر</span>
-                        <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
-                      </div>
-                    ) : (
-                      <span className="text-sm font-medium text-slate-400">
-                        به‌زودی
-                      </span>
-                    )}
-                  </div>
-                </GlassCard>
+                    <div className="mt-6 flex items-center justify-start">
+                      {item.isActive ? (
+                        <div className="flex items-center gap-1.5 text-sm font-semibold text-primary">
+                          <span>اطلاعات بیشتر</span>
+                          <ArrowLeft className="h-4 w-4 transition-transform duration-300 md:group-hover:-translate-x-1" />
+                        </div>
+                      ) : (
+                        <span className="text-sm font-medium text-slate-400">
+                          به‌زودی
+                        </span>
+                      )}
+                    </div>
+                  </GlassCard>
+                </div>
               );
 
               return item.isActive ? (
                 <Link
                   key={item.id}
                   href={item.href}
-                  className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-2xl"
+                  className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-2xl active:scale-[0.98] transition-transform"
                 >
                   {CardContent}
                 </Link>
@@ -1083,12 +1084,12 @@ export function SpecialtiesSection() {
     </section>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/faq/index.tsx
-
 **Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -1224,12 +1225,12 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
     </motion.div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/layout/navbar/navbar-desktop.tsx
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -1367,12 +1368,12 @@ export function NavbarDesktop() {
     </motion.header>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/layout/navbar/navbar-mobile.tsx
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -1648,12 +1649,12 @@ export function NavbarMobile() {
     </>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/cta/desktop/cta-features.tsx
-
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -1736,12 +1737,12 @@ function FeatureItem({
     </div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/cta/desktop/cta-info.tsx
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -1858,12 +1859,12 @@ export function CtaInfo() {
     </motion.div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/cta/desktop/evaluation-form.tsx
-
 **Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -1950,7 +1951,7 @@ export function EvaluationForm() {
 
       {/* 
         Exact simulated glass trick:
-        1. bg-white/10 + specific borders and shadows
+        1. bg-white/10 + specific borders and   s
         2. overflow-hidden for the inner fake gradient
         3.   ensures the base component doesn't sneak in a   filter
       */}
@@ -2174,12 +2175,12 @@ function SuccessStep({ onReset }: { onReset: () => void }) {
     </div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/cta/mobile/evaluation-form-mobile.tsx
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -2503,12 +2504,12 @@ function SuccessStep({ onReset }: { onReset: () => void }) {
     </div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/cta/mobile/cta-info-mobile.tsx
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -2603,12 +2604,12 @@ export function CtaInfoMobile() {
     </motion.div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/cta/mobile/cta-features-mobile.tsx
-
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -2682,12 +2683,12 @@ function FeatureItemMobile({
     </div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/templates/diseases/immune-progress.tsx
-
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -2830,12 +2831,12 @@ export function ImmuneSystemProcess({
     </section>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/templates/diseases/disease-story.tsx
-
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -3011,12 +3012,12 @@ export function DiseaseStory({
     </section>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/templates/diseases/DiseaseCategoryTemplate.tsx
-
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -3100,12 +3101,12 @@ export default function DiseaseCategoryTemplate({
     </div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/hero/desktop/hero-section-desktop.tsx
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -3237,12 +3238,12 @@ export function HeroSection() {
     </main>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/hero/desktop/hero-image.tsx
-
 **Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -3470,12 +3471,12 @@ function FloatingCardItem({
     </GlassCard>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/hero/mobile/hero-image-mobile.tsx
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -3638,12 +3639,12 @@ function FloatingCardItem({
     </div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/hero/mobile/hero-section-mobile.tsx
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -3733,48 +3734,47 @@ export function HeroSectionMobile() {
     </main>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/journey-section/index.tsx
-
-**Risk Flags:** Hydration & SSR Mismatches
+**Risk Flags:** Hydration & SSR Mismatches, CSS & GPU Overload (WebKit)
 
 ```tsx
-import React, { useEffect, useState } from "react";
+"use client";
+
+import React, { useSyncExternalStore } from "react";
 import { JOURNEY_STEPS } from "./constants/journey";
 import { JourneyScrollContainer } from "./components/desktop/journey-scroll-container";
 import { JourneyScrollContainerMobile } from "./components/mobile/journey-scroll-container-mobile";
 
-const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 767px)");
-
-    const handleChange = () => {
-      setIsMobile(mediaQuery.matches);
-    };
-
-    handleChange();
-    mediaQuery.addEventListener("change", handleChange);
-
-    return () => {
-      mediaQuery.removeEventListener("change", handleChange);
-    };
-  }, []);
-
-  return isMobile;
-};
+function subscribe(callback: () => void) {
+  const mql = window.matchMedia("(max-width: 767px)");
+  mql.addEventListener("change", callback);
+  return () => mql.removeEventListener("change", callback);
+}
 
 export const JourneySection: React.FC = () => {
-  const isMobile = useIsMobile();
+  const isMobile = useSyncExternalStore(
+    subscribe,
+    () => window.matchMedia("(max-width: 767px)").matches,
+    () => null,
+  );
 
-  const formattedSteps = JOURNEY_STEPS.map(({ icon: Icon, ...rest }) => ({
-    ...rest,
-    icon: <Icon className="h-5 w-5 text-primary" />,
-  }));
+  // SSR / Hydration Fallback
+  if (isMobile === null) {
+    return <div className="min-h-screen w-full" />;
+  }
+
+  const formattedSteps = JOURNEY_STEPS.map((step) => {
+    const { icon: Icon, id , ...rest } = step;
+    return {
+      ...rest,
+      icon: <Icon className="h-5 w-5 text-primary" />,
+    };
+  });
 
   return (
     <div className="relative">
@@ -3786,13 +3786,13 @@ export const JourneySection: React.FC = () => {
     </div>
   );
 };
+
 ```
 
 ---
 
 ### File: ./components/journey-section/components/desktop/journey-glass-illustration.tsx
-
-**Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
+**Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
 "use client";
@@ -3800,7 +3800,6 @@ export const JourneySection: React.FC = () => {
 import React from "react";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
-import { GlassCard } from "@/components/ui/glass-card";
 import { cn } from "@/lib/utils";
 
 interface IllustrationProps {
@@ -3839,21 +3838,21 @@ export const JourneyGlassIllustration: React.FC<IllustrationProps> = ({
       className="relative z-0 flex aspect-square w-full items-center justify-center isolate"
       variants={illustrationVariants}
     >
-      {/* Optimized Background Blob */}
       <div
         className="absolute left-1/2 top-1/2 -z-20 h-[150%] w-[150%] max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 pointer-events-none"
         aria-hidden="true"
       />
 
-      {/* Fluid Glass Card */}
-      <GlassCard
+      {/* Replaced GlassCard with a raw div to prevent overriding the fluid border-radius */}
+      <div
         className={cn(
-          "absolute inset-0 md:inset-2 -z-10 transition-all duration-700",
+          "absolute inset-0 md:inset-2 -z-10 bg-white/10 border border-white/30 shadow-[0_8px_30px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.8)] overflow-hidden transition-all duration-700",
           blobShapeClass,
         )}
-      />
+      >
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-white/10 to-transparent pointer-events-none" />
+      </div>
 
-      {/* Enlarged image container - Infinite animation removed */}
       <div className="relative z-10 flex h-[95%] w-[95%] items-center justify-center">
         <Image
           src={src}
@@ -3867,12 +3866,12 @@ export const JourneyGlassIllustration: React.FC<IllustrationProps> = ({
     </motion.div>
   );
 };
+
 ```
 
 ---
 
 ### File: ./components/journey-section/components/desktop/journey-step.tsx
-
 **Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -3882,6 +3881,7 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import { JourneyGlassIllustration } from "./journey-glass-illustration";
 import { GlassCard } from "@/components/ui/glass-card";
+import { VIEWPORT_STRICT } from "@/lib/animations";
 
 interface StepProps {
   title: string;
@@ -4000,12 +4000,12 @@ export const JourneyStep: React.FC<StepProps> = ({
     </motion.div>
   );
 };
+
 ```
 
 ---
 
 ### File: ./components/journey-section/components/desktop/journey-path.tsx
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -4196,12 +4196,12 @@ export function JourneyPath({ progress }: JourneyPathProps) {
     </div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/journey-section/components/mobile/journey-glass-illustration-mobile.tsx
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -4246,29 +4246,26 @@ export const JourneyGlassIllustrationMobile: React.FC<
       className="relative z-0 flex aspect-square w-full items-center justify-center isolate"
       variants={illustrationVariants}
     >
-      {/* Optimized Background Blob */}
       <div
-        className="absolute left-1/2 top-1/2 -z-10 opacity-60 h-[150%] w-[150%] max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
+        className="absolute left-1/2 top-1/2 -z-10 opacity-60 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
         aria-hidden="true"
       />
 
-      {/* Fluid Glass Card with inline styles adapted to shape */}
       <div
         className={cn(
-          "absolute inset-2 -z-10 bg-white/10 border border-white/30   overflow-hidden transition-all duration-700",
+          "absolute inset-2 -z-10 bg-white/10 border border-white/30 shadow-[0_4px_12px_rgba(0,0,0,0.03),inset_0_1px_0_rgba(255,255,255,0.4)] overflow-hidden",
           blobShapeClass,
         )}
       >
-        <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-white/10 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
       </div>
 
-      {/* Enlarged image container to 95% to allow break-out effect */}
       <div className="relative z-10 flex h-[95%] w-[95%] items-center justify-center">
         <Image
           src={src}
           alt={alt}
-          width={800}
-          height={800}
+          width={400}
+          height={400}
           className="h-full w-full object-cover"
           sizes="(max-width: 480px) 100vw, 400px"
         />
@@ -4276,12 +4273,12 @@ export const JourneyGlassIllustrationMobile: React.FC<
     </motion.div>
   );
 };
+
 ```
 
 ---
 
 ### File: ./components/journey-section/components/mobile/journey-mobile.tsx
-
 **Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -4291,6 +4288,7 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import { GlassCard } from "@/components/ui/glass-card";
 import { JourneyGlassIllustrationMobile } from "./journey-glass-illustration-mobile";
+import { VIEWPORT_STRICT } from "@/lib/animations";
 
 interface StepProps {
   title: string;
@@ -4408,12 +4406,12 @@ export const JourneyMobile: React.FC<{ steps: StepProps[] }> = ({ steps }) => {
     </div>
   );
 };
+
 ```
 
 ---
 
 ### File: ./components/journey-section/components/mobile/journey-path-mobile.tsx
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -4589,19 +4587,19 @@ export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
     </div>
   );
 }
+
 ```
 
 ---
 
 ### File: ./components/journey-section/hooks/useJourney.ts
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```ts
 "use client";
 
 import { useScroll, useSpring, useReducedMotion } from "framer-motion";
-import { useRef, RefObject } from "react";
+import { RefObject } from "react";
 
 export const useJourneyProgress = (ref: RefObject<HTMLElement>) => {
   const { scrollYProgress } = useScroll({
@@ -4633,12 +4631,12 @@ export const useFloatingAnimation = () => {
     },
   };
 };
+
 ```
 
 ---
 
 ### File: ./hooks/use-media-query.ts
-
 **Risk Flags:** Hydration & SSR Mismatches
 
 ```ts
@@ -4660,12 +4658,44 @@ export function useMediaQuery(query: string): boolean {
 
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
+
+```
+
+---
+
+### File: ./lib/animations.ts
+**Risk Flags:** Framer Motion & Render Loops
+
+```ts
+// lib/animations.ts
+
+import { UseInViewOptions } from "framer-motion";
+
+/**
+ * Standard trigger: Animates slightly before the element enters the viewport.
+ * Consolidates the 50px and 100px variations.
+ */
+export const VIEWPORT_OFFSET: UseInViewOptions = {
+  once: true,
+  margin: "100px 0px",
+  amount: 0.05,
+};
+
+/**
+ * Strict trigger: Requires the element to be firmly inside the viewport before animating.
+ * Consolidates the negative margin variations used in the Journey section.
+ */
+export const VIEWPORT_STRICT: UseInViewOptions = {
+  once: true,
+  margin: "-50px 0px",
+  amount: 0.2,
+};
+
 ```
 
 ---
 
 ### File: ./data/autoimmune.ts
-
 **Risk Flags:** Framer Motion & Render Loops
 
 ```ts
@@ -4751,6 +4781,8 @@ export const autoimmuneData = {
     "بیماری سلیاک",
   ],
 };
+
 ```
 
 ---
+

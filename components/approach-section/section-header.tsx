@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion, Variants } from "framer-motion";
+import { VIEWPORT_OFFSET } from "@/lib/animations";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },

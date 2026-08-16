@@ -6,6 +6,7 @@ import { GlassCard } from "@/components/ui/glass-card";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { ChevronDown } from "lucide-react";
+import { VIEWPORT_OFFSET } from "@/lib/animations";
 
 const faqData = [
   {

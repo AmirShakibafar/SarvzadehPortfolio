@@ -10,6 +10,7 @@ import { Paragraph } from "@/components/ui/paragraph";
 
 import baleIcon from "@/assets/icons/bale.svg";
 import eittaIcon from "@/assets/icons/eitta.svg";
+import { VIEWPORT_OFFSET } from "@/lib/animations";
 
 export function CtaInfoMobile() {
   return (

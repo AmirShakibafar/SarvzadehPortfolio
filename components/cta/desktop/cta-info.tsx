@@ -10,6 +10,7 @@ import { Paragraph } from "@/components/ui/paragraph";
 // Explicit imports ensure the bundler resolves the assets regardless of folder structure
 import baleIcon from "@/assets/icons/bale.svg";
 import eittaIcon from "@/assets/icons/eitta.svg";
+import { VIEWPORT_OFFSET } from "@/lib/animations";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },

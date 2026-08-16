@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { VIEWPORT_OFFSET } from "@/lib/animations";
 
 export function GlassBrainArtwork() {
   return (

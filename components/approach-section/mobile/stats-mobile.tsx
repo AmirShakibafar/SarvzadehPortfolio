@@ -4,6 +4,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { DotPattern } from "../../ui/dot-pattern";
+import { VIEWPORT_OFFSET } from "@/lib/animations";
 
 const statsData = [
   {

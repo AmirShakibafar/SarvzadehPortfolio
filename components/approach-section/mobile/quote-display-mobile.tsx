@@ -4,6 +4,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { VIEWPORT_OFFSET } from "@/lib/animations";
 
 export function QuoteDisplayMobile() {
   return (
