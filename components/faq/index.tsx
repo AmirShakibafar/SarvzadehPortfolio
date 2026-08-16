@@ -76,7 +76,7 @@ export function FaqSection() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "50px 0px", amount: 0.1 }}
+        viewport={VIEWPORT_OFFSET}
       >
         {faqData.map((faq, index) => (
           <FaqItem key={index} question={faq.question} answer={faq.answer} />

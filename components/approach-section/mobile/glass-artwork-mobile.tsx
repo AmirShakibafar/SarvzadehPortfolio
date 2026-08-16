@@ -11,7 +11,7 @@ export function GlassBrainArtworkMobile() {
         className="relative isolate z-0 flex aspect-square w-full max-w-[280px] items-center justify-center"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "50px 0px", amount: 0.1 }}
+        viewport={VIEWPORT_OFFSET}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >
         <div className="absolute left-1/2 top-1/2 -z-10 h-[150%] w-[150%] opacity-40 -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none" />

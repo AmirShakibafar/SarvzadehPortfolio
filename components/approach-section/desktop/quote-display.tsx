@@ -34,7 +34,7 @@ export function QuoteDisplay() {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
+      viewport={VIEWPORT_OFFSET}
     >
       <div
         className="hidden md:block absolute -z-10 top-1/2 opacity-10 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"

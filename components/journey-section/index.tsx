@@ -24,7 +24,7 @@ export const JourneySection: React.FC = () => {
   }
 
   const formattedSteps = JOURNEY_STEPS.map((step) => {
-    const { icon: Icon, id, ...rest } = step;
+    const { icon: Icon, id , ...rest } = step;
     return {
       ...rest,
       icon: <Icon className="h-5 w-5 text-primary" />,

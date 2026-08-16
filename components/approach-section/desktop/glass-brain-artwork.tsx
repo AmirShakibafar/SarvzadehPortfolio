@@ -11,7 +11,7 @@ export function GlassBrainArtwork() {
         className="relative isolate z-0 flex aspect-square w-full max-w-[480px] items-center justify-center"
         initial={{ scale: 0.8, y: 40, opacity: 0 }}
         whileInView={{ scale: 1, y: 0, opacity: 1 }}
-        viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
+        viewport={VIEWPORT_OFFSET}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       >
         <div

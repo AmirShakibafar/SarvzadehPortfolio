@@ -17,7 +17,7 @@ export function CtaInfoMobile() {
       className="relative flex w-full flex-col space-y-4 text-right isolate"
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "50px 0px", amount: 0.1 }}
+      viewport={VIEWPORT_OFFSET}
       transition={{ duration: 0.4, ease: "easeOut" }}
     >
       {/* Mobile-scaled Background Blob - Kept centered behind the layout */}

@@ -1,9 +1,7 @@
 // why-trust-me-section-mobile.tsx
 "use client";
 
-import React from "react";
 import { SectionHeader } from "../section-header";
-import { QuoteDisplay } from "../desktop/quote-display";
 import { DecoratedStatsGridMobile } from "./stats-mobile";
 import { GlassBrainArtworkMobile } from "./glass-artwork-mobile";
 import { QuoteDisplayMobile } from "./quote-display-mobile";

@@ -41,7 +41,7 @@ export function CtaInfo() {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
+      viewport={VIEWPORT_OFFSET}
     >
       <div
         className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 md:h-[700px] md:w-[700px]"

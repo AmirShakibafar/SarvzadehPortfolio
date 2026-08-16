@@ -4,6 +4,7 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import { DotPattern } from "../../ui/dot-pattern";
 import { GlassCard } from "@/components/ui/glass-card";
+import { VIEWPORT_OFFSET } from "@/lib/animations";
 
 const gridContainerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -61,7 +62,7 @@ export function DecoratedStatsGrid() {
         variants={gridContainerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
+        viewport={VIEWPORT_OFFSET}
         className="relative w-full max-w-2xl"
       >
         <DotPattern className="-right-8 -top-8 h-32 w-32 opacity-40" />

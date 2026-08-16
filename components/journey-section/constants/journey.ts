@@ -4,14 +4,6 @@ import {
   Activity,
   RefreshCw,
   Heart,
-  Zap,
-  Moon,
-  Flame,
-  Leaf,
-  Apple,
-  Pill,
-  Sparkles,
-  Sun,
 } from "lucide-react";
 import { ElementType } from "react";
 

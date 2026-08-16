@@ -7,7 +7,6 @@ import { EvaluationForm } from "./desktop/evaluation-form";
 import { CtaFeatures } from "./desktop/cta-features";
 // Mobile Components (Adjust the import paths if they are in the same folder)
 import { CtaInfoMobile } from "./mobile/cta-info-mobile";
-import { EvaluationFormMobile } from "./mobile/evaluation-form-mobile";
 import { CtaFeaturesMobile } from "./mobile/cta-features-mobile";
 
 export default function CtaSection() {
@@ -17,8 +16,6 @@ export default function CtaSection() {
       // Added overflow-hidden to prevent the large SVG blobs from causing horizontal scrollbars
       className="relative py-8 lg:py-24 max-w-7xl mx-auto overflow-hidden isolate"
     >
-      
-
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         {/* --- DESKTOP VIEW (Large screens and up) --- */}
         <div className="hidden lg:block">
@@ -34,7 +31,6 @@ export default function CtaSection() {
           <div className="flex flex-col gap-10 items-center">
             <CtaInfoMobile />
             <EvaluationForm />
-
           </div>
           <CtaFeaturesMobile />
         </div>

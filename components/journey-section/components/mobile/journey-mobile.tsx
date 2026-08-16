@@ -4,6 +4,7 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import { GlassCard } from "@/components/ui/glass-card";
 import { JourneyGlassIllustrationMobile } from "./journey-glass-illustration-mobile";
+import { VIEWPORT_STRICT } from "@/lib/animations";
 
 interface StepProps {
   title: string;
@@ -57,7 +58,7 @@ export const JourneyMobile: React.FC<{ steps: StepProps[] }> = ({ steps }) => {
               className="flex flex-col gap-6 px-4 pt-12 pb-20 relative z-10"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={VIEWPORT_STRICT}
               variants={containerVariants}
             >
               <motion.div

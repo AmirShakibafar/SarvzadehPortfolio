@@ -1,7 +1,7 @@
 "use client";
 
 import { useScroll, useSpring, useReducedMotion } from "framer-motion";
-import { useRef, RefObject } from "react";
+import { RefObject } from "react";
 
 export const useJourneyProgress = (ref: RefObject<HTMLElement>) => {
   const { scrollYProgress } = useScroll({

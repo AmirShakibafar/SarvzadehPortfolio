@@ -319,7 +319,7 @@ export function SectionHeader() {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
+      viewport={VIEWPORT_OFFSET}
       className="lg:col-span-5 z-30 isolate"
     >
       <motion.div variants={itemVariants} className="   ">
@@ -453,7 +453,7 @@ export function GlassBrainArtwork() {
         className="relative isolate z-0 flex aspect-square w-full max-w-[480px] items-center justify-center"
         initial={{ scale: 0.8, y: 40, opacity: 0 }}
         whileInView={{ scale: 1, y: 0, opacity: 1 }}
-        viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
+        viewport={VIEWPORT_OFFSET}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       >
         <div
@@ -521,7 +521,7 @@ export function QuoteDisplay() {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
+      viewport={VIEWPORT_OFFSET}
     >
       <div
         className="hidden md:block absolute -z-10 top-1/2 opacity-10 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
@@ -633,7 +633,7 @@ export function DecoratedStatsGrid() {
         variants={gridContainerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
+        viewport={VIEWPORT_OFFSET}
         className="relative w-full max-w-2xl"
       >
         <DotPattern className="-right-8 -top-8 h-32 w-32 opacity-40" />
@@ -761,7 +761,7 @@ export function DecoratedStatsGridMobile() {
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "50px 0px", amount: 0.05 }}
+        viewport={VIEWPORT_OFFSET}
         transition={{ duration: 0.4, ease: "easeOut" }}
         className="relative w-full"
       >
@@ -842,7 +842,7 @@ export function GlassBrainArtworkMobile() {
         className="relative isolate z-0 flex aspect-square w-full max-w-[280px] items-center justify-center"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "50px 0px", amount: 0.1 }}
+        viewport={VIEWPORT_OFFSET}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >
         <div className="absolute left-1/2 top-1/2 -z-10 h-[150%] w-[150%] opacity-40 -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none" />
@@ -883,7 +883,7 @@ export function QuoteDisplayMobile() {
       className="relative isolate text-center"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
+      viewport={VIEWPORT_OFFSET}
       transition={{ duration: 0.4, ease: "easeOut" }}
     >
       <div
@@ -1170,7 +1170,7 @@ export function FaqSection() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "50px 0px", amount: 0.1 }}
+        viewport={VIEWPORT_OFFSET}
       >
         {faqData.map((faq, index) => (
           <FaqItem key={index} question={faq.question} answer={faq.answer} />
@@ -1788,7 +1788,7 @@ export function CtaInfo() {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
+      viewport={VIEWPORT_OFFSET}
     >
       <div
         className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 md:h-[700px] md:w-[700px]"
@@ -2531,7 +2531,7 @@ export function CtaInfoMobile() {
       className="relative flex w-full flex-col space-y-4 text-right isolate"
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "50px 0px", amount: 0.1 }}
+      viewport={VIEWPORT_OFFSET}
       transition={{ duration: 0.4, ease: "easeOut" }}
     >
       {/* Mobile-scaled Background Blob - Kept centered behind the layout */}
@@ -3938,7 +3938,7 @@ export const JourneyStep: React.FC<StepProps> = ({
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-100px 0px", amount: 0.2 }}
+      viewport={VIEWPORT_STRICT}
     >
       <div className="w-full flex-1">
         {/* Pass the index down to the illustration */}
@@ -4344,7 +4344,7 @@ export const JourneyMobile: React.FC<{ steps: StepProps[] }> = ({ steps }) => {
               className="flex flex-col gap-6 px-4 pt-12 pb-20 relative z-10"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={VIEWPORT_STRICT}
               variants={containerVariants}
             >
               <motion.div

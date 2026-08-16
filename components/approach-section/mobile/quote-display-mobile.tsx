@@ -11,7 +11,7 @@ export function QuoteDisplayMobile() {
       className="relative isolate text-center"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
+      viewport={VIEWPORT_OFFSET}
       transition={{ duration: 0.4, ease: "easeOut" }}
     >
       <div

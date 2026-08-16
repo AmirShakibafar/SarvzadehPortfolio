@@ -32,7 +32,7 @@ export function SectionHeader() {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "100px 0px", amount: 0.05 }}
+      viewport={VIEWPORT_OFFSET}
       className="lg:col-span-5 z-30 isolate"
     >
       <motion.div variants={itemVariants} className="   ">

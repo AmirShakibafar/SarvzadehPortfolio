@@ -4,6 +4,7 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import { JourneyGlassIllustration } from "./journey-glass-illustration";
 import { GlassCard } from "@/components/ui/glass-card";
+import { VIEWPORT_STRICT } from "@/lib/animations";
 
 interface StepProps {
   title: string;
@@ -60,7 +61,7 @@ export const JourneyStep: React.FC<StepProps> = ({
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-100px 0px", amount: 0.2 }}
+      viewport={VIEWPORT_STRICT}
     >
       <div className="w-full flex-1">
         {/* Pass the index down to the illustration */}
