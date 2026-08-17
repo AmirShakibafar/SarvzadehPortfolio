@@ -1,12 +1,7 @@
-"use client";
-
-import React, { useState } from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion";
-import { GlassCard } from "@/components/ui/glass-card";
+import React from "react";
 import { Heading } from "@/components/ui/heading";
-import { Paragraph } from "@/components/ui/paragraph";
-import { ChevronDown } from "lucide-react";
-import { VIEWPORT_OFFSET } from "@/lib/animations";
+import { ScrollTrigger } from "@/components/ui/scroll-trigger";
+import { FaqItem } from "./faq-item";
 
 const faqData = [
   {
@@ -31,39 +26,16 @@ const faqData = [
   },
 ];
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
-
 export function FaqSection() {
   return (
-    <div className="relative my-24 isolate w-full max-w-3xl mx-auto px-4 lg:px-0">
+    <div className="relative mx-auto my-24 w-full max-w-3xl isolate px-4 lg:px-0">
       {/* Background Blob */}
       <div
-        className="absolute left-1/2 top-1/2 -z-10 h-[600px] w-[600px] opacity-30 md:h-[900px] md:w-[900px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-30 md:h-[900px] md:w-[900px]"
         aria-hidden="true"
       />
 
-      <div className="text-center mb-10 space-y-4">
+      <div className="mb-10 space-y-4 text-center">
         <span className="inline-block text-sm font-semibold tracking-wide text-primary">
           سوالات متداول
         </span>
@@ -72,62 +44,18 @@ export function FaqSection() {
         </Heading>
       </div>
 
-      <motion.div
-        className="space-y-4"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={VIEWPORT_OFFSET}
-      >
+      <ScrollTrigger className="scroll-stagger-group space-y-4">
         {faqData.map((faq, index) => (
-          <FaqItem key={index} question={faq.question} answer={faq.answer} />
-        ))}
-      </motion.div>
-    </div>
-  );
-}
-
-function FaqItem({ question, answer }: { question: string; answer: string }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <motion.div variants={itemVariants}>
-      <GlassCard className="relative overflow-hidden rounded-2xl border border-white/60 bg-gradient-to-br from-white/60 to-white/20   transition-all hover:from-white/70 hover:to-white/30">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="flex w-full items-center justify-between gap-4 p-5 text-right focus:outline-none"
-          aria-expanded={isOpen}
-        >
-          <h4 className="font-bold text-slate-900 text-sm md:text-base">
-            {question}
-          </h4>
           <div
-            className={`flex items-center justify-center shrink-0 w-8 h-8 rounded-full bg-primary/10 transition-transform duration-300 ${
-              isOpen ? "rotate-180" : ""
-            }`}
+            key={index}
+            className="stagger-item"
+            // Replicates delayChildren: 0.1s (100ms) + staggerChildren: 0.15s (150ms)
+            style={{ animationDelay: `${100 + index * 150}ms` }}
           >
-            <ChevronDown className="w-4 h-4 text-primary" />
+            <FaqItem question={faq.question} answer={faq.answer} />
           </div>
-        </button>
-
-        <AnimatePresence initial={false}>
-          {isOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-            >
-              <div className="px-5 pb-5 pt-0">
-                <div className="h-px w-full bg-gradient-to-r from-transparent via-slate-200/50 to-transparent mb-4" />
-                <Paragraph className="text-sm leading-7 text-slate-600">
-                  {answer}
-                </Paragraph>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </GlassCard>
-    </motion.div>
+        ))}
+      </ScrollTrigger>
+    </div>
   );
 }
