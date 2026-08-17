@@ -44,7 +44,7 @@ export function DecoratedStatsGrid() {
               }`}
               style={{
                 // ONLY animation delay here, no opacity override
-                animationDelay: `${200 + index * 600}ms`,
+                animationDelay: `${200 + index * 340}ms`,
               }}
             >
               <div

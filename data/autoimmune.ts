@@ -9,8 +9,8 @@ export const autoimmuneData = {
   subtitle: "رویکرد نوین ایمونولوژی",
   description:
     "مدیریت و کنترل بیماری‌های مرتبط با سیستم ایمنی از طریق رویکردهای نوین علمی. در این بیماری‌ها، سیستم ایمنی به اشتباه بافت‌های سالم بدن را هدف قرار می‌دهد.",
-  heroImageUrl: "/images/diseases/ms2.png",
-  heroImageSize: "lg" as const,
+  heroImageUrl: "/images/diseases/auto-hero3.png",
+  heroImageSize: "sm" as const,
   // Mechanism Section Data
   mechanismTitle: "سازوکار بیماری‌های خودایمنی",
   mechanismDescription:
