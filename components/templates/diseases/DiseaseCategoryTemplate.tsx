@@ -1,80 +1,63 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { DiseasePageData } from "./types";
-import { MedicalBackground } from "./bg";
-import { ScrollProgressIndicator } from "./scroll-indicator";
+import React from "react";
 import { AutoimmuneHero } from "./hero";
 import { ImmuneSystemProcess } from "./immune-progress";
 import { DiseaseStory } from "./disease-story";
 import { DiseaseLibrary } from "./library";
+import { ScrollSpyTracker } from "./scroll-spy-tracker";
+import type { FeaturedDisease, ProcessStep } from "./types";
+
+// 1. Exact type mapping based on your autoimmuneData.ts structure
+export interface DiseaseCategoryData {
+  title: string;
+  subtitle: string;
+  description: string;
+  heroImageUrl?: string;
+  heroImageSize?: "sm" | "md" | "lg";
+  mechanismTitle: string;
+  mechanismDescription: string;
+  processSteps: ProcessStep[];
+  featuredDiseases: FeaturedDisease[];
+  keywords: string[];
+}
+
+interface DiseaseCategoryTemplateProps {
+  data: DiseaseCategoryData;
+}
 
 export default function DiseaseCategoryTemplate({
   data,
-}: {
-  data: DiseasePageData;
-}) {
-  const [activeSection, setActiveSection] = useState<string>("hero");
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: "-40% 0px -40% 0px" },
-    );
-
-    const sections = [
-      "hero",
-      "mechanism",
-      ...data.featuredDiseases.map((d) => d.id),
-      "library",
-    ];
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, [data.featuredDiseases]);
-
+}: DiseaseCategoryTemplateProps) {
   return (
-    <div
-      className="relative w-full min-h-screen font-sans selection:bg-primary/20 selection:text-primary"
-      dir="rtl"
-    >
-      <MedicalBackground />
-      <div className="hidden lg:block">
-        <ScrollProgressIndicator
-          activeSection={activeSection}
-          featuredDiseases={data.featuredDiseases}
-        />
-      </div>
+    <main className="relative w-full">
+      {/* 
+        CLIENT BOUNDARY: 
+        This tiny component observes the DOM and renders the fixed UI.
+      */}
+      <ScrollSpyTracker featuredDiseases={data.featuredDiseases} />
+
+      {/* SERVER COMPONENTS */}
       <AutoimmuneHero
         title={data.title}
         subtitle={data.subtitle}
         description={data.description}
-        heroImageSize={data.heroImageSize}
         heroImageUrl={data.heroImageUrl}
+        heroImageSize={data.heroImageSize}
         firstDiseaseId={data.featuredDiseases[0]?.id}
       />
+
       <ImmuneSystemProcess
         title={data.mechanismTitle}
         description={data.mechanismDescription}
         steps={data.processSteps}
       />
 
-      <div className="flex flex-col w-full">
-        {data.featuredDiseases.map((disease, i) => (
-          <DiseaseStory key={disease.id} disease={disease} index={i} />
+      <div className="flex w-full flex-col">
+        {data.featuredDiseases.map((disease, index) => (
+          <DiseaseStory key={disease.id} disease={disease} index={index} />
         ))}
       </div>
 
       <DiseaseLibrary keywords={data.keywords} />
-    </div>
+    </main>
   );
 }
