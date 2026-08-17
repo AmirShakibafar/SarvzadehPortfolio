@@ -1,6 +1,6 @@
-import React from "react";
 import { DotPattern } from "../../ui/dot-pattern";
 import { GlassCard } from "@/components/ui/glass-card";
+import { ScrollTrigger } from "@/components/ui/scroll-trigger";
 
 const statsData = [
   {
@@ -31,7 +31,7 @@ export function DecoratedStatsGrid() {
         aria-hidden="true"
       />
 
-      <div className="relative w-full max-w-2xl">
+      <ScrollTrigger className="relative w-full max-w-2xl scroll-stagger-group">
         <DotPattern className="-right-8 -top-8 h-32 w-32 opacity-40" />
         <DotPattern className="-bottom-8 -left-8 h-32 w-32 opacity-40" />
 
@@ -39,14 +39,12 @@ export function DecoratedStatsGrid() {
           {statsData.map((stat, index) => (
             <div
               key={index}
-              className={`relative h-full isolate animate-fade-up ${
+              className={`relative h-full isolate stagger-item ${
                 index === 2 ? "col-span-2 lg:col-span-1" : "col-span-1"
               }`}
               style={{
-                // Stagger delay: 200ms base + 150ms per item
-                animationDelay: `${200 + index * 150}ms`,
-                // Forces browser to maintain composite layer for consistent backdrop-filter rendering
-                opacity: 0.99,
+                // ONLY animation delay here, no opacity override
+                animationDelay: `${200 + index * 600}ms`,
               }}
             >
               <div
@@ -58,6 +56,10 @@ export function DecoratedStatsGrid() {
                 className={`flex h-full flex-col items-center justify-center p-6 text-center ${
                   stat.highlight ? "border-primary/30 bg-white/50" : ""
                 }`}
+                style={{
+                  // Move the composite layer hack to the inner element
+                  opacity: 0.99,
+                }}
               >
                 <div
                   className={`text-4xl font-extrabold tracking-tight lg:text-5xl ${
@@ -76,7 +78,7 @@ export function DecoratedStatsGrid() {
             </div>
           ))}
         </div>
-      </div>
+      </ScrollTrigger>
     </div>
   );
 }
