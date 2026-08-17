@@ -160,3 +160,30 @@
     transform: none !important;
   }
 }
+
+@keyframes scale-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-scale-fade-up {
+  opacity: 0;
+  /* Matches your duration: 1s and ease: [0.16, 1, 0.3, 1] */
+  animation: scale-fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-scale-fade-up {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

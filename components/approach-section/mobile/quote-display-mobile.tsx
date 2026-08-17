@@ -1,20 +1,8 @@
-// quote-display-mobile.tsx
-"use client";
-
-import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { VIEWPORT_OFFSET } from "@/lib/animations";
 
 export function QuoteDisplayMobile() {
   return (
-    <motion.div
-      className="relative isolate text-center"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={VIEWPORT_OFFSET}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-    >
+    <div className="animate-fade-up relative isolate text-center">
       <div
         className="absolute top-1/2 left-1/2 -z-10 h-[500px] w-[1200px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-35 pointer-events-none"
         aria-hidden="true"
@@ -42,6 +30,6 @@ export function QuoteDisplayMobile() {
           className="h-40 w-auto object-contain"
         />
       </div>
-    </motion.div>
+    </div>
   );
 }

@@ -1,10 +1,4 @@
-// decorated-stats-grid-mobile.tsx
-"use client";
-
-import React from "react";
-import { motion } from "framer-motion";
 import { DotPattern } from "../../ui/dot-pattern";
-import { VIEWPORT_OFFSET } from "@/lib/animations";
 
 const statsData = [
   {
@@ -30,13 +24,7 @@ const statsData = [
 export function DecoratedStatsGridMobile() {
   return (
     <div className="relative flex items-center justify-center isolate">
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={VIEWPORT_OFFSET}
-        transition={{ duration: 0.4, ease: "easeOut" }}
-        className="relative w-full"
-      >
+      <div className="relative w-full animate-fade-up">
         <DotPattern className="-right-4 -top-4 h-24 w-24 opacity-20" />
 
         <div className="grid w-full grid-cols-2 gap-4">
@@ -88,7 +76,7 @@ export function DecoratedStatsGridMobile() {
             </div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

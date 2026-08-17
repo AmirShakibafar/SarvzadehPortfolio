@@ -1,5 +1,3 @@
-"use client";
-import React from "react";
 import { BackgroundDecorations } from "./bg-decoration";
 import { SectionHeader } from "../section-header";
 import { GlassBrainArtwork } from "./glass-brain-artwork";
@@ -20,7 +18,6 @@ export default function WhyTrustMeSection() {
           <DecoratedStatsGrid />
         </div>
 
-        {/* Removed motion.div wrapper. Children handle their own animations. */}
         <div className="relative mt-16 lg:mt-24">
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
             <div
