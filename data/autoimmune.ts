@@ -9,7 +9,7 @@ export const autoimmuneData = {
   subtitle: "رویکرد نوین ایمونولوژی",
   description:
     "مدیریت و کنترل بیماری‌های مرتبط با سیستم ایمنی از طریق رویکردهای نوین علمی. در این بیماری‌ها، سیستم ایمنی به اشتباه بافت‌های سالم بدن را هدف قرار می‌دهد.",
-  heroImageUrl: "/images/diseases/auto-hero3.png",
+  heroImageUrl: "/images/diseases/auto-hero3.webp",
   heroImageSize: "sm" as const,
   // Mechanism Section Data
   mechanismTitle: "سازوکار بیماری‌های خودایمنی",
@@ -48,7 +48,7 @@ export const autoimmuneData = {
       name: "Multiple Sclerosis (ام‌اس)",
       description:
         "بیماری است که در آن سیستم ایمنی به میلین و گاهی خود آکسون‌های سیستم عصبی مرکزی آسیب می‌زند.",
-      imageUrl: "/images/diseases/ms4.png",
+      imageUrl: "/images/diseases/ms4.webp",
       media: { type: "video" as const },
     },
     {
@@ -56,7 +56,7 @@ export const autoimmuneData = {
       name: "Psoriasis (پسوریازیس)",
       description:
         "بیماری التهابی مزمن است که باعث فعال‌شدن بیش‌ازحد سیستم ایمنی و افزایش سرعت تکثیر سلول‌های پوست می‌شود.",
-      imageUrl: "/images/diseases/pes.png",
+      imageUrl: "/images/diseases/pes.webp",
       media: { type: "photo" as const },
       paperDoi: "10.5281/zenodo.7799594",
     },
@@ -65,7 +65,7 @@ export const autoimmuneData = {
       name: "Vitiligo (ویتیلیگو)",
       description:
         "بیماری خودایمنی است که در آن سیستم ایمنی ملانوسیت‌های تولیدکننده رنگدانه را تخریب می‌کند.",
-      imageUrl: "/images/diseases/vitiligo.png",
+      imageUrl: "/images/diseases/vitiligo.webp",
       media: { type: "photo" as const },
     },
   ],

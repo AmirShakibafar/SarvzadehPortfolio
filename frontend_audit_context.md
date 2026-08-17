@@ -1,6 +1,7 @@
 # Frontend Deep Audit Context
 
 ### File: ./app/layout.tsx
+
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -56,12 +57,12 @@ export default function RootLayout({
     </html>
   );
 }
-
 ```
 
 ---
 
 ### File: ./app/page.tsx
+
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -106,12 +107,12 @@ export default function Home() {
     </div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./app/globals.css
+
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```css
@@ -226,12 +227,12 @@ export default function Home() {
     @apply font-heading;
   }
 }
-
 ```
 
 ---
 
 ### File: ./components/ui/float-badge.tsx
+
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -275,12 +276,12 @@ export function FloatingBadge({
     </div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/approach-section/section-header.tsx
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -347,12 +348,12 @@ export function SectionHeader() {
     </motion.div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/approach-section/animations.ts
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```ts
@@ -378,12 +379,12 @@ export const staggerContainer: Variants = {
     },
   },
 };
-
 ```
 
 ---
 
 ### File: ./components/approach-section/desktop/why-trust-me-section.tsx
+
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -432,12 +433,12 @@ export default function WhyTrustMeSection() {
     </section>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/approach-section/desktop/glass-brain-artwork.tsx
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -477,12 +478,12 @@ export function GlassBrainArtwork() {
     </div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/approach-section/desktop/quote-display.tsx
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -562,12 +563,12 @@ export function QuoteDisplay() {
     </motion.div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/approach-section/desktop/decorated-stats-grid.tsx
+
 **Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -681,12 +682,12 @@ export function DecoratedStatsGrid() {
     </div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/approach-section/mobile/why-trust-me-section-mobile.tsx
+
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -718,12 +719,12 @@ export default function WhyTrustMeSectionMobile() {
     </section>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/approach-section/mobile/stats-mobile.tsx
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -820,12 +821,12 @@ export function DecoratedStatsGridMobile() {
     </div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/approach-section/mobile/glass-artwork-mobile.tsx
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -861,12 +862,12 @@ export function GlassBrainArtworkMobile() {
     </div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/approach-section/mobile/quote-display-mobile.tsx
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -916,12 +917,12 @@ export function QuoteDisplayMobile() {
     </motion.div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/experties/index.tsx
+
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -1084,12 +1085,12 @@ export function SpecialtiesSection() {
     </section>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/faq/index.tsx
+
 **Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -1225,12 +1226,12 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
     </motion.div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/layout/navbar/navbar-desktop.tsx
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -1368,12 +1369,12 @@ export function NavbarDesktop() {
     </motion.header>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/layout/navbar/navbar-mobile.tsx
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -1649,12 +1650,12 @@ export function NavbarMobile() {
     </>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/cta/desktop/cta-features.tsx
+
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -1737,12 +1738,12 @@ function FeatureItem({
     </div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/cta/desktop/cta-info.tsx
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -1859,12 +1860,12 @@ export function CtaInfo() {
     </motion.div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/cta/desktop/evaluation-form.tsx
+
 **Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -2175,12 +2176,12 @@ function SuccessStep({ onReset }: { onReset: () => void }) {
     </div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/cta/mobile/evaluation-form-mobile.tsx
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -2504,12 +2505,12 @@ function SuccessStep({ onReset }: { onReset: () => void }) {
     </div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/cta/mobile/cta-info-mobile.tsx
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -2604,12 +2605,12 @@ export function CtaInfoMobile() {
     </motion.div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/cta/mobile/cta-features-mobile.tsx
+
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -2683,12 +2684,12 @@ function FeatureItemMobile({
     </div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/templates/diseases/immune-progress.tsx
+
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -2831,12 +2832,12 @@ export function ImmuneSystemProcess({
     </section>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/templates/diseases/disease-story.tsx
+
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -3012,12 +3013,12 @@ export function DiseaseStory({
     </section>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/templates/diseases/DiseaseCategoryTemplate.tsx
+
 **Risk Flags:** CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -3101,12 +3102,12 @@ export default function DiseaseCategoryTemplate({
     </div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/hero/desktop/hero-section-desktop.tsx
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -3238,12 +3239,12 @@ export function HeroSection() {
     </main>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/hero/desktop/hero-image.tsx
+
 **Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -3471,12 +3472,12 @@ function FloatingCardItem({
     </GlassCard>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/hero/mobile/hero-image-mobile.tsx
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -3639,12 +3640,12 @@ function FloatingCardItem({
     </div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/hero/mobile/hero-section-mobile.tsx
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -3734,12 +3735,12 @@ export function HeroSectionMobile() {
     </main>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/journey-section/index.tsx
+
 **Risk Flags:** Hydration & SSR Mismatches, CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -3769,7 +3770,7 @@ export const JourneySection: React.FC = () => {
   }
 
   const formattedSteps = JOURNEY_STEPS.map((step) => {
-    const { icon: Icon, id , ...rest } = step;
+    const { icon: Icon, id, ...rest } = step;
     return {
       ...rest,
       icon: <Icon className="h-5 w-5 text-primary" />,
@@ -3786,12 +3787,12 @@ export const JourneySection: React.FC = () => {
     </div>
   );
 };
-
 ```
 
 ---
 
 ### File: ./components/journey-section/components/desktop/journey-glass-illustration.tsx
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -3866,12 +3867,12 @@ export const JourneyGlassIllustration: React.FC<IllustrationProps> = ({
     </motion.div>
   );
 };
-
 ```
 
 ---
 
 ### File: ./components/journey-section/components/desktop/journey-step.tsx
+
 **Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -4000,12 +4001,12 @@ export const JourneyStep: React.FC<StepProps> = ({
     </motion.div>
   );
 };
-
 ```
 
 ---
 
 ### File: ./components/journey-section/components/desktop/journey-path.tsx
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -4196,12 +4197,12 @@ export function JourneyPath({ progress }: JourneyPathProps) {
     </div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/journey-section/components/mobile/journey-glass-illustration-mobile.tsx
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -4273,12 +4274,12 @@ export const JourneyGlassIllustrationMobile: React.FC<
     </motion.div>
   );
 };
-
 ```
 
 ---
 
 ### File: ./components/journey-section/components/mobile/journey-mobile.tsx
+
 **Risk Flags:** Framer Motion & Render Loops, CSS & GPU Overload (WebKit)
 
 ```tsx
@@ -4406,12 +4407,12 @@ export const JourneyMobile: React.FC<{ steps: StepProps[] }> = ({ steps }) => {
     </div>
   );
 };
-
 ```
 
 ---
 
 ### File: ./components/journey-section/components/mobile/journey-path-mobile.tsx
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```tsx
@@ -4587,12 +4588,12 @@ export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
     </div>
   );
 }
-
 ```
 
 ---
 
 ### File: ./components/journey-section/hooks/useJourney.ts
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```ts
@@ -4631,12 +4632,12 @@ export const useFloatingAnimation = () => {
     },
   };
 };
-
 ```
 
 ---
 
 ### File: ./hooks/use-media-query.ts
+
 **Risk Flags:** Hydration & SSR Mismatches
 
 ```ts
@@ -4658,12 +4659,12 @@ export function useMediaQuery(query: string): boolean {
 
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
-
 ```
 
 ---
 
 ### File: ./lib/animations.ts
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```ts
@@ -4690,12 +4691,12 @@ export const VIEWPORT_STRICT: UseInViewOptions = {
   margin: "-50px 0px",
   amount: 0.2,
 };
-
 ```
 
 ---
 
 ### File: ./data/autoimmune.ts
+
 **Risk Flags:** Framer Motion & Render Loops
 
 ```ts
@@ -4710,7 +4711,7 @@ export const autoimmuneData = {
   subtitle: "رویکرد نوین ایمونولوژی",
   description:
     "مدیریت و کنترل بیماری‌های مرتبط با سیستم ایمنی از طریق رویکردهای نوین علمی. در این بیماری‌ها، سیستم ایمنی به اشتباه بافت‌های سالم بدن را هدف قرار می‌دهد.",
-  heroImageUrl: "/images/diseases/ms2.png",
+  heroImageUrl: "/images/diseases/ms2.webp",
   heroImageSize: "lg" as const,
   // Mechanism Section Data
   mechanismTitle: "سازوکار بیماری‌های خودایمنی",
@@ -4749,7 +4750,7 @@ export const autoimmuneData = {
       name: "Multiple Sclerosis (ام‌اس)",
       description:
         "بیماری است که در آن سیستم ایمنی به میلین و گاهی خود آکسون‌های سیستم عصبی مرکزی آسیب می‌زند.",
-      imageUrl: "/images/diseases/ms4.png",
+      imageUrl: "/images/diseases/ms4.webp",
       media: { type: "video" as const },
     },
     {
@@ -4757,7 +4758,7 @@ export const autoimmuneData = {
       name: "Psoriasis (پسوریازیس)",
       description:
         "بیماری التهابی مزمن است که باعث فعال‌شدن بیش‌ازحد سیستم ایمنی و افزایش سرعت تکثیر سلول‌های پوست می‌شود.",
-      imageUrl: "/images/diseases/pes.png",
+      imageUrl: "/images/diseases/pes.webp",
       media: { type: "photo" as const },
       paperDoi: "10.5281/zenodo.7799594",
     },
@@ -4766,7 +4767,7 @@ export const autoimmuneData = {
       name: "Vitiligo (ویتیلیگو)",
       description:
         "بیماری خودایمنی است که در آن سیستم ایمنی ملانوسیت‌های تولیدکننده رنگدانه را تخریب می‌کند.",
-      imageUrl: "/images/diseases/vitiligo.png",
+      imageUrl: "/images/diseases/vitiligo.webp",
       media: { type: "photo" as const },
     },
   ],
@@ -4781,8 +4782,6 @@ export const autoimmuneData = {
     "بیماری سلیاک",
   ],
 };
-
 ```
 
 ---
-

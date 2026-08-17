@@ -4,7 +4,7 @@ export const cancerData = {
   subtitle: "پشتیبانی ساختاریافته",
   description:
     "پشتیبانی ساختاریافته برای انواع سرطان‌ها نظیر ملانوما، سرطان پروستات و سرطان پستان[cite: 1].",
-  heroImageUrl: "/images/diseases/cancer-hero.png",
+  heroImageUrl: "/images/diseases/cancer-hero.webp",
   mechanismTitle: "سازوکار سرطان",
   mechanismDescription:
     "رشد غیرطبیعی و کنترل‌نشده سلول‌ها که می‌تواند به سایر بافت‌های بدن منتشر شود[cite: 1].",
@@ -40,7 +40,7 @@ export const cancerData = {
       name: "Melanoma (ملانوما)",
       description:
         "سرطان بدخیم سلول‌های ملانوسیت است که می‌تواند به‌سرعت به سایر قسمت‌های بدن منتشر شود[cite: 1].",
-      imageUrl: "/images/diseases/melanoma.png",
+      imageUrl: "/images/diseases/melanoma.webp",
       media: { type: "video" as const },
     },
     {
@@ -48,7 +48,7 @@ export const cancerData = {
       name: "Prostate Cancer (سرطان پروستات)",
       description:
         "رشد غیرطبیعی و بدخیم سلول‌های غده پروستات است که در بسیاری از موارد در ابتدا رشد آهسته دارد[cite: 1].",
-      imageUrl: "/images/diseases/prostate.png",
+      imageUrl: "/images/diseases/prostate.webp",
       media: { type: "photo" as const },
     },
     {
@@ -56,7 +56,7 @@ export const cancerData = {
       name: "Breast Cancer (سرطان پستان)",
       description:
         "رشد کنترل‌نشده و بدخیم سلول‌های بافت پستان است که می‌تواند به بافت‌های اطراف و اندام‌های دوردست منتشر شود[cite: 1].",
-      imageUrl: "/images/diseases/breast-cancer.png",
+      imageUrl: "/images/diseases/breast-cancer.webp",
       media: { type: "photo" as const },
     },
   ],

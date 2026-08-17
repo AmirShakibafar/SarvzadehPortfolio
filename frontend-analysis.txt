@@ -84,35 +84,35 @@ PROJECT STRUCTURE
 │   ├── images
 │   │   ├── approach
 │   │   │   ├── .DS_Store
-│   │   │   ├── bg.png
 │   │   │   ├── bg.webp
-│   │   │   ├── bg2.png
+│   │   │   ├── bg.webp
 │   │   │   ├── bg2.webp
-│   │   │   ├── bg3.png
+│   │   │   ├── bg2.webp
 │   │   │   ├── bg3.webp
-│   │   │   ├── bg4.png
+│   │   │   ├── bg3.webp
 │   │   │   ├── bg4.webp
-│   │   │   ├── brain.png
+│   │   │   ├── bg4.webp
 │   │   │   ├── brain.webp
-│   │   │   ├── brain2.png
+│   │   │   ├── brain.webp
 │   │   │   ├── brain2.webp
-│   │   │   ├── signiture.png
+│   │   │   ├── brain2.webp
+│   │   │   ├── signiture.webp
 │   │   │   └── signiture.webp
 │   │   ├── hero
-│   │   │   ├── Hero-Image.png
+│   │   │   ├── Hero-Image.webp
 │   │   │   └── Hero-Image.webp
 │   │   ├── journey
-│   │   │   ├── 1.png
 │   │   │   ├── 1.webp
-│   │   │   ├── 2.1.png
+│   │   │   ├── 1.webp
 │   │   │   ├── 2.1.webp
-│   │   │   ├── 2.png
+│   │   │   ├── 2.1.webp
 │   │   │   ├── 2.webp
-│   │   │   ├── 3.png
+│   │   │   ├── 2.webp
 │   │   │   ├── 3.webp
-│   │   │   ├── 4.png
+│   │   │   ├── 3.webp
 │   │   │   ├── 4.webp
-│   │   │   ├── 5.png
+│   │   │   ├── 4.webp
+│   │   │   ├── 5.webp
 │   │   │   ├── 5.webp
 │   │   │   ├── test.jpeg
 │   │   │   └── test.webp

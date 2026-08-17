@@ -4,7 +4,7 @@ export const hormonalMetabolicData = {
   subtitle: "تنظیم هورمون‌ها و تعادل متابولیک",
   description:
     "اختلالات هورمونی و متابولیک شامل طیف گسترده‌ای از شرایط مانند فیبروم رحم، اندومتریوز، سندرم تخمدان پلی‌کیستیک (PCOS) و سندرم متابولیک هستند که می‌توانند بر عملکرد هورمونی، سوخت‌وساز، سلامت تولیدمثل و وضعیت عمومی بدن تأثیر بگذارند.",
-  heroImageUrl: "/images/diseases/meta-hero.png",
+  heroImageUrl: "/images/diseases/meta-hero.webp",
   heroImageSize: "sm" as const,
 
   mechanismTitle: "سازوکار اختلالات هورمونی و متابولیک",
@@ -44,7 +44,7 @@ export const hormonalMetabolicData = {
       name: "Uterine Fibroids (فیبروم رحم)",
       description:
         "رشدهای خوش‌خیم و وابسته به هورمون هستند که از بافت عضلانی رحم ایجاد می‌شوند و می‌توانند باعث خونریزی شدید، درد یا احساس فشار در لگن شوند.",
-      imageUrl: "/images/diseases/uti-fib.png",
+      imageUrl: "/images/diseases/uti-fib.webp",
       media: { type: "photo" as const },
     },
     {
@@ -52,7 +52,7 @@ export const hormonalMetabolicData = {
       name: "Endometriosis (اندومتریوز)",
       description:
         "یک بیماری مزمن است که در آن بافتی شبیه آندومتر در خارج از رحم رشد می‌کند و می‌تواند باعث التهاب، درد لگنی و مشکلات مرتبط با باروری شود.",
-      imageUrl: "/images/diseases/endom.png",
+      imageUrl: "/images/diseases/endom.webp",
       media: { type: "photo" as const },
     },
     {
@@ -60,7 +60,7 @@ export const hormonalMetabolicData = {
       name: "Polycystic Ovary Syndrome (سندرم تخمدان پلی‌کیستیک)",
       description:
         "یک اختلال هورمونی و متابولیک شایع است که می‌تواند با افزایش آندروژن‌ها، اختلال در تخمک‌گذاری و مقاومت به انسولین همراه باشد.",
-      imageUrl: "/images/diseases/pcos.png",
+      imageUrl: "/images/diseases/pcos.webp",
       media: { type: "photo" as const },
     },
     {
@@ -68,7 +68,7 @@ export const hormonalMetabolicData = {
       name: "Metabolic Syndrome (سندرم متابولیک)",
       description:
         "مجموعه‌ای از عوامل خطر متابولیک مانند چاقی شکمی، فشار خون بالا، افزایش قند خون و اختلالات چربی خون است که خطر بیماری‌های قلبی‌عروقی و دیابت نوع ۲ را افزایش می‌دهد.",
-      imageUrl: "/images/diseases/syndrom.png",
+      imageUrl: "/images/diseases/syndrom.webp",
       media: { type: "photo" as const },
     },
   ],
