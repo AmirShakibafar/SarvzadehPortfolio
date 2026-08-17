@@ -154,11 +154,26 @@
   }
 }
 
+@keyframes soft-scale-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 /* -------------------------------------------------------------------------- */
 /* Utilities                                                                  */
 /* -------------------------------------------------------------------------- */
 
 @layer utilities {
+  .animate-soft-scale-fade-up {
+    opacity: 0;
+    animation: soft-scale-fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
   .animate-spring-slide {
     animation: spring-slide-in 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
   }
@@ -188,6 +203,7 @@
 /* -------------------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
+  .animate-soft-scale-fade-up,
   .animate-spring-slide,
   .animate-fade-up,
   .animate-scale-fade-up,

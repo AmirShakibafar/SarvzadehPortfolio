@@ -1,8 +1,4 @@
-"use client";
-
-import React from "react";
 import Image from "next/image";
-import { motion, Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface IllustrationProps {
@@ -10,16 +6,6 @@ interface IllustrationProps {
   alt: string;
   index?: number;
 }
-
-const illustrationVariants: Variants = {
-  hidden: { scale: 0.95, y: 20, opacity: 0 },
-  visible: {
-    scale: 1,
-    y: 0,
-    opacity: 1,
-    transition: { duration: 1, ease: [0.16, 1, 0.3, 1] },
-  },
-};
 
 const BLOB_SHAPES = [
   "rounded-[60%_40%_30%_70%/60%_30%_70%_40%]",
@@ -29,17 +15,20 @@ const BLOB_SHAPES = [
   "rounded-[70%_30%_50%_50%/60%_40%_60%_40%]",
 ];
 
-export const JourneyGlassIllustration: React.FC<IllustrationProps> = ({
+export const JourneyGlassIllustration = ({
   src,
   alt,
   index = 0,
-}) => {
+}: IllustrationProps) => {
   const blobShapeClass = BLOB_SHAPES[index % BLOB_SHAPES.length];
 
   return (
-    <motion.div
-      className="relative z-0 flex aspect-square w-full items-center justify-center isolate"
-      variants={illustrationVariants}
+    <div
+      className="animate-soft-scale-fade-up relative z-0 flex aspect-square w-full items-center justify-center isolate stagger-item"
+      style={{
+        // 200ms base delay + 200ms stagger per item
+        animationDelay: `${200 + index * 200}ms`,
+      }}
     >
       <div
         className="absolute left-1/2 top-1/2 -z-20 h-[150%] w-[150%] max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 pointer-events-none"
@@ -66,6 +55,6 @@ export const JourneyGlassIllustration: React.FC<IllustrationProps> = ({
           sizes="(max-width: 768px) 100vw, 50vw"
         />
       </div>
-    </motion.div>
+    </div>
   );
 };

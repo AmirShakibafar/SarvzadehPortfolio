@@ -1,10 +1,7 @@
-"use client";
-
 import React from "react";
-import { motion, Variants } from "framer-motion";
 import { GlassCard } from "@/components/ui/glass-card";
 import { JourneyGlassIllustrationMobile } from "./journey-glass-illustration-mobile";
-import { VIEWPORT_STRICT } from "@/lib/animations";
+import { ScrollTrigger } from "@/components/ui/scroll-trigger";
 
 interface StepProps {
   title: string;
@@ -16,22 +13,6 @@ interface StepProps {
   trustBadge: string;
   icon: React.ReactNode;
 }
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.4, ease: "easeOut" },
-  },
-};
 
 export const JourneyMobile: React.FC<{ steps: StepProps[] }> = ({ steps }) => {
   return (
@@ -54,29 +35,25 @@ export const JourneyMobile: React.FC<{ steps: StepProps[] }> = ({ steps }) => {
 
             <div className="absolute top-12 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-primary ring-[6px] ring-background z-0" />
 
-            <motion.div
-              className="flex flex-col gap-6 px-4 pt-12 pb-20 relative z-10"
-              initial="hidden"
-              whileInView="visible"
-              viewport={VIEWPORT_STRICT}
-              variants={containerVariants}
-            >
-              <motion.div
-                variants={itemVariants}
-                className={`w-[80%] max-w-[280px] ${isEven ? "self-start" : "self-end"}`}
+            <ScrollTrigger className="flex flex-col gap-6 px-4 pt-12 pb-20 relative z-10 scroll-stagger-group">
+              <div
+                className={`w-[80%] max-w-[280px] stagger-item ${
+                  isEven ? "self-start" : "self-end"
+                }`}
+                style={{ animationDelay: "100ms" }}
               >
                 <JourneyGlassIllustrationMobile
                   src={step.image}
                   alt={step.title}
                   index={index}
                 />
-              </motion.div>
+              </div>
 
-              <motion.div
-                variants={itemVariants}
-                className={`w-[90%] flex flex-col gap-4 mt-2 ${
+              <div
+                className={`w-[90%] flex flex-col gap-4 mt-2 stagger-item ${
                   isEven ? "self-end" : "self-start"
                 }`}
+                style={{ animationDelay: "200ms" }}
               >
                 <span className="text-sm font-medium text-primary">
                   {step.duration}
@@ -114,8 +91,8 @@ export const JourneyMobile: React.FC<{ steps: StepProps[] }> = ({ steps }) => {
                     </p>
                   </GlassCard>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </ScrollTrigger>
           </div>
         );
       })}

@@ -1,8 +1,4 @@
-"use client";
-
-import React from "react";
 import Image from "next/image";
-import { motion, Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface IllustrationMobileProps {
@@ -10,16 +6,6 @@ interface IllustrationMobileProps {
   alt: string;
   index?: number;
 }
-
-const illustrationVariants: Variants = {
-  hidden: { scale: 0.95, y: 15, opacity: 0 },
-  visible: {
-    scale: 1,
-    y: 0,
-    opacity: 1,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-};
 
 const BLOB_SHAPES = [
   "rounded-[60%_40%_30%_70%/60%_30%_70%_40%]",
@@ -29,15 +15,20 @@ const BLOB_SHAPES = [
   "rounded-[70%_30%_50%_50%/60%_40%_60%_40%]",
 ];
 
-export const JourneyGlassIllustrationMobile: React.FC<
-  IllustrationMobileProps
-> = ({ src, alt, index = 0 }) => {
+export const JourneyGlassIllustrationMobile = ({
+  src,
+  alt,
+  index = 0,
+}: IllustrationMobileProps) => {
   const blobShapeClass = BLOB_SHAPES[index % BLOB_SHAPES.length];
 
   return (
-    <motion.div
-      className="relative z-0 flex aspect-square w-full items-center justify-center isolate"
-      variants={illustrationVariants}
+    <div
+      className="animate-soft-scale-fade-up relative z-0 flex aspect-square w-full items-center justify-center isolate stagger-item"
+      style={{
+        // 100ms base delay + 100ms stagger per item for slightly faster mobile cadence
+        animationDelay: `${100 + index * 100}ms`,
+      }}
     >
       <div
         className="absolute left-1/2 top-1/2 -z-10 opacity-60 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
@@ -63,6 +54,6 @@ export const JourneyGlassIllustrationMobile: React.FC<
           sizes="(max-width: 480px) 100vw, 400px"
         />
       </div>
-    </motion.div>
+    </div>
   );
 };

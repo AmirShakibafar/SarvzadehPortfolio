@@ -7,14 +7,31 @@ interface JourneyPathMobileProps {
   progress: MotionValue<number>;
 }
 
-export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
-  const path = `
-    M1800 80 
-    C1800 800 2350 1000 2350 2000 
-    C2350 3000 1650 3200 1650 4200 
-    C1650 4600 1800 4800 1800 4950
-  `;
+// 1. Extracted static path definition to prevent reallocation on scroll renders
+const PATH_STRING = `
+  M1800 80 
+  C1800 800 2350 1000 2350 2000 
+  C2350 3000 1650 3200 1650 4200 
+  C1650 4600 1800 4800 1800 4950
+`;
 
+// 2. Extracted static gradients
+const SvgDefinitions = () => (
+  <defs>
+    <linearGradient id="activeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stopColor="#7DF8F3" />
+      <stop offset="100%" stopColor="#0DDCD5" />
+    </linearGradient>
+
+    <radialGradient id="orb">
+      <stop offset="0%" stopColor="#ffffff" />
+      <stop offset="40%" stopColor="#8EF6F2" />
+      <stop offset="100%" stopColor="#0DDCD5" />
+    </radialGradient>
+  </defs>
+);
+
+export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
   // MUST apply a spring. Mobile CPUs cannot compute SVG path lengths 1:1 with scroll events.
   const smoothProgress = useSpring(progress, {
     stiffness: 100,
@@ -33,21 +50,10 @@ export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
         preserveAspectRatio="xMidYMin slice"
         className="w-full h-full"
       >
-        <defs>
-          <linearGradient id="activeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#7DF8F3" />
-            <stop offset="100%" stopColor="#0DDCD5" />
-          </linearGradient>
-
-          <radialGradient id="orb">
-            <stop offset="0%" stopColor="#ffffff" />
-            <stop offset="40%" stopColor="#8EF6F2" />
-            <stop offset="100%" stopColor="#0DDCD5" />
-          </radialGradient>
-        </defs>
+        <SvgDefinitions />
 
         <path
-          d={path}
+          d={PATH_STRING}
           stroke="#0DDCD5"
           strokeWidth={26}
           opacity={0.05}
@@ -55,7 +61,7 @@ export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
         />
 
         <path
-          d={path}
+          d={PATH_STRING}
           stroke="#EEF4F6"
           strokeWidth={16}
           fill="none"
@@ -63,7 +69,7 @@ export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
         />
 
         <path
-          d={path}
+          d={PATH_STRING}
           stroke="white"
           strokeWidth={2}
           opacity={0.6}
@@ -73,7 +79,7 @@ export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
         />
 
         <motion.path
-          d={path}
+          d={PATH_STRING}
           stroke="url(#activeGradient)"
           strokeWidth={24}
           opacity={0.2}
@@ -83,7 +89,7 @@ export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
         />
 
         <motion.path
-          d={path}
+          d={PATH_STRING}
           stroke="url(#activeGradient)"
           strokeWidth={12}
           fill="none"
@@ -153,7 +159,7 @@ export function JourneyPathMobile({ progress }: JourneyPathMobileProps) {
         <motion.g
           className="animate-[pulse_2s_ease-in-out_infinite]"
           style={{
-            offsetPath: `path('${path}')`,
+            offsetPath: `path('${PATH_STRING}')`,
             offsetDistance: distance,
           }}
         >

@@ -1,10 +1,7 @@
-"use client";
-
 import React from "react";
-import { motion, Variants } from "framer-motion";
 import { JourneyGlassIllustration } from "./journey-glass-illustration";
 import { GlassCard } from "@/components/ui/glass-card";
-import { VIEWPORT_STRICT } from "@/lib/animations";
+import { ScrollTrigger } from "@/components/ui/scroll-trigger";
 
 interface StepProps {
   title: string;
@@ -16,28 +13,8 @@ interface StepProps {
   trustBadge: string;
   icon: React.ReactNode;
   align: "left" | "right";
-  index: number; // Added to determine the blob shape
+  index: number;
 }
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
 
 export const JourneyStep: React.FC<StepProps> = ({
   title,
@@ -54,46 +31,41 @@ export const JourneyStep: React.FC<StepProps> = ({
   const isRightAligned = align === "right";
 
   return (
-    <motion.div
-      className={`flex w-full flex-col items-center gap-8 md:gap-16 isolate ${
+    <ScrollTrigger
+      className={`flex w-full flex-col items-center gap-8 md:gap-16 isolate scroll-stagger-group ${
         isRightAligned ? "md:flex-row" : "md:flex-row-reverse"
       }`}
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={VIEWPORT_STRICT}
     >
       <div className="w-full flex-1">
-        {/* Pass the index down to the illustration */}
         <JourneyGlassIllustration src={image} alt={title} index={index} />
       </div>
 
       <div className="flex w-full flex-1 flex-col gap-5">
-        <motion.span
-          variants={itemVariants}
-          className="text-sm font-medium text-primary"
+        <span
+          className="text-sm font-medium text-primary stagger-item"
+          style={{ animationDelay: "100ms" }}
         >
           {duration}
-        </motion.span>
+        </span>
 
-        <motion.h3
-          variants={itemVariants}
-          className="text-balance text-3xl font-bold leading-snug text-foreground"
+        <h3
+          className="text-balance text-3xl font-bold leading-snug text-foreground stagger-item"
+          style={{ animationDelay: "200ms" }}
         >
           {title}
-        </motion.h3>
+        </h3>
 
-        <motion.p
-          variants={itemVariants}
-          className="text-lg leading-relaxed text-muted-foreground"
+        <p
+          className="text-lg leading-relaxed text-muted-foreground stagger-item"
+          style={{ animationDelay: "300ms" }}
         >
           {text}
-        </motion.p>
+        </p>
 
         {/* Feature Pills */}
-        <motion.div
-          variants={itemVariants}
-          className="mt-2 flex flex-wrap gap-2"
+        <div
+          className="mt-2 flex flex-wrap gap-2 stagger-item"
+          style={{ animationDelay: "400ms" }}
         >
           {chips.map((chip, idx) => (
             <span
@@ -103,10 +75,13 @@ export const JourneyStep: React.FC<StepProps> = ({
               {chip}
             </span>
           ))}
-        </motion.div>
+        </div>
 
         {/* Bottom Glass Card */}
-        <motion.div variants={itemVariants} className="relative isolate mt-6">
+        <div
+          className="relative isolate mt-6 stagger-item"
+          style={{ animationDelay: "500ms" }}
+        >
           <GlassCard className="rounded-[24px] p-6">
             <div className="mb-3 flex items-center gap-3">
               {icon}
@@ -118,8 +93,8 @@ export const JourneyStep: React.FC<StepProps> = ({
               {reassurance}
             </p>
           </GlassCard>
-        </motion.div>
+        </div>
       </div>
-    </motion.div>
+    </ScrollTrigger>
   );
 };

@@ -1,20 +1,37 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { motion, MotionValue, useTransform, useSpring } from "framer-motion";
 
 interface JourneyPathProps {
   progress: MotionValue<number>;
 }
 
-export function JourneyPath({ progress }: JourneyPathProps) {
-  const path = `
-    M1800 80 
-    C1800 800 2350 1000 2350 2000 
-    C2350 3000 1650 3200 1650 4200 
-    C1650 4600 1800 4800 1800 4950
-  `;
+// 1. Extracted static path definition
+const PATH_STRING = `
+  M1800 80 
+  C1800 800 2350 1000 2350 2000 
+  C2350 3000 1650 3200 1650 4200 
+  C1650 4600 1800 4800 1800 4950
+`;
 
+// 2. Extracted static gradients to prevent recreation on render
+const SvgDefinitions = () => (
+  <defs>
+    <linearGradient id="activeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stopColor="#7DF8F3" />
+      <stop offset="100%" stopColor="#0DDCD5" />
+    </linearGradient>
+
+    <radialGradient id="orb">
+      <stop offset="0%" stopColor="#ffffff" />
+      <stop offset="40%" stopColor="#8EF6F2" />
+      <stop offset="100%" stopColor="#0DDCD5" />
+    </radialGradient>
+  </defs>
+);
+
+export function JourneyPath({ progress }: JourneyPathProps) {
   // Smooth the scroll raw value to prevent main-thread thrashing
   const smoothProgress = useSpring(progress, {
     stiffness: 100,
@@ -33,22 +50,11 @@ export function JourneyPath({ progress }: JourneyPathProps) {
         preserveAspectRatio="xMidYMin slice"
         className="w-full h-full"
       >
-        <defs>
-          <linearGradient id="activeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#7DF8F3" />
-            <stop offset="100%" stopColor="#0DDCD5" />
-          </linearGradient>
-
-          <radialGradient id="orb">
-            <stop offset="0%" stopColor="#ffffff" />
-            <stop offset="40%" stopColor="#8EF6F2" />
-            <stop offset="100%" stopColor="#0DDCD5" />
-          </radialGradient>
-        </defs>
+        <SvgDefinitions />
 
         {/* Ambient background path */}
         <path
-          d={path}
+          d={PATH_STRING}
           stroke="#0DDCD5"
           strokeWidth={26}
           opacity={0.05}
@@ -57,7 +63,7 @@ export function JourneyPath({ progress }: JourneyPathProps) {
 
         {/* Glass tube */}
         <path
-          d={path}
+          d={PATH_STRING}
           stroke="#EEF4F6"
           strokeWidth={16}
           fill="none"
@@ -66,7 +72,7 @@ export function JourneyPath({ progress }: JourneyPathProps) {
 
         {/* Highlight */}
         <path
-          d={path}
+          d={PATH_STRING}
           stroke="white"
           strokeWidth={2}
           opacity={0.6}
@@ -77,7 +83,7 @@ export function JourneyPath({ progress }: JourneyPathProps) {
 
         {/* Simulated Glow */}
         <motion.path
-          d={path}
+          d={PATH_STRING}
           stroke="url(#activeGradient)"
           strokeWidth={24}
           opacity={0.2}
@@ -88,7 +94,7 @@ export function JourneyPath({ progress }: JourneyPathProps) {
 
         {/* Active glowing path */}
         <motion.path
-          d={path}
+          d={PATH_STRING}
           stroke="url(#activeGradient)"
           strokeWidth={12}
           fill="none"
@@ -168,7 +174,7 @@ export function JourneyPath({ progress }: JourneyPathProps) {
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ duration: 2, repeat: Infinity }}
           style={{
-            offsetPath: `path('${path}')`,
+            offsetPath: `path('${PATH_STRING}')`,
             offsetDistance: distance,
           }}
         >
