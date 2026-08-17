@@ -1,8 +1,6 @@
-"use client";
-
-import React, { useRef } from "react";
-import { JourneyBackground } from "../desktop/journey-background";
+import React from "react";
 import { JourneyMobile } from "./journey-mobile";
+import { JourneyBackground } from "../desktop/journey-background";
 
 interface StepData {
   title: string;
@@ -15,23 +13,33 @@ interface StepData {
   icon: React.ReactNode;
 }
 
-export function JourneyScrollContainerMobile({ steps }: { steps: StepData[] }) {
-  const containerRef = useRef<HTMLElement>(null!);
+interface JourneyScrollContainerMobileProps {
+  steps: StepData[];
+}
 
+export function JourneyScrollContainerMobile({
+  steps,
+}: JourneyScrollContainerMobileProps) {
   return (
     <section
-      ref={containerRef}
       dir="rtl"
-      className="relative w-full bg-background font-sans overflow-hidden block md:hidden"
+      className="relative block w-full overflow-hidden bg-background font-sans md:hidden"
     >
+      {/* Static mobile background.
+          No Framer Motion / scroll logic here. */}
       <JourneyBackground />
 
       <div className="relative w-full">
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <div className="relative z-20 flex flex-col items-start text-right max-w-2xl mb-6 pt-6 isolate">
-            <div className="absolute right-0 top-1/2 -z-10 h-[180px] w-[180px] -translate-y-1/2 translate-x-1/4 rounded-full bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-primary/20 to-transparent pointer-events-none" />
+        <div className="relative z-10 mx-auto max-w-7xl px-6">
+          {/* Heading */}
+          <header className="relative z-20 isolate mb-6 flex max-w-2xl flex-col items-start pt-6 text-right">
+            {/* Decorative glow */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute right-0 top-1/2 -z-10 h-[180px] w-[180px] -translate-y-1/2 translate-x-1/4 rounded-full bg-[radial-gradient(circle,var(--tw-gradient-stops))] from-primary/20 to-transparent"
+            />
 
-            <span className="inline-block text-sm font-semibold tracking-wide text-primary">
+            <span className="text-sm font-semibold tracking-wide text-primary">
               نقشه راه شما
             </span>
 
@@ -43,8 +51,9 @@ export function JourneyScrollContainerMobile({ steps }: { steps: StepData[] }) {
               ما در این مسیر قدم به قدم همراه شما هستیم تا با یک برنامه اصولی،
               بهبود کیفیت زندگی و کنترل علائم ام‌اس را تجربه کنید.
             </p>
-          </div>
+          </header>
 
+          {/* Journey */}
           <div className="pt-10">
             <JourneyMobile steps={steps} />
           </div>

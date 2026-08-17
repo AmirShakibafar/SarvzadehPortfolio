@@ -4,6 +4,7 @@ import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { GlassCard } from "@/components/ui/glass-card";
 import { DotPattern } from "@/components/ui/dot-pattern";
+import { ScrollTrigger } from "@/components/ui/scroll-trigger";
 import { cn } from "@/lib/utils";
 
 const specialtiesData = [
@@ -67,18 +68,16 @@ export function SpecialtiesSection() {
           </Paragraph>
         </div>
 
-        <div className="relative w-full max-w-7xl mx-auto pt-8">
+        <ScrollTrigger className="relative w-full max-w-7xl mx-auto pt-8 scroll-stagger-group">
           <DotPattern className="hidden lg:block absolute -left-8 -bottom-8 h-48 w-48 opacity-40 pointer-events-none" />
           <DotPattern className="hidden lg:block absolute -right-8 -top-8 h-32 w-32 opacity-40 pointer-events-none" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-6 gap-y-8 relative z-10">
-            {specialtiesData.map((item) => {
+            {specialtiesData.map((item, index) => {
               const Icon = item.icon;
 
               const CardContent = (
-                // 1. New Wrapper: Handles the spacing (pt-7) and hover group coordination
                 <div className="relative h-full pt-7 group">
-                  {/* 2. Anchored Icon: Placed outside GlassCard to bypass overflow-hidden */}
                   <div
                     className={cn(
                       "absolute top-0 right-6 z-20 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-4 border-background transition-colors duration-300",
@@ -90,7 +89,6 @@ export function SpecialtiesSection() {
                     <Icon className="h-6 w-6 transition-transform duration-300 md:group-hover:scale-110" />
                   </div>
 
-                  {/* 3. GlassCard: Safely uses overflow-hidden internally */}
                   <GlassCard
                     className={cn(
                       "relative flex h-full flex-col p-6 pt-9 text-right transition-[background-color,border-color,box-shadow,transform] duration-300",
@@ -98,6 +96,9 @@ export function SpecialtiesSection() {
                         ? "bg-white/40 border-white/60 md:group-hover:bg-white/60 md:group-hover:border-white/80 md:group-hover:shadow-lg md:group-hover:shadow-black/5"
                         : "bg-white/20 border-white/30 opacity-70",
                     )}
+                    style={{
+                      opacity: 0.99,
+                    }}
                   >
                     <h3
                       className={cn(
@@ -137,22 +138,24 @@ export function SpecialtiesSection() {
                 <Link
                   key={item.id}
                   href={item.href}
-                  className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-2xl active:scale-[0.98] transition-transform"
+                  className="stagger-item block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-2xl active:scale-[0.98] transition-transform"
+                  style={{ animationDelay: `${200 + index * 340}ms` }}
                 >
                   {CardContent}
                 </Link>
               ) : (
                 <div
                   key={item.id}
-                  className="block h-full cursor-default"
+                  className="stagger-item block h-full cursor-default"
                   aria-disabled="true"
+                  style={{ animationDelay: `${200 + index * 340}ms` }}
                 >
                   {CardContent}
                 </div>
               );
             })}
           </div>
-        </div>
+        </ScrollTrigger>
       </div>
     </section>
   );

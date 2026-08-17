@@ -1,5 +1,4 @@
 "use client";
-
 import { useScroll, useSpring, useReducedMotion } from "framer-motion";
 import { RefObject } from "react";
 
@@ -9,25 +8,23 @@ export const useJourneyProgress = (ref: RefObject<HTMLElement>) => {
     offset: ["start center", "end center"],
   });
 
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 18,
+  // Single source of truth for smoothed scroll
+  return useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 25, // Increased damping slightly for less "bounce" lag
     mass: 1,
+    restDelta: 0.001,
   });
-
-  return smoothProgress;
 };
 
 export const useFloatingAnimation = () => {
   const prefersReducedMotion = useReducedMotion();
-
   if (prefersReducedMotion) return {};
-
   return {
-    y: [0, -10, 0],
-    rotate: [-3, 3, -3],
+    y: [0, -8, 0],
+    rotate: [-2, 2, -2],
     transition: {
-      duration: 10,
+      duration: 8,
       repeat: Infinity,
       ease: "easeInOut",
     },

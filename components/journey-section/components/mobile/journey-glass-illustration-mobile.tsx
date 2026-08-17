@@ -23,31 +23,32 @@ export const JourneyGlassIllustrationMobile = ({
   const blobShapeClass = BLOB_SHAPES[index % BLOB_SHAPES.length];
 
   return (
-    <div className="relative z-0 flex aspect-square w-full items-center justify-center isolate">
+    <div className="relative aspect-square w-full">
+      {/* Decorative blob */}
       <div
-        className="absolute left-1/2 top-1/2 -z-10 opacity-60 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
         aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-60"
       />
 
+      {/* Glass shape */}
       <div
+        aria-hidden="true"
         className={cn(
-          "absolute inset-2 -z-10 bg-white/10 border border-white/30 shadow-[0_4px_12px_rgba(0,0,0,0.03),inset_0_1px_0_rgba(255,255,255,0.4)] overflow-hidden",
+          "absolute inset-2 overflow-hidden border border-white/30 bg-white/10",
+          "shadow-[0_4px_12px_rgba(0,0,0,0.03)]",
           blobShapeClass,
         )}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
-      </div>
+      />
 
-      <div className="relative z-10 flex h-[95%] w-[95%] items-center justify-center">
-        <Image
-          src={src}
-          alt={alt}
-          width={400}
-          height={400}
-          className="h-full w-full object-cover"
-          sizes="(max-width: 480px) 100vw, 400px"
-        />
-      </div>
+      {/* Image */}
+      <Image
+        src={src}
+        alt={alt}
+        width={400}
+        height={400}
+        sizes="(max-width: 480px) 80vw, 280px"
+        className="relative z-10 h-full w-full object-cover"
+      />
     </div>
   );
 };
