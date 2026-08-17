@@ -23,13 +23,7 @@ export const JourneyGlassIllustrationMobile = ({
   const blobShapeClass = BLOB_SHAPES[index % BLOB_SHAPES.length];
 
   return (
-    <div
-      className="animate-soft-scale-fade-up relative z-0 flex aspect-square w-full items-center justify-center isolate stagger-item"
-      style={{
-        // 100ms base delay + 100ms stagger per item for slightly faster mobile cadence
-        animationDelay: `${100 + index * 100}ms`,
-      }}
-    >
+    <div className="relative z-0 flex aspect-square w-full items-center justify-center isolate">
       <div
         className="absolute left-1/2 top-1/2 -z-10 opacity-60 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat pointer-events-none"
         aria-hidden="true"

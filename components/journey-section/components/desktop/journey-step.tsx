@@ -36,36 +36,37 @@ export const JourneyStep: React.FC<StepProps> = ({
         isRightAligned ? "md:flex-row" : "md:flex-row-reverse"
       }`}
     >
-      <div className="w-full flex-1">
+      {/* 1. Illustration starts at 100ms */}
+      <div
+        className="w-full flex-1 stagger-scale-item"
+        style={{ animationDelay: "100ms" }}
+      >
         <JourneyGlassIllustration src={image} alt={title} index={index} />
       </div>
 
       <div className="flex w-full flex-1 flex-col gap-5">
+        {/* Texts follow in sync: 200ms -> 600ms */}
         <span
           className="text-sm font-medium text-primary stagger-item"
-          style={{ animationDelay: "100ms" }}
+          style={{ animationDelay: "200ms" }}
         >
           {duration}
         </span>
-
         <h3
           className="text-balance text-3xl font-bold leading-snug text-foreground stagger-item"
-          style={{ animationDelay: "200ms" }}
+          style={{ animationDelay: "300ms" }}
         >
           {title}
         </h3>
-
         <p
           className="text-lg leading-relaxed text-muted-foreground stagger-item"
-          style={{ animationDelay: "300ms" }}
+          style={{ animationDelay: "400ms" }}
         >
           {text}
         </p>
-
-        {/* Feature Pills */}
         <div
           className="mt-2 flex flex-wrap gap-2 stagger-item"
-          style={{ animationDelay: "400ms" }}
+          style={{ animationDelay: "500ms" }}
         >
           {chips.map((chip, idx) => (
             <span
@@ -76,11 +77,9 @@ export const JourneyStep: React.FC<StepProps> = ({
             </span>
           ))}
         </div>
-
-        {/* Bottom Glass Card */}
         <div
           className="relative isolate mt-6 stagger-item"
-          style={{ animationDelay: "500ms" }}
+          style={{ animationDelay: "600ms" }}
         >
           <GlassCard className="rounded-[24px] p-6">
             <div className="mb-3 flex items-center gap-3">

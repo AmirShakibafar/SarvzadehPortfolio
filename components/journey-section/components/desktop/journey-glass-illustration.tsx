@@ -23,19 +23,12 @@ export const JourneyGlassIllustration = ({
   const blobShapeClass = BLOB_SHAPES[index % BLOB_SHAPES.length];
 
   return (
-    <div
-      className="animate-soft-scale-fade-up relative z-0 flex aspect-square w-full items-center justify-center isolate stagger-item"
-      style={{
-        // 200ms base delay + 200ms stagger per item
-        animationDelay: `${200 + index * 200}ms`,
-      }}
-    >
+    <div className="relative z-0 flex aspect-square w-full items-center justify-center isolate">
       <div
         className="absolute left-1/2 top-1/2 -z-20 h-[150%] w-[150%] max-w-4xl -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 pointer-events-none"
         aria-hidden="true"
       />
 
-      {/* Replaced GlassCard with a raw div to prevent overriding the fluid border-radius */}
       <div
         className={cn(
           "absolute inset-0 md:inset-2 -z-10 bg-white/10 border border-white/30 shadow-[0_8px_30px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.8)] overflow-hidden transition-all duration-700",

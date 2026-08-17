@@ -170,10 +170,12 @@
 /* -------------------------------------------------------------------------- */
 
 @layer utilities {
+  /* Standalone animation classes */
   .animate-soft-scale-fade-up {
     opacity: 0;
     animation: soft-scale-fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
+
   .animate-spring-slide {
     animation: spring-slide-in 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
   }
@@ -188,13 +190,20 @@
     animation: scale-fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  /* Scroll Stagger Group */
+  /* Scroll Stagger Group: Text/Standard Items */
   .scroll-stagger-group .stagger-item {
     opacity: 0;
   }
-
   .scroll-stagger-group.is-visible .stagger-item {
     animation: fade-up-enter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Scroll Stagger Group: Illustrations/Images */
+  .scroll-stagger-group .stagger-scale-item {
+    opacity: 0;
+  }
+  .scroll-stagger-group.is-visible .stagger-scale-item {
+    animation: soft-scale-fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 }
 
@@ -207,7 +216,8 @@
   .animate-spring-slide,
   .animate-fade-up,
   .animate-scale-fade-up,
-  .scroll-stagger-group.is-visible .stagger-item {
+  .scroll-stagger-group.is-visible .stagger-item,
+  .scroll-stagger-group.is-visible .stagger-scale-item {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
