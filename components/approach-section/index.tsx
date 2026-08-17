@@ -1,6 +1,3 @@
-"use client";
-
-import React from "react";
 import WhyTrustMeSectionDesktop from "./desktop/why-trust-me-section";
 import WhyTrustMeSectionMobile from "./mobile/why-trust-me-section-mobile";
 
