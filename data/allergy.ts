@@ -4,7 +4,7 @@ export const allergyData = {
   subtitle: "واکنش بیش‌ازحد سیستم ایمنی به آلرژن‌ها",
   description:
     "آلرژی و حساسیت به واکنش بیش‌ازحد سیستم ایمنی در برابر موادی گفته می‌شود که معمولاً برای بدن بی‌ضرر هستند. این واکنش می‌تواند در شرایطی مانند آسم، حساسیت‌های پوستی و سندرم فعال‌سازی ماست‌سل (MCAS) بروز کند.",
-  heroImageUrl: "/images/diseases/alergy-hero.png",
+  heroImageUrl: "/images/diseases/alergy.png",
   heroImageSize: "sm" as const,
 
   mechanismTitle: "سازوکار آلرژی",
@@ -44,7 +44,7 @@ export const allergyData = {
       name: "Asthma (آسم)",
       description:
         "یک بیماری مزمن التهابی راه‌های هوایی است که با تنگ‌شدن متغیر مجاری تنفسی و علائمی مانند تنگی نفس، خس‌خس سینه و سرفه همراه می‌شود.",
-      imageUrl: "/images/diseases/athma.png",
+      imageUrl: "/images/diseases/asm.png",
       media: { type: "photo" as const },
     },
     {
@@ -52,7 +52,7 @@ export const allergyData = {
       name: "Skin Allergy (حساسیت پوستی)",
       description:
         "واکنش سیستم ایمنی به یک آلرژن یا ماده محرک است که می‌تواند به شکل‌هایی مانند کهیر، درماتیت تماسی، خارش، قرمزی یا التهاب پوست ظاهر شود.",
-      imageUrl: "/images/diseases/skin-allergy.png",
+      imageUrl: "/images/diseases/skin.png",
       media: { type: "photo" as const },
     },
     {

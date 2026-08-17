@@ -4,7 +4,7 @@ export const hormonalMetabolicData = {
   subtitle: "تنظیم هورمون‌ها و تعادل متابولیک",
   description:
     "اختلالات هورمونی و متابولیک شامل طیف گسترده‌ای از شرایط مانند فیبروم رحم، اندومتریوز، سندرم تخمدان پلی‌کیستیک (PCOS) و سندرم متابولیک هستند که می‌توانند بر عملکرد هورمونی، سوخت‌وساز، سلامت تولیدمثل و وضعیت عمومی بدن تأثیر بگذارند.",
-  heroImageUrl: "/images/diseases/hormon-hero.png",
+  heroImageUrl: "/images/diseases/meta-hero.png",
   heroImageSize: "sm" as const,
 
   mechanismTitle: "سازوکار اختلالات هورمونی و متابولیک",
@@ -68,7 +68,7 @@ export const hormonalMetabolicData = {
       name: "Metabolic Syndrome (سندرم متابولیک)",
       description:
         "مجموعه‌ای از عوامل خطر متابولیک مانند چاقی شکمی، فشار خون بالا، افزایش قند خون و اختلالات چربی خون است که خطر بیماری‌های قلبی‌عروقی و دیابت نوع ۲ را افزایش می‌دهد.",
-      imageUrl: "/images/diseases/hormon2.png",
+      imageUrl: "/images/diseases/syndrom.png",
       media: { type: "photo" as const },
     },
   ],
