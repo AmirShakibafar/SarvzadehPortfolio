@@ -1,7 +1,3 @@
-// hero-section-mobile.tsx
-"use client";
-
-import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
@@ -21,12 +17,7 @@ export function HeroSectionMobile() {
       "
     >
       {/* Right Side: Text Content */}
-      <motion.div
-        className="flex flex-col items-center text-center gap-5 md:gap-6 max-w-3xl z-10 shrink-0"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
-      >
+      <div className="flex flex-col items-center text-center gap-5 md:gap-6 max-w-3xl z-10 shrink-0 animate-fade-up">
         <div>
           <Heading
             as="h1"
@@ -64,23 +55,17 @@ export function HeroSectionMobile() {
             <ArrowLeft className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground" />
           </Button>
         </div>
-      </motion.div>
+      </div>
 
       {/* Left Side: Image Content */}
-      <motion.div
-        className="relative flex justify-center items-end w-full md:w-[80%] isolate"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
-      >
-        {/* Replaced CSS radial gradient with SVG blob */}
+      <div className="relative flex justify-center items-end w-full md:w-[80%] isolate animate-fade-up">
         <div
           className="absolute top-1/2 left-1/2 -z-10 h-[500px] w-[500px] md:h-[750px] md:w-[750px] -translate-x-1/2 -translate-y-1/2 bg-[url('/blob.svg')] bg-contain bg-center bg-no-repeat opacity-40 pointer-events-none"
           aria-hidden="true"
         />
 
         <HeroImageMobile />
-      </motion.div>
+      </div>
     </main>
   );
 }

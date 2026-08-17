@@ -1,8 +1,5 @@
-// hero-image-mobile.tsx
-"use client";
 import doctorImage from "@/public/images/hero/hero4.webp";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Apple, Activity, Brain } from "lucide-react";
 
 export function HeroImageMobile() {
@@ -42,7 +39,6 @@ function GlassBlob() {
         rounded-[45%_55%_48%_52%/55%_45%_50%_50%]
         bg-gradient-to-br from-white/60 to-white/20
         border border-white/60
-          
         -z-10
       "
     />
@@ -70,6 +66,7 @@ function DecorativeEllipse() {
     />
   );
 }
+
 function DoctorImage() {
   return (
     <div className="relative z-10 w-full flex items-center justify-center">
@@ -100,13 +97,12 @@ function DoctorImage() {
     </div>
   );
 }
+
 function FloatingCards() {
   return (
-    <motion.div
-      className="absolute inset-0 z-20 pointer-events-none isolate"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }}
+    <div
+      className="absolute inset-0 z-20 pointer-events-none isolate animate-fade-up"
+      style={{ animationDelay: "200ms" }}
     >
       <div className="absolute top-[10%] right-2 sm:top-[12%] sm:right-6 pointer-events-auto scale-90 sm:scale-100 origin-right">
         <FloatingCardItem
@@ -128,7 +124,7 @@ function FloatingCards() {
           icon={<Apple className="w-5 h-5 text-primary" />}
         />
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -140,11 +136,11 @@ function FloatingCardItem({
   icon: React.ReactNode;
 }) {
   return (
-    <div className="relative bg-white/50 border border-white/50   overflow-hidden rounded-[24px] px-3 py-2.5">
+    <div className="relative bg-white/50 border border-white/50 overflow-hidden rounded-[24px] px-3 py-2.5">
       <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-white/50 to-transparent pointer-events-none" />
 
       <div className="relative z-10 flex items-center gap-3">
-        <div className="flex items-center justify-center shrink-0 w-10 h-10 rounded-full bg-primary/10   ">
+        <div className="flex items-center justify-center shrink-0 w-10 h-10 rounded-full bg-primary/10">
           {icon}
         </div>
 

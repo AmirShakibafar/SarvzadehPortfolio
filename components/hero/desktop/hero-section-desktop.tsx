@@ -1,35 +1,9 @@
-"use client";
-
 import Link from "next/link";
-import { motion, Variants } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Paragraph } from "@/components/ui/paragraph";
 import { HeroImage } from "./hero-image";
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.45,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
 
 export function HeroSection() {
   return (
@@ -44,13 +18,8 @@ export function HeroSection() {
       "
     >
       {/* Right Side: Text Content */}
-      <motion.div
-        className="flex flex-col items-center lg:items-start text-center lg:text-right gap-5 md:gap-6 lg:gap-8 w-full md:max-w-2xl lg:w-[45%] z-10 shrink-0"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.div variants={itemVariants}>
+      <div className="flex flex-col items-center lg:items-start text-center lg:text-right gap-5 md:gap-6 lg:gap-8 w-full md:max-w-2xl lg:w-[45%] z-10 shrink-0">
+        <div className="animate-fade-up" style={{ animationDelay: "200ms" }}>
           <Heading
             as="h1"
             size="h1"
@@ -61,19 +30,22 @@ export function HeroSection() {
             <br className="hidden lg:block" />و بهبود کیفیت{" "}
             <span className="text-primary">زندگی</span> شما
           </Heading>
-        </motion.div>
+        </div>
 
-        <motion.div variants={itemVariants}>
+        <div
+          className="animate-fade-up"
+          style={{ animationDelay: "650ms" }} // 200ms + 450ms stagger
+        >
           <Paragraph size="lg" className="text-sm md:text-base max-w-[480px]">
             با برنامه‌های غذایی علمی و متناسب با شرایط شما، به کنترل علائم ام‌اس
             کمک کرده و سلامت‌تان را بهبود ببخشید.
           </Paragraph>
-        </motion.div>
+        </div>
 
         {/* Buttons */}
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-4 mt-2"
+        <div
+          className="animate-fade-up flex flex-wrap items-center justify-center lg:justify-start gap-3 md:gap-4 mt-2"
+          style={{ animationDelay: "1100ms" }} // 650ms + 450ms stagger
         >
           <Button
             variant="pillPrimary"
@@ -102,18 +74,15 @@ export function HeroSection() {
               <ArrowLeft className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground shrink-0" />
             </Link>
           </Button>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
       {/* Left Side: Image Content */}
-      <motion.div
-        className="relative flex w-full items-end justify-center md:w-[80%] lg:w-[55%] isolate"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.8,
-          delay: 0.3,
-          ease: [0.16, 1, 0.3, 1],
+      <div
+        className="relative flex w-full items-end justify-center md:w-[80%] lg:w-[55%] isolate animate-fade-up"
+        style={{
+          animationDelay: "300ms",
+          animationDuration: "800ms", // Overriding the default 0.6s to match original 0.8s
         }}
       >
         <div
@@ -122,7 +91,7 @@ export function HeroSection() {
         />
 
         <HeroImage />
-      </motion.div>
+      </div>
     </main>
   );
 }

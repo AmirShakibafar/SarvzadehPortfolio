@@ -1,8 +1,5 @@
-"use client";
 import doctorImage from "@/public/images/hero/hero4.webp";
-
 import Image from "next/image";
-import { motion, Variants } from "framer-motion";
 import { Apple, Activity, Brain } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
 
@@ -20,10 +17,10 @@ export function HeroImage() {
 
 function BackgroundGlow() {
   return (
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none -z-30  ">
-      <div className="absolute w-[120%] h-[120%] bg-[radial-gradient(circle,rgba(34,211,238,0.12)_0%,transparent_60%)]  " />
-      <div className="absolute top-[-10%] left-[-10%] w-[90%] h-[90%] bg-[radial-gradient(circle,rgba(255,255,255,0.4)_0%,transparent_60%)]  " />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[80%] h-[80%] bg-[radial-gradient(circle,rgba(20,184,166,0.12)_0%,transparent_60%)]  " />
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none -z-30">
+      <div className="absolute w-[120%] h-[120%] bg-[radial-gradient(circle,rgba(34,211,238,0.12)_0%,transparent_60%)]" />
+      <div className="absolute top-[-10%] left-[-10%] w-[90%] h-[90%] bg-[radial-gradient(circle,rgba(255,255,255,0.4)_0%,transparent_60%)]" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[80%] h-[80%] bg-[radial-gradient(circle,rgba(20,184,166,0.12)_0%,transparent_60%)]" />
     </div>
   );
 }
@@ -43,9 +40,7 @@ function GlassBlob() {
         rounded-[45%_55%_48%_52%/55%_45%_50%_50%]
         bg-gradient-to-br from-white/60 to-white/20
         border border-white/60
-          
         -z-10
-         
       "
     />
   );
@@ -68,11 +63,11 @@ function DecorativeEllipse() {
         border border-white/20
         -z-40
         rotate-6
-         
       "
     />
   );
 }
+
 function DoctorImage() {
   return (
     <div className="relative z-10 w-full flex items-center justify-center">
@@ -104,86 +99,51 @@ function DoctorImage() {
   );
 }
 
-const staggerContainer: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      delayChildren: 0.6,
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const cardItem: Variants = {
-  hidden: { opacity: 0, x: 40 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      type: "spring",
-      damping: 20,
-      stiffness: 100,
-    },
-  },
-};
-
 function FloatingCards() {
   return (
-    <motion.div
-      className="absolute inset-0 z-20 pointer-events-none isolate"
-      variants={staggerContainer}
-      initial="hidden"
-      animate="visible"
-    >
+    <div className="absolute inset-0 z-20 pointer-events-none isolate">
       {/* Top right - Card 1 */}
-      {/* Changed lg:-right-12 to lg:right-4 */}
       <div className="absolute top-[2%] -right-4 sm:top-[8%] sm:-right-8 lg:top-[18%] lg:right-4 pointer-events-auto scale-90 sm:scale-100 origin-right">
-        <motion.div
-          variants={cardItem}
-          whileHover={{ scale: 1.05 }}
-          className=" "
+        <div
+          className="animate-spring-slide transition-transform duration-300 ease-out hover:scale-105"
+          style={{ animationDelay: "0.6s" }}
         >
           <FloatingCardItem
             title="مدیریت ام‌اس"
             description="کاهش التهاب با تغذیه اصولی"
             icon={<Brain className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />}
           />
-        </motion.div>
+        </div>
       </div>
 
       {/* Middle/Bottom left - Card 2 */}
-      {/* Changed lg:-right-16 to lg:-right-2 */}
       <div className="absolute top-[65%] -left-6 sm:top-[55%] sm:-left-8 lg:top-[48%] lg:left-auto lg:-right-2 pointer-events-auto scale-90 sm:scale-100 origin-left lg:origin-right">
-        <motion.div
-          variants={cardItem}
-          whileHover={{ scale: 1.05 }}
-          className=" "
+        <div
+          className="animate-spring-slide transition-transform duration-300 ease-out hover:scale-105"
+          style={{ animationDelay: "0.8s" }}
         >
           <FloatingCardItem
             title="کاهش خستگی"
             description="افزایش انرژی در طول روز"
             icon={<Activity className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />}
           />
-        </motion.div>
+        </div>
       </div>
 
       {/* Bottom right - Card 3 */}
-      {/* Changed lg:-right-6 to lg:right-6 */}
       <div className="absolute bottom-[2%] -right-2 sm:bottom-[5%] sm:-right-4 lg:bottom-auto lg:top-[72%] lg:right-6 pointer-events-auto scale-90 sm:scale-100 origin-right">
-        <motion.div
-          variants={cardItem}
-          whileHover={{ scale: 1.05 }}
-          className=" "
+        <div
+          className="animate-spring-slide transition-transform duration-300 ease-out hover:scale-105"
+          style={{ animationDelay: "1.0s" }}
         >
           <FloatingCardItem
             title="سلامت سیستم عصبی"
             description="تامین مواد مغذی ضروری"
             icon={<Apple className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />}
           />
-        </motion.div>
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -204,10 +164,9 @@ function FloatingCardItem({
         rounded-[24px] lg:rounded-[32px] 
         bg-white/80
         border border-white/60
-          
       "
     >
-      <div className="flex items-center justify-center shrink-0 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-primary/10   ">
+      <div className="flex items-center justify-center shrink-0 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-primary/10">
         {icon}
       </div>
 
