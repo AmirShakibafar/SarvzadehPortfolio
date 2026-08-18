@@ -24,16 +24,17 @@ export function HeroSectionMobile() {
             size="h1"
             className="text-3xl md:text-4xl text-foreground leading-[1.3]"
           >
-            تغذیه شخصی‌سازی شده <br />
-            برای مدیریت بهتر <span className="text-primary">ام‌اس</span> <br />و
-            بهبود کیفیت <span className="text-primary">زندگی</span> شما
+            تغذیه مبتنی بر <span className="text-primary">ژنتیک</span> <br />
+            برای مدیریت و درمان{" "}
+            <span className="text-primary">بیماری‌های خاص</span>
           </Heading>
         </div>
 
         <div>
           <Paragraph size="lg" className="text-sm md:text-base max-w-[480px]">
-            با برنامه‌های غذایی علمی و متناسب با شرایط شما، به کنترل علائم ام‌اس
-            کمک کرده و سلامت‌تان را بهبود ببخشید.
+            دکتر رضا سروزاده، پژوهشگر و متخصص از آمریکا. ارائه راهکارهای نوین
+            نوتریژنتیک برای کنترل بیماری‌های خودایمنی، سرطان، سندرم متابولیک،
+            آلرژی و اختلالات هورمونی.
           </Paragraph>
         </div>
 

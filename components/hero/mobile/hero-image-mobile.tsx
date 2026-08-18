@@ -9,7 +9,7 @@ export function HeroImageMobile() {
       <DecorativeEllipse />
       <GlassBlob />
       <DoctorImage />
-      <FloatingCards />
+      <FloatingCardsMobile />
     </div>
   );
 }
@@ -98,31 +98,33 @@ function DoctorImage() {
   );
 }
 
-function FloatingCards() {
+export function FloatingCardsMobile() {
   return (
     <div
-      className="absolute inset-0 z-20 pointer-events-none isolate animate-fade-up"
+      className="absolute bottom-4 left-0 right-0 z-20 px-4 animate-fade-up"
       style={{ animationDelay: "200ms" }}
     >
-      <div className="absolute top-[10%] right-2 sm:top-[12%] sm:right-6 pointer-events-auto scale-90 sm:scale-100 origin-right">
-        <FloatingCardItem
-          title="مدیریت ام‌اس"
-          icon={<Brain className="w-5 h-5 text-primary" />}
-        />
-      </div>
+      <div className="flex items-center justify-center gap-2">
+        <div>
+          <FloatingCardItem
+            title="ارزیابی نوتریژنتیک"
+            icon={<Brain className="w-4 h-4 text-primary shrink-0" />}
+          />
+        </div>
 
-      <div className="absolute top-[60%] left-2 sm:top-[55%] sm:left-6 pointer-events-auto scale-90 sm:scale-100 origin-left">
-        <FloatingCardItem
-          title="کاهش خستگی"
-          icon={<Activity className="w-5 h-5 text-primary" />}
-        />
-      </div>
+        <div className="translate-y-3">
+          <FloatingCardItem
+            title="مدیریت التهاب"
+            icon={<Activity className="w-4 h-4 text-primary shrink-0" />}
+          />
+        </div>
 
-      <div className="absolute bottom-[10%] right-4 sm:bottom-[15%] sm:right-8 pointer-events-auto scale-90 sm:scale-100 origin-right">
-        <FloatingCardItem
-          title="سلامت سیستم عصبی"
-          icon={<Apple className="w-5 h-5 text-primary" />}
-        />
+        <div>
+          <FloatingCardItem
+            title="تعادل متابولیک"
+            icon={<Apple className="w-4 h-4 text-primary shrink-0" />}
+          />
+        </div>
       </div>
     </div>
   );
