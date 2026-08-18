@@ -99,6 +99,7 @@ function DoctorImage() {
   );
 }
 
+
 function FloatingCards() {
   return (
     <div className="absolute inset-0 z-20 pointer-events-none isolate">
@@ -109,8 +110,8 @@ function FloatingCards() {
           style={{ animationDelay: "0.6s" }}
         >
           <FloatingCardItem
-            title="مدیریت ام‌اس"
-            description="کاهش التهاب با تغذیه اصولی"
+            title="ارزیابی نوتریژنتیک"
+            description="تغذیه شخصی‌سازی شده بر اساس DNA"
             icon={<Brain className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />}
           />
         </div>
@@ -123,8 +124,8 @@ function FloatingCards() {
           style={{ animationDelay: "0.8s" }}
         >
           <FloatingCardItem
-            title="کاهش خستگی"
-            description="افزایش انرژی در طول روز"
+            title="مدیریت التهاب"
+            description="کنترل تخصصی بیماری‌های خودایمنی"
             icon={<Activity className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />}
           />
         </div>
@@ -137,8 +138,8 @@ function FloatingCards() {
           style={{ animationDelay: "1.0s" }}
         >
           <FloatingCardItem
-            title="سلامت سیستم عصبی"
-            description="تامین مواد مغذی ضروری"
+            title="تعادل متابولیک"
+            description="تنظیم اختلالات هورمونی و متابولیک"
             icon={<Apple className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />}
           />
         </div>
@@ -146,7 +147,6 @@ function FloatingCards() {
     </div>
   );
 }
-
 function FloatingCardItem({
   title,
   description,
